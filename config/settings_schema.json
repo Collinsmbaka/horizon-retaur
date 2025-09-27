@@ -353,6 +353,75 @@
       },
       {
         "type": "header",
+        "content": "Proxima Nova Custom Font"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_proxima_nova",
+        "label": "Enable Proxima Nova",
+        "default": false,
+        "info": "Enable the custom Proxima Nova font family with multiple weights"
+      },
+      {
+        "type": "select",
+        "id": "proxima_nova_weight_body",
+        "label": "Proxima Nova Weight for Body Text",
+        "options": [
+          {
+            "value": "light",
+            "label": "Light"
+          },
+          {
+            "value": "regular",
+            "label": "Regular"
+          },
+          {
+            "value": "bold",
+            "label": "Bold"
+          },
+          {
+            "value": "extrabold",
+            "label": "Extra Bold"
+          },
+          {
+            "value": "black",
+            "label": "Black"
+          }
+        ],
+        "default": "regular",
+        "visible_if": "{{ settings.enable_proxima_nova }}"
+      },
+      {
+        "type": "select",
+        "id": "proxima_nova_weight_heading",
+        "label": "Proxima Nova Weight for Headings",
+        "options": [
+          {
+            "value": "light",
+            "label": "Light"
+          },
+          {
+            "value": "regular",
+            "label": "Regular"
+          },
+          {
+            "value": "bold",
+            "label": "Bold"
+          },
+          {
+            "value": "extrabold",
+            "label": "Extra Bold"
+          },
+          {
+            "value": "black",
+            "label": "Black"
+          }
+        ],
+        "default": "bold",
+        "visible_if": "{{ settings.enable_proxima_nova }}"
+      },
+      {
+        "type": "header",
         "content": "t:content.text_presets"
       },
       {

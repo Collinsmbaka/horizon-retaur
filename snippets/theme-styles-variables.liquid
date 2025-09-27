@@ -49,6 +49,65 @@
     {{ accent_font_bold_italic | font_face: font_display: 'swap' }}
   {% endif %}
 
+  {% comment %} Proxima Nova Custom Font Family {% endcomment %}
+  {% if settings.enable_proxima_nova %}
+    @font-face {
+      font-family: 'Proxima Nova';
+      src: url('https://cdn.shopify.com/s/files/1/0807/1190/9689/files/proximanova_light.woff?v=1758996767') format('woff');
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Proxima Nova';
+      src: url('https://cdn.shopify.com/s/files/1/0807/1190/9689/files/proximanova_regular.woff?v=1758996768') format('woff');
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Proxima Nova';
+      src: url('https://cdn.shopify.com/s/files/1/0807/1190/9689/files/proximanova_bold.woff?v=1758996768') format('woff');
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Proxima Nova';
+      src: url('https://cdn.shopify.com/s/files/1/0807/1190/9689/files/proximanova_boldit.woff?v=1758996767') format('woff');
+      font-weight: 700;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Proxima Nova';
+      src: url('https://cdn.shopify.com/s/files/1/0807/1190/9689/files/proximanova_extrabold.woff?v=1758996767') format('woff');
+      font-weight: 800;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Proxima Nova';
+      src: url('https://cdn.shopify.com/s/files/1/0807/1190/9689/files/proximanova_black.woff?v=1758996767') format('woff');
+      font-weight: 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: 'Proxima Nova';
+      src: url('https://cdn.shopify.com/s/files/1/0807/1190/9689/files/proximanova_blackit.woff?v=1758996767') format('woff');
+      font-weight: 900;
+      font-style: italic;
+      font-display: swap;
+    }
+  {% endif %}
+
   :root {
     /* Page Layout */
     --sidebar-width: 25rem;
@@ -81,18 +140,68 @@
     --letter-spacing-md: 0.13em;
 
     /* Font families */
-    --font-body--family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
-    --font-body--style: {{ settings.type_body_font.style }};
-    --font-body--weight: {{ settings.type_body_font.weight }};
-    --font-subheading--family: {{ settings.type_subheading_font.family }}, {{ settings.type_subheading_font.fallback_families }};
-    --font-subheading--style: {{ settings.type_subheading_font.style }};
-    --font-subheading--weight: {{ settings.type_subheading_font.weight }};
-    --font-heading--family: {{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }};
-    --font-heading--style: {{ settings.type_heading_font.style }};
-    --font-heading--weight: {{ settings.type_heading_font.weight }};
-    --font-accent--family: {{ settings.type_accent_font.family }}, {{ settings.type_accent_font.fallback_families }};
-    --font-accent--style: {{ settings.type_accent_font.style }};
-    --font-accent--weight: {{ settings.type_accent_font.weight }};
+    {% if settings.enable_proxima_nova %}
+      {% comment %} Proxima Nova Override {% endcomment %}
+      {% assign body_weight = settings.proxima_nova_weight_body | default: 'regular' %}
+      {% assign heading_weight = settings.proxima_nova_weight_heading | default: 'bold' %}
+
+      {% case body_weight %}
+        {% when 'light' %}
+          {% assign body_weight_value = '300' %}
+        {% when 'regular' %}
+          {% assign body_weight_value = '400' %}
+        {% when 'bold' %}
+          {% assign body_weight_value = '700' %}
+        {% when 'extrabold' %}
+          {% assign body_weight_value = '800' %}
+        {% when 'black' %}
+          {% assign body_weight_value = '900' %}
+        {% else %}
+          {% assign body_weight_value = '400' %}
+      {% endcase %}
+
+      {% case heading_weight %}
+        {% when 'light' %}
+          {% assign heading_weight_value = '300' %}
+        {% when 'regular' %}
+          {% assign heading_weight_value = '400' %}
+        {% when 'bold' %}
+          {% assign heading_weight_value = '700' %}
+        {% when 'extrabold' %}
+          {% assign heading_weight_value = '800' %}
+        {% when 'black' %}
+          {% assign heading_weight_value = '900' %}
+        {% else %}
+          {% assign heading_weight_value = '700' %}
+      {% endcase %}
+
+      --font-body--family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-body--style: normal;
+      --font-body--weight: {{ body_weight_value }};
+      --font-subheading--family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-subheading--style: normal;
+      --font-subheading--weight: {{ body_weight_value }};
+      --font-heading--family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-heading--style: normal;
+      --font-heading--weight: {{ heading_weight_value }};
+      --font-accent--family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      --font-accent--style: normal;
+      --font-accent--weight: {{ heading_weight_value }};
+    {% else %}
+      {% comment %} Default Shopify Fonts {% endcomment %}
+      --font-body--family: {{ settings.type_body_font.family }}, {{ settings.type_body_font.fallback_families }};
+      --font-body--style: {{ settings.type_body_font.style }};
+      --font-body--weight: {{ settings.type_body_font.weight }};
+      --font-subheading--family: {{ settings.type_subheading_font.family }}, {{ settings.type_subheading_font.fallback_families }};
+      --font-subheading--style: {{ settings.type_subheading_font.style }};
+      --font-subheading--weight: {{ settings.type_subheading_font.weight }};
+      --font-heading--family: {{ settings.type_heading_font.family }}, {{ settings.type_heading_font.fallback_families }};
+      --font-heading--style: {{ settings.type_heading_font.style }};
+      --font-heading--weight: {{ settings.type_heading_font.weight }};
+      --font-accent--family: {{ settings.type_accent_font.family }}, {{ settings.type_accent_font.fallback_families }};
+      --font-accent--style: {{ settings.type_accent_font.style }};
+      --font-accent--weight: {{ settings.type_accent_font.weight }};
+    {% endif %}
 
     /* Margin sizes */
     --font-h1--spacing: 0.25em;
