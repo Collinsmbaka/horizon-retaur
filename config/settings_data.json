@@ -44,6 +44,7 @@
     "currency_code_enabled_product_cards": false,
     "currency_code_enabled_cart_items": false,
     "empty_state_collection": "featured-products-4",
+    "show_variant_image": true,
     "variant_swatch_width": 24,
     "variant_swatch_height": 24,
     "variant_swatch_radius": 24,
