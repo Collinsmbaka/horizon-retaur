@@ -244,6 +244,20 @@
               },
               "blocks": {}
             },
+            "swatches_JzECKU": {
+              "type": "swatches",
+              "name": "t:names.swatches",
+              "settings": {
+                "product_swatches_alignment": "flex-start",
+                "product_swatches_alignment_mobile": "flex-start",
+                "hide_padding": false,
+                "product_swatches_padding_top": 4,
+                "product_swatches_padding_bottom": 0,
+                "product_swatches_padding_left": 0,
+                "product_swatches_padding_right": 0
+              },
+              "blocks": {}
+            },
             "buy_buttons": {
               "type": "buy-buttons",
               "settings": {
@@ -321,6 +335,7 @@
           "block_order": [
             "group",
             "variant_picker",
+            "swatches_JzECKU",
             "buy_buttons",
             "divider",
             "text"
