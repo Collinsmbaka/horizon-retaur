@@ -8,7 +8,7 @@
   --swatch-width: 50px !important;
   --swatch-height: 50px !important;
   border-radius: 0 !important;
-  border: none !important;
+  border: 1px solid transparent !important;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0.5;
 }
@@ -18,7 +18,7 @@
   --swatch-width: 50px !important;
   --swatch-height: 50px !important;
   border-radius: 0 !important;
-  border: none !important;
+  border: 1px solid transparent !important;
 }
 
 /* Mobile sizing */
@@ -37,21 +37,28 @@
 /* Swatch label container */
 .variant-option__button-label--has-swatch {
   opacity: 1;
-  border: none;
+  border: none !important;
   padding: 0;
   background: transparent;
 }
 
-/* Hover state - full opacity, no scale */
+/* Hover state - full opacity only, no outline */
 .variant-option__button-label--has-swatch:hover .swatch {
   opacity: 1;
-  outline: none;
+  outline: none !important;
+  border: 1px solid transparent !important;
 }
 
-/* Selected state - full opacity, no border */
+/* Remove hover outline from label */
+.variant-option__button-label--has-swatch:hover {
+  outline: none !important;
+}
+
+/* Selected state - full opacity + black border */
 .variant-option__button-label--has-swatch:has(input:checked) .swatch {
   opacity: 1;
-  outline: none;
+  outline: none !important;
+  border: 1px solid #000000 !important;
 }
 
 /* Remove default outline on selected */
@@ -95,6 +102,7 @@
 
 .variant-option__button-label--has-swatch:has(:focus-visible) .swatch {
   opacity: 1;
+  border: 1px solid #000000 !important;
 }
 
 /* Variant option legend (Flavor/Size labels) */
