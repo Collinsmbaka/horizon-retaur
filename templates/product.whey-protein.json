@@ -190,7 +190,7 @@
               ]
             },
             "variant_picker": {
-              "type": "variant-picker-whey-protein",
+              "type": "variant-picker",
               "settings": {
                 "variant_style": "buttons",
                 "show_swatches": true,

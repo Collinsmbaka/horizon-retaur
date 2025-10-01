@@ -38,7 +38,23 @@
           assign swatch_count = product_option.values | map: 'swatch' | compact | size
           assign variant_style = block_settings.variant_style
 
-          if swatch_count > 0 and block_settings.show_swatches
+          # Check option name for custom handling
+          assign option_name_lower = product_option.name | downcase
+
+          # Force Flavor/Flavour to display as swatches
+          if option_name_lower contains 'flavor' or option_name_lower contains 'flavour'
+            if block_settings.show_swatches
+              if block_settings.variant_style == 'dropdown'
+                assign variant_style = 'swatch_dropdown'
+              else
+                assign variant_style = 'swatch'
+              endif
+            endif
+          # Force Size to display as buttons
+          elsif option_name_lower contains 'size' or option_name_lower contains 'weight'
+            assign variant_style = 'buttons'
+          # Original logic for other options
+          elsif swatch_count > 0 and block_settings.show_swatches
             if block_settings.variant_style == 'dropdown'
               assign variant_style = 'swatch_dropdown'
             else
