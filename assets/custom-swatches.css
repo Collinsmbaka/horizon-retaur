@@ -7,7 +7,7 @@
 .swatch {
   --swatch-width: 50px !important;
   --swatch-height: 50px !important;
-  border-radius: 6px !important;
+  border-radius: var(--variant-picker-button-radius, 6px) !important;
   border: 1px solid transparent;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0.5;
@@ -17,6 +17,7 @@
 .swatch--unscaled {
   --swatch-width: 50px !important;
   --swatch-height: 50px !important;
+  border-radius: var(--variant-picker-button-radius, 6px) !important;
 }
 
 /* Mobile sizing */
@@ -121,7 +122,7 @@
   min-height: 50px;
   padding: 12px 20px;
   border: 1px solid rgb(var(--color-foreground-rgb) / 0.2);
-  border-radius: 6px;
+  border-radius: var(--variant-picker-button-radius, 6px);
   font-size: 16px;
   font-weight: 500;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -143,7 +144,7 @@
 .product-card .swatch {
   --swatch-width: 32px !important;
   --swatch-height: 32px !important;
-  border-radius: 4px !important;
+  border-radius: var(--variant-picker-button-radius, 4px) !important;
 }
 
 @media screen and (max-width: 749px) {
