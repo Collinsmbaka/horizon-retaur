@@ -75,7 +75,16 @@
             {{ option_id_attribute }}
           >
             <legend>
-              {{ product_option.name | escape -}}
+              {%- liquid
+                # Custom labels for Flavor and Size
+                if option_name_lower contains 'flavor' or option_name_lower contains 'flavour'
+                  echo 'Choose Your Flavour:'
+                elsif option_name_lower contains 'size' or option_name_lower contains 'weight'
+                  echo 'Choose Your Size'
+                else
+                  echo product_option.name | escape
+                endif
+              -%}
               {%- if variant_style == 'swatch' -%}
                 <span class="variant-option__swatch-value">{{ product_option.selected_value }}</span>
               {%- endif %}

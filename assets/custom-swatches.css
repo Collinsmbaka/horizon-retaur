@@ -1,0 +1,154 @@
+/* ============================================
+   RETAUR CUSTOM SWATCH STYLES
+   Matches design from retaur.com
+   ============================================ */
+
+/* Override base swatch sizes */
+.swatch {
+  --swatch-width: 50px !important;
+  --swatch-height: 50px !important;
+  border-radius: 6px !important;
+  border: 1px solid transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.5;
+}
+
+/* Unscaled mode (product pages) */
+.swatch--unscaled {
+  --swatch-width: 50px !important;
+  --swatch-height: 50px !important;
+}
+
+/* Mobile sizing */
+@media screen and (max-width: 749px) {
+  .swatch {
+    --swatch-width: 54px !important;
+    --swatch-height: 54px !important;
+  }
+
+  .swatch--unscaled {
+    --swatch-width: 54px !important;
+    --swatch-height: 54px !important;
+  }
+}
+
+/* Swatch label container */
+.variant-option__button-label--has-swatch {
+  opacity: 1;
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+
+/* Hover state - full opacity */
+.variant-option__button-label--has-swatch:hover .swatch {
+  opacity: 1;
+  outline: none;
+  transform: scale(1.02);
+}
+
+/* Selected state - full opacity + black border */
+.variant-option__button-label--has-swatch:has(input:checked) .swatch {
+  opacity: 1;
+  border: 1px solid #000000;
+  outline: none;
+}
+
+/* Remove default outline on selected */
+.variant-option__button-label--has-swatch:has(input:checked) {
+  outline: none !important;
+}
+
+/* Swatch spacing - 12px gap */
+.variant-option--swatches {
+  gap: 12px;
+}
+
+.variant-option--swatches > overflow-list {
+  gap: 12px;
+}
+
+/* Swatch list items */
+.variant-option__swatch {
+  margin: 0;
+}
+
+/* Unavailable swatches - maintain opacity effect */
+.swatch--unavailable {
+  opacity: 0.3;
+  border-style: dashed;
+}
+
+.variant-option__button-label--has-swatch:has([data-option-available='false']) .swatch {
+  opacity: 0.3;
+}
+
+/* Smooth transitions for all states */
+.variant-option__button-label--has-swatch,
+.variant-option__button-label--has-swatch .swatch {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Remove focus outline, we use border instead */
+.variant-option__button-label--has-swatch:has(:focus-visible) {
+  outline: none !important;
+}
+
+.variant-option__button-label--has-swatch:has(:focus-visible) .swatch {
+  border: 1px solid #000000;
+  opacity: 1;
+}
+
+/* Variant option legend (Flavor/Size labels) */
+.variant-option legend {
+  font-family: var(--font-heading--family);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--color-foreground);
+}
+
+/* Selected value display for swatches */
+.variant-option__swatch-value {
+  font-size: 16px;
+  font-weight: 400;
+  color: rgb(var(--color-foreground-rgb) / 0.7);
+  padding-inline-start: 8px;
+}
+
+/* Size buttons styling to match */
+.variant-option--buttons:not(.variant-option--swatches) .variant-option__button-label {
+  min-height: 50px;
+  padding: 12px 20px;
+  border: 1px solid rgb(var(--color-foreground-rgb) / 0.2);
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.5;
+}
+
+.variant-option--buttons:not(.variant-option--swatches) .variant-option__button-label:hover {
+  opacity: 1;
+  border-color: rgb(var(--color-foreground-rgb) / 0.4);
+}
+
+.variant-option--buttons:not(.variant-option--swatches) .variant-option__button-label:has(:checked) {
+  opacity: 1;
+  border: 1px solid #000000;
+  background-color: transparent;
+}
+
+/* Product card swatches (collection pages) - slightly smaller */
+.product-card .swatch {
+  --swatch-width: 32px !important;
+  --swatch-height: 32px !important;
+  border-radius: 4px !important;
+}
+
+@media screen and (max-width: 749px) {
+  .product-card .swatch {
+    --swatch-width: 28px !important;
+    --swatch-height: 28px !important;
+  }
+}
