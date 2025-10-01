@@ -40,6 +40,8 @@
   border: none !important;
   padding: 0;
   background: transparent;
+  overflow: visible !important;
+  display: inline-block;
 }
 
 /* Hover state - full opacity only, no outline */
@@ -78,6 +80,7 @@
 /* Swatch list items */
 .variant-option__swatch {
   margin: 0;
+  overflow: visible !important;
 }
 
 /* Unavailable swatches - maintain opacity effect */
