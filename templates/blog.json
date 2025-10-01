@@ -263,7 +263,7 @@
         "icons_style": "arrow",
         "icons_shape": "none",
         "section_width": "page-width",
-        "gap": 12,
+        "gap": 60,
         "color_scheme": "",
         "padding-block-start": 48,
         "padding-block-end": 48
