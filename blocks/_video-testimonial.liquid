@@ -3,6 +3,7 @@
   assign customer_name = block_settings.customer_name
   assign rating = block_settings.rating
   assign testimonial_text = block_settings.testimonial_text
+  assign section_id = section.id | default: 'video-testimonials'
 %}
 
 <div
@@ -18,7 +19,7 @@
         video_class: 'video-testimonial__media',
         video_loop: block_settings.video_loop,
         video_preview_image: block_settings.cover_image,
-        section_id: section.id
+        section_id: section_id
       %}
     {% else %}
       {% render 'video',
@@ -28,7 +29,7 @@
         video_type: block_settings.video_url.type,
         video_alt: customer_name,
         video_preview_image: block_settings.cover_image,
-        section_id: section.id
+        section_id: section_id
       %}
     {% endif %}
   </div>

@@ -30,12 +30,14 @@
 
   {% capture list_items %}
     {% for block in section.blocks %}
-      <div class="video-testimonials__item">
-        {% content_for 'block', type: '_video-testimonial', id: block.id, closest.block: block %}
-      </div>
-      {% unless forloop.last %}
-        <!--@list/split-->
-      {% endunless %}
+      {% if block.type == '_video-testimonial' %}
+        <div class="video-testimonials__item">
+          {% render '_video-testimonial', block: block %}
+        </div>
+        {% unless forloop.last %}
+          <!--@list/split-->
+        {% endunless %}
+      {% endif %}
     {% endfor %}
   {% endcapture %}
 
