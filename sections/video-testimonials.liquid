@@ -145,7 +145,7 @@
         }
       ],
       "default": "1",
-      "visible_if": "{{ section.settings.layout_type == 'grid' && section.settings.carousel_on_mobile == false }}"
+      "visible_if": "{{ section.settings.carousel_on_mobile == false }}"
     },
     {
       "type": "select",
@@ -165,8 +165,7 @@
           "label": "Small (2 per view)"
         }
       ],
-      "default": "85cqw",
-      "visible_if": "{{ section.settings.layout_type == 'carousel' || section.settings.carousel_on_mobile == true }}"
+      "default": "85cqw"
     },
     {
       "type": "range",
@@ -191,8 +190,7 @@
     },
     {
       "type": "header",
-      "content": "Carousel Navigation",
-      "visible_if": "{{ section.settings.layout_type == 'carousel' || section.settings.carousel_on_mobile == true }}"
+      "content": "Carousel Navigation"
     },
     {
       "type": "select",
@@ -220,8 +218,7 @@
           "label": "None"
         }
       ],
-      "default": "arrow",
-      "visible_if": "{{ section.settings.layout_type == 'carousel' || section.settings.carousel_on_mobile == true }}"
+      "default": "arrow"
     },
     {
       "type": "select",
@@ -242,7 +239,7 @@
         }
       ],
       "default": "circle",
-      "visible_if": "{{ section.settings.icons_style != 'none' && (section.settings.layout_type == 'carousel' || section.settings.carousel_on_mobile == true) }}"
+      "visible_if": "{{ section.settings.icons_style != 'none' }}"
     },
     {
       "type": "header",
