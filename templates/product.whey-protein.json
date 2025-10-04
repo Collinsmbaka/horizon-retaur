@@ -231,32 +231,6 @@
               },
               "blocks": {}
             },
-            "text": {
-              "type": "product-description",
-              "name": "Product description",
-              "settings": {
-                "text": "{{ closest.product.description }}",
-                "width": "100%",
-                "max_width": "normal",
-                "alignment": "left",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
             "accordion_xgH6Eq": {
               "type": "accordion",
               "name": "t:names.accordion",
@@ -282,7 +256,7 @@
                     "heading": "How To Use",
                     "open_by_default": true,
                     "icon": "apple",
-                    "width": 12
+                    "width": 16
                   },
                   "blocks": {
                     "text_JhmFka": {
@@ -318,16 +292,16 @@
                 "accordion_row_W4xqY6": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Shipping",
+                    "heading": "Product Benefits",
                     "open_by_default": false,
-                    "icon": "none",
-                    "width": 20
+                    "icon": "box",
+                    "width": 16
                   },
                   "blocks": {
                     "text_cArcRa": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                        "text": "{{ closest.product.description }}",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -357,20 +331,20 @@
                 "accordion_row_Uprcfz": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Manufacturing",
+                    "heading": "Ingredients",
                     "open_by_default": false,
-                    "icon": "none",
-                    "width": 20
+                    "icon": "dairy",
+                    "width": 16
                   },
                   "blocks": {
                     "text_iFB6zT": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
+                        "text": "<p>Ingredients: Whey Protein Concentrate, Whey Protein Isolate, Natural Madagascar, Vanilla, Xanthan Gum, Sea Salt, Sucralose</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
-                        "type_preset": "rte",
+                        "type_preset": "paragraph",
                         "font": "var(--font-body--family)",
                         "font_size": "1rem",
                         "line_height": "normal",
@@ -407,7 +381,6 @@
             "variant_picker",
             "buy_buttons",
             "divider",
-            "text",
             "accordion_xgH6Eq"
           ]
         }
