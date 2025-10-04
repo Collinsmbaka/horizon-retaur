@@ -532,8 +532,8 @@
         "section_width": "page-width",
         "gap": 24,
         "color_scheme": "",
-        "padding-block-start": 48,
-        "padding-block-end": 48
+        "padding-block-start": 32,
+        "padding-block-end": 32
       }
     },
     "product-recommendations": {
