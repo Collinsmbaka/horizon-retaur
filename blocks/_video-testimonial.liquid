@@ -1,0 +1,342 @@
+{% liquid
+  assign block_settings = block.settings
+  assign customer_name = block_settings.customer_name
+  assign rating = block_settings.rating
+  assign testimonial_text = block_settings.testimonial_text
+%}
+
+<div
+  class="video-testimonial spacing-style"
+  style="{% render 'spacing-style', settings: block_settings %}"
+  {{ block.shopify_attributes }}
+>
+  {%- comment -%} Video Section {%- endcomment -%}
+  <div class="video-testimonial__video">
+    {% if block_settings.source == 'uploaded' %}
+      {% render 'video',
+        video: block_settings.video,
+        video_class: 'video-testimonial__media',
+        video_loop: block_settings.video_loop,
+        video_preview_image: block_settings.cover_image,
+        section_id: section.id
+      %}
+    {% else %}
+      {% render 'video',
+        video_from_url: true,
+        video: block_settings.video_url.id,
+        video_class: 'video-testimonial__media',
+        video_type: block_settings.video_url.type,
+        video_alt: customer_name,
+        video_preview_image: block_settings.cover_image,
+        section_id: section.id
+      %}
+    {% endif %}
+  </div>
+
+  {%- comment -%} Customer Info & Rating {%- endcomment -%}
+  <div class="video-testimonial__info">
+    {% if customer_name != blank %}
+      <p class="video-testimonial__customer-name {{ block_settings.name_type_preset }}">
+        {{ customer_name }}
+      </p>
+    {% endif %}
+
+    {% if rating > 0 %}
+      <div class="video-testimonial__rating">
+        <svg
+          class="visually-hidden"
+          style="width: 0; height: 0;"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 32 32"
+          role="presentation"
+        >
+          <defs>
+            <symbol xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="testimonial-star">
+              <path d="M31.547 12a.848.848 0 00-.677-.577l-9.427-1.376-4.224-8.532a.847.847 0 00-1.516 0l-4.218 8.534-9.427 1.355a.847.847 0 00-.467 1.467l6.823 6.664-1.612 9.375a.847.847 0 001.23.893l8.428-4.434 8.432 4.432a.847.847 0 001.229-.894l-1.615-9.373 6.822-6.665a.845.845 0 00.214-.869z" />
+            </symbol>
+          </defs>
+        </svg>
+
+        <div
+          class="rating rating-color--{{ block_settings.rating_color }}"
+          style="--star-size: {{ block_settings.star_size }}px;"
+          aria-label="Rating: {{ rating }} out of 5 stars"
+        >
+          {%- for star in (1..5) -%}
+            <svg
+              class="stars {% if star <= rating %}filled-star{% endif %}"
+              viewBox="0 0 32 32"
+              role="presentation"
+            >
+              <use xlink:href="#testimonial-star"></use>
+            </svg>
+          {%- endfor -%}
+        </div>
+      </div>
+    {% endif %}
+
+    {% if testimonial_text != blank %}
+      <div class="video-testimonial__text {{ block_settings.text_type_preset }}">
+        {{ testimonial_text }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .video-testimonial {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-sm);
+    width: 100%;
+  }
+
+  .video-testimonial__video {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    border-radius: var(--border-radius, 0);
+  }
+
+  .video-testimonial__media {
+    width: 100%;
+    aspect-ratio: 9/16;
+    object-fit: cover;
+  }
+
+  .video-testimonial__info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--gap-xs);
+  }
+
+  .video-testimonial__customer-name {
+    margin: 0;
+    font-weight: 600;
+  }
+
+  .video-testimonial__rating {
+    display: flex;
+    align-items: center;
+  }
+
+  .rating {
+    display: flex;
+    gap: var(--gap-3xs);
+    align-items: center;
+  }
+
+  .rating-color--primary {
+    --star-fill-color: var(--color-primary);
+    --star-fill-color-rgb: var(--color-primary-rgb);
+  }
+
+  .rating-color--foreground {
+    --star-fill-color: var(--color-foreground);
+    --star-fill-color-rgb: var(--color-foreground-rgb);
+  }
+
+  .rating-color--accent {
+    --star-fill-color: #FFD700;
+    --star-fill-color-rgb: 255, 215, 0;
+  }
+
+  .stars {
+    height: var(--star-size);
+    fill: rgb(var(--star-fill-color-rgb) / 0.2);
+  }
+
+  .filled-star {
+    fill: var(--star-fill-color);
+  }
+
+  .video-testimonial__text {
+    margin: 0;
+    color: var(--color-foreground);
+    opacity: 0.8;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "t:names.video_testimonial",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "customer_name",
+      "label": "Customer name",
+      "default": "Customer Name"
+    },
+    {
+      "type": "range",
+      "id": "rating",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5,
+      "info": "Set to 0 to hide rating"
+    },
+    {
+      "type": "textarea",
+      "id": "testimonial_text",
+      "label": "Testimonial text (optional)",
+      "info": "Short review or quote from the customer"
+    },
+    {
+      "type": "header",
+      "content": "Video Settings"
+    },
+    {
+      "type": "select",
+      "id": "source",
+      "label": "Video source",
+      "options": [
+        {
+          "value": "uploaded",
+          "label": "Uploaded video"
+        },
+        {
+          "value": "url",
+          "label": "Video URL"
+        }
+      ],
+      "default": "uploaded"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video",
+      "visible_if": "{{ block.settings.source == 'uploaded' }}"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url",
+      "label": "Video URL",
+      "accept": ["youtube", "vimeo"],
+      "visible_if": "{{ block.settings.source == 'url' }}"
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image",
+      "label": "Cover image",
+      "info": "Shows before video plays (recommended for performance)"
+    },
+    {
+      "type": "checkbox",
+      "id": "video_loop",
+      "label": "Loop video",
+      "default": true
+    },
+    {
+      "type": "header",
+      "content": "Rating Style"
+    },
+    {
+      "type": "select",
+      "id": "rating_color",
+      "label": "Star color",
+      "options": [
+        {
+          "value": "accent",
+          "label": "Gold"
+        },
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "foreground",
+          "label": "Text color"
+        }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "label": "Star size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "select",
+      "id": "name_type_preset",
+      "label": "Name style",
+      "options": [
+        {
+          "value": "paragraph",
+          "label": "Paragraph"
+        },
+        {
+          "value": "h6",
+          "label": "Heading 6"
+        },
+        {
+          "value": "h5",
+          "label": "Heading 5"
+        },
+        {
+          "value": "h4",
+          "label": "Heading 4"
+        }
+      ],
+      "default": "h6"
+    },
+    {
+      "type": "select",
+      "id": "text_type_preset",
+      "label": "Testimonial text style",
+      "options": [
+        {
+          "value": "paragraph",
+          "label": "Paragraph"
+        },
+        {
+          "value": "h6",
+          "label": "Small"
+        }
+      ],
+      "default": "paragraph"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video testimonial",
+      "category": "Social proof"
+    }
+  ]
+}
+{% endschema %}

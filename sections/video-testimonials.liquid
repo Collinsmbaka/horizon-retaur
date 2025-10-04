@@ -1,0 +1,421 @@
+{% liquid
+  assign max_items = section.blocks.size
+
+  if section.settings.layout_type == 'carousel'
+    assign max_items = section.settings.columns | plus: 2
+  elsif section.settings.layout_type == 'grid'
+    assign max_items = section.blocks.size
+  endif
+%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+
+<div
+  class="
+    section
+    section--{{ section.settings.section_width }}
+    color-{{ section.settings.color_scheme }}
+    section-video-testimonials
+    spacing-style
+    gap-style
+  "
+  style="
+    {% render 'spacing-style', settings: section.settings %}
+    {% render 'gap-style', value: section.settings.gap %}
+  "
+>
+  <div class="section-video-testimonials__content">
+    {%- content_for 'blocks' -%}
+  </div>
+
+  {% capture list_items %}
+    {% for block in section.blocks %}
+      <div class="video-testimonials__item">
+        {% content_for 'block', type: '_video-testimonial', id: block.id, settings: block.settings %}
+      </div>
+      {% unless forloop.last %}
+        <!--@list/split-->
+      {% endunless %}
+    {% endfor %}
+  {% endcapture %}
+
+  {% liquid
+    assign list_items_array = list_items | strip | split: '<!--@list/split-->'
+  %}
+
+  {% render 'resource-list',
+    list_items: list_items,
+    list_items_array: list_items_array,
+    settings: section.settings,
+    carousel_ref: 'videoTestimonials',
+    slide_count: max_items,
+    content_type: 'testimonials',
+    test_id: 'video-testimonials-list'
+  %}
+</div>
+
+{% schema %}
+{
+  "name": "Video Testimonials",
+  "class": "video-testimonials-section",
+  "blocks": [
+    {
+      "type": "_video-testimonial",
+      "name": "Video Testimonial",
+      "limit": 12
+    },
+    {
+      "type": "@theme"
+    },
+    {
+      "type": "@app"
+    },
+    {
+      "type": "text"
+    },
+    {
+      "type": "icon"
+    },
+    {
+      "type": "image"
+    },
+    {
+      "type": "button"
+    },
+    {
+      "type": "group"
+    },
+    {
+      "type": "spacer"
+    },
+    {
+      "type": "_divider"
+    }
+  ],
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "layout_type",
+      "label": "Layout type",
+      "options": [
+        {
+          "value": "grid",
+          "label": "Grid"
+        },
+        {
+          "value": "carousel",
+          "label": "Carousel"
+        }
+      ],
+      "default": "grid"
+    },
+    {
+      "type": "checkbox",
+      "id": "carousel_on_mobile",
+      "label": "Carousel on mobile",
+      "default": true,
+      "visible_if": "{{ section.settings.layout_type == 'grid' }}"
+    },
+    {
+      "type": "range",
+      "id": "columns",
+      "label": "Columns (desktop)",
+      "min": 2,
+      "max": 4,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "select",
+      "id": "mobile_columns",
+      "label": "Mobile columns",
+      "options": [
+        {
+          "value": "1",
+          "label": "1"
+        },
+        {
+          "value": "2",
+          "label": "2"
+        }
+      ],
+      "default": "1",
+      "visible_if": "{{ section.settings.layout_type == 'grid' and section.settings.carousel_on_mobile == false }}"
+    },
+    {
+      "type": "select",
+      "id": "mobile_card_size",
+      "label": "Mobile card size",
+      "options": [
+        {
+          "value": "85cqw",
+          "label": "Large (1 per view)"
+        },
+        {
+          "value": "60cqw",
+          "label": "Medium"
+        },
+        {
+          "value": "44cqw",
+          "label": "Small (2 per view)"
+        }
+      ],
+      "default": "85cqw",
+      "visible_if": "{{ section.settings.layout_type == 'carousel' or section.settings.carousel_on_mobile == true }}"
+    },
+    {
+      "type": "range",
+      "id": "columns_gap",
+      "label": "Horizontal gap",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "range",
+      "id": "rows_gap",
+      "label": "Vertical gap",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 16,
+      "visible_if": "{{ section.settings.layout_type == 'grid' }}"
+    },
+    {
+      "type": "header",
+      "content": "Carousel Navigation",
+      "visible_if": "{{ section.settings.layout_type == 'carousel' or section.settings.carousel_on_mobile == true }}"
+    },
+    {
+      "type": "select",
+      "id": "icons_style",
+      "label": "Navigation icons",
+      "options": [
+        {
+          "value": "arrow",
+          "label": "Arrows"
+        },
+        {
+          "value": "chevron",
+          "label": "Chevrons"
+        },
+        {
+          "value": "arrows_large",
+          "label": "Large arrows"
+        },
+        {
+          "value": "chevron_large",
+          "label": "Large chevrons"
+        },
+        {
+          "value": "none",
+          "label": "None"
+        }
+      ],
+      "default": "arrow",
+      "visible_if": "{{ section.settings.layout_type == 'carousel' or section.settings.carousel_on_mobile == true }}"
+    },
+    {
+      "type": "select",
+      "id": "icons_shape",
+      "label": "Icon background",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "circle",
+          "label": "Circle"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        }
+      ],
+      "default": "circle",
+      "visible_if": "{{ section.settings.icons_style != 'none' and (section.settings.layout_type == 'carousel' or section.settings.carousel_on_mobile == true) }}"
+    },
+    {
+      "type": "header",
+      "content": "Section Layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "Page width"
+        },
+        {
+          "value": "full-width",
+          "label": "Full width"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Content gap",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 24,
+      "info": "Gap between header blocks and testimonials"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Video Testimonials",
+      "category": "Social proof",
+      "settings": {
+        "layout_type": "grid",
+        "carousel_on_mobile": true,
+        "columns": 3,
+        "mobile_card_size": "85cqw",
+        "columns_gap": 16,
+        "rows_gap": 16,
+        "icons_style": "arrow",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "gap": 24,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      },
+      "blocks": [
+        {
+          "type": "group",
+          "settings": {
+            "content_direction": "column",
+            "vertical_on_mobile": true,
+            "horizontal_alignment": "center",
+            "vertical_alignment": "center",
+            "horizontal_alignment_flex_direction_column": "center",
+            "vertical_alignment_flex_direction_column": "center",
+            "gap": 12,
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "custom_height": 100,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "border": "none",
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "heading": {
+              "type": "text",
+              "settings": {
+                "text": "<h2>Happy Customers. Good Reviews.</h2>",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "center",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
+            }
+          },
+          "block_order": ["heading"]
+        },
+        {
+          "type": "_video-testimonial",
+          "settings": {
+            "customer_name": "Omolola Spence",
+            "rating": 5,
+            "source": "uploaded",
+            "rating_color": "accent",
+            "star_size": 16,
+            "name_type_preset": "h6",
+            "text_type_preset": "paragraph"
+          }
+        },
+        {
+          "type": "_video-testimonial",
+          "settings": {
+            "customer_name": "Kosisochukwu",
+            "rating": 5,
+            "source": "uploaded",
+            "rating_color": "accent",
+            "star_size": 16,
+            "name_type_preset": "h6",
+            "text_type_preset": "paragraph"
+          }
+        },
+        {
+          "type": "_video-testimonial",
+          "settings": {
+            "customer_name": "Njideka Lilian",
+            "rating": 5,
+            "source": "uploaded",
+            "rating_color": "accent",
+            "star_size": 16,
+            "name_type_preset": "h6",
+            "text_type_preset": "paragraph"
+          }
+        }
+      ],
+      "block_order": ["group"]
+    }
+  ]
+}
+{% endschema %}
