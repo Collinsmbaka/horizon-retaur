@@ -24,10 +24,6 @@
     {% render 'gap-style', value: section.settings.gap %}
   "
 >
-  <div class="section-video-testimonials__content">
-    {%- content_for 'blocks' -%}
-  </div>
-
   {% capture list_items %}
     {% for block in section.blocks %}
       {% if block.type == '_video-testimonial' %}
@@ -149,7 +145,7 @@
         }
       ],
       "default": "1",
-      "visible_if": "{{ section.settings.layout_type == 'grid' and section.settings.carousel_on_mobile == false }}"
+      "visible_if": "{{ section.settings.layout_type == 'grid' && section.settings.carousel_on_mobile == false }}"
     },
     {
       "type": "select",
@@ -170,7 +166,7 @@
         }
       ],
       "default": "85cqw",
-      "visible_if": "{{ section.settings.layout_type == 'carousel' or section.settings.carousel_on_mobile == true }}"
+      "visible_if": "{{ section.settings.layout_type == 'carousel' || section.settings.carousel_on_mobile == true }}"
     },
     {
       "type": "range",
@@ -196,7 +192,7 @@
     {
       "type": "header",
       "content": "Carousel Navigation",
-      "visible_if": "{{ section.settings.layout_type == 'carousel' or section.settings.carousel_on_mobile == true }}"
+      "visible_if": "{{ section.settings.layout_type == 'carousel' || section.settings.carousel_on_mobile == true }}"
     },
     {
       "type": "select",
@@ -225,7 +221,7 @@
         }
       ],
       "default": "arrow",
-      "visible_if": "{{ section.settings.layout_type == 'carousel' or section.settings.carousel_on_mobile == true }}"
+      "visible_if": "{{ section.settings.layout_type == 'carousel' || section.settings.carousel_on_mobile == true }}"
     },
     {
       "type": "select",
@@ -246,7 +242,7 @@
         }
       ],
       "default": "circle",
-      "visible_if": "{{ section.settings.icons_style != 'none' and (section.settings.layout_type == 'carousel' or section.settings.carousel_on_mobile == true) }}"
+      "visible_if": "{{ section.settings.icons_style != 'none' && (section.settings.layout_type == 'carousel' || section.settings.carousel_on_mobile == true) }}"
     },
     {
       "type": "header",
