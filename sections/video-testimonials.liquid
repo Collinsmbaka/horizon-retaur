@@ -1,10 +1,18 @@
 {% liquid
-  assign max_items = section.blocks.size
+  assign testimonials_count = 0
+
+  for i in (1..6)
+    assign video_key = 'video_' | append: i
+    assign video = section.settings[video_key]
+    if video != blank
+      assign testimonials_count = testimonials_count | plus: 1
+    endif
+  endfor
 
   if section.settings.layout_type == 'carousel'
     assign max_items = section.settings.columns | plus: 2
-  elsif section.settings.layout_type == 'grid'
-    assign max_items = section.blocks.size
+  else
+    assign max_items = testimonials_count
   endif
 %}
 
@@ -17,18 +25,82 @@
     color-{{ section.settings.color_scheme }}
     section-video-testimonials
     spacing-style
-    gap-style
   "
   style="
     {% render 'spacing-style', settings: section.settings %}
-    {% render 'gap-style', value: section.settings.gap %}
+    --content-gap: {{ section.settings.gap }}px;
   "
 >
+  {% if section.settings.heading != blank %}
+    {% liquid
+      assign heading_settings = section.settings
+      if section.settings.heading_preset == 'custom'
+        assign heading_settings_obj = '{"type_preset":"custom","font":"' | append: section.settings.heading_font | append: '","font_size":"' | append: section.settings.heading_font_size | append: '","line_height":"' | append: section.settings.heading_line_height | append: '","letter_spacing":"' | append: section.settings.heading_letter_spacing | append: '","case":"' | append: section.settings.heading_case | append: '","wrap":"' | append: section.settings.heading_wrap | append: '","color":"' | append: section.settings.heading_color | append: '"}'
+      endif
+    %}
+    <div class="video-testimonials__heading-wrapper text-{{ section.settings.heading_alignment }}">
+      <div class="video-testimonials__heading">
+        {% if section.settings.heading_preset == 'custom' %}
+          <div
+            class="custom-heading custom-typography custom-color"
+            style="
+              --font-family: {{ section.settings.heading_font }};
+              --font-weight: {{ section.settings.heading_font | replace: 'family', 'weight' }};
+              --font-size: {{ section.settings.heading_font_size }};
+              --line-height: var(--line-height--heading-{{ section.settings.heading_line_height }});
+              --letter-spacing: var(--letter-spacing--heading-{{ section.settings.heading_letter_spacing }});
+              --text-transform: {{ section.settings.heading_case }};
+              --text-wrap: {{ section.settings.heading_wrap }};
+              --color: {{ section.settings.heading_color }};
+              font-family: var(--font-family);
+              font-weight: var(--font-weight);
+              font-size: var(--font-size);
+              line-height: var(--line-height);
+              letter-spacing: var(--letter-spacing);
+              text-transform: var(--text-transform);
+              text-wrap: var(--text-wrap);
+              color: var(--color);
+            "
+          >
+            {{ section.settings.heading }}
+          </div>
+        {% else %}
+          <{{ section.settings.heading_preset }} class="{{ section.settings.heading_preset }}">
+            {{ section.settings.heading }}
+          </{{ section.settings.heading_preset }}>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+
   {% capture list_items %}
-    {% for block in section.blocks %}
-      {% if block.type == '_video-testimonial' %}
+    {% for i in (1..6) %}
+      {% liquid
+        assign video_key = 'video_' | append: i
+        assign video_url_key = 'video_url_' | append: i
+        assign cover_key = 'cover_image_' | append: i
+        assign name_key = 'customer_name_' | append: i
+        assign rating_key = 'rating_' | append: i
+
+        assign video = section.settings[video_key]
+        assign video_url = section.settings[video_url_key]
+        assign cover_image = section.settings[cover_key]
+        assign customer_name = section.settings[name_key]
+        assign rating = section.settings[rating_key]
+      %}
+
+      {% if video != blank or video_url != blank %}
         <div class="video-testimonials__item">
-          {% render '_video-testimonial', block: block %}
+          {% render 'video-testimonial-card',
+            video: video,
+            video_url: video_url,
+            cover_image: cover_image,
+            customer_name: customer_name,
+            rating: rating,
+            rating_color: section.settings.rating_color,
+            star_size: section.settings.star_size,
+            section_id: section.id
+          %}
         </div>
         {% unless forloop.last %}
           <!--@list/split-->
@@ -52,48 +124,526 @@
   %}
 </div>
 
+{% stylesheet %}
+  .section-video-testimonials {
+    display: grid;
+  }
+
+  .video-testimonials__heading-wrapper {
+    margin-block-end: var(--content-gap);
+  }
+
+  .video-testimonials__heading-wrapper.text-left .video-testimonials__heading,
+  .video-testimonials__heading-wrapper.text-left .custom-heading,
+  .video-testimonials__heading-wrapper.text-left h1,
+  .video-testimonials__heading-wrapper.text-left h2,
+  .video-testimonials__heading-wrapper.text-left h3 {
+    text-align: left;
+  }
+
+  .video-testimonials__heading-wrapper.text-center .video-testimonials__heading,
+  .video-testimonials__heading-wrapper.text-center .custom-heading,
+  .video-testimonials__heading-wrapper.text-center h1,
+  .video-testimonials__heading-wrapper.text-center h2,
+  .video-testimonials__heading-wrapper.text-center h3 {
+    text-align: center;
+  }
+
+  .video-testimonials__heading-wrapper.text-right .video-testimonials__heading,
+  .video-testimonials__heading-wrapper.text-right .custom-heading,
+  .video-testimonials__heading-wrapper.text-right h1,
+  .video-testimonials__heading-wrapper.text-right h2,
+  .video-testimonials__heading-wrapper.text-right h3 {
+    text-align: right;
+  }
+{% endstylesheet %}
+
 {% schema %}
 {
   "name": "Video Testimonials",
   "class": "video-testimonials-section",
-  "blocks": [
-    {
-      "type": "_video-testimonial",
-      "name": "Video Testimonial",
-      "limit": 12
-    },
-    {
-      "type": "@theme"
-    },
-    {
-      "type": "@app"
-    },
-    {
-      "type": "text"
-    },
-    {
-      "type": "icon"
-    },
-    {
-      "type": "image"
-    },
-    {
-      "type": "button"
-    },
-    {
-      "type": "group"
-    },
-    {
-      "type": "spacer"
-    },
-    {
-      "type": "_divider"
-    }
-  ],
   "disabled_on": {
     "groups": ["header", "footer"]
   },
   "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Happy Customers. Good Reviews."
+    },
+    {
+      "type": "select",
+      "id": "heading_alignment",
+      "label": "Heading alignment",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ],
+      "default": "center"
+    },
+    {
+      "type": "header",
+      "content": "Typography"
+    },
+    {
+      "type": "select",
+      "id": "heading_preset",
+      "label": "Preset",
+      "options": [
+        {
+          "value": "h1",
+          "label": "H1"
+        },
+        {
+          "value": "h2",
+          "label": "H2"
+        },
+        {
+          "value": "h3",
+          "label": "H3"
+        },
+        {
+          "value": "h4",
+          "label": "H4"
+        },
+        {
+          "value": "h5",
+          "label": "H5"
+        },
+        {
+          "value": "h6",
+          "label": "H6"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "h2"
+    },
+    {
+      "type": "select",
+      "id": "heading_font",
+      "label": "Font",
+      "options": [
+        {
+          "value": "var(--font-body--family)",
+          "label": "Body"
+        },
+        {
+          "value": "var(--font-subheading--family)",
+          "label": "Subheading"
+        },
+        {
+          "value": "var(--font-heading--family)",
+          "label": "Heading"
+        },
+        {
+          "value": "var(--font-accent--family)",
+          "label": "Accent"
+        }
+      ],
+      "default": "var(--font-body--family)",
+      "visible_if": "{{ section.settings.heading_preset == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "heading_font_size",
+      "label": "Size",
+      "options": [
+        {
+          "value": "1rem",
+          "label": "16px"
+        },
+        {
+          "value": "1.125rem",
+          "label": "18px"
+        },
+        {
+          "value": "1.25rem",
+          "label": "20px"
+        },
+        {
+          "value": "1.5rem",
+          "label": "24px"
+        },
+        {
+          "value": "2rem",
+          "label": "32px"
+        },
+        {
+          "value": "2.5rem",
+          "label": "40px"
+        },
+        {
+          "value": "3rem",
+          "label": "48px"
+        },
+        {
+          "value": "3.5rem",
+          "label": "56px"
+        },
+        {
+          "value": "4.5rem",
+          "label": "72px"
+        }
+      ],
+      "default": "2rem",
+      "visible_if": "{{ section.settings.heading_preset == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "heading_line_height",
+      "label": "Line height",
+      "options": [
+        {
+          "value": "tight",
+          "label": "Tight"
+        },
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "loose",
+          "label": "Loose"
+        }
+      ],
+      "default": "normal",
+      "visible_if": "{{ section.settings.heading_preset == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "heading_letter_spacing",
+      "label": "Letter spacing",
+      "options": [
+        {
+          "value": "tight",
+          "label": "Tight"
+        },
+        {
+          "value": "normal",
+          "label": "Normal"
+        },
+        {
+          "value": "loose",
+          "label": "Loose"
+        }
+      ],
+      "default": "normal",
+      "visible_if": "{{ section.settings.heading_preset == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "heading_case",
+      "label": "Case",
+      "options": [
+        {
+          "value": "none",
+          "label": "Default"
+        },
+        {
+          "value": "uppercase",
+          "label": "Uppercase"
+        }
+      ],
+      "default": "none",
+      "visible_if": "{{ section.settings.heading_preset == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "heading_wrap",
+      "label": "Wrap",
+      "options": [
+        {
+          "value": "pretty",
+          "label": "Pretty"
+        },
+        {
+          "value": "balance",
+          "label": "Balance"
+        },
+        {
+          "value": "nowrap",
+          "label": "None"
+        }
+      ],
+      "default": "pretty",
+      "visible_if": "{{ section.settings.heading_preset == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "heading_color",
+      "label": "Color",
+      "options": [
+        {
+          "value": "var(--color-foreground)",
+          "label": "Text"
+        },
+        {
+          "value": "var(--color-foreground-heading)",
+          "label": "Heading"
+        },
+        {
+          "value": "var(--color-primary)",
+          "label": "Link"
+        }
+      ],
+      "default": "var(--color-foreground-heading)",
+      "visible_if": "{{ section.settings.heading_preset == 'custom' }}"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 1"
+    },
+    {
+      "type": "video",
+      "id": "video_1",
+      "label": "Video"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url_1",
+      "label": "Or video URL",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image_1",
+      "label": "Cover image"
+    },
+    {
+      "type": "text",
+      "id": "customer_name_1",
+      "label": "Customer name",
+      "default": "Customer Name"
+    },
+    {
+      "type": "range",
+      "id": "rating_1",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 2"
+    },
+    {
+      "type": "video",
+      "id": "video_2",
+      "label": "Video"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url_2",
+      "label": "Or video URL",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image_2",
+      "label": "Cover image"
+    },
+    {
+      "type": "text",
+      "id": "customer_name_2",
+      "label": "Customer name",
+      "default": "Customer Name"
+    },
+    {
+      "type": "range",
+      "id": "rating_2",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 3"
+    },
+    {
+      "type": "video",
+      "id": "video_3",
+      "label": "Video"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url_3",
+      "label": "Or video URL",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image_3",
+      "label": "Cover image"
+    },
+    {
+      "type": "text",
+      "id": "customer_name_3",
+      "label": "Customer name",
+      "default": "Customer Name"
+    },
+    {
+      "type": "range",
+      "id": "rating_3",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 4"
+    },
+    {
+      "type": "video",
+      "id": "video_4",
+      "label": "Video"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url_4",
+      "label": "Or video URL",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image_4",
+      "label": "Cover image"
+    },
+    {
+      "type": "text",
+      "id": "customer_name_4",
+      "label": "Customer name"
+    },
+    {
+      "type": "range",
+      "id": "rating_4",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 5"
+    },
+    {
+      "type": "video",
+      "id": "video_5",
+      "label": "Video"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url_5",
+      "label": "Or video URL",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image_5",
+      "label": "Cover image"
+    },
+    {
+      "type": "text",
+      "id": "customer_name_5",
+      "label": "Customer name"
+    },
+    {
+      "type": "range",
+      "id": "rating_5",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 6"
+    },
+    {
+      "type": "video",
+      "id": "video_6",
+      "label": "Video"
+    },
+    {
+      "type": "video_url",
+      "id": "video_url_6",
+      "label": "Or video URL",
+      "accept": ["youtube", "vimeo"]
+    },
+    {
+      "type": "image_picker",
+      "id": "cover_image_6",
+      "label": "Cover image"
+    },
+    {
+      "type": "text",
+      "id": "customer_name_6",
+      "label": "Customer name"
+    },
+    {
+      "type": "range",
+      "id": "rating_6",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "header",
+      "content": "Rating Style"
+    },
+    {
+      "type": "select",
+      "id": "rating_color",
+      "label": "Star color",
+      "options": [
+        {
+          "value": "accent",
+          "label": "Gold"
+        },
+        {
+          "value": "primary",
+          "label": "Primary"
+        },
+        {
+          "value": "foreground",
+          "label": "Text color"
+        }
+      ],
+      "default": "accent"
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "label": "Star size",
+      "min": 12,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 16
+    },
     {
       "type": "header",
       "content": "Layout"
@@ -270,7 +820,7 @@
       "step": 4,
       "unit": "px",
       "default": 24,
-      "info": "Gap between header blocks and testimonials"
+      "info": "Gap between header and testimonials"
     },
     {
       "type": "color_scheme",
@@ -306,110 +856,7 @@
   "presets": [
     {
       "name": "Video Testimonials",
-      "category": "Social proof",
-      "settings": {
-        "layout_type": "grid",
-        "carousel_on_mobile": true,
-        "columns": 3,
-        "mobile_card_size": "85cqw",
-        "columns_gap": 16,
-        "rows_gap": 16,
-        "icons_style": "arrow",
-        "icons_shape": "circle",
-        "section_width": "page-width",
-        "gap": 24,
-        "color_scheme": "scheme-1",
-        "padding-block-start": 48,
-        "padding-block-end": 48
-      },
-      "blocks": [
-        {
-          "type": "group",
-          "settings": {
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "center",
-            "vertical_alignment": "center",
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "border": "none",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "heading": {
-              "type": "text",
-              "settings": {
-                "text": "<h2>Happy Customers. Good Reviews.</h2>",
-                "type_preset": "rte",
-                "font": "var(--font-body--family)",
-                "font_size": "",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "center",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              }
-            }
-          },
-          "block_order": ["heading"]
-        },
-        {
-          "type": "_video-testimonial",
-          "settings": {
-            "customer_name": "Omolola Spence",
-            "rating": 5,
-            "source": "uploaded",
-            "rating_color": "accent",
-            "star_size": 16,
-            "name_type_preset": "h6",
-            "text_type_preset": "paragraph"
-          }
-        },
-        {
-          "type": "_video-testimonial",
-          "settings": {
-            "customer_name": "Kosisochukwu",
-            "rating": 5,
-            "source": "uploaded",
-            "rating_color": "accent",
-            "star_size": 16,
-            "name_type_preset": "h6",
-            "text_type_preset": "paragraph"
-          }
-        },
-        {
-          "type": "_video-testimonial",
-          "settings": {
-            "customer_name": "Njideka Lilian",
-            "rating": 5,
-            "source": "uploaded",
-            "rating_color": "accent",
-            "star_size": 16,
-            "name_type_preset": "h6",
-            "text_type_preset": "paragraph"
-          }
-        }
-      ],
-      "block_order": ["group"]
+      "category": "Social proof"
     }
   ]
 }
