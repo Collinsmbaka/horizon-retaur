@@ -101,7 +101,7 @@
         "settings": {
           "background": "{{ shop.brand.colors.secondary[0].background }}",
           "foreground_heading": "{{ shop.brand.colors.primary[0].foreground }}",
-          "foreground": "{{ shop.brand.colors.primary[1].background }}",
+          "foreground": "#fbfcfe",
           "primary": "#000000",
           "primary_hover": "#000000",
           "border": "#e6e6e6",
