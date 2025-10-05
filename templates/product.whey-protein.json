@@ -1949,7 +1949,7 @@
             "accordion_row_VqW4wC": {
               "type": "_accordion-row",
               "settings": {
-                "heading": "Are any purchases final sale?",
+                "heading": "Can I take whey protein if I'm lactose intolerant?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -1958,7 +1958,7 @@
                 "text_XMM8aU": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>We are unable to accept returns on certain items. These will be carefully marked before purchase.</p>",
+                    "text": "<p>Whey protein isolate, which contains very little lactose, is often well-tolerated by individuals with lactose intolerance. However, those with severe lactose intolerance may still experience discomfort and should opt for lactose-free whey protein alternatives or consult with a healthcare professional.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -1989,7 +1989,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_dash_row",
               "settings": {
-                "heading": "When will I get my order?",
+                "heading": "Is whey protein only for athletes and bodybuilders?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -1999,7 +1999,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                    "text": "<p>No, whey protein can benefit anyone looking to increase their protein intake, including individuals pursuing weight loss, looking to maintain muscle mass, and individuals with busy lifestyles seeking convenient nutrition options. It's a versatile supplement that can support various health and fitness goals.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -2030,7 +2030,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_dash_row",
               "settings": {
-                "heading": "Where are your products manufactured?",
+                "heading": "Can I use whey protein for weight loss?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -2040,7 +2040,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value. </p>",
+                    "text": "<p>Yes, whey protein can be a helpful component of a weight loss plan. It can help increase feelings of fullness, support muscle maintenance during calorie restriction, and aid in fat loss when combined with a balanced diet and consistent exercise.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -2071,7 +2071,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_dash_row",
               "settings": {
-                "heading": "How much does shipping cost?",
+                "heading": "Does whey protein have any side effects?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -2081,7 +2081,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Shipping is calculated based on your location and the items in your order. You will always know the shipping price before you purchase.</p>",
+                    "text": "<p>Whey protein has no side effects when consumed moderately . However, excessive intake may lead to digestive issues such as bloating, gas, or diarrhea. It's essential to follow the recommended serving size and consult with a healthcare professional if you have concerns.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -2107,6 +2107,88 @@
               "block_order": [
                 "text_dUpQz4"
               ]
+            },
+            "accordion_row_FPWXKe": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_dash_row",
+              "settings": {
+                "heading": "When is the best time to take whey protein?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_qRHMmB": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Whey protein can be consumed at various times throughout the day, depending on your goals and preferences. Many people choose to consume it post-workout to support muscle recovery and growth. Others may use it as a convenient snack or meal replacement option.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_qRHMmB"
+              ]
+            },
+            "accordion_row_dHtfnm": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_dash_row",
+              "settings": {
+                "heading": "How can I include whey protein into my diet?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_Dzf6zt": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Whey protein can be mixed with water, milk, or added to smoothies, oatmeal, yogurt, or baked goods for an extra protein boost. It's essential to incorporate whey protein into a balanced diet that includes a variety of nutrient-dense foods to ensure optimal nutrition.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_Dzf6zt"
+              ]
             }
           },
           "block_order": [
@@ -2114,7 +2196,9 @@
             "accordion_row_VqW4wC",
             "accordion_row_Qc4kcC",
             "accordion_row_z4hEeX",
-            "accordion_row_EMT4XM"
+            "accordion_row_EMT4XM",
+            "accordion_row_FPWXKe",
+            "accordion_row_dHtfnm"
           ]
         }
       },
