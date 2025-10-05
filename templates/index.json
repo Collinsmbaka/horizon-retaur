@@ -382,7 +382,7 @@
           "settings": {
             "horizontal_alignment_flex_direction_column": "center",
             "vertical_alignment_flex_direction_column": "center",
-            "gap": 20
+            "gap": 12
           },
           "blocks": {
             "text_V7jxEK": {
@@ -501,7 +501,7 @@
                         "width": "custom",
                         "custom_width": 30,
                         "width_mobile": "custom",
-                        "custom_width_mobile": 20,
+                        "custom_width_mobile": 10,
                         "height": "fill",
                         "border": "none",
                         "border_width": 1,
@@ -524,7 +524,7 @@
                         "alignment": "left",
                         "type_preset": "custom",
                         "font": "var(--font-body--family)",
-                        "font_size": "1rem",
+                        "font_size": "0.875rem",
                         "line_height": "tight",
                         "letter_spacing": "tight",
                         "case": "none",
@@ -596,7 +596,7 @@
                         "width": "custom",
                         "custom_width": 30,
                         "width_mobile": "custom",
-                        "custom_width_mobile": 20,
+                        "custom_width_mobile": 10,
                         "height": "fill",
                         "border": "none",
                         "border_width": 1,
@@ -619,7 +619,7 @@
                         "alignment": "left",
                         "type_preset": "custom",
                         "font": "var(--font-body--family)",
-                        "font_size": "1rem",
+                        "font_size": "0.875rem",
                         "line_height": "tight",
                         "letter_spacing": "tight",
                         "case": "none",
@@ -685,7 +685,7 @@
                       "type": "image",
                       "name": "t:names.image",
                       "settings": {
-                        "image": "shopify://shop_images/8_374ac3ae-f4fd-4346-9300-9d7360a75115.svg",
+                        "image": "shopify://shop_images/10_762a0dc1-7aec-41d4-85a0-50633e3fcb3d.svg",
                         "link": "",
                         "image_ratio": "adapt",
                         "width": "custom",
@@ -714,7 +714,7 @@
                         "alignment": "left",
                         "type_preset": "custom",
                         "font": "var(--font-body--family)",
-                        "font_size": "1rem",
+                        "font_size": "0.875rem",
                         "line_height": "tight",
                         "letter_spacing": "tight",
                         "case": "none",
