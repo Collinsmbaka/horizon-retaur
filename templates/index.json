@@ -409,7 +409,7 @@
       "name": "Media with text",
       "settings": {
         "media_position": "right",
-        "media_width": "narrow",
+        "media_width": "medium",
         "media_height": "auto",
         "section_width": "page-width",
         "extend_media": true,
