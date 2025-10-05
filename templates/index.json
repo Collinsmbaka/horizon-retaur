@@ -1057,7 +1057,7 @@
                           "type": "image",
                           "name": "t:names.image",
                           "settings": {
-                            "image": "shopify://shop_images/8_374ac3ae-f4fd-4346-9300-9d7360a75115.svg",
+                            "image": "shopify://shop_images/13_6ad3288d-6a4b-4681-8030-e79f73106e5b.svg",
                             "link": "",
                             "image_ratio": "adapt",
                             "width": "custom",
@@ -1080,7 +1080,7 @@
                           "type": "text",
                           "name": "t:names.text",
                           "settings": {
-                            "text": "<p>Soy Free</p>",
+                            "text": "<p>No added Sugar</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "left",
