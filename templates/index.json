@@ -1232,13 +1232,29 @@
                 "group_3nqQEr",
                 "group_XHDXTV"
               ]
+            },
+            "button_MNpQMt": {
+              "type": "button",
+              "name": "t:names.button",
+              "settings": {
+                "label": "Buy Now",
+                "link": "shopify://products/retaur-advanced-100-whey-protein",
+                "open_in_new_tab": false,
+                "style_class": "button",
+                "width": "custom",
+                "custom_width": 100,
+                "width_mobile": "custom",
+                "custom_width_mobile": 100
+              },
+              "blocks": {}
             }
           },
           "block_order": [
             "text_V7jxEK",
             "group_edGPkz",
             "text_fwC7ky",
-            "group_TbQdD9"
+            "group_TbQdD9",
+            "button_MNpQMt"
           ]
         }
       },
