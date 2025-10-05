@@ -9,6 +9,109 @@
  */
 {
   "sections": {
+    "hero_jVwA7W": {
+      "type": "hero",
+      "blocks": {
+        "text_aVfn3P": {
+          "type": "text",
+          "settings": {
+            "text": "<h1>New arrivals</h1>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "h1",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_U8Kxb6": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Made with care and unconditionally loved by our customers.</p>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 32,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "button_ymjkfK": {
+          "type": "button",
+          "name": "t:names.button",
+          "settings": {
+            "label": "Shop Now",
+            "link": "shopify://collections/all",
+            "open_in_new_tab": false,
+            "style_class": "button",
+            "width": "fit-content",
+            "custom_width": 100,
+            "width_mobile": "fit-content",
+            "custom_width_mobile": 100
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_aVfn3P",
+        "text_U8Kxb6",
+        "button_ymjkfK"
+      ],
+      "name": "t:names.hero",
+      "settings": {
+        "media_type_1": "image",
+        "image_1": "shopify://shop_images/retaur_home_page_updated_image.png",
+        "media_type_2": "image",
+        "link": "",
+        "open_in_new_tab": false,
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "center",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 16,
+        "section_width": "page-width",
+        "section_height": "large",
+        "section_height_custom": 50,
+        "color_scheme": "scheme-5",
+        "toggle_overlay": true,
+        "overlay_color": "#00000026",
+        "overlay_style": "gradient",
+        "gradient_direction": "to top",
+        "blurred_reflection": false,
+        "reflection_opacity": 75,
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
     "product_list_97k7xy": {
       "type": "product-list",
       "blocks": {
@@ -228,6 +331,55 @@
         "horizontal_alignment": "flex-start",
         "gap": 28,
         "color_scheme": "scheme-3",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "video_testimonials_N6V7Hw": {
+      "type": "video-testimonials",
+      "name": "Video Testimonials",
+      "settings": {
+        "heading": "Happy Customers. Good Reviews.",
+        "heading_alignment": "left",
+        "heading_preset": "custom",
+        "heading_font": "var(--font-heading--family)",
+        "heading_font_size": "2rem",
+        "heading_line_height": "normal",
+        "heading_letter_spacing": "normal",
+        "heading_case": "none",
+        "heading_wrap": "pretty",
+        "heading_color": "var(--color-foreground-heading)",
+        "video_1": "shopify://files/videos/Moral of the story—creatine = toned, strong and sharper you, NOT Incredible Hulk 😂@retaur_store (1).mp4",
+        "customer_name_1": "Customer Name",
+        "rating_1": 5,
+        "video_2": "shopify://files/videos/SaveInsta.App - 3389451747742716970_55295742318.mp4",
+        "customer_name_2": "Customer Name",
+        "rating_2": 5,
+        "video_3": "shopify://files/videos/SaveInsta.App - 3349851439236759182_55295742318.mp4",
+        "customer_name_3": "Customer Name",
+        "rating_3": 5,
+        "video_4": "shopify://files/videos/SaveInsta.App - 3348363296813748522_55295742318.mp4",
+        "customer_name_4": "",
+        "rating_4": 5,
+        "video_5": "shopify://files/videos/bba38dc1-b79b-4784-974d-cd7a51f7e697.mp4",
+        "customer_name_5": "",
+        "rating_5": 5,
+        "customer_name_6": "",
+        "rating_6": 5,
+        "rating_color": "accent",
+        "star_size": 16,
+        "layout_type": "carousel",
+        "carousel_on_mobile": true,
+        "columns": 3,
+        "mobile_columns": "1",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 16,
+        "rows_gap": 16,
+        "icons_style": "arrow",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "gap": 24,
+        "color_scheme": "",
         "padding-block-start": 48,
         "padding-block-end": 48
       }
@@ -1114,7 +1266,9 @@
     }
   },
   "order": [
+    "hero_jVwA7W",
     "product_list_97k7xy",
+    "video_testimonials_N6V7Hw",
     "divider_J8KJDe",
     "media_with_content_kYcRmi",
     "divider_ctiwfU",
