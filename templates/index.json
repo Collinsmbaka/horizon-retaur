@@ -519,7 +519,7 @@
                       "name": "t:names.text",
                       "settings": {
                         "text": "<p>Soy Free</p>",
-                        "width": "fit-content",
+                        "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
                         "type_preset": "custom",
