@@ -867,7 +867,7 @@
                           "type": "image",
                           "name": "t:names.image",
                           "settings": {
-                            "image": "shopify://shop_images/8_374ac3ae-f4fd-4346-9300-9d7360a75115.svg",
+                            "image": "shopify://shop_images/11_1da62ec0-49b5-433a-864d-66bd0271acb8.svg",
                             "link": "",
                             "image_ratio": "adapt",
                             "width": "custom",
@@ -890,7 +890,7 @@
                           "type": "text",
                           "name": "t:names.text",
                           "settings": {
-                            "text": "<p>Soy Free</p>",
+                            "text": "<p>No Egg</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "left",
@@ -962,7 +962,7 @@
                           "type": "image",
                           "name": "t:names.image",
                           "settings": {
-                            "image": "shopify://shop_images/8_374ac3ae-f4fd-4346-9300-9d7360a75115.svg",
+                            "image": "shopify://shop_images/12_87219b1a-7888-4046-ba21-20e8820e70d9.svg",
                             "link": "",
                             "image_ratio": "adapt",
                             "width": "custom",
@@ -985,7 +985,7 @@
                           "type": "text",
                           "name": "t:names.text",
                           "settings": {
-                            "text": "<p>Soy Free</p>",
+                            "text": "<p>Peanut Free</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "left",
