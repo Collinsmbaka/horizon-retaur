@@ -320,7 +320,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>WhatsApp: +2347042727713</p>",
+                    "text": "<p><strong>WhatsApp:</strong> +2347042727713</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -346,7 +346,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Email: hello@retaur.com</p>",
+                    "text": "<p><strong>Address:</strong> 5 Igbobi Sabe, Jibowu Yaba Lagos</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
