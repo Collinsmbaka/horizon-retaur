@@ -409,9 +409,9 @@
       "name": "Media with text",
       "settings": {
         "media_position": "right",
-        "media_width": "medium",
-        "media_height": "50svh",
-        "section_width": "full-width",
+        "media_width": "narrow",
+        "media_height": "auto",
+        "section_width": "page-width",
         "extend_media": true,
         "color_scheme": "scheme-1",
         "padding-block-start": 0,
