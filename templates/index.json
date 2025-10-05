@@ -630,7 +630,7 @@
                           "type": "image",
                           "name": "t:names.image",
                           "settings": {
-                            "image": "shopify://shop_images/8_374ac3ae-f4fd-4346-9300-9d7360a75115.svg",
+                            "image": "shopify://shop_images/9_2ce585e7-43b1-4532-9d4b-0cc01dab981b.svg",
                             "link": "",
                             "image_ratio": "adapt",
                             "width": "custom",
@@ -653,7 +653,7 @@
                           "type": "text",
                           "name": "t:names.text",
                           "settings": {
-                            "text": "<p>Soy Free</p>",
+                            "text": "<p>Gluten Free</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "left",
@@ -725,7 +725,7 @@
                           "type": "image",
                           "name": "t:names.image",
                           "settings": {
-                            "image": "shopify://shop_images/8_374ac3ae-f4fd-4346-9300-9d7360a75115.svg",
+                            "image": "shopify://shop_images/10_762a0dc1-7aec-41d4-85a0-50633e3fcb3d.svg",
                             "link": "",
                             "image_ratio": "adapt",
                             "width": "custom",
@@ -748,7 +748,7 @@
                           "type": "text",
                           "name": "t:names.text",
                           "settings": {
-                            "text": "<p>Soy Free</p>",
+                            "text": "<p>Dairy Free</p>",
                             "width": "100%",
                             "max_width": "normal",
                             "alignment": "left",
