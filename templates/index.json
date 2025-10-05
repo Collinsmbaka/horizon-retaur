@@ -708,8 +708,8 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>Soy Free</p>",
-                        "width": "fit-content",
+                        "text": "<p>Dairy Free</p>",
+                        "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
                         "type_preset": "rte",
