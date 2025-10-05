@@ -15,7 +15,7 @@
         "text_aVfn3P": {
           "type": "text",
           "settings": {
-            "text": "<h1>New arrivals</h1>",
+            "text": "<h1>Stay Active</h1>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -40,7 +40,7 @@
         "text_U8Kxb6": {
           "type": "text",
           "settings": {
-            "text": "<p>Made with care and unconditionally loved by our customers.</p>",
+            "text": "<p>Grab the best deal to fuel your active lifestyle</p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -56,7 +56,7 @@
             "background_color": "#00000026",
             "corner_radius": 0,
             "padding-block-start": 0,
-            "padding-block-end": 32,
+            "padding-block-end": 0,
             "padding-inline-start": 0,
             "padding-inline-end": 0
           },
@@ -70,7 +70,7 @@
       "name": "t:names.hero",
       "settings": {
         "media_type_1": "image",
-        "image_1": "shopify://shop_images/retaur_home_page_updated_image.png",
+        "image_1": "shopify://shop_images/0001-9149543044466147841.png",
         "media_type_2": "image",
         "link": "",
         "open_in_new_tab": false,
@@ -79,11 +79,11 @@
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "flex-end",
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "space-between",
         "gap": 16,
         "section_width": "page-width",
-        "section_height": "large",
+        "section_height": "small",
         "section_height_custom": 50,
         "color_scheme": "scheme-1",
         "toggle_overlay": true,
