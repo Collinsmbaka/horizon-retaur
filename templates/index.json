@@ -16,7 +16,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p>We make things that work better and last longer. Our products solve real problems with clean design and honest materials.</p>",
+            "text": "<p>Grab the best deal to fuel your active lifestyle</p>",
             "width": "fit-content",
             "max_width": "narrow",
             "alignment": "left",
@@ -42,7 +42,7 @@
           "type": "jumbo-text",
           "name": "t:names.jumbo_text",
           "settings": {
-            "text": "New arrivals",
+            "text": "Stay Active",
             "font": "var(--font-body--family)",
             "alignment": "left",
             "line_height": "0.8",
