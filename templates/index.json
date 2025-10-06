@@ -1680,6 +1680,7 @@
               "type": "icon",
               "settings": {
                 "icon": "eye",
+                "image_upload": "shopify://shop_images/14_be0f3c49-f403-4c9f-a5c5-d1bb301726a6.svg",
                 "width": 32,
                 "link": "",
                 "open_in_new_tab": false
@@ -1732,11 +1733,11 @@
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
-                    "type_preset": "h4",
-                    "font": "var(--font-body--family)",
+                    "type_preset": "custom",
+                    "font": "var(--font-heading--family)",
                     "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
+                    "line_height": "tight",
+                    "letter_spacing": "tight",
                     "case": "none",
                     "wrap": "pretty",
                     "color": "var(--color-foreground)",
@@ -1753,7 +1754,7 @@
                 "text_yV4Eck": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>We believe in building better</p>",
+                    "text": "<p>Incorporating whey protein into your diet can significantly enhance muscle growth (gains in the right places) from your  workouts.</p>",
                     "width": "fit-content",
                     "max_width": "narrow",
                     "alignment": "center",
@@ -1830,6 +1831,7 @@
               "type": "icon",
               "settings": {
                 "icon": "heart",
+                "image_upload": "shopify://shop_images/15_e0617fbd-de7f-4072-b971-27bbcc73ba98.svg",
                 "width": 32,
                 "link": "",
                 "open_in_new_tab": false
@@ -1880,13 +1882,13 @@
                   "settings": {
                     "text": "<p>Convenient Source of High-Quality Protein</p>",
                     "width": "fit-content",
-                    "max_width": "narrow",
+                    "max_width": "normal",
                     "alignment": "center",
-                    "type_preset": "h4",
-                    "font": "var(--font-body--family)",
+                    "type_preset": "custom",
+                    "font": "var(--font-heading--family)",
                     "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
+                    "line_height": "tight",
+                    "letter_spacing": "tight",
                     "case": "none",
                     "wrap": "pretty",
                     "color": "var(--color-foreground)",
