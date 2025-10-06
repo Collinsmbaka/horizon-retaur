@@ -2175,7 +2175,7 @@
             "accordion_row_BUpM83": {
               "type": "_accordion-row",
               "settings": {
-                "heading": "What is the return policy?",
+                "heading": "Is whey protein safe for consumption?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -2184,9 +2184,9 @@
                 "text_LePqpb": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn’t the case, let us know and we’ll do our best to work with you to make it right. </p>",
+                    "text": "<p>Absolutely! whey protein is generally recognized as safe for consumption for most people when used as directed.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -2214,7 +2214,7 @@
             "accordion_row_x6WWNg": {
               "type": "_accordion-row",
               "settings": {
-                "heading": "Are any purchases final sale?",
+                "heading": "Can I take whey protein if I'm lactose intolerant?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -2223,9 +2223,9 @@
                 "text_HeYHW3": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>We are unable to accept returns on certain items. These will be carefully marked before purchase.</p>",
+                    "text": "<p>Whey protein isolate, which contains very little lactose, is often well-tolerated by individuals with lactose intolerance. However, those with severe lactose intolerance may still experience discomfort and should opt for lactose-free whey protein alternatives or consult with a healthcare professional.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
