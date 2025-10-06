@@ -2254,7 +2254,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_dash_row",
               "settings": {
-                "heading": "When will I get my order?",
+                "heading": "Is whey protein only for athletes and bodybuilders?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -2264,9 +2264,9 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                    "text": "<p>No, whey protein can benefit anyone looking to increase their protein intake, including individuals pursuing weight loss, looking to maintain muscle mass, and individuals with busy lifestyles seeking convenient nutrition options. It's a versatile supplement that can support various health and fitness goals.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
