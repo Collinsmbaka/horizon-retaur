@@ -1729,7 +1729,7 @@
                 "text_cK4ktc": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Promotes Muscle Growth</p>",
+                    "text": "<p>Build the Body You Want</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -1754,7 +1754,7 @@
                 "text_yV4Eck": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Incorporating whey protein into your diet can significantly enhance muscle growth (gains in the right places) from your  workouts.</p>",
+                    "text": "<p>You're putting in the work at the gym. Our whey protein makes sure you actually see the results - more muscle, better shape, the gains you're working for.</p>",
                     "width": "fit-content",
                     "max_width": "narrow",
                     "alignment": "center",
@@ -1880,7 +1880,7 @@
                 "text_kV3b7T": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Convenient Source of High-Quality Protein</p>",
+                    "text": "<p>No Stress, Just Results</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "center",
@@ -1905,7 +1905,7 @@
                 "text_jWfFkh": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>We believe in building better</p>",
+                    "text": "<p>Hitting your protein goals shouldn't be hard. One shake after your workout and you're done. High-quality protein your body absorbs fast. Easy to use, easy to see results.</p>",
                     "width": "fit-content",
                     "max_width": "narrow",
                     "alignment": "center",
@@ -2030,15 +2030,15 @@
                 "text_jYWPLh": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Enhances Recovery</p>",
+                    "text": "<p>Train Harder, Recover Faster</p>",
                     "width": "fit-content",
                     "max_width": "narrow",
                     "alignment": "center",
-                    "type_preset": "h4",
-                    "font": "var(--font-body--family)",
+                    "type_preset": "custom",
+                    "font": "var(--font-heading--family)",
                     "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
+                    "line_height": "tight",
+                    "letter_spacing": "tight",
                     "case": "none",
                     "wrap": "pretty",
                     "color": "var(--color-foreground)",
@@ -2055,7 +2055,7 @@
                 "text_iLd83M": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Real people, great products</p>",
+                    "text": "<p>Less soreness. More energy. Get back to your next workout feeling fresh and ready. Our whey protein helps your muscles recover quickly so you can keep pushing without breaking down.</p>",
                     "width": "fit-content",
                     "max_width": "narrow",
                     "alignment": "center",
