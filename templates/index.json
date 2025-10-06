@@ -1728,7 +1728,7 @@
                 "text_cK4ktc": {
                   "type": "text",
                   "settings": {
-                    "text": "<h2>Made with care</h2>",
+                    "text": "<p>Promotes Muscle Growth</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -1878,7 +1878,7 @@
                 "text_kV3b7T": {
                   "type": "text",
                   "settings": {
-                    "text": "<h2>Made with care</h2>",
+                    "text": "<p>Convenient Source of High-Quality Protein</p>",
                     "width": "fit-content",
                     "max_width": "narrow",
                     "alignment": "center",
