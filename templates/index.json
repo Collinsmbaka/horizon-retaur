@@ -2372,6 +2372,129 @@
               "block_order": [
                 "text_PmUEWD"
               ]
+            },
+            "accordion_row_zHMbHN": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_dash_row",
+              "settings": {
+                "heading": "Does whey protein have any side effects?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_pcTLXJ": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Whey protein has no side effects when consumed moderately . However, excessive intake may lead to digestive issues such as bloating, gas, or diarrhea. It's essential to follow the recommended serving size and consult with a healthcare professional if you have concerns.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_pcTLXJ"
+              ]
+            },
+            "accordion_row_XBkH7D": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_dash_row",
+              "settings": {
+                "heading": "When is the best time to take whey protein?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_7kY3UE": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Whey protein can be consumed at various times throughout the day, depending on your goals and preferences. Many people choose to consume it post-workout to support muscle recovery and growth. Others may use it as a convenient snack or meal replacement option.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_7kY3UE"
+              ]
+            },
+            "accordion_row_Xgar6L": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_dash_row",
+              "settings": {
+                "heading": "How can I include whey protein into my diet?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_VhgJaM": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Whey protein can be mixed with water, milk, or added to smoothies, oatmeal, yogurt, or baked goods for an extra protein boost. It's essential to incorporate whey protein into a balanced diet that includes a variety of nutrient-dense foods to ensure optimal nutrition.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_VhgJaM"
+              ]
             }
           },
           "block_order": [
@@ -2379,7 +2502,10 @@
             "accordion_row_x6WWNg",
             "accordion_row_43EGM7",
             "accordion_row_Dx9BLe",
-            "accordion_row_knACF4"
+            "accordion_row_knACF4",
+            "accordion_row_zHMbHN",
+            "accordion_row_XBkH7D",
+            "accordion_row_Xgar6L"
           ]
         }
       },
