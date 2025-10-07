@@ -316,10 +316,24 @@
               "type": "variant-picker",
               "settings": {
                 "variant_style": "buttons",
-                "show_swatches": false,
+                "show_swatches": true,
                 "alignment": "left",
                 "padding-block-start": 0,
                 "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "granola_addon": {
+              "type": "granola-addon",
+              "settings": {
+                "granola_product_handle": "retaur-granola",
+                "granola_label": "Add Granola",
+                "granola_each_label": "each",
+                "quantity_label": "Quantity",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
