@@ -317,8 +317,7 @@
                 "padding-inline-end": 0
               },
               "blocks": {}
-            }
-          },
+            },
             "variant_picker": {
               "type": "variant-picker",
               "settings": {
