@@ -325,6 +325,17 @@
               },
               "blocks": {}
             },
+            "quantity_variant_swatches": {
+              "type": "quantity-variant-swatches",
+              "settings": {
+                "quantity_label": "Choose Bundle Size",
+                "padding-block-start": 0,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
             "granola_addon": {
               "type": "granola-addon",
               "settings": {
@@ -343,6 +354,7 @@
           "block_order": [
             "group",
             "variant_picker",
+            "quantity_variant_swatches",
             "granola_addon",
             "buy_buttons",
             "divider",
