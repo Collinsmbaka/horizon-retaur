@@ -1,0 +1,273 @@
+{% liquid
+  assign block_settings = block.settings
+  assign granola_product = all_products[block_settings.granola_product_handle]
+
+  if granola_product
+    assign granola_variant = granola_product.selected_or_first_available_variant
+    assign granola_price = granola_variant.price
+  endif
+%}
+
+<div
+  class="granola-addon spacing-style"
+  style="{% render 'spacing-style', settings: block_settings %}"
+  {{ block.shopify_attributes }}
+>
+  <granola-addon-component
+    data-granola-product-id="{{ granola_product.id }}"
+    data-granola-variant-id="{{ granola_variant.id }}"
+    data-granola-price="{{ granola_price }}"
+  >
+    <div class="granola-addon__toggle">
+      <input
+        type="checkbox"
+        id="granola-addon-{{ section.id }}"
+        class="granola-addon__checkbox"
+        ref="granolaCheckbox"
+      >
+      <label for="granola-addon-{{ section.id }}" class="granola-addon__label">
+        {%- if granola_product and granola_product.featured_image -%}
+          <img
+            src="{{ granola_product.featured_image | image_url: width: 60 }}"
+            alt="{{ granola_product.title }}"
+            class="granola-addon__image"
+            loading="lazy"
+          >
+        {%- endif -%}
+        <div class="granola-addon__info">
+          <span class="granola-addon__title">{{ block_settings.granola_label }}</span>
+          {%- if granola_product -%}
+            <span class="granola-addon__price">({{ granola_price | money }} {{ block_settings.granola_each_label }})</span>
+          {%- endif -%}
+        </div>
+      </label>
+    </div>
+
+    <div class="granola-addon__controls" ref="granolaControls" style="display: none;">
+      <label class="granola-addon__qty-label">{{ block_settings.quantity_label }}</label>
+      <div class="granola-addon__quantity">
+        <button type="button" class="granola-addon__btn" data-action="decrease" ref="decreaseBtn">
+          <span class="visually-hidden">Decrease</span>
+          <svg width="12" height="2" viewBox="0 0 12 2" fill="none">
+            <path d="M0 1H12" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </button>
+        <input
+          type="number"
+          class="granola-addon__input"
+          value="1"
+          min="1"
+          ref="granolaInput"
+          aria-label="Granola quantity"
+        >
+        <button type="button" class="granola-addon__btn" data-action="increase" ref="increaseBtn">
+          <span class="visually-hidden">Increase</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 0V12M0 6H12" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </granola-addon-component>
+</div>
+
+{% stylesheet %}
+  .granola-addon {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .granola-addon__toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .granola-addon__checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    flex-shrink: 0;
+  }
+
+  .granola-addon__label {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    flex: 1;
+  }
+
+  .granola-addon__image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+  }
+
+  .granola-addon__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .granola-addon__title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+
+  .granola-addon__price {
+    font-size: 0.875rem;
+    color: var(--color-foreground-secondary);
+  }
+
+  .granola-addon__controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 32px;
+  }
+
+  .granola-addon__qty-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+  }
+
+  .granola-addon__quantity {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 200px;
+  }
+
+  .granola-addon__btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .granola-addon__btn:hover {
+    background: var(--color-background-secondary);
+    border-color: var(--color-primary);
+  }
+
+  .granola-addon__btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .granola-addon__input {
+    flex: 1;
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+    padding: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  .granola-addon__input::-webkit-inner-spin-button,
+  .granola-addon__input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Granola Add-on",
+  "tag": null,
+  "settings": [
+    {
+      "type": "text",
+      "id": "granola_product_handle",
+      "label": "Granola Product Handle",
+      "default": "retaur-granola"
+    },
+    {
+      "type": "text",
+      "id": "granola_label",
+      "label": "Label",
+      "default": "Add Granola"
+    },
+    {
+      "type": "text",
+      "id": "granola_each_label",
+      "label": "Price Label",
+      "default": "each"
+    },
+    {
+      "type": "text",
+      "id": "quantity_label",
+      "label": "Quantity Label",
+      "default": "Quantity"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Granola Add-on",
+      "category": "t:categories.product"
+    }
+  ]
+}
+{% endschema %}

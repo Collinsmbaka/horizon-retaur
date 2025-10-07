@@ -231,21 +231,15 @@
                 "group_8B3NLh"
               ]
             },
-            "bundle_builder": {
-              "type": "bundle-builder",
+            "granola_addon": {
+              "type": "granola-addon",
               "settings": {
                 "granola_product_handle": "retaur-granola",
-                "max_granola_quantity": 4,
-                "bundle_label": "Choose Bundle Size",
                 "granola_label": "Add Granola",
                 "granola_each_label": "each",
-                "granola_quantity_label": "Quantity",
-                "bundle_price_label": "Bundle",
-                "granola_price_label": "Granola",
-                "total_label": "Total",
-                "add_to_cart_label": "Add Bundle to Cart",
+                "quantity_label": "Quantity",
                 "padding-block-start": 0,
-                "padding-block-end": 16,
+                "padding-block-end": 0,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
@@ -335,7 +329,7 @@
           "block_order": [
             "group",
             "variant_picker",
-            "bundle_builder",
+            "granola_addon",
             "buy_buttons",
             "divider",
             "text"
