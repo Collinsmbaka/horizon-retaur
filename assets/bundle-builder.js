@@ -20,7 +20,6 @@ import { ThemeEvents, CartAddEvent, VariantUpdateEvent } from '@theme/events';
  * @property {HTMLSpanElement} bundlePrice - Bundle price display
  * @property {HTMLSpanElement} granolaPrice - Granola price display
  * @property {HTMLSpanElement} totalPrice - Total price display
- * @property {HTMLButtonElement} addToCartBtn - Add to cart button
  * @property {HTMLScriptElement} variantData - Variant data JSON
  *
  * @extends {Component<BundleBuilderRefs>}
@@ -40,7 +39,6 @@ class BundleBuilderComponent extends Component {
     'bundlePrice',
     'granolaPrice',
     'totalPrice',
-    'addToCartBtn',
     'variantData',
   ];
 
@@ -73,6 +71,15 @@ class BundleBuilderComponent extends Component {
     const section = this.closest('.shopify-section');
     if (section) {
       section.addEventListener(ThemeEvents.variantUpdate, this.#handleVariantUpdate);
+    }
+
+    // Intercept the product form submission to add granola if needed
+    const productForm = this.closest('.shopify-section')?.querySelector('product-form-component');
+    if (productForm) {
+      const form = productForm.querySelector('form');
+      if (form) {
+        form.addEventListener('submit', this.#interceptFormSubmit.bind(this));
+      }
     }
   }
 
@@ -127,6 +134,7 @@ class BundleBuilderComponent extends Component {
 
     if (newVariant) {
       this.#selectedVariant = newVariant;
+      this.#updateProductFormVariant();
       this.#updatePricing();
     }
   };
@@ -147,10 +155,18 @@ class BundleBuilderComponent extends Component {
         btn.dataset.variantId = variant.id;
         btn.dataset.price = variant.price;
         btn.dataset.size = variant.size;
+        btn.dataset.comparePrice = variant.comparePrice || '';
 
         const priceEl = btn.querySelector('.bundle-builder__quantity-price');
         if (priceEl) {
           priceEl.textContent = this.#formatMoney(variant.price);
+        }
+
+        // Update image if exists
+        const imgEl = btn.querySelector('.bundle-builder__quantity-image');
+        if (imgEl && variant.image) {
+          imgEl.src = variant.image;
+          imgEl.alt = `${quantity}x ${variant.size}`;
         }
 
         // Update button state if it's the selected one
@@ -186,13 +202,6 @@ class BundleBuilderComponent extends Component {
     if (target.matches('[data-action="increase"]') || target.closest('[data-action="increase"]')) {
       event.preventDefault();
       this.#changeGranolaQuantity(1);
-      return;
-    }
-
-    // Add to cart
-    if (target === this.refs.addToCartBtn || target.closest('button') === this.refs.addToCartBtn) {
-      event.preventDefault();
-      this.#addToCart();
       return;
     }
   }
@@ -265,8 +274,26 @@ class BundleBuilderComponent extends Component {
       comparePrice: btn.dataset.comparePrice ? parseInt(btn.dataset.comparePrice) : null,
     };
 
+    // Update the product form's variant ID
+    this.#updateProductFormVariant();
+
     this.#updateSavings();
     this.#updatePricing();
+  }
+
+  /**
+   * Update the product form's variant ID input
+   */
+  #updateProductFormVariant() {
+    if (!this.#selectedVariant) return;
+
+    const productForm = this.closest('.shopify-section')?.querySelector('product-form-component');
+    if (productForm) {
+      const variantInput = productForm.querySelector('input[name="id"]');
+      if (variantInput) {
+        variantInput.value = this.#selectedVariant.id;
+      }
+    }
   }
 
   /**
@@ -276,7 +303,7 @@ class BundleBuilderComponent extends Component {
   #changeGranolaQuantity(delta) {
     const input = this.refs.granolaInput;
     const currentValue = parseInt(input.value) || 1;
-    const newValue = Math.max(1, Math.min(parseInt(this.dataset.maxGranola), currentValue + delta));
+    const newValue = Math.max(1, currentValue + delta);
 
     input.value = newValue;
     this.#updatePricing();
@@ -325,27 +352,28 @@ class BundleBuilderComponent extends Component {
 
     // Update button states
     this.refs.decreaseBtn.disabled = granolaQuantity <= 1;
-    this.refs.increaseBtn.disabled = granolaQuantity >= parseInt(this.dataset.maxGranola);
   }
 
   /**
-   * Add items to cart
+   * Intercept product form submission to add granola if needed
+   * @param {Event} event
    */
-  async #addToCart() {
+  async #interceptFormSubmit(event) {
+    // Only intercept if granola is enabled
+    if (!this.#granolaEnabled) {
+      return; // Let the normal form submission happen
+    }
+
+    event.preventDefault();
+    event.stopPropagation();
+
     if (!this.#selectedVariant) {
       console.error('No variant selected');
       return;
     }
 
-    const btn = this.refs.addToCartBtn;
-    const originalText = btn.textContent;
-
     try {
-      // Disable button
-      btn.disabled = true;
-      btn.textContent = 'Adding...';
-
-      // Prepare items array
+      // Prepare items array - bundle + granola
       const items = [
         {
           id: this.#selectedVariant.id,
@@ -353,14 +381,11 @@ class BundleBuilderComponent extends Component {
         },
       ];
 
-      // Add granola if checkbox is checked
-      if (this.#granolaEnabled) {
-        const granolaQuantity = parseInt(this.refs.granolaInput.value) || 1;
-        items.push({
-          id: this.dataset.granolaVariantId,
-          quantity: granolaQuantity,
-        });
-      }
+      const granolaQuantity = parseInt(this.refs.granolaInput.value) || 1;
+      items.push({
+        id: this.dataset.granolaVariantId,
+        quantity: granolaQuantity,
+      });
 
       // Add items to cart
       const config = fetchConfig('javascript');
@@ -383,20 +408,9 @@ class BundleBuilderComponent extends Component {
           productId: this.dataset.productId,
         })
       );
-
-      // Success feedback
-      btn.textContent = 'Added!';
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.disabled = false;
-      }, 2000);
     } catch (error) {
       console.error('Error adding to cart:', error);
-      btn.textContent = 'Error - Try Again';
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.disabled = false;
-      }, 2000);
+      // Let the error be handled by the product form component
     }
   }
 

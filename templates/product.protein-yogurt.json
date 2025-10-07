@@ -276,12 +276,6 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "quantity": {
-                  "type": "quantity",
-                  "static": true,
-                  "settings": {},
-                  "blocks": {}
-                },
                 "add-to-cart": {
                   "type": "add-to-cart",
                   "static": true,

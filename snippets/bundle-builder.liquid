@@ -109,10 +109,20 @@
           ref="granolaCheckbox"
         >
         <label for="granola-toggle-{{ section_id }}" class="bundle-builder__granola-toggle-label">
-          <span class="bundle-builder__label">{{ settings.granola_label }}</span>
-          {%- if granola_product -%}
-            <span class="bundle-builder__label-price">({{ granola_price | money }} {{ settings.granola_each_label }})</span>
+          {%- if granola_product and granola_product.featured_image -%}
+            <img
+              src="{{ granola_product.featured_image | image_url: width: 60 }}"
+              alt="{{ granola_product.title }}"
+              class="bundle-builder__granola-image"
+              loading="lazy"
+            >
           {%- endif -%}
+          <div class="bundle-builder__granola-info">
+            <span class="bundle-builder__label">{{ settings.granola_label }}</span>
+            {%- if granola_product -%}
+              <span class="bundle-builder__label-price">({{ granola_price | money }} {{ settings.granola_each_label }})</span>
+            {%- endif -%}
+          </div>
         </label>
       </div>
 
@@ -130,7 +140,6 @@
             class="bundle-builder__granola-input"
             value="1"
             min="1"
-            max="{{ settings.max_granola_quantity }}"
             ref="granolaInput"
             aria-label="Granola quantity"
           >
@@ -160,15 +169,6 @@
       </div>
     </div>
 
-    {%- comment -%} Add to Cart Button {%- endcomment -%}
-    <button
-      type="button"
-      class="bundle-builder__add-to-cart button button--primary"
-      ref="addToCartBtn"
-    >
-      {{ settings.add_to_cart_label }}
-    </button>
-
     {%- comment -%} Hidden data for all variants {%- endcomment -%}
     <script type="application/json" ref="variantData">
       {
@@ -179,7 +179,9 @@
               "size": {{ variant.option1 | json }},
               "quantity": {{ variant.option2 | json }},
               "price": {{ variant.price | json }},
-              "available": {{ variant.available | json }}
+              "comparePrice": {{ variant.compare_at_price | json }},
+              "available": {{ variant.available | json }},
+              "image": {% if variant.featured_image %}{{ variant.featured_image | image_url: width: 100 | json }}{% else %}null{% endif %}
             }{% unless forloop.last %},{% endunless %}
           {%- endfor -%}
         ]
@@ -286,6 +288,9 @@
   /* Granola Option */
   .bundle-builder__granola-option {
     gap: 16px;
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-border);
   }
 
   .bundle-builder__granola-toggle {
@@ -298,14 +303,29 @@
     width: 20px;
     height: 20px;
     cursor: pointer;
+    flex-shrink: 0;
   }
 
   .bundle-builder__granola-toggle-label {
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
     cursor: pointer;
     flex: 1;
+  }
+
+  .bundle-builder__granola-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 1px solid var(--color-border);
+  }
+
+  .bundle-builder__granola-info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
   }
 
   .bundle-builder__granola-controls {
@@ -313,6 +333,7 @@
     flex-direction: column;
     gap: 12px;
     padding-left: 32px;
+    margin-top: 16px;
   }
 
   .bundle-builder__granola-qty-label {
@@ -389,12 +410,5 @@
     padding-top: 8px;
     border-top: 1px solid var(--color-border);
     font-size: 1.125rem;
-  }
-
-  .bundle-builder__add-to-cart {
-    width: 100%;
-    padding: 16px;
-    font-size: 1rem;
-    font-weight: 600;
   }
 {% endstylesheet %}
