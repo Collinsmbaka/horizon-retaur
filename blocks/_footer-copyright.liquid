@@ -12,7 +12,7 @@
     &copy; {{ 'now' | date: '%Y' }}
     {{ shop.name | link_to: routes.root_url -}}
     {%- if block_settings.show_powered_by -%}
-      , {{ powered_by_link }}
+      , Powered by <a href="https://f6commerce.com" target="_blank" rel="noopener">F6Commerce</a>
     {%- endif -%}
   </span>
 </div>

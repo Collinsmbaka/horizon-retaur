@@ -1,0 +1,356 @@
+{%- liquid
+  comment
+    Renders bundle builder for yogurt products with granola upsell
+
+    @param {product} product - The main yogurt product
+    @param {product} granola_product - The granola product for upsell
+    @param {object} settings - Block settings
+    @param {string} shopify_attributes - Shopify attributes for the block
+    @param {string} section_id - Section ID for unique identifiers
+  endcomment
+
+  assign selected_variant = product.selected_or_first_available_variant
+
+  comment Find the Size option (should be option1)
+  endcomment
+  assign size_option_name = product.options_with_values[0].name
+  assign quantity_option_name = product.options_with_values[1].name
+
+  comment Get all unique sizes
+  endcomment
+  assign sizes = product.options_with_values[0].values
+
+  comment Get all quantities (1-6)
+  endcomment
+  assign quantities = product.options_with_values[1].values
+
+  comment Get granola variant and price
+  endcomment
+  if granola_product
+    assign granola_variant = granola_product.selected_or_first_available_variant
+    assign granola_price = granola_variant.price
+  endif
+-%}
+
+<div
+  class="bundle-builder spacing-style"
+  style="{% render 'spacing-style', settings: settings %}"
+  {{ shopify_attributes }}
+  data-testid="bundle-builder"
+>
+  <bundle-builder-component
+    data-product-id="{{ product.id }}"
+    data-granola-product-id="{{ granola_product.id }}"
+    data-granola-variant-id="{{ granola_variant.id }}"
+    data-granola-price="{{ granola_price }}"
+    data-max-granola="{{ settings.max_granola_quantity }}"
+    data-section-id="{{ section_id }}"
+  >
+    {%- comment -%} Tab Navigation {%- endcomment -%}
+    <div class="bundle-builder__tabs">
+      <button
+        type="button"
+        class="bundle-builder__tab bundle-builder__tab--active"
+        data-tab="without-granola"
+        ref="tabWithout"
+      >
+        {{ settings.without_granola_label }}
+      </button>
+      <button
+        type="button"
+        class="bundle-builder__tab"
+        data-tab="with-granola"
+        ref="tabWith"
+      >
+        {{ settings.with_granola_label }}
+      </button>
+    </div>
+
+    {%- comment -%} Bundle Size Selection {%- endcomment -%}
+    <div class="bundle-builder__section">
+      <label class="bundle-builder__label">{{ settings.bundle_label }}</label>
+      <div class="bundle-builder__quantity-grid" ref="quantityGrid">
+        {%- for quantity in quantities -%}
+          {%- liquid
+            comment Find the variant for current selected size + this quantity
+            endcomment
+            assign current_size = selected_variant.option1
+            assign variant_for_quantity = null
+
+            for variant in product.variants
+              if variant.option1 == current_size and variant.option2 == quantity
+                assign variant_for_quantity = variant
+                break
+              endif
+            endfor
+          -%}
+
+          {%- if variant_for_quantity -%}
+            <button
+              type="button"
+              class="bundle-builder__quantity-btn{% if forloop.first %} bundle-builder__quantity-btn--active{% endif %}"
+              data-quantity="{{ quantity }}"
+              data-variant-id="{{ variant_for_quantity.id }}"
+              data-price="{{ variant_for_quantity.price }}"
+              data-size="{{ current_size }}"
+            >
+              <span class="bundle-builder__quantity-multiplier">{{ quantity }}x</span>
+              <span class="bundle-builder__quantity-price">{{ variant_for_quantity.price | money }}</span>
+            </button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} Granola Section (hidden by default) {%- endcomment -%}
+    <div class="bundle-builder__section bundle-builder__granola-section" ref="granolaSection" style="display: none;">
+      <label class="bundle-builder__label">
+        {{ settings.granola_label }}
+        {%- if granola_product -%}
+          <span class="bundle-builder__label-price">({{ granola_price | money }} {{ settings.granola_each_label }})</span>
+        {%- endif -%}
+      </label>
+      <div class="bundle-builder__granola-selector">
+        <button type="button" class="bundle-builder__granola-btn" data-action="decrease" ref="decreaseBtn">
+          <span class="visually-hidden">Decrease quantity</span>
+          <svg width="12" height="2" viewBox="0 0 12 2" fill="none">
+            <path d="M0 1H12" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </button>
+        <input
+          type="number"
+          class="bundle-builder__granola-input"
+          value="1"
+          min="1"
+          max="{{ settings.max_granola_quantity }}"
+          ref="granolaInput"
+          aria-label="Granola quantity"
+        >
+        <button type="button" class="bundle-builder__granola-btn" data-action="increase" ref="increaseBtn">
+          <span class="visually-hidden">Increase quantity</span>
+          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+            <path d="M6 0V12M0 6H12" stroke="currentColor" stroke-width="1.5"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    {%- comment -%} Price Summary {%- endcomment -%}
+    <div class="bundle-builder__summary">
+      <div class="bundle-builder__summary-line">
+        <span>{{ settings.bundle_price_label }}:</span>
+        <span ref="bundlePrice">{{ selected_variant.price | money }}</span>
+      </div>
+      <div class="bundle-builder__summary-line bundle-builder__summary-line--granola" ref="granolaLine" style="display: none;">
+        <span>{{ settings.granola_price_label }}:</span>
+        <span ref="granolaPrice">{{ granola_price | money }}</span>
+      </div>
+      <div class="bundle-builder__summary-line bundle-builder__summary-total">
+        <strong>{{ settings.total_label }}:</strong>
+        <strong ref="totalPrice">{{ selected_variant.price | money }}</strong>
+      </div>
+    </div>
+
+    {%- comment -%} Add to Cart Button {%- endcomment -%}
+    <button
+      type="button"
+      class="bundle-builder__add-to-cart button button--primary"
+      ref="addToCartBtn"
+    >
+      {{ settings.add_to_cart_label }}
+    </button>
+
+    {%- comment -%} Hidden data for all variants {%- endcomment -%}
+    <script type="application/json" ref="variantData">
+      {
+        "variants": [
+          {%- for variant in product.variants -%}
+            {
+              "id": {{ variant.id | json }},
+              "size": {{ variant.option1 | json }},
+              "quantity": {{ variant.option2 | json }},
+              "price": {{ variant.price | json }},
+              "available": {{ variant.available | json }}
+            }{% unless forloop.last %},{% endunless %}
+          {%- endfor -%}
+        ]
+      }
+    </script>
+  </bundle-builder-component>
+</div>
+
+{% stylesheet %}
+  .bundle-builder {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .bundle-builder__tabs {
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .bundle-builder__tab {
+    padding: 12px 24px;
+    background: none;
+    border: none;
+    border-bottom: 2px solid transparent;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-foreground);
+    transition: all 0.2s ease;
+  }
+
+  .bundle-builder__tab:hover {
+    color: var(--color-primary);
+  }
+
+  .bundle-builder__tab--active {
+    border-bottom-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  .bundle-builder__section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .bundle-builder__label {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+
+  .bundle-builder__label-price {
+    font-weight: 400;
+    color: var(--color-foreground-secondary);
+    font-size: 0.875rem;
+  }
+
+  .bundle-builder__quantity-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 12px;
+  }
+
+  @media (max-width: 749px) {
+    .bundle-builder__quantity-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .bundle-builder__quantity-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 16px 12px;
+    background: var(--color-background);
+    border: 2px solid var(--color-border);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .bundle-builder__quantity-btn:hover {
+    border-color: var(--color-primary);
+    background: var(--color-background-secondary);
+  }
+
+  .bundle-builder__quantity-btn--active {
+    border-color: var(--color-primary);
+    background: var(--color-primary-opacity-10);
+  }
+
+  .bundle-builder__quantity-multiplier {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-foreground);
+  }
+
+  .bundle-builder__quantity-price {
+    font-size: 0.875rem;
+    color: var(--color-foreground-secondary);
+  }
+
+  .bundle-builder__granola-selector {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    max-width: 200px;
+  }
+
+  .bundle-builder__granola-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--color-background);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .bundle-builder__granola-btn:hover {
+    background: var(--color-background-secondary);
+    border-color: var(--color-primary);
+  }
+
+  .bundle-builder__granola-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .bundle-builder__granola-input {
+    flex: 1;
+    text-align: center;
+    font-size: 1.125rem;
+    font-weight: 600;
+    padding: 8px;
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    background: var(--color-background);
+    color: var(--color-foreground);
+  }
+
+  .bundle-builder__granola-input::-webkit-inner-spin-button,
+  .bundle-builder__granola-input::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  .bundle-builder__summary {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 16px;
+    background: var(--color-background-secondary);
+    border-radius: 8px;
+  }
+
+  .bundle-builder__summary-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1rem;
+    color: var(--color-foreground);
+  }
+
+  .bundle-builder__summary-total {
+    padding-top: 8px;
+    border-top: 1px solid var(--color-border);
+    font-size: 1.125rem;
+  }
+
+  .bundle-builder__add-to-cart {
+    width: 100%;
+    padding: 16px;
+    font-size: 1rem;
+    font-weight: 600;
+  }
+{% endstylesheet %}
