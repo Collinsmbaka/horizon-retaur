@@ -158,8 +158,14 @@ class BundleBuilderComponent extends Component {
     if (newVariant) {
       this.#selectedVariant = newVariant;
       this.#updateProductFormVariant();
+      this.#updateSavings();
       this.#updatePricing();
     }
+
+    // Re-hide the quantity picker in case it reappeared
+    setTimeout(() => {
+      this.#hideQuantityVariantPicker();
+    }, 100);
   };
 
   /**
@@ -171,7 +177,7 @@ class BundleBuilderComponent extends Component {
     buttons.forEach((btn) => {
       const quantity = btn.dataset.quantity;
       const variant = this.#variantData.variants.find(
-        (v) => v.size === this.#currentSize && v.quantity === quantity
+        (v) => String(v.size) === String(this.#currentSize) && String(v.quantity) === String(quantity)
       );
 
       if (variant) {
@@ -193,9 +199,11 @@ class BundleBuilderComponent extends Component {
         }
 
         // Update button state if it's the selected one
-        if (quantity === this.#selectedVariant?.quantity) {
+        if (String(quantity) === String(this.#selectedVariant?.quantity)) {
           btn.classList.add('bundle-builder__quantity-btn--active');
         }
+      } else {
+        console.warn('Variant not found for size:', this.#currentSize, 'quantity:', quantity);
       }
     });
   }
