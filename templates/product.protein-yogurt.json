@@ -249,11 +249,10 @@
               "settings": {
                 "granola_product_handle": "retaur-granola",
                 "max_granola_quantity": 4,
-                "without_granola_label": "Without Granola",
-                "with_granola_label": "With Granola",
                 "bundle_label": "Choose Bundle Size",
                 "granola_label": "Add Granola",
                 "granola_each_label": "each",
+                "granola_quantity_label": "Quantity",
                 "bundle_price_label": "Bundle",
                 "granola_price_label": "Granola",
                 "total_label": "Total",

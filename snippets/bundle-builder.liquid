@@ -46,27 +46,7 @@
     data-max-granola="{{ settings.max_granola_quantity }}"
     data-section-id="{{ section_id }}"
   >
-    {%- comment -%} Tab Navigation {%- endcomment -%}
-    <div class="bundle-builder__tabs">
-      <button
-        type="button"
-        class="bundle-builder__tab bundle-builder__tab--active"
-        data-tab="without-granola"
-        ref="tabWithout"
-      >
-        {{ settings.without_granola_label }}
-      </button>
-      <button
-        type="button"
-        class="bundle-builder__tab"
-        data-tab="with-granola"
-        ref="tabWith"
-      >
-        {{ settings.with_granola_label }}
-      </button>
-    </div>
-
-    {%- comment -%} Bundle Size Selection {%- endcomment -%}
+    {%- comment -%} Bundle Quantity Selection with Swatches {%- endcomment -%}
     <div class="bundle-builder__section">
       <label class="bundle-builder__label">{{ settings.bundle_label }}</label>
       <div class="bundle-builder__quantity-grid" ref="quantityGrid">
@@ -93,7 +73,16 @@
               data-variant-id="{{ variant_for_quantity.id }}"
               data-price="{{ variant_for_quantity.price }}"
               data-size="{{ current_size }}"
+              data-compare-price="{{ variant_for_quantity.compare_at_price }}"
             >
+              {%- if variant_for_quantity.featured_image -%}
+                <img
+                  src="{{ variant_for_quantity.featured_image | image_url: width: 100 }}"
+                  alt="{{ quantity }}x {{ current_size }}"
+                  class="bundle-builder__quantity-image"
+                  loading="lazy"
+                >
+              {%- endif -%}
               <span class="bundle-builder__quantity-multiplier">{{ quantity }}x</span>
               <span class="bundle-builder__quantity-price">{{ variant_for_quantity.price | money }}</span>
             </button>
@@ -102,36 +91,56 @@
       </div>
     </div>
 
-    {%- comment -%} Granola Section (hidden by default) {%- endcomment -%}
-    <div class="bundle-builder__section bundle-builder__granola-section" ref="granolaSection" style="display: none;">
-      <label class="bundle-builder__label">
-        {{ settings.granola_label }}
-        {%- if granola_product -%}
-          <span class="bundle-builder__label-price">({{ granola_price | money }} {{ settings.granola_each_label }})</span>
-        {%- endif -%}
-      </label>
-      <div class="bundle-builder__granola-selector">
-        <button type="button" class="bundle-builder__granola-btn" data-action="decrease" ref="decreaseBtn">
-          <span class="visually-hidden">Decrease quantity</span>
-          <svg width="12" height="2" viewBox="0 0 12 2" fill="none">
-            <path d="M0 1H12" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-        </button>
+    {%- comment -%} Savings Display {%- endcomment -%}
+    <div class="bundle-builder__savings" ref="savingsDisplay" style="display: none;">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" class="bundle-builder__savings-icon">
+        <path d="M8 0L10.472 5.528L16 8L10.472 10.472L8 16L5.528 10.472L0 8L5.528 5.528L8 0Z" fill="currentColor"/>
+      </svg>
+      <span ref="savingsText"></span>
+    </div>
+
+    {%- comment -%} Add Granola Option {%- endcomment -%}
+    <div class="bundle-builder__section bundle-builder__granola-option">
+      <div class="bundle-builder__granola-toggle">
         <input
-          type="number"
-          class="bundle-builder__granola-input"
-          value="1"
-          min="1"
-          max="{{ settings.max_granola_quantity }}"
-          ref="granolaInput"
-          aria-label="Granola quantity"
+          type="checkbox"
+          id="granola-toggle-{{ section_id }}"
+          class="bundle-builder__granola-checkbox"
+          ref="granolaCheckbox"
         >
-        <button type="button" class="bundle-builder__granola-btn" data-action="increase" ref="increaseBtn">
-          <span class="visually-hidden">Increase quantity</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M6 0V12M0 6H12" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
-        </button>
+        <label for="granola-toggle-{{ section_id }}" class="bundle-builder__granola-toggle-label">
+          <span class="bundle-builder__label">{{ settings.granola_label }}</span>
+          {%- if granola_product -%}
+            <span class="bundle-builder__label-price">({{ granola_price | money }} {{ settings.granola_each_label }})</span>
+          {%- endif -%}
+        </label>
+      </div>
+
+      <div class="bundle-builder__granola-controls" ref="granolaControls" style="display: none;">
+        <label class="bundle-builder__granola-qty-label">{{ settings.granola_quantity_label }}</label>
+        <div class="bundle-builder__granola-selector">
+          <button type="button" class="bundle-builder__granola-btn" data-action="decrease" ref="decreaseBtn">
+            <span class="visually-hidden">Decrease quantity</span>
+            <svg width="12" height="2" viewBox="0 0 12 2" fill="none">
+              <path d="M0 1H12" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </button>
+          <input
+            type="number"
+            class="bundle-builder__granola-input"
+            value="1"
+            min="1"
+            max="{{ settings.max_granola_quantity }}"
+            ref="granolaInput"
+            aria-label="Granola quantity"
+          >
+          <button type="button" class="bundle-builder__granola-btn" data-action="increase" ref="increaseBtn">
+            <span class="visually-hidden">Increase quantity</span>
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+              <path d="M6 0V12M0 6H12" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
 
@@ -142,7 +151,7 @@
         <span ref="bundlePrice">{{ selected_variant.price | money }}</span>
       </div>
       <div class="bundle-builder__summary-line bundle-builder__summary-line--granola" ref="granolaLine" style="display: none;">
-        <span>{{ settings.granola_price_label }}:</span>
+        <span>{{ settings.granola_price_label }} <span ref="granolaQtyText">(x1)</span>:</span>
         <span ref="granolaPrice">{{ granola_price | money }}</span>
       </div>
       <div class="bundle-builder__summary-line bundle-builder__summary-total">
@@ -183,34 +192,7 @@
   .bundle-builder {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-  }
-
-  .bundle-builder__tabs {
-    display: flex;
-    gap: 8px;
-    border-bottom: 1px solid var(--color-border);
-  }
-
-  .bundle-builder__tab {
-    padding: 12px 24px;
-    background: none;
-    border: none;
-    border-bottom: 2px solid transparent;
-    cursor: pointer;
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--color-foreground);
-    transition: all 0.2s ease;
-  }
-
-  .bundle-builder__tab:hover {
-    color: var(--color-primary);
-  }
-
-  .bundle-builder__tab--active {
-    border-bottom-color: var(--color-primary);
-    color: var(--color-primary);
+    gap: 24px;
   }
 
   .bundle-builder__section {
@@ -247,13 +229,14 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
-    padding: 16px 12px;
+    gap: 8px;
+    padding: 12px;
     background: var(--color-background);
     border: 2px solid var(--color-border);
     border-radius: 8px;
     cursor: pointer;
     transition: all 0.2s ease;
+    position: relative;
   }
 
   .bundle-builder__quantity-btn:hover {
@@ -266,8 +249,15 @@
     background: var(--color-primary-opacity-10);
   }
 
+  .bundle-builder__quantity-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
   .bundle-builder__quantity-multiplier {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--color-foreground);
   }
@@ -275,6 +265,60 @@
   .bundle-builder__quantity-price {
     font-size: 0.875rem;
     color: var(--color-foreground-secondary);
+  }
+
+  /* Savings Display */
+  .bundle-builder__savings {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    background: #e8f5e9;
+    color: #2e7d32;
+    border-radius: 8px;
+    font-weight: 500;
+  }
+
+  .bundle-builder__savings-icon {
+    flex-shrink: 0;
+  }
+
+  /* Granola Option */
+  .bundle-builder__granola-option {
+    gap: 16px;
+  }
+
+  .bundle-builder__granola-toggle {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .bundle-builder__granola-checkbox {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+
+  .bundle-builder__granola-toggle-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    flex: 1;
+  }
+
+  .bundle-builder__granola-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-left: 32px;
+  }
+
+  .bundle-builder__granola-qty-label {
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--color-foreground);
   }
 
   .bundle-builder__granola-selector {

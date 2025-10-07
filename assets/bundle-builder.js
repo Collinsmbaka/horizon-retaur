@@ -7,14 +7,16 @@ import { ThemeEvents, CartAddEvent, VariantUpdateEvent } from '@theme/events';
  * Handles yogurt bundle selection with granola upsell
  *
  * @typedef {Object} BundleBuilderRefs
- * @property {HTMLButtonElement} tabWithout - Without granola tab button
- * @property {HTMLButtonElement} tabWith - With granola tab button
- * @property {HTMLDivElement} granolaSection - Granola selection section
+ * @property {HTMLInputElement} granolaCheckbox - Granola toggle checkbox
+ * @property {HTMLDivElement} granolaControls - Granola quantity controls container
  * @property {HTMLDivElement} granolaLine - Granola price line in summary
+ * @property {HTMLSpanElement} granolaQtyText - Granola quantity text in summary
  * @property {HTMLInputElement} granolaInput - Granola quantity input
  * @property {HTMLButtonElement} decreaseBtn - Decrease granola quantity button
  * @property {HTMLButtonElement} increaseBtn - Increase granola quantity button
  * @property {HTMLDivElement} quantityGrid - Bundle quantity grid
+ * @property {HTMLDivElement} savingsDisplay - Savings message container
+ * @property {HTMLSpanElement} savingsText - Savings message text
  * @property {HTMLSpanElement} bundlePrice - Bundle price display
  * @property {HTMLSpanElement} granolaPrice - Granola price display
  * @property {HTMLSpanElement} totalPrice - Total price display
@@ -25,14 +27,16 @@ import { ThemeEvents, CartAddEvent, VariantUpdateEvent } from '@theme/events';
  */
 class BundleBuilderComponent extends Component {
   requiredRefs = [
-    'tabWithout',
-    'tabWith',
-    'granolaSection',
+    'granolaCheckbox',
+    'granolaControls',
     'granolaLine',
+    'granolaQtyText',
     'granolaInput',
     'decreaseBtn',
     'increaseBtn',
     'quantityGrid',
+    'savingsDisplay',
+    'savingsText',
     'bundlePrice',
     'granolaPrice',
     'totalPrice',
@@ -43,14 +47,14 @@ class BundleBuilderComponent extends Component {
   /** @type {Object} */
   #variantData;
 
-  /** @type {string} */
-  #currentTab = 'without-granola';
-
   /** @type {Object} */
   #selectedVariant = null;
 
   /** @type {string} */
   #currentSize = null;
+
+  /** @type {boolean} */
+  #granolaEnabled = false;
 
   connectedCallback() {
     super.connectedCallback();
@@ -154,15 +158,15 @@ class BundleBuilderComponent extends Component {
   }
 
   /**
-   * Handle tab click
-   * @param {MouseEvent} event
+   * Handle events
+   * @param {MouseEvent | Event} event
    */
   handleEvent(event) {
     const target = event.target;
 
-    // Tab switching
-    if (target.matches('[data-tab]')) {
-      this.#switchTab(target.dataset.tab);
+    // Granola checkbox toggle
+    if (target === this.refs.granolaCheckbox) {
+      this.#toggleGranola();
       return;
     }
 
@@ -184,6 +188,12 @@ class BundleBuilderComponent extends Component {
       return;
     }
 
+    // Granola input change
+    if (target === this.refs.granolaInput) {
+      this.#updatePricing();
+      return;
+    }
+
     // Add to cart
     if (target === this.refs.addToCartBtn || target.closest('button') === this.refs.addToCartBtn) {
       event.preventDefault();
@@ -193,20 +203,14 @@ class BundleBuilderComponent extends Component {
   }
 
   /**
-   * Switch between tabs
-   * @param {string} tab
+   * Toggle granola option
    */
-  #switchTab(tab) {
-    this.#currentTab = tab;
+  #toggleGranola() {
+    this.#granolaEnabled = this.refs.granolaCheckbox.checked;
 
-    // Update tab buttons
-    this.refs.tabWithout.classList.toggle('bundle-builder__tab--active', tab === 'without-granola');
-    this.refs.tabWith.classList.toggle('bundle-builder__tab--active', tab === 'with-granola');
-
-    // Show/hide granola section
-    const showGranola = tab === 'with-granola';
-    this.refs.granolaSection.style.display = showGranola ? 'flex' : 'none';
-    this.refs.granolaLine.style.display = showGranola ? 'flex' : 'none';
+    // Show/hide granola controls
+    this.refs.granolaControls.style.display = this.#granolaEnabled ? 'flex' : 'none';
+    this.refs.granolaLine.style.display = this.#granolaEnabled ? 'flex' : 'none';
 
     this.#updatePricing();
   }
@@ -230,8 +234,10 @@ class BundleBuilderComponent extends Component {
       quantity: btn.dataset.quantity,
       price: parseInt(btn.dataset.price),
       size: btn.dataset.size,
+      comparePrice: btn.dataset.comparePrice ? parseInt(btn.dataset.comparePrice) : null,
     };
 
+    this.#updateSavings();
     this.#updatePricing();
   }
 
@@ -249,6 +255,24 @@ class BundleBuilderComponent extends Component {
   }
 
   /**
+   * Update savings display
+   */
+  #updateSavings() {
+    if (!this.#selectedVariant) return;
+
+    const { price, comparePrice, quantity } = this.#selectedVariant;
+
+    // Only show savings if compare_at_price is set and higher than price
+    if (comparePrice && comparePrice > price) {
+      const savings = comparePrice - price;
+      this.refs.savingsDisplay.style.display = 'flex';
+      this.refs.savingsText.textContent = `Save ${this.#formatMoney(savings)} on ${quantity}x bundle!`;
+    } else {
+      this.refs.savingsDisplay.style.display = 'none';
+    }
+  }
+
+  /**
    * Update pricing display
    */
   #updatePricing() {
@@ -262,8 +286,9 @@ class BundleBuilderComponent extends Component {
     // Update bundle price
     this.refs.bundlePrice.textContent = this.#formatMoney(bundlePrice);
 
-    // Update granola price (if visible)
-    if (this.#currentTab === 'with-granola') {
+    // Update granola price (if enabled)
+    if (this.#granolaEnabled) {
+      this.refs.granolaQtyText.textContent = `(x${granolaQuantity})`;
       this.refs.granolaPrice.textContent = this.#formatMoney(granolaTotal);
       this.refs.totalPrice.textContent = this.#formatMoney(bundlePrice + granolaTotal);
     } else {
@@ -300,8 +325,8 @@ class BundleBuilderComponent extends Component {
         },
       ];
 
-      // Add granola if with-granola tab is active
-      if (this.#currentTab === 'with-granola') {
+      // Add granola if checkbox is checked
+      if (this.#granolaEnabled) {
         const granolaQuantity = parseInt(this.refs.granolaInput.value) || 1;
         items.push({
           id: this.dataset.granolaVariantId,
