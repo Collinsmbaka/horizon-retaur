@@ -65,6 +65,10 @@ class BundleBuilderComponent extends Component {
     // Set initial state
     this.#initializeState();
 
+    // Add explicit event listeners for better compatibility
+    this.addEventListener('click', this.#handleClick.bind(this));
+    this.addEventListener('change', this.#handleChange.bind(this));
+
     // Listen for variant updates from the main variant picker
     const section = this.closest('.shopify-section');
     if (section) {
@@ -158,20 +162,15 @@ class BundleBuilderComponent extends Component {
   }
 
   /**
-   * Handle events
-   * @param {MouseEvent | Event} event
+   * Handle click events
+   * @param {MouseEvent} event
    */
-  handleEvent(event) {
+  #handleClick(event) {
     const target = event.target;
-
-    // Granola checkbox toggle
-    if (target === this.refs.granolaCheckbox) {
-      this.#toggleGranola();
-      return;
-    }
 
     // Quantity button click
     if (target.closest('.bundle-builder__quantity-btn')) {
+      event.preventDefault();
       const btn = target.closest('.bundle-builder__quantity-btn');
       this.#selectQuantity(btn);
       return;
@@ -179,18 +178,14 @@ class BundleBuilderComponent extends Component {
 
     // Granola quantity controls
     if (target.matches('[data-action="decrease"]') || target.closest('[data-action="decrease"]')) {
+      event.preventDefault();
       this.#changeGranolaQuantity(-1);
       return;
     }
 
     if (target.matches('[data-action="increase"]') || target.closest('[data-action="increase"]')) {
+      event.preventDefault();
       this.#changeGranolaQuantity(1);
-      return;
-    }
-
-    // Granola input change
-    if (target === this.refs.granolaInput) {
-      this.#updatePricing();
       return;
     }
 
@@ -199,6 +194,39 @@ class BundleBuilderComponent extends Component {
       event.preventDefault();
       this.#addToCart();
       return;
+    }
+  }
+
+  /**
+   * Handle change events
+   * @param {Event} event
+   */
+  #handleChange(event) {
+    const target = event.target;
+
+    // Granola checkbox toggle
+    if (target === this.refs.granolaCheckbox) {
+      this.#toggleGranola();
+      return;
+    }
+
+    // Granola input change
+    if (target === this.refs.granolaInput) {
+      this.#updatePricing();
+      return;
+    }
+  }
+
+  /**
+   * Handle events (kept for compatibility with Component base class)
+   * @param {MouseEvent | Event} event
+   */
+  handleEvent(event) {
+    // Delegate to specific handlers
+    if (event.type === 'click') {
+      this.#handleClick(event);
+    } else if (event.type === 'change') {
+      this.#handleChange(event);
     }
   }
 
