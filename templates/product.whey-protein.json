@@ -1963,7 +1963,7 @@
                   "settings": {
                     "text": "<p>Absolutely! Whey protein is generally recognized as safe for consumption for most people when used as directed.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "custom",
                     "font": "var(--font-body--family)",
@@ -2002,7 +2002,7 @@
                   "settings": {
                     "text": "<p>Whey protein isolate, which contains very little lactose, is often well-tolerated by individuals with lactose intolerance. However, those with severe lactose intolerance may still experience discomfort and should opt for lactose-free whey protein alternatives or consult with a healthcare professional.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -2043,7 +2043,7 @@
                   "settings": {
                     "text": "<p>No, whey protein can benefit anyone looking to increase their protein intake, including individuals pursuing weight loss, looking to maintain muscle mass, and individuals with busy lifestyles seeking convenient nutrition options. It's a versatile supplement that can support various health and fitness goals.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -2084,7 +2084,7 @@
                   "settings": {
                     "text": "<p>Yes, whey protein can be a helpful component of a weight loss plan. It can help increase feelings of fullness, support muscle maintenance during calorie restriction, and aid in fat loss when combined with a balanced diet and consistent exercise.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -2125,7 +2125,7 @@
                   "settings": {
                     "text": "<p>Whey protein has no side effects when consumed moderately . However, excessive intake may lead to digestive issues such as bloating, gas, or diarrhea. It's essential to follow the recommended serving size and consult with a healthcare professional if you have concerns.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -2166,7 +2166,7 @@
                   "settings": {
                     "text": "<p>Whey protein can be consumed at various times throughout the day, depending on your goals and preferences. Many people choose to consume it post-workout to support muscle recovery and growth. Others may use it as a convenient snack or meal replacement option.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -2207,7 +2207,7 @@
                   "settings": {
                     "text": "<p>Whey protein can be mixed with water, milk, or added to smoothies, oatmeal, yogurt, or baked goods for an extra protein boost. It's essential to incorporate whey protein into a balanced diet that includes a variety of nutrient-dense foods to ensure optimal nutrition.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
