@@ -81,6 +81,29 @@ class BundleBuilderComponent extends Component {
         form.addEventListener('submit', this.#interceptFormSubmit.bind(this));
       }
     }
+
+    // Hide the Quantity option from the variant picker
+    this.#hideQuantityVariantPicker();
+  }
+
+  /**
+   * Hide the Quantity variant picker since bundle builder handles it
+   */
+  #hideQuantityVariantPicker() {
+    const section = this.closest('.shopify-section');
+    if (!section) return;
+
+    const variantPicker = section.querySelector('variant-picker');
+    if (!variantPicker) return;
+
+    // Find all fieldsets and hide the one with "Quantity" in the legend
+    const fieldsets = variantPicker.querySelectorAll('fieldset.variant-option');
+    fieldsets.forEach((fieldset) => {
+      const legend = fieldset.querySelector('legend');
+      if (legend && legend.textContent.toLowerCase().includes('quantity')) {
+        fieldset.style.display = 'none';
+      }
+    });
   }
 
   disconnectedCallback() {
