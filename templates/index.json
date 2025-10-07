@@ -1982,6 +1982,7 @@
               "type": "icon",
               "settings": {
                 "icon": "silhouette",
+                "image_upload": "shopify://shop_images/16_ae0a055c-7560-4cc1-80b8-c0738354ebc0.svg",
                 "width": 32,
                 "link": "",
                 "open_in_new_tab": false
