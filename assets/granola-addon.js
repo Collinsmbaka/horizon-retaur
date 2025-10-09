@@ -93,21 +93,25 @@ class GranolaAddonComponent extends Component {
     setTimeout(async () => {
       try {
         const granolaQuantity = parseInt(this.refs.granolaInput.value) || 1;
-        const granolaVariantId = String(this.dataset.granolaVariantId || '').trim().split(/\s+/)[0];
+        // Parse variant ID and convert to number
+        const granolaVariantIdString = String(this.dataset.granolaVariantId || '').trim().split(/\s+/)[0];
+        const granolaVariantId = parseInt(granolaVariantIdString, 10);
 
         console.log('Granola addon: Adding granola to cart', {
+          granolaVariantIdRaw: this.dataset.granolaVariantId,
+          granolaVariantIdString,
           granolaVariantId,
           granolaQuantity,
         });
 
-        // Add granola to cart
-        const config = fetchConfig('javascript');
-        const response = await fetch(Theme.routes.cart_add_url, {
-          ...config,
-          body: JSON.stringify({
-            id: granolaVariantId,
-            quantity: granolaQuantity,
-          }),
+        // Add granola to cart using Shopify's form data format
+        const formData = new FormData();
+        formData.append('id', granolaVariantId);
+        formData.append('quantity', granolaQuantity);
+
+        const response = await fetch('/cart/add.js', {
+          method: 'POST',
+          body: formData,
         });
 
         console.log('Granola addon: Granola response status', response.status);
@@ -115,9 +119,15 @@ class GranolaAddonComponent extends Component {
         if (response.ok) {
           const data = await response.json();
           console.log('Granola addon: Granola added successfully', data);
+
+          // Trigger a cart update event
+          document.dispatchEvent(new CustomEvent('cart:refresh'));
         } else {
           const errorText = await response.text();
-          console.error('Granola addon: Failed to add granola', errorText);
+          console.error('Granola addon: Failed to add granola', {
+            status: response.status,
+            error: errorText,
+          });
         }
       } catch (error) {
         console.error('Granola addon: Error adding granola:', error);
