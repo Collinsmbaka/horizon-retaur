@@ -95,6 +95,7 @@ class GranolaAddonComponent extends Component {
       const form = event.target;
       const formData = new FormData(form);
       const mainProductVariantId = formData.get('id');
+      const mainProductQuantity = parseInt(formData.get('quantity')) || 1;
       const granolaQuantity = parseInt(this.refs.granolaInput.value) || 1;
 
       // Parse granola variant ID properly (remove any whitespace and ensure it's a valid number)
@@ -102,19 +103,20 @@ class GranolaAddonComponent extends Component {
 
       console.log('Granola addon: Adding items', {
         mainProductVariantId,
+        mainProductQuantity,
         granolaVariantIdRaw: this.dataset.granolaVariantId,
         granolaVariantIdParsed: granolaVariantId,
         granolaQuantity,
       });
 
-      // Prepare items array
+      // Prepare items array - IDs must be integers, not strings
       const items = [
         {
-          id: parseInt(mainProductVariantId),
-          quantity: 1,
+          id: Number(mainProductVariantId),
+          quantity: mainProductQuantity,
         },
         {
-          id: parseInt(granolaVariantId),
+          id: Number(granolaVariantId),
           quantity: granolaQuantity,
         },
       ];
@@ -125,6 +127,15 @@ class GranolaAddonComponent extends Component {
         ...config,
         body: JSON.stringify({ items }),
       });
+
+      console.log('Granola addon: Response status', response.status, response.statusText);
+
+      // Check if response is ok before parsing
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error('Granola addon: Cart API error response', errorText);
+        throw new Error(`Failed to add to cart: ${response.status} ${errorText}`);
+      }
 
       const data = await response.json();
 
