@@ -85,54 +85,82 @@ class GranolaAddonComponent extends Component {
       return; // Let normal form submission happen
     }
 
-    // Don't prevent default - let the main product form submit normally
-    // We'll just add granola after the form submits successfully
-    console.log('Granola addon: Allowing main product to be added, will add granola after');
+    // Prevent the default form submission so we can handle it ourselves
+    event.preventDefault();
+    event.stopPropagation();
 
-    // Wait a bit for the main product to be added to cart
-    setTimeout(async () => {
-      try {
-        const granolaQuantity = parseInt(this.refs.granolaInput.value) || 1;
-        // Parse variant ID and convert to number
-        const granolaVariantIdString = String(this.dataset.granolaVariantId || '').trim().split(/\s+/)[0];
-        const granolaVariantId = parseInt(granolaVariantIdString, 10);
+    console.log('Granola addon: Preventing default, will add both items');
 
-        console.log('Granola addon: Adding granola to cart', {
-          granolaVariantIdRaw: this.dataset.granolaVariantId,
-          granolaVariantIdString,
-          granolaVariantId,
-          granolaQuantity,
-        });
+    try {
+      // Get form data
+      const form = event.target;
+      const formData = new FormData(form);
+      const mainProductVariantId = formData.get('id');
+      const mainProductQuantity = parseInt(formData.get('quantity')) || 1;
+      const granolaQuantity = parseInt(this.refs.granolaInput.value) || 1;
 
-        // Add granola to cart using Shopify's form data format
-        const formData = new FormData();
-        formData.append('id', granolaVariantId);
-        formData.append('quantity', granolaQuantity);
+      // Parse variant ID and convert to number
+      const granolaVariantIdString = String(this.dataset.granolaVariantId || '').trim().split(/\s+/)[0];
+      const granolaVariantId = parseInt(granolaVariantIdString, 10);
 
-        const response = await fetch('/cart/add.js', {
-          method: 'POST',
-          body: formData,
-        });
+      console.log('Granola addon: Adding both items', {
+        mainProductVariantId,
+        mainProductQuantity,
+        granolaVariantId,
+        granolaQuantity,
+      });
 
-        console.log('Granola addon: Granola response status', response.status);
+      // Add main product first
+      const mainFormData = new FormData();
+      mainFormData.append('id', mainProductVariantId);
+      mainFormData.append('quantity', mainProductQuantity);
 
-        if (response.ok) {
-          const data = await response.json();
-          console.log('Granola addon: Granola added successfully', data);
+      const mainResponse = await fetch('/cart/add.js', {
+        method: 'POST',
+        body: mainFormData,
+      });
 
-          // Trigger a cart update event
-          document.dispatchEvent(new CustomEvent('cart:refresh'));
-        } else {
-          const errorText = await response.text();
-          console.error('Granola addon: Failed to add granola', {
-            status: response.status,
-            error: errorText,
-          });
-        }
-      } catch (error) {
-        console.error('Granola addon: Error adding granola:', error);
+      if (!mainResponse.ok) {
+        throw new Error('Failed to add main product');
       }
-    }, 500);
+
+      console.log('Granola addon: Main product added');
+
+      // Add granola
+      const granolaFormData = new FormData();
+      granolaFormData.append('id', granolaVariantId);
+      granolaFormData.append('quantity', granolaQuantity);
+
+      const granolaResponse = await fetch('/cart/add.js', {
+        method: 'POST',
+        body: granolaFormData,
+      });
+
+      if (!granolaResponse.ok) {
+        console.warn('Granola addon: Failed to add granola, but main product was added');
+      } else {
+        console.log('Granola addon: Granola added successfully');
+      }
+
+      // Trigger cart update by dispatching the theme's cart add event
+      const section = this.closest('.shopify-section');
+      if (section) {
+        section.dispatchEvent(
+          new CustomEvent('theme:cart:add', {
+            bubbles: true,
+            detail: { items: [{ id: mainProductVariantId }, { id: granolaVariantId }] },
+          })
+        );
+      }
+
+      // Also trigger global cart refresh
+      document.dispatchEvent(new CustomEvent('cart:refresh'));
+
+    } catch (error) {
+      console.error('Granola addon: Error adding to cart:', error);
+      // If there's an error, fall back to normal form submission
+      event.target.submit();
+    }
   }
 }
 
