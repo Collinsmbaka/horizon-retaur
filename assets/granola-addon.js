@@ -1,5 +1,6 @@
 import { Component } from '@theme/component';
 import { fetchConfig } from '@theme/utilities';
+import { CartAddEvent } from '@theme/events';
 
 /**
  * Granola Add-on Component
@@ -142,19 +143,21 @@ class GranolaAddonComponent extends Component {
         console.log('Granola addon: Granola added successfully');
       }
 
-      // Trigger cart update by dispatching the theme's cart add event
-      const section = this.closest('.shopify-section');
-      if (section) {
-        section.dispatchEvent(
-          new CustomEvent('theme:cart:add', {
-            bubbles: true,
-            detail: { items: [{ id: mainProductVariantId }, { id: granolaVariantId }] },
-          })
-        );
-      }
+      // Fetch the updated cart to get the latest data
+      const cartResponse = await fetch('/cart.js');
+      const cartData = await cartResponse.json();
 
-      // Also trigger global cart refresh
-      document.dispatchEvent(new CustomEvent('cart:refresh'));
+      console.log('Granola addon: Fetched updated cart', cartData);
+
+      // Dispatch the proper CartAddEvent that the theme listens to
+      const section = this.closest('.shopify-section');
+      const cartAddEvent = new CartAddEvent(cartData, section?.dataset?.sectionId, {
+        source: 'granola-addon',
+        itemCount: cartData.item_count,
+      });
+
+      document.dispatchEvent(cartAddEvent);
+      console.log('Granola addon: Dispatched CartAddEvent');
 
     } catch (error) {
       console.error('Granola addon: Error adding to cart:', error);
