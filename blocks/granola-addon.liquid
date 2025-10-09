@@ -144,26 +144,23 @@
     max-width: 200px;
   }
 
-  /* Override button heights to match theme buttons */
-  .granola-addon__quantity .button.quantity-minus,
-  .granola-addon__quantity .button.quantity-plus {
-    height: 44px !important;
-    min-height: 44px !important;
-    max-height: 44px !important;
-    padding: 0 !important;
+  /* Override quantity selector height with very specific selectors */
+  .granola-addon .granola-addon__controls .granola-addon__quantity.quantity-selector {
+    height: auto;
+    min-height: 44px;
   }
 
-  .granola-addon__quantity input[type="number"] {
-    height: 44px !important;
-    min-height: 44px !important;
-    max-height: 44px !important;
-    padding: 0 8px !important;
-  }
-
-  /* Ensure the quantity selector container also has consistent height */
-  .granola-addon__quantity.quantity-selector {
+  .granola-addon .granola-addon__controls .granola-addon__quantity.quantity-selector .button.quantity-minus,
+  .granola-addon .granola-addon__controls .granola-addon__quantity.quantity-selector .button.quantity-plus {
     height: 44px;
-    align-items: center;
+    min-height: 44px;
+    width: 44px;
+    min-width: 44px;
+  }
+
+  .granola-addon .granola-addon__controls .granola-addon__quantity.quantity-selector input[type="number"] {
+    height: 44px;
+    line-height: 44px;
   }
 {% endstylesheet %}
 
