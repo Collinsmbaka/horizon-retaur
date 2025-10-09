@@ -34,14 +34,19 @@ class GranolaAddonComponent extends Component {
       this.#changeQuantity(1);
     });
 
-    // Intercept product form submission
-    const productForm = this.closest('.shopify-section')?.querySelector('product-form-component');
-    if (productForm) {
-      const form = productForm.querySelector('form');
-      if (form) {
-        form.addEventListener('submit', this.#interceptFormSubmit.bind(this));
+    // Intercept product form submission - use capture phase for higher priority
+    setTimeout(() => {
+      const productForm = this.closest('.shopify-section')?.querySelector('product-form-component');
+      if (productForm) {
+        const form = productForm.querySelector('form[data-type="add-to-cart-form"]');
+        if (form) {
+          console.log('Granola addon: Found form, attaching listener');
+          form.addEventListener('submit', this.#interceptFormSubmit.bind(this), { capture: true });
+        } else {
+          console.warn('Granola addon: Could not find add-to-cart form');
+        }
       }
-    }
+    }, 100);
   }
 
   /**
@@ -70,13 +75,20 @@ class GranolaAddonComponent extends Component {
    * @param {Event} event
    */
   async #interceptFormSubmit(event) {
+    console.log('Granola addon: Form submit intercepted', {
+      checked: this.refs.granolaCheckbox.checked,
+    });
+
     // Only intercept if granola is checked
     if (!this.refs.granolaCheckbox.checked) {
+      console.log('Granola addon: Not checked, allowing normal submission');
       return; // Let normal form submission happen
     }
 
+    console.log('Granola addon: Intercepting and adding granola to cart');
     event.preventDefault();
     event.stopPropagation();
+    event.stopImmediatePropagation();
 
     try {
       // Get form data for main product
@@ -85,14 +97,24 @@ class GranolaAddonComponent extends Component {
       const mainProductVariantId = formData.get('id');
       const granolaQuantity = parseInt(this.refs.granolaInput.value) || 1;
 
+      // Parse granola variant ID properly (remove any whitespace and ensure it's a valid number)
+      const granolaVariantId = String(this.dataset.granolaVariantId || '').trim().split(/\s+/)[0];
+
+      console.log('Granola addon: Adding items', {
+        mainProductVariantId,
+        granolaVariantIdRaw: this.dataset.granolaVariantId,
+        granolaVariantIdParsed: granolaVariantId,
+        granolaQuantity,
+      });
+
       // Prepare items array
       const items = [
         {
-          id: mainProductVariantId,
+          id: parseInt(mainProductVariantId),
           quantity: 1,
         },
         {
-          id: this.dataset.granolaVariantId,
+          id: parseInt(granolaVariantId),
           quantity: granolaQuantity,
         },
       ];
@@ -106,6 +128,8 @@ class GranolaAddonComponent extends Component {
 
       const data = await response.json();
 
+      console.log('Granola addon: Cart response', data);
+
       if (data.status && data.status !== 200) {
         throw new Error(data.message || 'Failed to add to cart');
       }
@@ -116,8 +140,10 @@ class GranolaAddonComponent extends Component {
         detail: data,
       });
       this.dispatchEvent(CartAddEvent);
+
+      console.log('Granola addon: Successfully added to cart');
     } catch (error) {
-      console.error('Error adding to cart:', error);
+      console.error('Granola addon: Error adding to cart:', error);
     }
   }
 }

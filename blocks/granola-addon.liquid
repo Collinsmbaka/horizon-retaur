@@ -45,12 +45,12 @@
 
     <div class="granola-addon__controls" ref="granolaControls" style="display: none;">
       <label class="granola-addon__qty-label">{{ block_settings.quantity_label }}</label>
-      <div class="granola-addon__quantity">
-        <button type="button" class="granola-addon__btn" data-action="decrease" ref="decreaseBtn">
+      <div class="quantity-selector granola-addon__quantity">
+        <button type="button" class="button quantity-minus button-unstyled" data-action="decrease" ref="decreaseBtn">
           <span class="visually-hidden">Decrease</span>
-          <svg width="12" height="2" viewBox="0 0 12 2" fill="none">
-            <path d="M0 1H12" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
+          <span class="svg-wrapper icon-minus">
+            {{- 'icon-minus.svg' | inline_asset_content -}}
+          </span>
         </button>
         <input
           type="number"
@@ -60,11 +60,11 @@
           ref="granolaInput"
           aria-label="Granola quantity"
         >
-        <button type="button" class="granola-addon__btn" data-action="increase" ref="increaseBtn">
+        <button type="button" class="button quantity-plus button-unstyled" data-action="increase" ref="increaseBtn">
           <span class="visually-hidden">Increase</span>
-          <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
-            <path d="M6 0V12M0 6H12" stroke="currentColor" stroke-width="1.5"/>
-          </svg>
+          <span class="svg-wrapper icon-plus">
+            {{- 'icon-plus.svg' | inline_asset_content -}}
+          </span>
         </button>
       </div>
     </div>
@@ -141,51 +141,7 @@
   }
 
   .granola-addon__quantity {
-    display: flex;
-    align-items: center;
-    gap: 16px;
     max-width: 200px;
-  }
-
-  .granola-addon__btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: var(--color-background);
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .granola-addon__btn:hover {
-    background: var(--color-background-secondary);
-    border-color: var(--color-primary);
-  }
-
-  .granola-addon__btn:disabled {
-    opacity: 0.5;
-    cursor: not-allowed;
-  }
-
-  .granola-addon__input {
-    flex: 1;
-    text-align: center;
-    font-size: 1.125rem;
-    font-weight: 600;
-    padding: 8px;
-    border: 1px solid var(--color-border);
-    border-radius: 4px;
-    background: var(--color-background);
-    color: var(--color-foreground);
-  }
-
-  .granola-addon__input::-webkit-inner-spin-button,
-  .granola-addon__input::-webkit-outer-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
   }
 {% endstylesheet %}
 
