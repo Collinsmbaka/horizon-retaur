@@ -20,6 +20,20 @@ class GranolaAddonComponent extends Component {
   connectedCallback() {
     super.connectedCallback();
 
+    // Listen for checkbox changes
+    this.refs.granolaCheckbox.addEventListener('change', this.#toggleGranola.bind(this));
+
+    // Listen for button clicks
+    this.refs.decreaseBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.#changeQuantity(-1);
+    });
+
+    this.refs.increaseBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      this.#changeQuantity(1);
+    });
+
     // Intercept product form submission
     const productForm = this.closest('.shopify-section')?.querySelector('product-form-component');
     if (productForm) {
@@ -27,34 +41,6 @@ class GranolaAddonComponent extends Component {
       if (form) {
         form.addEventListener('submit', this.#interceptFormSubmit.bind(this));
       }
-    }
-  }
-
-  /**
-   * Handle click events
-   * @param {MouseEvent} event
-   */
-  handleEvent(event) {
-    const target = event.target;
-
-    // Checkbox toggle
-    if (target === this.refs.granolaCheckbox) {
-      this.#toggleGranola();
-      return;
-    }
-
-    // Decrease button
-    if (target.closest('[data-action="decrease"]')) {
-      event.preventDefault();
-      this.#changeQuantity(-1);
-      return;
-    }
-
-    // Increase button
-    if (target.closest('[data-action="increase"]')) {
-      event.preventDefault();
-      this.#changeQuantity(1);
-      return;
     }
   }
 
