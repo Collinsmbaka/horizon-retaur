@@ -146,21 +146,30 @@
 
   /* Override quantity selector height with very specific selectors */
   .granola-addon .granola-addon__controls .granola-addon__quantity.quantity-selector {
-    height: auto;
+    display: flex;
+    align-items: center;
+    height: 44px;
     min-height: 44px;
+    max-height: 44px;
+    gap: 0;
   }
 
   .granola-addon .granola-addon__controls .granola-addon__quantity.quantity-selector .button.quantity-minus,
   .granola-addon .granola-addon__controls .granola-addon__quantity.quantity-selector .button.quantity-plus {
     height: 44px;
     min-height: 44px;
+    max-height: 44px;
     width: 44px;
     min-width: 44px;
+    flex-shrink: 0;
   }
 
   .granola-addon .granola-addon__controls .granola-addon__quantity.quantity-selector input[type="number"] {
     height: 44px;
-    line-height: 44px;
+    min-height: 44px;
+    max-height: 44px;
+    line-height: normal;
+    flex: 1;
   }
 {% endstylesheet %}
 
