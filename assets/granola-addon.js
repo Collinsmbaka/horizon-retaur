@@ -109,32 +109,51 @@ class GranolaAddonComponent extends Component {
         granolaQuantity,
       });
 
-      // Prepare items array - IDs must be integers, not strings
-      const items = [
-        {
+      // Add items to cart sequentially (Shopify Ajax API works better this way)
+      const config = fetchConfig('javascript');
+
+      // First, add the main product
+      console.log('Granola addon: Adding main product to cart');
+      const mainResponse = await fetch(Theme.routes.cart_add_url, {
+        ...config,
+        body: JSON.stringify({
           id: Number(mainProductVariantId),
           quantity: mainProductQuantity,
-        },
-        {
-          id: Number(granolaVariantId),
-          quantity: granolaQuantity,
-        },
-      ];
+        }),
+      });
 
-      // Add items to cart
-      const config = fetchConfig('javascript');
+      if (!mainResponse.ok) {
+        const mainError = await mainResponse.text();
+        console.error('Granola addon: Failed to add main product', mainError);
+        throw new Error(`Failed to add main product: ${mainResponse.status}`);
+      }
+
+      console.log('Granola addon: Main product added successfully');
+
+      // Then add the granola
+      console.log('Granola addon: Adding granola to cart');
       const response = await fetch(Theme.routes.cart_add_url, {
         ...config,
-        body: JSON.stringify({ items }),
+        body: JSON.stringify({
+          id: Number(granolaVariantId),
+          quantity: granolaQuantity,
+        }),
       });
 
       console.log('Granola addon: Response status', response.status, response.statusText);
 
-      // Check if response is ok before parsing
+      // Check if granola was added successfully
       if (!response.ok) {
         const errorText = await response.text();
-        console.error('Granola addon: Cart API error response', errorText);
-        throw new Error(`Failed to add to cart: ${response.status} ${errorText}`);
+        console.error('Granola addon: Failed to add granola', errorText);
+
+        // Main product was added, but granola failed
+        // Still show success but with a warning
+        console.warn('Granola addon: Main product added but granola failed');
+
+        // Reload to show cart with main product
+        window.location.reload();
+        return;
       }
 
       const data = await response.json();
@@ -155,6 +174,7 @@ class GranolaAddonComponent extends Component {
       console.log('Granola addon: Successfully added to cart');
     } catch (error) {
       console.error('Granola addon: Error adding to cart:', error);
+      alert('Failed to add items to cart. Please try again or add items separately.');
     }
   }
 }
