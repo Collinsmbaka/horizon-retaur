@@ -143,6 +143,18 @@
   .granola-addon__quantity {
     max-width: 200px;
   }
+
+  /* Override button heights to match theme buttons */
+  .granola-addon__quantity .quantity-minus,
+  .granola-addon__quantity .quantity-plus {
+    height: 44px;
+    min-height: 44px;
+  }
+
+  .granola-addon__quantity input[type="number"] {
+    height: 44px;
+    padding: 0 8px;
+  }
 {% endstylesheet %}
 
 {% schema %}
