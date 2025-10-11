@@ -67,6 +67,18 @@
             "padding-inline-end": 0
           },
           "blocks": {
+            "review_mmdYnG": {
+              "type": "review",
+              "name": "t:names.product_review_stars",
+              "settings": {
+                "stars_style": "shaded",
+                "show_number": true,
+                "rating_color": "primary",
+                "type_preset": "paragraph",
+                "alignment": "left"
+              },
+              "blocks": {}
+            },
             "group": {
               "type": "group",
               "name": "Header",
@@ -439,6 +451,7 @@
             }
           },
           "block_order": [
+            "review_mmdYnG",
             "group",
             "variant_picker",
             "granola_addon",
