@@ -493,7 +493,7 @@
       "type": "video-testimonials",
       "name": "Video Testimonials",
       "settings": {
-        "heading": "Happy Customers. Good Reviews.",
+        "heading": "Happy Customers.",
         "heading_alignment": "left",
         "heading_preset": "custom",
         "heading_font": "var(--font-heading--family)",
@@ -1866,6 +1866,8 @@
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
             "review_data": "sample_data",
+            "show_shop_reviews": false,
+            "empty_state": "empty_widget",
             "max_width": 1200
           }
         }
@@ -1910,7 +1912,7 @@
           "settings": {
             "text": "<h3>Frequently asked questions</h3>",
             "width": "fit-content",
-            "max_width": "narrow",
+            "max_width": "none",
             "alignment": "left",
             "type_preset": "rte",
             "font": "var(--font-body--family)",
