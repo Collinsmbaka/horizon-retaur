@@ -2179,6 +2179,165 @@
         "padding-block-end": 0
       }
     },
+    "product_comparison_Xqe4tY": {
+      "type": "product-comparison",
+      "blocks": {
+        "heading_BLnerq": {
+          "type": "heading",
+          "settings": {
+            "text": "<h2>How We Compare</h2>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h2",
+            "font": "var(--font-heading--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          }
+        },
+        "text_3mDn3R": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Retaur Protein Yogurts Vs Greek and Other Yogurts</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          }
+        },
+        "product_column_kEDmjR": {
+          "type": "product_column",
+          "settings": {
+            "product_name": "Retaur Protein Yogurts",
+            "product_value": "50grams / cup"
+          }
+        },
+        "product_column_hMyQHX": {
+          "type": "product_column",
+          "settings": {
+            "product_name": "Greek Yogurts",
+            "product_value": "25 - 30grams / cup"
+          }
+        },
+        "comparison_row_bh7frc": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Higher Quality Protein Content",
+            "column_1_icon": "check_box",
+            "column_1_text": "",
+            "column_2_icon": "none",
+            "column_2_text": "✕",
+            "enable_column_3": false,
+            "column_3_icon": "none",
+            "column_3_text": "",
+            "icon_size": 24
+          }
+        },
+        "comparison_row_wAGqxd": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Use of Whey Protein for Faster Post-Workout Recovery",
+            "column_1_icon": "check_box",
+            "column_1_text": "",
+            "column_2_icon": "none",
+            "column_2_text": "✕",
+            "enable_column_3": false,
+            "column_3_icon": "none",
+            "column_3_text": "",
+            "icon_size": 24
+          }
+        },
+        "comparison_row_7kkzmp": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Better Macronutrient Balance for Active Lifestyle recovery and support",
+            "column_1_icon": "check_box",
+            "column_1_text": "",
+            "column_2_icon": "none",
+            "column_2_text": "✕",
+            "enable_column_3": false,
+            "column_3_icon": "none",
+            "column_3_text": "",
+            "icon_size": 24
+          }
+        },
+        "comparison_row_RUVVd8": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "More Effective for Muscle Building & Maintenance",
+            "column_1_icon": "check_box",
+            "column_1_text": "",
+            "column_2_icon": "none",
+            "column_2_text": "✕",
+            "enable_column_3": false,
+            "column_3_icon": "none",
+            "column_3_text": "",
+            "icon_size": 24
+          }
+        },
+        "comparison_row_Y8yMNr": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Higher Biological Value Protein for Better Absorption",
+            "column_1_icon": "check_box",
+            "column_1_text": "",
+            "column_2_icon": "none",
+            "column_2_text": "✕",
+            "enable_column_3": false,
+            "column_3_icon": "none",
+            "column_3_text": "",
+            "icon_size": 24
+          }
+        }
+      },
+      "block_order": [
+        "heading_BLnerq",
+        "text_3mDn3R",
+        "product_column_kEDmjR",
+        "product_column_hMyQHX",
+        "comparison_row_bh7frc",
+        "comparison_row_wAGqxd",
+        "comparison_row_7kkzmp",
+        "comparison_row_RUVVd8",
+        "comparison_row_Y8yMNr"
+      ],
+      "name": "Product Comparison",
+      "settings": {
+        "feature_column_label": "",
+        "highlight_column": 1,
+        "highlight_color": "#d81159",
+        "section_width": "page-width",
+        "gap": 28,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
     "product-recommendations": {
       "type": "product-recommendations",
       "blocks": {
@@ -2328,6 +2487,7 @@
     "section_6mt3Ra",
     "divider_VDGepn",
     "section_CCQJQf",
+    "product_comparison_Xqe4tY",
     "product-recommendations"
   ]
 }
