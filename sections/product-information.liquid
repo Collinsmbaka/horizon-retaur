@@ -1,4 +1,16 @@
 {% liquid
+  # Check if this product has a bundle product metafield
+  # Need to use .value to get the actual product object from the reference
+  assign bundle_product = closest.product.metafields.custom.bundle_product.value
+
+  # If bundle product exists, use it for variants and buy buttons
+  # But keep the original product for reviews, URL, etc.
+  if bundle_product != blank
+    assign display_product = bundle_product
+  else
+    assign display_product = closest.product
+  endif
+
   if section.settings.desktop_media_position == 'left'
     assign render_order = 'media,product-details'
   else
@@ -71,7 +83,7 @@
       {% content_for 'block',
         type: '_product-details',
         id: 'product-details',
-        closest.product: closest.product
+        closest.product: display_product
       %}
     {% endcapture %}
 
