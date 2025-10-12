@@ -493,7 +493,7 @@
       "type": "video-testimonials",
       "name": "Video Testimonials",
       "settings": {
-        "heading": "Happy Customers.",
+        "heading": "Happy Customers",
         "heading_alignment": "left",
         "heading_preset": "custom",
         "heading_font": "var(--font-heading--family)",
