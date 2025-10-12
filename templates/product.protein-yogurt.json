@@ -2406,7 +2406,7 @@
             "accordion_row_HWnRxN": {
               "type": "_accordion-row",
               "settings": {
-                "heading": "What is the return policy?",
+                "heading": "Is Retaur protein yogurt suitable for everyday consumption?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -2415,7 +2415,7 @@
                 "text_d6Qdnj": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn’t the case, let us know and we’ll do our best to work with you to make it right. </p>",
+                    "text": "<p>Yes, Retaur protein yogurt is perfect for daily consumption. It's made with high-quality ingredients and provides essential protein to support muscle maintenance and overall nutrition. With its balanced macronutrient profile, it fits nicely into most daily dietary plans while helping you meet your protein needs in a delicious way.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
