@@ -254,7 +254,7 @@
                   "type": "_accordion-row",
                   "settings": {
                     "heading": "How To Use",
-                    "open_by_default": true,
+                    "open_by_default": false,
                     "icon": "apple",
                     "width": 16
                   },
