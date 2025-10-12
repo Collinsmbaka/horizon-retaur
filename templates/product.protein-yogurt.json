@@ -2538,7 +2538,7 @@
                   "settings": {
                     "text": "<p>Retaur protein yogurt contains pasteurized milk, live active cultures, whey protein concentrate, natural flavors, and a touch of sugar for sweetness. Our protein yogurt is free from artificial preservatives, colors, and excessive added sugars. We prioritize clean, simple ingredients to deliver maximum nutritional benefit with minimal additives.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -2567,7 +2567,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_dash_row",
               "settings": {
-                "heading": "How much does shipping cost?",
+                "heading": "Can I enjoy Retaur protein yogurt if I'm trying to lose weight?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -2577,9 +2577,9 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Shipping is calculated based on your location and the items in your order. You will always know the shipping price before you purchase.</p>",
+                    "text": "<p>Absolutely! Retaur protein yogurt is an excellent choice for weight management goals. The high protein content promotes satiety (feeling full longer), while the balanced nutritional profile provides essential nutrients without excessive calories. It makes for a satisfying snack that can help reduce overall calorie intake by preventing hunger between meals.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
