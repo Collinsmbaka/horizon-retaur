@@ -2417,7 +2417,7 @@
                   "settings": {
                     "text": "<p>Yes, Retaur protein yogurt is perfect for daily consumption. It's made with high-quality ingredients and provides essential protein to support muscle maintenance and overall nutrition. With its balanced macronutrient profile, it fits nicely into most daily dietary plans while helping you meet your protein needs in a delicious way.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -2445,7 +2445,7 @@
             "accordion_row_pYRkAd": {
               "type": "_accordion-row",
               "settings": {
-                "heading": "Are any purchases final sale?",
+                "heading": "How much protein is in each serving of Retaur protein yogurt?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -2454,9 +2454,9 @@
                 "text_QFbjNa": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>We are unable to accept returns on certain items. These will be carefully marked before purchase.</p>",
+                    "text": "<p>Each cup of Retaur protein yogurt contains 50g of high-quality protein. This substantial amount helps support muscle recovery, satiety, and your daily protein requirements in a convenient, delicious format.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
@@ -2485,7 +2485,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_dash_row",
               "settings": {
-                "heading": "When will I get my order?",
+                "heading": "How does Retaur protein yogurt compare to regular Greek yogurt?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -2495,9 +2495,9 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                    "text": "<p>Retaur protein yogurt offers significantly higher protein content (50g per cup) compared to regular Greek yogurt (typically 5-10g). Our protein yogurt is specially formulated with added whey protein for optimal muscle support while maintaining the creamy texture you love. It also contains less sugar than many commercial Greek yogurts while delivering more targeted nutritional benefits for active lifestyles, all without sacrificing taste.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
