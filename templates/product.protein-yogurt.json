@@ -137,11 +137,11 @@
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
-                    "type_preset": "h3",
-                    "font": "var(--font-body--family)",
-                    "font_size": "",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
+                    "type_preset": "custom",
+                    "font": "var(--font-heading--family)",
+                    "font_size": "2.5rem",
+                    "line_height": "tight",
+                    "letter_spacing": "tight",
                     "case": "none",
                     "wrap": "pretty",
                     "color": "var(--color-foreground)",
@@ -563,6 +563,20 @@
         "gap_between_elements": 60
       }
     },
+    "divider_VDGepn": {
+      "type": "divider",
+      "name": "t:names.divider_section",
+      "settings": {
+        "color_scheme": "scheme-6",
+        "section_width": "page-width",
+        "thickness": 1,
+        "corner_radius": "square",
+        "width_percent": 100,
+        "alignment_horizontal": "center",
+        "padding-block-start": 30,
+        "padding-block-end": 30
+      }
+    },
     "video_testimonials_QkK37L": {
       "type": "video-testimonials",
       "name": "Video Testimonials",
@@ -571,7 +585,7 @@
         "heading_alignment": "left",
         "heading_preset": "custom",
         "heading_font": "var(--font-heading--family)",
-        "heading_font_size": "2rem",
+        "heading_font_size": "2.5rem",
         "heading_line_height": "tight",
         "heading_letter_spacing": "tight",
         "heading_case": "none",
@@ -616,6 +630,20 @@
         "padding-block-end": 48
       }
     },
+    "divider_aGiUVL": {
+      "type": "divider",
+      "name": "t:names.divider_section",
+      "settings": {
+        "color_scheme": "scheme-6",
+        "section_width": "page-width",
+        "thickness": 1,
+        "corner_radius": "square",
+        "width_percent": 100,
+        "alignment_horizontal": "center",
+        "padding-block-start": 30,
+        "padding-block-end": 30
+      }
+    },
     "section_6mt3Ra": {
       "type": "section",
       "blocks": {
@@ -629,7 +657,7 @@
             "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-heading--family)",
-            "font_size": "2rem",
+            "font_size": "2.5rem",
             "line_height": "tight",
             "letter_spacing": "tight",
             "case": "none",
@@ -1554,7 +1582,7 @@
         "padding-block-end": 0
       }
     },
-    "divider_VDGepn": {
+    "divider_mPJWMw": {
       "type": "divider",
       "name": "t:names.divider_section",
       "settings": {
@@ -1581,7 +1609,7 @@
             "alignment": "left",
             "type_preset": "custom",
             "font": "var(--font-heading--family)",
-            "font_size": "2rem",
+            "font_size": "2.5rem",
             "line_height": "tight",
             "letter_spacing": "tight",
             "case": "none",
@@ -2179,6 +2207,530 @@
         "padding-block-end": 0
       }
     },
+    "divider_ED9VRc": {
+      "type": "divider",
+      "name": "t:names.divider_section",
+      "settings": {
+        "color_scheme": "scheme-6",
+        "section_width": "page-width",
+        "thickness": 1,
+        "corner_radius": "square",
+        "width_percent": 100,
+        "alignment_horizontal": "center",
+        "padding-block-start": 30,
+        "padding-block-end": 30
+      }
+    },
+    "product_comparison_Xqe4tY": {
+      "type": "product-comparison",
+      "blocks": {
+        "heading_BLnerq": {
+          "type": "heading",
+          "settings": {
+            "text": "<h2>How We Compare</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-heading--family)",
+            "font_size": "2.5rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          }
+        },
+        "product_column_kEDmjR": {
+          "type": "product_column",
+          "settings": {
+            "product_name": "Retaur Protein Yogurts",
+            "product_value": "50grams / cup"
+          }
+        },
+        "product_column_hMyQHX": {
+          "type": "product_column",
+          "settings": {
+            "product_name": "Greek Yogurts",
+            "product_value": "25 - 30grams / cup"
+          }
+        },
+        "comparison_row_bh7frc": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Higher Quality Protein Content",
+            "column_1_icon": "check_box",
+            "column_1_text": "",
+            "column_2_icon": "none",
+            "column_2_text": "✕",
+            "enable_column_3": false,
+            "column_3_icon": "none",
+            "column_3_text": "",
+            "icon_size": 18
+          }
+        },
+        "comparison_row_wAGqxd": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Use of Whey Protein for Faster Post-Workout Recovery",
+            "column_1_icon": "check_box",
+            "column_1_text": "",
+            "column_2_icon": "none",
+            "column_2_text": "✕",
+            "enable_column_3": false,
+            "column_3_icon": "none",
+            "column_3_text": "",
+            "icon_size": 18
+          }
+        },
+        "comparison_row_7kkzmp": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Better Macronutrient Balance for Active Lifestyle recovery and support",
+            "column_1_icon": "check_box",
+            "column_1_text": "",
+            "column_2_icon": "none",
+            "column_2_text": "✕",
+            "enable_column_3": false,
+            "column_3_icon": "none",
+            "column_3_text": "",
+            "icon_size": 18
+          }
+        },
+        "comparison_row_RUVVd8": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "More Effective for Muscle Building & Maintenance",
+            "column_1_icon": "check_box",
+            "column_1_text": "",
+            "column_2_icon": "none",
+            "column_2_text": "✕",
+            "enable_column_3": false,
+            "column_3_icon": "none",
+            "column_3_text": "",
+            "icon_size": 18
+          }
+        },
+        "comparison_row_Y8yMNr": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Higher Biological Value Protein for Better Absorption",
+            "column_1_icon": "check_box",
+            "column_1_text": "",
+            "column_2_icon": "none",
+            "column_2_text": "✕",
+            "enable_column_3": false,
+            "column_3_icon": "none",
+            "column_3_text": "",
+            "icon_size": 18
+          }
+        }
+      },
+      "block_order": [
+        "heading_BLnerq",
+        "product_column_kEDmjR",
+        "product_column_hMyQHX",
+        "comparison_row_bh7frc",
+        "comparison_row_wAGqxd",
+        "comparison_row_7kkzmp",
+        "comparison_row_RUVVd8",
+        "comparison_row_Y8yMNr"
+      ],
+      "name": "Product Comparison",
+      "settings": {
+        "feature_column_label": "",
+        "highlight_column": 1,
+        "highlight_color": "#d81159",
+        "section_width": "page-width",
+        "gap": 28,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
+    "section_rqycLF": {
+      "type": "section",
+      "blocks": {
+        "text_PcM9Ue": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<h3>Frequently asked Questions</h3>",
+            "width": "fit-content",
+            "max_width": "narrow",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-heading--family)",
+            "font_size": "2.5rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "accordion_aMi3MT": {
+          "type": "accordion",
+          "name": "t:names.accordion",
+          "settings": {
+            "icon": "caret",
+            "dividers": true,
+            "type_preset": "paragraph",
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "accordion_row_HWnRxN": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "Is Retaur protein yogurt suitable for everyday consumption?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_d6Qdnj": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Yes, Retaur protein yogurt is perfect for daily consumption. It's made with high-quality ingredients and provides essential protein to support muscle maintenance and overall nutrition. With its balanced macronutrient profile, it fits nicely into most daily dietary plans while helping you meet your protein needs in a delicious way.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_d6Qdnj"
+              ]
+            },
+            "accordion_row_pYRkAd": {
+              "type": "_accordion-row",
+              "settings": {
+                "heading": "How much protein is in each serving of Retaur protein yogurt?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_QFbjNa": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<p>Each cup of Retaur protein yogurt contains 50g of high-quality protein. This substantial amount helps support muscle recovery, satiety, and your daily protein requirements in a convenient, delicious format.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_QFbjNa"
+              ]
+            },
+            "accordion_row_Jtei9J": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_dash_row",
+              "settings": {
+                "heading": "How does Retaur protein yogurt compare to regular Greek yogurt?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_xMpDRm": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Retaur protein yogurt offers significantly higher protein content (50g per cup) compared to regular Greek yogurt (typically 5-10g). Our protein yogurt is specially formulated with added whey protein for optimal muscle support while maintaining the creamy texture you love. It also contains less sugar than many commercial Greek yogurts while delivering more targeted nutritional benefits for active lifestyles, all without sacrificing taste.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_xMpDRm"
+              ]
+            },
+            "accordion_row_G7GYHe": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_dash_row",
+              "settings": {
+                "heading": "What are the ingredients in Retaur protein yogurt?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_WURG9D": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Retaur protein yogurt contains pasteurized milk, live active cultures, whey protein concentrate, natural flavors, and a touch of sugar for sweetness. Our protein yogurt is free from artificial preservatives, colors, and excessive added sugars. We prioritize clean, simple ingredients to deliver maximum nutritional benefit with minimal additives.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_WURG9D"
+              ]
+            },
+            "accordion_row_EmYNYR": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_dash_row",
+              "settings": {
+                "heading": "Can I enjoy Retaur protein yogurt if I'm trying to lose weight?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_nxPJYn": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Absolutely! Retaur protein yogurt is an excellent choice for weight management goals. The high protein content promotes satiety (feeling full longer), while the balanced nutritional profile provides essential nutrients without excessive calories. It makes for a satisfying snack that can help reduce overall calorie intake by preventing hunger between meals.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_nxPJYn"
+              ]
+            },
+            "accordion_row_YjcTn6": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_dash_row",
+              "settings": {
+                "heading": "When is the best time to consume Retaur protein yogurt?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_ejt9TQ": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Retaur protein yogurt is versatile and beneficial at various times. It makes an excellent post-workout recovery option within the 2-hour recovery window, a convenient breakfast to start your day with quality protein, a satisfying mid-day snack to prevent hunger, or even a nutritious dessert alternative in the evening. The protein content helps with muscle recovery and maintenance regardless of when you consume it.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_ejt9TQ"
+              ]
+            },
+            "accordion_row_8z7z8A": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_dash_row",
+              "settings": {
+                "heading": "How can I incorporate Retaur protein yogurt into my meal prep routine?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_gabhBp": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Retaur protein yogurt is incredibly versatile for meal prep. Use it as a base for overnight oats by adding oats, chia seeds, and fruits for a ready-to-eat breakfast. Create parfait jars with layers of protein yogurt, granola, and berries for grab-and-go snacks. Blend it into smoothie packs with frozen fruits and greens that can be quickly prepared. It can also be used as a healthier substitute for sour cream in dips or added to protein pancake batter for extra nutrition.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_gabhBp"
+              ]
+            }
+          },
+          "block_order": [
+            "accordion_row_HWnRxN",
+            "accordion_row_pYRkAd",
+            "accordion_row_Jtei9J",
+            "accordion_row_G7GYHe",
+            "accordion_row_EmYNYR",
+            "accordion_row_YjcTn6",
+            "accordion_row_8z7z8A"
+          ]
+        }
+      },
+      "block_order": [
+        "text_PcM9Ue",
+        "accordion_aMi3MT"
+      ],
+      "name": "t:names.faq_section",
+      "settings": {
+        "content_direction": "column",
+        "vertical_on_mobile": true,
+        "horizontal_alignment": "flex-start",
+        "vertical_alignment": "center",
+        "align_baseline": false,
+        "horizontal_alignment_flex_direction_column": "flex-start",
+        "vertical_alignment_flex_direction_column": "center",
+        "gap": 32,
+        "section_width": "page-width",
+        "section_height": "",
+        "section_height_custom": 50,
+        "color_scheme": "",
+        "background_media": "none",
+        "video_position": "cover",
+        "background_image_position": "cover",
+        "border": "none",
+        "border_width": 1,
+        "border_opacity": 100,
+        "border_radius": 0,
+        "toggle_overlay": false,
+        "overlay_color": "#00000026",
+        "overlay_style": "solid",
+        "gradient_direction": "to top",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
     "product-recommendations": {
       "type": "product-recommendations",
       "blocks": {
@@ -2324,10 +2876,15 @@
   "order": [
     "main",
     "marquee_Etc8gV",
-    "video_testimonials_QkK37L",
-    "section_6mt3Ra",
     "divider_VDGepn",
+    "video_testimonials_QkK37L",
+    "divider_aGiUVL",
+    "section_6mt3Ra",
+    "divider_mPJWMw",
     "section_CCQJQf",
+    "divider_ED9VRc",
+    "product_comparison_Xqe4tY",
+    "section_rqycLF",
     "product-recommendations"
   ]
 }

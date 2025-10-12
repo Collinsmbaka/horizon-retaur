@@ -254,7 +254,7 @@
                   "type": "_accordion-row",
                   "settings": {
                     "heading": "How To Use",
-                    "open_by_default": true,
+                    "open_by_default": false,
                     "icon": "apple",
                     "width": 16
                   },
@@ -493,7 +493,7 @@
       "type": "video-testimonials",
       "name": "Video Testimonials",
       "settings": {
-        "heading": "Happy Customers.",
+        "heading": "Happy Customers",
         "heading_alignment": "left",
         "heading_preset": "custom",
         "heading_font": "var(--font-heading--family)",
@@ -1910,7 +1910,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<h3>Frequently asked questions</h3>",
+            "text": "<h3>Frequently asked Questions</h3>",
             "width": "fit-content",
             "max_width": "none",
             "alignment": "left",
@@ -1938,7 +1938,7 @@
           "settings": {
             "icon": "caret",
             "dividers": true,
-            "type_preset": "h5",
+            "type_preset": "paragraph",
             "inherit_color_scheme": true,
             "color_scheme": "",
             "border": "none",
