@@ -563,6 +563,20 @@
         "gap_between_elements": 60
       }
     },
+    "divider_VDGepn": {
+      "type": "divider",
+      "name": "t:names.divider_section",
+      "settings": {
+        "color_scheme": "scheme-6",
+        "section_width": "page-width",
+        "thickness": 1,
+        "corner_radius": "square",
+        "width_percent": 100,
+        "alignment_horizontal": "center",
+        "padding-block-start": 50,
+        "padding-block-end": 50
+      }
+    },
     "video_testimonials_QkK37L": {
       "type": "video-testimonials",
       "name": "Video Testimonials",
@@ -614,6 +628,20 @@
         "color_scheme": "",
         "padding-block-start": 48,
         "padding-block-end": 48
+      }
+    },
+    "divider_aGiUVL": {
+      "type": "divider",
+      "name": "t:names.divider_section",
+      "settings": {
+        "color_scheme": "scheme-6",
+        "section_width": "page-width",
+        "thickness": 1,
+        "corner_radius": "square",
+        "width_percent": 100,
+        "alignment_horizontal": "center",
+        "padding-block-start": 50,
+        "padding-block-end": 50
       }
     },
     "section_6mt3Ra": {
@@ -1554,7 +1582,7 @@
         "padding-block-end": 0
       }
     },
-    "divider_VDGepn": {
+    "divider_mPJWMw": {
       "type": "divider",
       "name": "t:names.divider_section",
       "settings": {
@@ -2189,8 +2217,8 @@
         "corner_radius": "square",
         "width_percent": 100,
         "alignment_horizontal": "center",
-        "padding-block-start": 30,
-        "padding-block-end": 30
+        "padding-block-start": 50,
+        "padding-block-end": 50
       }
     },
     "product_comparison_Xqe4tY": {
@@ -2472,9 +2500,11 @@
   "order": [
     "main",
     "marquee_Etc8gV",
-    "video_testimonials_QkK37L",
-    "section_6mt3Ra",
     "divider_VDGepn",
+    "video_testimonials_QkK37L",
+    "divider_aGiUVL",
+    "section_6mt3Ra",
+    "divider_mPJWMw",
     "section_CCQJQf",
     "divider_ED9VRc",
     "product_comparison_Xqe4tY",
