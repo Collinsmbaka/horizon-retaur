@@ -9,7 +9,7 @@
  */
 {
   "current": {
-    "logo": "{{ shop.brand.logo }}",
+    "logo": "shopify://shop_images/Retaur_Logo_-_2.png",
     "favicon": "shopify://shop_images/1_f2b61762-2bcc-475f-bf61-5446747c6326.svg",
     "enable_proxima_nova": true,
     "proxima_nova_weight_heading": "black",
