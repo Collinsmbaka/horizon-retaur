@@ -2526,7 +2526,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_dash_row",
               "settings": {
-                "heading": "Where are your products manufactured?",
+                "heading": "What are the ingredients in Retaur protein yogurt?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -2536,7 +2536,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value. </p>",
+                    "text": "<p>Retaur protein yogurt contains pasteurized milk, live active cultures, whey protein concentrate, natural flavors, and a touch of sugar for sweetness. Our protein yogurt is free from artificial preservatives, colors, and excessive added sugars. We prioritize clean, simple ingredients to deliver maximum nutritional benefit with minimal additives.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
