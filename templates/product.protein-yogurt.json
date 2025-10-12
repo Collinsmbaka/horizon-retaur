@@ -2644,6 +2644,47 @@
               "block_order": [
                 "text_ejt9TQ"
               ]
+            },
+            "accordion_row_8z7z8A": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_dash_row",
+              "settings": {
+                "heading": "How can I incorporate Retaur protein yogurt into my meal prep routine?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_gabhBp": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Retaur protein yogurt is incredibly versatile for meal prep. Use it as a base for overnight oats by adding oats, chia seeds, and fruits for a ready-to-eat breakfast. Create parfait jars with layers of protein yogurt, granola, and berries for grab-and-go snacks. Blend it into smoothie packs with frozen fruits and greens that can be quickly prepared. It can also be used as a healthier substitute for sour cream in dips or added to protein pancake batter for extra nutrition.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_gabhBp"
+              ]
             }
           },
           "block_order": [
@@ -2652,7 +2693,8 @@
             "accordion_row_Jtei9J",
             "accordion_row_G7GYHe",
             "accordion_row_EmYNYR",
-            "accordion_row_YjcTn6"
+            "accordion_row_YjcTn6",
+            "accordion_row_8z7z8A"
           ]
         }
       },
