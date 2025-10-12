@@ -1556,6 +1556,37 @@
     },
     "section_CCQJQf": {
       "type": "section",
+      "blocks": {
+        "text_CGD7qg": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Ingredients You Trust</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-heading--family)",
+            "font_size": "2rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_CGD7qg"
+      ],
       "name": "ingredients",
       "settings": {
         "content_direction": "column",
