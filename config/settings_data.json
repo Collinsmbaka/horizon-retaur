@@ -9,6 +9,8 @@
  */
 {
   "current": {
+    "logo": "shopify://shop_images/2_0e7c7b92-aec5-4064-bacd-8fde8d1db16c.png",
+    "favicon": "shopify://shop_images/1_f2b61762-2bcc-475f-bf61-5446747c6326.svg",
     "enable_proxima_nova": true,
     "proxima_nova_weight_heading": "black",
     "type_size_paragraph": "16",
