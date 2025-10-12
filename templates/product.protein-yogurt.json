@@ -2603,6 +2603,47 @@
               "block_order": [
                 "text_nxPJYn"
               ]
+            },
+            "accordion_row_YjcTn6": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_dash_row",
+              "settings": {
+                "heading": "When is the best time to consume Retaur protein yogurt?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_ejt9TQ": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Absolutely! Retaur protein yogurt is an excellent choice for weight management goals. The high protein content promotes satiety (feeling full longer), while the balanced nutritional profile provides essential nutrients without excessive calories. It makes for a satisfying snack that can help reduce overall calorie intake by preventing hunger between meals.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_ejt9TQ"
+              ]
             }
           },
           "block_order": [
@@ -2610,7 +2651,8 @@
             "accordion_row_pYRkAd",
             "accordion_row_Jtei9J",
             "accordion_row_G7GYHe",
-            "accordion_row_EmYNYR"
+            "accordion_row_EmYNYR",
+            "accordion_row_YjcTn6"
           ]
         }
       },
