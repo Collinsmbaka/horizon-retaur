@@ -50,7 +50,7 @@
             "custom_width_mobile": 100,
             "height": "fit",
             "details_position": "flex-start",
-            "gap": 32,
+            "gap": 30,
             "sticky_details_desktop": true,
             "inherit_color_scheme": true,
             "color_scheme": "",
@@ -67,10 +67,6 @@
             "padding-inline-end": 0
           },
           "blocks": {
-            "judge_me_reviews_preview_badge_LWmqFk": {
-              "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-              "settings": {}
-            },
             "group": {
               "type": "group",
               "name": "Header",
@@ -111,16 +107,9 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "review_cY6Vd7": {
-                  "type": "review",
-                  "settings": {
-                    "stars_style": "shaded",
-                    "show_number": true,
-                    "rating_color": "primary",
-                    "type_preset": "paragraph",
-                    "alignment": "left"
-                  },
-                  "blocks": {}
+                "judge_me_reviews_preview_badge_TYxWCG": {
+                  "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+                  "settings": {}
                 },
                 "text_xrnftG": {
                   "type": "text",
@@ -230,7 +219,7 @@
                 }
               },
               "block_order": [
-                "review_cY6Vd7",
+                "judge_me_reviews_preview_badge_TYxWCG",
                 "text_xrnftG",
                 "group_8B3NLh"
               ]
@@ -443,7 +432,6 @@
             }
           },
           "block_order": [
-            "judge_me_reviews_preview_badge_LWmqFk",
             "group",
             "variant_picker",
             "granola_addon",
