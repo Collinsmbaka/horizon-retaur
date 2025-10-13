@@ -442,9 +442,9 @@
       "name": "Video Testimonials",
       "settings": {
         "heading": "Happy Customers",
-        "heading_alignment": "center",
-        "heading_preset": "h2",
-        "heading_font": "var(--font-body--family)",
+        "heading_alignment": "left",
+        "heading_preset": "custom",
+        "heading_font": "var(--font-heading--family)",
         "heading_font_size": "2rem",
         "heading_line_height": "normal",
         "heading_letter_spacing": "normal",
