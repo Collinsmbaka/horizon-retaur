@@ -395,9 +395,96 @@
         "padding-block-start": 0,
         "padding-block-end": 0
       }
+    },
+    "marquee_6yhenn": {
+      "type": "marquee",
+      "blocks": {
+        "text_r3nR6T": {
+          "type": "text",
+          "settings": {
+            "text": "<p>We make things that work better and last longer.</p>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "nowrap",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        }
+      },
+      "block_order": [
+        "text_r3nR6T"
+      ],
+      "name": "t:names.marquee_section",
+      "settings": {
+        "movement_direction": "normal",
+        "color_scheme": "",
+        "padding-block-start": 24,
+        "padding-block-end": 24,
+        "gap_between_elements": 24
+      }
+    },
+    "video_testimonials_wNiefN": {
+      "type": "video-testimonials",
+      "name": "Video Testimonials",
+      "settings": {
+        "heading": "Happy Customers",
+        "heading_alignment": "center",
+        "heading_preset": "h2",
+        "heading_font": "var(--font-body--family)",
+        "heading_font_size": "2rem",
+        "heading_line_height": "normal",
+        "heading_letter_spacing": "normal",
+        "heading_case": "none",
+        "heading_wrap": "pretty",
+        "heading_color": "var(--color-foreground-heading)",
+        "customer_name_1": "Customer Name",
+        "rating_1": 5,
+        "customer_name_2": "Customer Name",
+        "rating_2": 5,
+        "customer_name_3": "Customer Name",
+        "rating_3": 5,
+        "customer_name_4": "",
+        "rating_4": 5,
+        "customer_name_5": "",
+        "rating_5": 5,
+        "customer_name_6": "",
+        "rating_6": 5,
+        "rating_color": "accent",
+        "star_size": 16,
+        "layout_type": "grid",
+        "carousel_on_mobile": true,
+        "columns": 3,
+        "mobile_columns": "1",
+        "mobile_card_size": "85cqw",
+        "columns_gap": 16,
+        "rows_gap": 16,
+        "icons_style": "arrow",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "gap": 24,
+        "color_scheme": "",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "marquee_6yhenn",
+    "video_testimonials_wNiefN"
   ]
 }
