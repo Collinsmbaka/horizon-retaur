@@ -202,7 +202,7 @@
                   "settings": {},
                   "blocks": {}
                 },
-                "add_to_cart": {
+                "add-to-cart": {
                   "type": "add-to-cart",
                   "static": true,
                   "settings": {
@@ -210,7 +210,7 @@
                   },
                   "blocks": {}
                 },
-                "accelerated_checkout": {
+                "accelerated-checkout": {
                   "type": "accelerated-checkout",
                   "static": true,
                   "settings": {},
