@@ -742,10 +742,10 @@
                       "settings": {
                         "link": "",
                         "open_in_new_tab": false,
-                        "content_direction": "column",
-                        "vertical_on_mobile": true,
+                        "content_direction": "row",
+                        "vertical_on_mobile": false,
                         "horizontal_alignment": "flex-start",
-                        "vertical_alignment": "center",
+                        "vertical_alignment": "flex-start",
                         "align_baseline": false,
                         "horizontal_alignment_flex_direction_column": "flex-start",
                         "vertical_alignment_flex_direction_column": "center",
@@ -775,7 +775,49 @@
                         "padding-inline-start": 0,
                         "padding-inline-end": 0
                       },
-                      "blocks": {}
+                      "blocks": {
+                        "icon_MUgCRG": {
+                          "type": "icon",
+                          "name": "t:names.icon",
+                          "settings": {
+                            "icon": "star",
+                            "width": 18,
+                            "link": "",
+                            "open_in_new_tab": false
+                          },
+                          "blocks": {}
+                        },
+                        "text_rP3xWn": {
+                          "type": "text",
+                          "name": "t:names.text",
+                          "settings": {
+                            "text": "<p>Promotes Muscle Growth and Repair</p>",
+                            "width": "fit-content",
+                            "max_width": "normal",
+                            "alignment": "left",
+                            "type_preset": "rte",
+                            "font": "var(--font-body--family)",
+                            "font_size": "1rem",
+                            "line_height": "normal",
+                            "letter_spacing": "normal",
+                            "case": "none",
+                            "wrap": "pretty",
+                            "color": "var(--color-foreground)",
+                            "background": false,
+                            "background_color": "#00000026",
+                            "corner_radius": 0,
+                            "padding-block-start": 0,
+                            "padding-block-end": 0,
+                            "padding-inline-start": 0,
+                            "padding-inline-end": 0
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "icon_MUgCRG",
+                        "text_rP3xWn"
+                      ]
                     }
                   },
                   "block_order": [
