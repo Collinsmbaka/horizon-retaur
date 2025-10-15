@@ -1779,7 +1779,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_dash_row",
               "settings": {
-                "heading": "When will I get my order?",
+                "heading": "Is Creatine only for bodybuilders and athletes?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -1789,7 +1789,7 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>We will work quickly to ship your order as soon as possible. Once your order has shipped, you will receive an email with further information. Delivery times vary depending on your location.</p>",
+                    "text": "<p>While creatine is popular among bodybuilders and athletes due to its performance-enhancing effects, it can also benefit individuals engaged in various forms of exercise, including resistance training, high-intensity interval training, and endurance activities.</p>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
@@ -1820,7 +1820,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_dash_row",
               "settings": {
-                "heading": "Where are your products manufactured?",
+                "heading": "How best should I take Creatine for the best results?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
