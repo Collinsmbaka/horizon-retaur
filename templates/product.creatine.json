@@ -1943,7 +1943,7 @@
               "type": "_accordion-row",
               "name": "t:names.accordion_dash_row",
               "settings": {
-                "heading": "Can I take Creatine daily?",
+                "heading": "Can women use creatine, or is it just for men?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -1953,9 +1953,9 @@
                   "type": "text",
                   "name": "t:names.text",
                   "settings": {
-                    "text": "<p>Yes, you can take creatine daily. In fact, for most individuals, taking creatine daily is the standard recommendation to maintain muscle creatine stores at optimal levels.<br/><br/>Taking creatine daily ensures that your muscles remain saturated with creatine, maxing the potential for muscle gains and recovery.</p>",
+                    "text": "<p>Creatine can be beneficial for both men and women looking to improve their fitness performance or increase muscle mass. There is no evidence to suggest that it is exclusive to men, and many women athletes use creatine as part of their training regimen.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
