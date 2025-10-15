@@ -1739,7 +1739,7 @@
             "accordion_row_hYUegB": {
               "type": "_accordion-row",
               "settings": {
-                "heading": "Are any purchases final sale?",
+                "heading": "Is Creatine safe to use?",
                 "open_by_default": false,
                 "icon": "none",
                 "width": 20
@@ -1748,9 +1748,9 @@
                 "text_fnmy9Q": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>We are unable to accept returns on certain items. These will be carefully marked before purchase.</p>",
+                    "text": "<p>Yes, creatine is one of the most researched supplements and has been proven to be safe for most people when used as directed. Always stick to the recommended dosages and consult with a healthcare professional if you have any underlying health conditions like kidney infection.</p>",
                     "width": "100%",
-                    "max_width": "normal",
+                    "max_width": "none",
                     "alignment": "left",
                     "type_preset": "rte",
                     "font": "var(--font-body--family)",
