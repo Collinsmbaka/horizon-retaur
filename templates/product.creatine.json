@@ -1897,6 +1897,88 @@
               "block_order": [
                 "text_FpJwNp"
               ]
+            },
+            "accordion_row_3HXVrP": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_dash_row",
+              "settings": {
+                "heading": "Can I take Creatine daily?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_UWQY4G": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Yes, you can take creatine daily. In fact, for most individuals, taking creatine daily is the standard recommendation to maintain muscle creatine stores at optimal levels.<br/><br/>Taking creatine daily ensures that your muscles remain saturated with creatine, maxing the potential for muscle gains and recovery.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_UWQY4G"
+              ]
+            },
+            "accordion_row_PJkA4L": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_dash_row",
+              "settings": {
+                "heading": "Can I take Creatine daily?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_eYBtHa": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>Yes, you can take creatine daily. In fact, for most individuals, taking creatine daily is the standard recommendation to maintain muscle creatine stores at optimal levels.<br/><br/>Taking creatine daily ensures that your muscles remain saturated with creatine, maxing the potential for muscle gains and recovery.</p>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_eYBtHa"
+              ]
             }
           },
           "block_order": [
@@ -1904,7 +1986,9 @@
             "accordion_row_hYUegB",
             "accordion_row_8UQgDK",
             "accordion_row_RPgiaU",
-            "accordion_row_zKUTaj"
+            "accordion_row_zKUTaj",
+            "accordion_row_3HXVrP",
+            "accordion_row_PJkA4L"
           ]
         }
       },
