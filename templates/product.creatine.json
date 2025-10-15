@@ -608,7 +608,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<h2>Our signature product.</h2>",
+                "text": "<p>Retaur Micronized Creatine Powder</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
