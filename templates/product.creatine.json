@@ -1979,6 +1979,47 @@
               "block_order": [
                 "text_eYBtHa"
               ]
+            },
+            "accordion_row_m3yndR": {
+              "type": "_accordion-row",
+              "name": "t:names.accordion_dash_row",
+              "settings": {
+                "heading": "Does Creatine cause Acne?",
+                "open_by_default": false,
+                "icon": "none",
+                "width": 20
+              },
+              "blocks": {
+                "text_jaPxzW": {
+                  "type": "text",
+                  "name": "t:names.text",
+                  "settings": {
+                    "text": "<p>There is no proven evidence that creatine causes acne. Infact, creatine may have some benefits for your skin, especially in helping to fight aging.<br/><br/>Additionally, there is some evidence that creatine can help fight wrinkles or sagging and sun damaged skin.</p>",
+                    "width": "100%",
+                    "max_width": "none",
+                    "alignment": "left",
+                    "type_preset": "rte",
+                    "font": "var(--font-body--family)",
+                    "font_size": "1rem",
+                    "line_height": "normal",
+                    "letter_spacing": "normal",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                }
+              },
+              "block_order": [
+                "text_jaPxzW"
+              ]
             }
           },
           "block_order": [
@@ -1988,7 +2029,8 @@
             "accordion_row_RPgiaU",
             "accordion_row_zKUTaj",
             "accordion_row_3HXVrP",
-            "accordion_row_PJkA4L"
+            "accordion_row_PJkA4L",
+            "accordion_row_m3yndR"
           ]
         }
       },
