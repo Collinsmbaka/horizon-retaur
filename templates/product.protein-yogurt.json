@@ -114,7 +114,7 @@
                 "text_xrnftG": {
                   "type": "text",
                   "settings": {
-                    "text": "<h1>{{ closest.product.title }}</h1>",
+                    "text": "<h1>Protein Yogurts</h1>",
                     "width": "100%",
                     "max_width": "normal",
                     "alignment": "left",
