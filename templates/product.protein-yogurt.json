@@ -387,7 +387,7 @@
                 "accordion_row_tpdR67": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Manufacturing",
+                    "heading": "Ingredients",
                     "open_by_default": false,
                     "icon": "none",
                     "width": 20
@@ -396,7 +396,7 @@
                     "text_wTAKrq": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Our products are manufactured both locally and globally. We carefully select our manufacturing partners to ensure our products are high quality and a fair value.</p>",
+                        "text": "<p>Low-Fat Milk, Whey Protein Concentrate, Sugar</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
