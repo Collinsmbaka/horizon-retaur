@@ -309,16 +309,16 @@
                 "accordion_row_4E6p7j": {
                   "type": "_accordion-row",
                   "settings": {
-                    "heading": "Return policy",
+                    "heading": "How to use",
                     "open_by_default": true,
-                    "icon": "none",
+                    "icon": "apple",
                     "width": 20
                   },
                   "blocks": {
                     "text_f6htT4": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Our goal is for every customer to be totally satisfied with their purchase. If this isn't the case, let us know and we'll do our best to work with you to make it right.</p>",
+                        "text": "<p>Enjoy the Yogurt with your granola. <br/>Use as a salad dressing.<br/>Enjoy it as a healthy high-protein snack alone or with fruits<br/>Use it for your parfaits, pancakes, bakeries, or protein shakes.</p>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
