@@ -1039,7 +1039,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>High-quality protein fuels your muscles after workouts, promoting faster recovery and growth for optimal physical performance.</p>",
+                        "text": "<p>Beneficial probiotics support digestive wellness while extra protein nourishes your body for total health benefits.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -1320,7 +1320,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>High-quality protein fuels your muscles after workouts, promoting faster recovery and growth for optimal physical performance.</p>",
+                        "text": "<p>Our protein-rich formula keeps hunger at bay longer than regular yogurts, helping you stay satisfied between meals.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
@@ -1487,7 +1487,7 @@
                       "type": "text",
                       "name": "t:names.text",
                       "settings": {
-                        "text": "<p>High-quality protein fuels your muscles after workouts, promoting faster recovery and growth for optimal physical performance.</p>",
+                        "text": "<p>Our protein-rich formula keeps hunger at bay longer than regular yogurts, helping you stay satisfied between meals.</p>",
                         "width": "fit-content",
                         "max_width": "normal",
                         "alignment": "left",
