@@ -30,47 +30,47 @@
         "scored_question_A6QRqp": {
           "type": "scored_question",
           "settings": {
-            "question_text": "Question text goes here",
+            "question_text": "Which statement is most true for you?",
             "label_a": "Option A",
             "label_b": "Option B",
             "label_c": "Option C",
-            "answer_a": "Answer A",
-            "answer_b": "Answer B",
-            "answer_c": "Answer C"
+            "answer_a": "I eat a lot but stay skinny - Where does the food go?",
+            "answer_b": "I can gain or lose weight fairly easily depending on what I do",
+            "answer_c": "I gain weight very easily - have to watch what I eat"
           }
         },
         "scored_question_bKRm96": {
           "type": "scored_question",
           "settings": {
-            "question_text": "Question text goes here",
+            "question_text": "When you work out consistently for a month, what happens?",
             "label_a": "Option A",
             "label_b": "Option B",
             "label_c": "Option C",
-            "answer_a": "Answer A",
-            "answer_b": "Answer B",
-            "answer_c": "Answer C"
+            "answer_a": "Very little change - I get stronger but don't look bigger",
+            "answer_b": "I see noticeable muscle growth and definition",
+            "answer_c": "I get bigger and stronger, but also gain fat easily"
           }
         },
         "scored_question_Y94WTk": {
           "type": "scored_question",
           "settings": {
-            "question_text": "Question text goes here",
+            "question_text": "What's your BIGGEST frustration right now?",
             "label_a": "Option A",
             "label_b": "Option B",
             "label_c": "Option C",
-            "answer_a": "Answer A",
-            "answer_b": "Answer B",
-            "answer_c": "Answer C"
+            "answer_a": "I can't gain weight/muscle no matter how much I eat or train",
+            "answer_b": "I know what to do, but can't stay consistent long-term",
+            "answer_c": "I gain weight easily but it's mostly fat, not muscle"
           }
         },
         "qualification_question_9nqeRy": {
           "type": "qualification_question",
           "settings": {
-            "question_text": "Question text goes here",
-            "answer_a": "Answer A",
-            "answer_b": "Answer B",
-            "answer_c": "Answer C",
-            "answer_d": "",
+            "question_text": "How serious are you about transforming your body?",
+            "answer_a": "Just curious, exploring options",
+            "answer_b": "Interested, but not ready to invest yet",
+            "answer_c": "Serious - I'd invest in the right program",
+            "answer_d": "Very serious - I'm ready to do whatever it takes",
             "answer_e": ""
           }
         }
