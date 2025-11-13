@@ -77,11 +77,11 @@
         "qualification_question_MherkC": {
           "type": "qualification_question",
           "settings": {
-            "question_text": "Question 5",
-            "answer_a": "Answer A",
-            "answer_b": "Answer B",
-            "answer_c": "Answer C",
-            "answer_d": "",
+            "question_text": "How serious are you about transforming your body?",
+            "answer_a": "Just curious, exploring options",
+            "answer_b": "Interested, but not ready to invest yet",
+            "answer_c": "Serious - I'd invest in the right program",
+            "answer_d": "Very serious - I'm ready to do whatever it takes",
             "answer_e": ""
           }
         }
