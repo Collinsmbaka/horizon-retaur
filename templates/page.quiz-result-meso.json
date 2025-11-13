@@ -27,7 +27,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>YOU'RE AN ECTOMORPH</p>",
+            "text": "<p>YOU'RE A MESOMORPH</p>",
             "width": "100%",
             "max_width": "narrow",
             "alignment": "center",
@@ -79,7 +79,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<ul><li>Naturally thin with fast metabolism</li><li>Small bone structure, narrow shoulders</li><li>Struggles to gain weight (muscle OR fat)</li><li>Burns calories like a furnace</li></ul>",
+            "text": "<ul><li>Athletic build with broad shoulders</li><li>Gain muscle relatively easily</li><li>Medium metabolism</li><li>Lucky genetics (you won the lottery)</li></ul>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "left",
@@ -142,7 +142,7 @@
         "image_PLKMHd": {
           "type": "image",
           "settings": {
-            "image": "shopify://shop_images/CleanShot_2025-11-12_at_11.29.30_2x_b1f0e293-cc33-4051-aed0-f5b9f315d052.png",
+            "image": "shopify://shop_images/CleanShot_2025-11-12_at_11.29.38_2x_7a705a58-ebcc-4804-b817-0cf576021620.png",
             "link": "",
             "image_ratio": "square",
             "width": "fill",
@@ -204,7 +204,7 @@
               "type": "text",
               "name": "t:names.heading",
               "settings": {
-                "text": "<p>Why You Can't Gain Muscle:</p>",
+                "text": "<p>Why You're Not Where You Want To Be:</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -229,7 +229,7 @@
             "text_UaykWg": {
               "type": "text",
               "settings": {
-                "text": "<p>You've been doing it wrong.<br/><br/>Every \"bulk up\" program online is designed for average body types - not extreme ectomorphs like you.<br/><br/><strong>You're probably:</strong></p>",
+                "text": "<p>You have the BEST genetics for building muscle. So why aren't you jacked?<br/><br/><strong>One word: CONSISTENCY.</strong><br/><br/>You get \"okay\" results with minimal effort. So you train hard for 3 weeks, see some progress, then fall off for 2 months.<br/><br/>You're the guy who \"could be\" incredible... but never commits.<br/><br/>You don't need more knowledge. </p><p><strong>You need:</strong></p>",
                 "width": "100%",
                 "max_width": "narrow",
                 "alignment": "left",
@@ -627,6 +627,8 @@
         "submit_button_text": "Join 7 Day Challenge",
         "loading_text": "Submitting...",
         "error_message": "Something went wrong. Please try again.",
+        "padding_top": 80,
+        "padding_bottom": 80,
         "webhook_url": "https://hook.us2.make.com/ldvmt9bsvgp5nb8ua8k1vmb0egr1rtx2",
         "whatsapp_group_url": "https://chat.whatsapp.com/LnK2VYdl6ZSIUPl9gSYVMS",
         "quiz_page_url": "https://retaur.com/pages/body-type-quiz"
