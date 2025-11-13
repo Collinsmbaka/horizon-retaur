@@ -48,10 +48,64 @@
             "padding-inline-end": 0
           },
           "blocks": {}
+        },
+        "text_UNpreq": {
+          "type": "text",
+          "name": "t:names.heading",
+          "settings": {
+            "text": "<p>Your Body Type:</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "center",
+            "type_preset": "h3",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "text_ADPYLj": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p>Naturally thin with fast metabolismSmall bone structure, narrow shoulders<br/>Struggles to gain weight (muscle OR fat)<br/>Burns calories like a furnace</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         }
       },
       "block_order": [
-        "text_hrDh9W"
+        "text_hrDh9W",
+        "text_UNpreq",
+        "text_ADPYLj"
       ],
       "name": "t:names.large_logo",
       "settings": {
@@ -60,11 +114,11 @@
         "horizontal_alignment": "flex-start",
         "vertical_alignment": "center",
         "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
+        "horizontal_alignment_flex_direction_column": "center",
         "vertical_alignment_flex_direction_column": "space-between",
-        "gap": 16,
+        "gap": 20,
         "section_width": "page-width",
-        "section_height": "medium",
+        "section_height": "",
         "section_height_custom": 50,
         "color_scheme": "scheme-3",
         "background_media": "none",
