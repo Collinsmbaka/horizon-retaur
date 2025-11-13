@@ -1,0 +1,166 @@
+{{ 'quiz-result-form.css' | asset_url | stylesheet_tag }}
+
+<div class="quiz-result-form" data-section-id="{{ section.id }}">
+  <div class="result-form-container">
+    {% comment %} Form Header {% endcomment %}
+    {% if section.settings.form_heading != blank %}
+      <h2 class="form-heading">{{ section.settings.form_heading }}</h2>
+    {% endif %}
+
+    {% comment %} Lead Capture Form {% endcomment %}
+    <form class="result-form" id="resultForm">
+      {% comment %} Full Name Field {% endcomment %}
+      <div class="form-group">
+        <label for="fullName" class="form-label">
+          {{ section.settings.name_label }}
+        </label>
+        <input
+          type="text"
+          id="fullName"
+          name="fullName"
+          class="form-input"
+          required
+          autocomplete="name"
+        >
+      </div>
+
+      {% comment %} WhatsApp Number Field {% endcomment %}
+      <div class="form-group">
+        <label for="whatsappNumber" class="form-label">
+          {{ section.settings.whatsapp_label }}
+        </label>
+        <input
+          type="tel"
+          id="whatsappNumber"
+          name="whatsappNumber"
+          class="form-input"
+          placeholder="{{ section.settings.whatsapp_placeholder }}"
+          required
+          autocomplete="tel"
+        >
+      </div>
+
+      {% comment %} Error Message (hidden by default) {% endcomment %}
+      <div class="form-error" id="formError" style="display: none;">
+        {{ section.settings.error_message }}
+      </div>
+
+      {% comment %} Submit Button {% endcomment %}
+      <div class="form-submit-wrapper">
+        <button type="submit" class="form-submit-btn" id="submitBtn">
+          {{ section.settings.submit_button_text }}
+        </button>
+
+        {% comment %} Loading State (hidden by default) {% endcomment %}
+        <div class="form-loading" id="formLoading" style="display: none;">
+          {{ section.settings.loading_text }}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% comment %} Pass settings to JavaScript {% endcomment %}
+<script>
+  window.resultFormSettings = {
+    webhookUrl: {{ section.settings.webhook_url | json }},
+    whatsappGroupUrl: {{ section.settings.whatsapp_group_url | json }},
+    quizPageUrl: {{ section.settings.quiz_page_url | json }}
+  };
+</script>
+
+<script src="{{ 'quiz-result-form.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Quiz Result Form",
+  "tag": "section",
+  "class": "section-quiz-result-form",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Form Content"
+    },
+    {
+      "type": "text",
+      "id": "form_heading",
+      "label": "Form heading",
+      "default": "Join Our WhatsApp Community"
+    },
+    {
+      "type": "header",
+      "content": "Form Fields"
+    },
+    {
+      "type": "text",
+      "id": "name_label",
+      "label": "Full name label",
+      "default": "Full Name"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_label",
+      "label": "WhatsApp number label",
+      "default": "WhatsApp Number"
+    },
+    {
+      "type": "text",
+      "id": "whatsapp_placeholder",
+      "label": "WhatsApp placeholder",
+      "default": "+234 801 234 5678",
+      "info": "Example format shown to users"
+    },
+    {
+      "type": "header",
+      "content": "Button & Messages"
+    },
+    {
+      "type": "text",
+      "id": "submit_button_text",
+      "label": "Submit button text",
+      "default": "Join WhatsApp Group"
+    },
+    {
+      "type": "text",
+      "id": "loading_text",
+      "label": "Loading text",
+      "default": "Submitting...",
+      "info": "Shown during form submission"
+    },
+    {
+      "type": "textarea",
+      "id": "error_message",
+      "label": "Error message",
+      "default": "Something went wrong. Please try again.",
+      "info": "Shown if submission fails"
+    },
+    {
+      "type": "header",
+      "content": "Integration Settings"
+    },
+    {
+      "type": "url",
+      "id": "webhook_url",
+      "label": "Make.com webhook URL",
+      "info": "POST endpoint for form data"
+    },
+    {
+      "type": "url",
+      "id": "whatsapp_group_url",
+      "label": "WhatsApp group invite URL",
+      "info": "Users redirect here after form submission"
+    },
+    {
+      "type": "url",
+      "id": "quiz_page_url",
+      "label": "Quiz page URL",
+      "info": "Redirect here if no quiz data found"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quiz Result Form"
+    }
+  ]
+}
+{% endschema %}

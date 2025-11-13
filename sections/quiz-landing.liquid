@@ -1,0 +1,485 @@
+{{ 'quiz-landing.css' | asset_url | stylesheet_tag }}
+
+<div class="quiz-landing" data-section-id="{{ section.id }}">
+  <div class="quiz-container">
+    {% comment %} Quiz Header {% endcomment %}
+    <div class="quiz-header">
+      {% if section.settings.quiz_heading != blank %}
+        <h1 class="quiz-heading">{{ section.settings.quiz_heading }}</h1>
+      {% endif %}
+      {% if section.settings.quiz_description != blank %}
+        <p class="quiz-description">{{ section.settings.quiz_description }}</p>
+      {% endif %}
+    </div>
+
+    {% comment %} Progress Indicator {% endcomment %}
+    <div class="quiz-progress">
+      <div class="progress-text">
+        <span class="progress-count">0</span> of {{ section.blocks.size }} answered
+      </div>
+      <div class="progress-bar">
+        <div class="progress-fill" style="width: 0%"></div>
+      </div>
+    </div>
+
+    {% comment %} Quiz Form {% endcomment %}
+    <form class="quiz-form" id="bodyTypeQuiz">
+      {% assign question_index = 0 %}
+      {% for block in section.blocks %}
+        {% assign question_index = question_index | plus: 1 %}
+
+        {% comment %} Scored Question Block (for body type calculation) {% endcomment %}
+        {% if block.type == 'scored_question' %}
+          <div class="quiz-question" data-question-id="q{{ question_index }}" data-scored="true" {{ block.shopify_attributes }}>
+            <div class="question-header">
+              <span class="question-number">Question {{ question_index }}</span>
+              <h3 class="question-text">{{ block.settings.question_text }}</h3>
+            </div>
+
+            {% comment %} First scored question: Image-Based {% endcomment %}
+            {% if forloop.index == 1 %}
+              <div class="question-answers question-answers--images">
+                {% comment %} Answer A {% endcomment %}
+                <div class="answer-option answer-option--image">
+                  {% if block.settings.image_a != blank %}
+                    <div class="answer-image-wrapper">
+                      {{ block.settings.image_a | image_url: width: 400 | image_tag: class: 'answer-image', loading: 'lazy', alt: block.settings.label_a }}
+                    </div>
+                  {% endif %}
+                  <div class="answer-radio-wrapper">
+                    <input
+                      type="radio"
+                      name="q{{ question_index }}"
+                      value="A"
+                      id="q{{ question_index }}_a"
+                      class="answer-radio"
+                    >
+                    <label for="q{{ question_index }}_a" class="answer-label">
+                      {{ block.settings.label_a }}
+                    </label>
+                  </div>
+                </div>
+
+                {% comment %} Answer B {% endcomment %}
+                <div class="answer-option answer-option--image">
+                  {% if block.settings.image_b != blank %}
+                    <div class="answer-image-wrapper">
+                      {{ block.settings.image_b | image_url: width: 400 | image_tag: class: 'answer-image', loading: 'lazy', alt: block.settings.label_b }}
+                    </div>
+                  {% endif %}
+                  <div class="answer-radio-wrapper">
+                    <input
+                      type="radio"
+                      name="q{{ question_index }}"
+                      value="B"
+                      id="q{{ question_index }}_b"
+                      class="answer-radio"
+                    >
+                    <label for="q{{ question_index }}_b" class="answer-label">
+                      {{ block.settings.label_b }}
+                    </label>
+                  </div>
+                </div>
+
+                {% comment %} Answer C {% endcomment %}
+                <div class="answer-option answer-option--image">
+                  {% if block.settings.image_c != blank %}
+                    <div class="answer-image-wrapper">
+                      {{ block.settings.image_c | image_url: width: 400 | image_tag: class: 'answer-image', loading: 'lazy', alt: block.settings.label_c }}
+                    </div>
+                  {% endif %}
+                  <div class="answer-radio-wrapper">
+                    <input
+                      type="radio"
+                      name="q{{ question_index }}"
+                      value="C"
+                      id="q{{ question_index }}_c"
+                      class="answer-radio"
+                    >
+                    <label for="q{{ question_index }}_c" class="answer-label">
+                      {{ block.settings.label_c }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+            {% comment %} Other scored questions: Text-Based {% endcomment %}
+            {% else %}
+              <div class="question-answers question-answers--text">
+                <div class="answer-option answer-option--text">
+                  <input
+                    type="radio"
+                    name="q{{ question_index }}"
+                    value="A"
+                    id="q{{ question_index }}_a"
+                    class="answer-radio"
+                  >
+                  <label for="q{{ question_index }}_a" class="answer-label">
+                    {{ block.settings.answer_a }}
+                  </label>
+                </div>
+
+                <div class="answer-option answer-option--text">
+                  <input
+                    type="radio"
+                    name="q{{ question_index }}"
+                    value="B"
+                    id="q{{ question_index }}_b"
+                    class="answer-radio"
+                  >
+                  <label for="q{{ question_index }}_b" class="answer-label">
+                    {{ block.settings.answer_b }}
+                  </label>
+                </div>
+
+                <div class="answer-option answer-option--text">
+                  <input
+                    type="radio"
+                    name="q{{ question_index }}"
+                    value="C"
+                    id="q{{ question_index }}_c"
+                    class="answer-radio"
+                  >
+                  <label for="q{{ question_index }}_c" class="answer-label">
+                    {{ block.settings.answer_c }}
+                  </label>
+                </div>
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% comment %} Qualification Question Block (for lead data) {% endcomment %}
+        {% if block.type == 'qualification_question' %}
+          <div class="quiz-question" data-question-id="q{{ question_index }}" data-scored="false" {{ block.shopify_attributes }}>
+            <div class="question-header">
+              <span class="question-number">Question {{ question_index }}</span>
+              <h3 class="question-text">{{ block.settings.question_text }}</h3>
+            </div>
+
+            <div class="question-answers question-answers--text">
+              <div class="answer-option answer-option--text">
+                <input
+                  type="radio"
+                  name="q{{ question_index }}"
+                  value="A"
+                  id="q{{ question_index }}_a"
+                  class="answer-radio"
+                >
+                <label for="q{{ question_index }}_a" class="answer-label">
+                  {{ block.settings.answer_a }}
+                </label>
+              </div>
+
+              <div class="answer-option answer-option--text">
+                <input
+                  type="radio"
+                  name="q{{ question_index }}"
+                  value="B"
+                  id="q{{ question_index }}_b"
+                  class="answer-radio"
+                >
+                <label for="q{{ question_index }}_b" class="answer-label">
+                  {{ block.settings.answer_b }}
+                </label>
+              </div>
+
+              <div class="answer-option answer-option--text">
+                <input
+                  type="radio"
+                  name="q{{ question_index }}"
+                  value="C"
+                  id="q{{ question_index }}_c"
+                  class="answer-radio"
+                >
+                <label for="q{{ question_index }}_c" class="answer-label">
+                  {{ block.settings.answer_c }}
+                </label>
+              </div>
+
+              {% if block.settings.answer_d != blank %}
+                <div class="answer-option answer-option--text">
+                  <input
+                    type="radio"
+                    name="q{{ question_index }}"
+                    value="D"
+                    id="q{{ question_index }}_d"
+                    class="answer-radio"
+                  >
+                  <label for="q{{ question_index }}_d" class="answer-label">
+                    {{ block.settings.answer_d }}
+                  </label>
+                </div>
+              {% endif %}
+
+              {% if block.settings.answer_e != blank %}
+                <div class="answer-option answer-option--text">
+                  <input
+                    type="radio"
+                    name="q{{ question_index }}"
+                    value="E"
+                    id="q{{ question_index }}_e"
+                    class="answer-radio"
+                  >
+                  <label for="q{{ question_index }}_e" class="answer-label">
+                    {{ block.settings.answer_e }}
+                  </label>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+
+      {% comment %} Submit Button {% endcomment %}
+      <div class="quiz-submit-wrapper">
+        <button type="submit" class="quiz-submit-btn" disabled>
+          {{ section.settings.submit_button_text }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% comment %} Pass settings to JavaScript {% endcomment %}
+<script>
+  window.quizSettings = {
+    ectomorphUrl: {{ section.settings.ectomorph_url | json }},
+    mesomorphUrl: {{ section.settings.mesomorph_url | json }},
+    endomorphUrl: {{ section.settings.endomorph_url | json }}
+  };
+</script>
+
+<script src="{{ 'quiz-landing.js' | asset_url }}" defer></script>
+
+{% schema %}
+{
+  "name": "Body Type Quiz",
+  "tag": "section",
+  "class": "section-quiz-landing",
+  "settings": [
+    {
+      "type": "text",
+      "id": "quiz_heading",
+      "label": "Quiz heading",
+      "default": "Discover Your Body Type"
+    },
+    {
+      "type": "textarea",
+      "id": "quiz_description",
+      "label": "Quiz description",
+      "default": "Answer these questions to discover your unique body type and get personalized recommendations."
+    },
+    {
+      "type": "text",
+      "id": "submit_button_text",
+      "label": "Submit button text",
+      "default": "Get my body type"
+    },
+    {
+      "type": "header",
+      "content": "Result Page URLs"
+    },
+    {
+      "type": "url",
+      "id": "ectomorph_url",
+      "label": "Ectomorph result page URL",
+      "info": "Page URL for Ectomorph results"
+    },
+    {
+      "type": "url",
+      "id": "mesomorph_url",
+      "label": "Mesomorph result page URL",
+      "info": "Page URL for Mesomorph results"
+    },
+    {
+      "type": "url",
+      "id": "endomorph_url",
+      "label": "Endomorph result page URL",
+      "info": "Page URL for Endomorph results"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "scored_question",
+      "name": "Scored Question",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Questions 1-4 are used to calculate body type. First question uses images, others use text answers."
+        },
+        {
+          "type": "text",
+          "id": "question_text",
+          "label": "Question text",
+          "default": "Question text goes here"
+        },
+        {
+          "type": "header",
+          "content": "Image Options (First Question Only)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_a",
+          "label": "Image A"
+        },
+        {
+          "type": "text",
+          "id": "label_a",
+          "label": "Label for A",
+          "default": "Option A",
+          "info": "Used for image-based first question"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_b",
+          "label": "Image B"
+        },
+        {
+          "type": "text",
+          "id": "label_b",
+          "label": "Label for B",
+          "default": "Option B",
+          "info": "Used for image-based first question"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_c",
+          "label": "Image C"
+        },
+        {
+          "type": "text",
+          "id": "label_c",
+          "label": "Label for C",
+          "default": "Option C",
+          "info": "Used for image-based first question"
+        },
+        {
+          "type": "header",
+          "content": "Text Options (Questions 2-4)"
+        },
+        {
+          "type": "text",
+          "id": "answer_a",
+          "label": "Answer A",
+          "default": "Answer A",
+          "info": "Used for text-based questions"
+        },
+        {
+          "type": "text",
+          "id": "answer_b",
+          "label": "Answer B",
+          "default": "Answer B",
+          "info": "Used for text-based questions"
+        },
+        {
+          "type": "text",
+          "id": "answer_c",
+          "label": "Answer C",
+          "default": "Answer C",
+          "info": "Used for text-based questions"
+        }
+      ]
+    },
+    {
+      "type": "qualification_question",
+      "name": "Qualification Question",
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Qualification questions are for lead data collection only and do not affect body type calculation. You can add as many as needed."
+        },
+        {
+          "type": "text",
+          "id": "question_text",
+          "label": "Question text",
+          "default": "Question text goes here"
+        },
+        {
+          "type": "text",
+          "id": "answer_a",
+          "label": "Answer A",
+          "default": "Answer A"
+        },
+        {
+          "type": "text",
+          "id": "answer_b",
+          "label": "Answer B",
+          "default": "Answer B"
+        },
+        {
+          "type": "text",
+          "id": "answer_c",
+          "label": "Answer C",
+          "default": "Answer C"
+        },
+        {
+          "type": "text",
+          "id": "answer_d",
+          "label": "Answer D (optional)",
+          "info": "Leave blank if only 3 answers needed"
+        },
+        {
+          "type": "text",
+          "id": "answer_e",
+          "label": "Answer E (optional)",
+          "info": "Leave blank if only 3-4 answers needed"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Body Type Quiz",
+      "blocks": [
+        {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "Which body frame describes you best?",
+            "label_a": "Ectomorph",
+            "label_b": "Mesomorph",
+            "label_c": "Endomorph"
+          }
+        },
+        {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "Question 2",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C"
+          }
+        },
+        {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "Question 3",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C"
+          }
+        },
+        {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "Question 4",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C"
+          }
+        },
+        {
+          "type": "qualification_question",
+          "settings": {
+            "question_text": "Question 5",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,446 @@
+/**
+ * Body Type Quiz - Landing Page Styles
+ * Mobile-first approach matching Horizon theme standards
+ */
+
+/* ==========================================================================
+   Quiz Container
+   ========================================================================== */
+
+.quiz-landing {
+  --padding-block: 0px;
+  --padding-block-start: var(--padding-block, 40px);
+  --padding-block-end: var(--padding-block, 80px);
+  --padding-inline: 0px;
+  --padding-inline-start: var(--padding-inline, 0px);
+  --padding-inline-end: var(--padding-inline, 0px);
+}
+
+.quiz-container {
+  /* Use theme page width variables */
+  max-width: min(var(--page-content-width, var(--narrow-page-width)), 100% - var(--page-margin) * 2);
+  margin-inline: auto;
+  padding-block: var(--padding-block-start) var(--padding-block-end);
+  padding-inline: var(--padding-inline-start) var(--padding-inline-end);
+}
+
+/* ==========================================================================
+   Quiz Header
+   ========================================================================== */
+
+.quiz-header {
+  text-align: center;
+  margin-block-end: var(--padding-2xl, 48px);
+}
+
+.quiz-heading {
+  /* Use theme H1 styles */
+  font-family: var(--font-h1--family);
+  font-style: var(--font-h1--style);
+  font-weight: var(--font-h1--weight);
+  font-size: var(--font-h1--size);
+  line-height: var(--font-h1--line-height);
+  letter-spacing: var(--font-h1--letter-spacing);
+  text-transform: var(--font-h1--case);
+  color: var(--color-foreground);
+  margin-block-end: var(--padding-md, 16px);
+}
+
+.quiz-description {
+  /* Use theme paragraph styles */
+  font-family: var(--font-paragraph--family);
+  font-style: var(--font-paragraph--style);
+  font-weight: var(--font-paragraph--weight);
+  font-size: var(--font-paragraph--size);
+  line-height: var(--font-paragraph--line-height);
+  color: var(--color-foreground);
+  max-width: 60ch;
+  margin-inline: auto;
+}
+
+/* ==========================================================================
+   Progress Indicator
+   ========================================================================== */
+
+.quiz-progress {
+  margin-block-end: var(--padding-2xl, 48px);
+  /* Sticky positioning on scroll */
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--color-background);
+  padding-block: var(--padding-md, 16px);
+  margin-inline: calc(var(--padding-inline-start) * -1) calc(var(--padding-inline-end) * -1);
+  padding-inline: var(--padding-inline-start) var(--padding-inline-end);
+  /* Subtle shadow when sticky */
+  box-shadow: 0 2px 8px rgb(var(--color-foreground-rgb) / 0.05);
+  transition: box-shadow 0.3s ease;
+}
+
+.progress-text {
+  font-family: var(--font-paragraph--family);
+  font-size: var(--font-paragraph--size);
+  font-weight: var(--font-h3--weight);
+  color: var(--color-foreground);
+  margin-block-end: var(--padding-sm, 12px);
+  text-align: center;
+}
+
+.progress-count {
+  font-weight: var(--font-h2--weight);
+  color: var(--color-primary);
+}
+
+.progress-bar {
+  height: 8px;
+  background-color: rgb(var(--color-foreground-rgb) / 0.1);
+  border-radius: var(--style-border-radius-buttons-primary, 4px);
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background-color: var(--color-primary);
+  border-radius: var(--style-border-radius-buttons-primary, 4px);
+  transition: width 0.3s var(--animation-easing, ease);
+}
+
+/* ==========================================================================
+   Quiz Form
+   ========================================================================== */
+
+.quiz-form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-2xl, 48px);
+}
+
+/* ==========================================================================
+   Question Block
+   ========================================================================== */
+
+.quiz-question {
+  padding-block-end: var(--padding-2xl, 48px);
+  border-block-end: 1px solid rgb(var(--color-foreground-rgb) / 0.1);
+}
+
+.quiz-question:last-of-type {
+  border-block-end: none;
+  padding-block-end: 0;
+}
+
+.question-header {
+  margin-block-end: var(--padding-lg, 24px);
+}
+
+.question-number {
+  display: block;
+  font-family: var(--font-paragraph--family);
+  font-size: calc(var(--font-paragraph--size) * 0.875);
+  font-weight: var(--button-font-weight-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+  margin-block-end: var(--padding-xs, 8px);
+}
+
+.question-text {
+  /* Use theme H3 styles */
+  font-family: var(--font-h3--family);
+  font-style: var(--font-h3--style);
+  font-weight: var(--font-h3--weight);
+  font-size: var(--font-h3--size);
+  line-height: var(--font-h3--line-height);
+  letter-spacing: var(--font-h3--letter-spacing);
+  text-transform: var(--font-h3--case);
+  color: var(--color-foreground);
+}
+
+/* ==========================================================================
+   Image-Based Answers (Question 1)
+   ========================================================================== */
+
+.question-answers--images {
+  display: grid;
+  gap: var(--padding-lg, 24px);
+  grid-template-columns: 1fr;
+}
+
+@media screen and (min-width: 750px) {
+  .question-answers--images {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--padding-xl, 32px);
+  }
+}
+
+.answer-option--image {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-md, 16px);
+  align-items: center;
+  cursor: pointer;
+  transition: transform var(--hover-transition-duration, 0.25s) var(--hover-transition-timing, ease-out);
+}
+
+.answer-option--image:hover {
+  transform: translateY(-2px);
+}
+
+.answer-image-wrapper {
+  width: 100%;
+  max-width: 320px;
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--style-border-radius-buttons-primary, 8px);
+  box-shadow: 0 0 0 2px rgb(var(--color-foreground-rgb) / 0.1);
+  transition: box-shadow var(--hover-transition-duration, 0.25s) var(--hover-transition-timing, ease-out);
+}
+
+@media screen and (min-width: 750px) {
+  .answer-image-wrapper {
+    max-width: 100%;
+  }
+}
+
+.answer-image {
+  width: 100%;
+  height: auto;
+  /* Equal height for all images - shorter on mobile for better UX */
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+@media screen and (min-width: 750px) {
+  .answer-image {
+    /* Taller aspect ratio on desktop */
+    aspect-ratio: 3 / 4;
+  }
+}
+
+/* Selected state for images */
+.answer-option--image:has(.answer-radio:checked) .answer-image-wrapper {
+  box-shadow: 0 0 0 3px var(--color-primary);
+}
+
+.answer-option--image:has(.answer-radio:focus-visible) .answer-image-wrapper {
+  box-shadow: 0 0 0 3px var(--color-primary), 0 0 0 5px rgb(var(--color-foreground-rgb) / 0.1);
+}
+
+.answer-radio-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--padding-sm, 12px);
+  width: 100%;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Text-Based Answers (Questions 2-5+)
+   ========================================================================== */
+
+.question-answers--text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--padding-md, 16px);
+}
+
+.answer-option--text {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--padding-sm, 12px);
+  padding: var(--padding-md, 16px);
+  border-radius: var(--style-border-radius-buttons-primary, 8px);
+  border: 1px solid rgb(var(--color-foreground-rgb) / 0.15);
+  background-color: var(--color-background);
+  cursor: pointer;
+  transition: all var(--animation-speed, 0.2s) var(--animation-easing, ease);
+}
+
+.answer-option--text:hover {
+  border-color: rgb(var(--color-foreground-rgb) / 0.25);
+  background-color: rgb(var(--color-foreground-rgb) / 0.02);
+}
+
+.answer-option--text:has(.answer-radio:checked) {
+  border-color: var(--color-primary);
+  background-color: rgb(var(--color-primary-rgb, var(--color-foreground-rgb)) / 0.05);
+}
+
+.answer-option--text:has(.answer-radio:focus-visible) {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ==========================================================================
+   Radio Buttons
+   ========================================================================== */
+
+.answer-radio {
+  /* Custom radio button */
+  appearance: none;
+  width: 22px;
+  height: 22px;
+  min-width: 22px;
+  border-radius: 50%;
+  border: 1px solid rgb(var(--color-foreground-rgb) / 0.35);
+  background-color: var(--color-background);
+  cursor: pointer;
+  position: relative;
+  margin: 0;
+  transition: all var(--animation-speed, 0.2s) var(--animation-easing, ease);
+}
+
+.answer-radio:hover {
+  border-color: rgb(var(--color-foreground-rgb) / 0.5);
+}
+
+.answer-radio:checked {
+  border-color: var(--color-primary);
+  border-width: 6px;
+}
+
+.answer-radio:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.answer-label {
+  /* Use theme paragraph styles */
+  font-family: var(--font-paragraph--family);
+  font-style: var(--font-paragraph--style);
+  font-weight: var(--font-paragraph--weight);
+  font-size: var(--font-paragraph--size);
+  line-height: var(--font-paragraph--line-height);
+  color: var(--color-foreground);
+  cursor: pointer;
+  flex: 1;
+  user-select: none;
+  /* Increase touch target */
+  padding-block: var(--padding-2xs, 4px);
+}
+
+.answer-option--image .answer-label {
+  font-weight: var(--button-font-weight-primary);
+  text-align: center;
+}
+
+/* ==========================================================================
+   Submit Button
+   ========================================================================== */
+
+.quiz-submit-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-block-start: var(--padding-lg, 24px);
+}
+
+@media screen and (min-width: 750px) {
+  .quiz-submit-wrapper {
+    /* Add space between button and footer on desktop */
+    margin-block-end: var(--padding-3xl, 64px);
+  }
+}
+
+.quiz-submit-btn {
+  /* Use theme primary button styles */
+  --button-color: var(--color-primary-button-text);
+  --button-background-color: var(--color-primary-button-background);
+  --button-border-color: var(--color-primary-button-border);
+  --button-border-width: var(--style-border-width-primary);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  text-align: center;
+  color: var(--button-color);
+  appearance: none;
+  background-color: var(--button-background-color);
+  border: none;
+  font-family: var(--button-font-family-primary);
+  font-weight: var(--button-font-weight-primary);
+  font-size: var(--font-paragraph--size);
+  line-height: var(--font-paragraph--line-height);
+  text-transform: var(--button-text-case-primary);
+  border-radius: var(--style-border-radius-buttons-primary);
+  margin-block: 0;
+  transition: color var(--animation-speed, 0.2s) var(--animation-easing, ease),
+    box-shadow var(--animation-speed, 0.2s) var(--animation-easing, ease),
+    background-color var(--animation-speed, 0.2s) var(--animation-easing, ease);
+  cursor: pointer;
+  box-shadow: inset 0 0 0 var(--button-border-width) var(--button-border-color);
+  padding-block: var(--button-padding-block, 16px);
+  padding-inline: var(--button-padding-inline, 32px);
+  min-width: 200px;
+}
+
+.quiz-submit-btn:hover:not(:disabled) {
+  --button-color: var(--color-primary-button-hover-text);
+  --button-background-color: var(--color-primary-button-hover-background);
+  --button-border-color: var(--color-primary-button-hover-border);
+}
+
+.quiz-submit-btn:focus-visible {
+  outline: 2px solid var(--button-background-color);
+  outline-offset: 2px;
+}
+
+.quiz-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Responsive Adjustments
+   ========================================================================== */
+
+@media screen and (max-width: 749px) {
+  .quiz-landing {
+    --padding-block-start: 24px;
+    --padding-block-end: 48px;
+  }
+
+  .quiz-header {
+    margin-block-end: var(--padding-xl, 32px);
+  }
+
+  .quiz-progress {
+    margin-block-end: var(--padding-xl, 32px);
+  }
+
+  .quiz-form {
+    gap: var(--padding-xl, 32px);
+  }
+
+  .quiz-question {
+    padding-block-end: var(--padding-xl, 32px);
+  }
+}
+
+/* ==========================================================================
+   Accessibility
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .quiz-submit-btn,
+  .progress-fill,
+  .answer-option--image,
+  .answer-option--text,
+  .answer-radio {
+    transition: none;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .answer-radio:checked {
+    border-width: 4px;
+  }
+
+  .answer-option--text:has(.answer-radio:checked) {
+    border-width: 2px;
+  }
+}
