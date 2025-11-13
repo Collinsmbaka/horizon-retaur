@@ -627,8 +627,8 @@
         "submit_button_text": "Join 7 Day Challenge",
         "loading_text": "Submitting...",
         "error_message": "Something went wrong. Please try again.",
-        "webhook_url": "",
-        "whatsapp_group_url": "",
+        "webhook_url": "https://hook.us2.make.com/ldvmt9bsvgp5nb8ua8k1vmb0egr1rtx2",
+        "whatsapp_group_url": "https://chat.whatsapp.com/LnK2VYdl6ZSIUPl9gSYVMS",
         "quiz_page_url": ""
       }
     }
