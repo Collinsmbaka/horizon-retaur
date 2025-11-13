@@ -255,7 +255,7 @@
               "type": "text",
               "name": "t:names.text",
               "settings": {
-                "text": "<p>❌ Not eating enough (you need 3,000+ calories daily)<br/><br/>❌ Training too much (5-6 days burns all your calories)<br/><br/>❌ Not taking the right supplements (whey + creatine are ESSENTIAL)</p>",
+                "text": "<p>❌ External accountability (someone checking on you)<br/><br/>❌ Real consequences (money on the line)<br/><br/>❌ Community pressure (other guys knowing if you skip)</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
