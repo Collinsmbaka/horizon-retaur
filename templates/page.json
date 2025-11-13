@@ -55,9 +55,26 @@
         "padding-block-start": 40,
         "padding-block-end": 80
       }
+    },
+    "quiz_result_form_wpYaMR": {
+      "type": "quiz-result-form",
+      "name": "Quiz Result Form",
+      "settings": {
+        "form_heading": "Join Our WhatsApp Community",
+        "name_label": "Full Name",
+        "whatsapp_label": "WhatsApp Number",
+        "whatsapp_placeholder": "+234 801 234 5678",
+        "submit_button_text": "Join WhatsApp Group",
+        "loading_text": "Submitting...",
+        "error_message": "Something went wrong. Please try again.",
+        "webhook_url": "",
+        "whatsapp_group_url": "",
+        "quiz_page_url": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "quiz_result_form_wpYaMR"
   ]
 }
