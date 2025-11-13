@@ -17,13 +17,31 @@
           "name": "Title",
           "settings": {
             "text": "<h1>{{ closest.page.title }}</h1>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
             "type_preset": "h2",
-            "width": "100%"
-          }
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         },
         "page-content": {
           "type": "page-content",
-          "settings": {}
+          "settings": {},
+          "blocks": {}
         }
       },
       "block_order": [
@@ -31,13 +49,96 @@
         "page-content"
       ],
       "settings": {
+        "content_direction": "column",
         "gap": 32,
+        "color_scheme": "",
         "padding-block-start": 40,
         "padding-block-end": 80
+      }
+    },
+    "quiz_landing_RmfnhE": {
+      "type": "quiz-landing",
+      "blocks": {
+        "scored_question_erjWkR": {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "Which body frame describes you best?",
+            "label_a": "Ectomorph",
+            "label_b": "Mesomorph",
+            "label_c": "Endomorph",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C"
+          }
+        },
+        "scored_question_8V4TNh": {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "Question 2",
+            "label_a": "Option A",
+            "label_b": "Option B",
+            "label_c": "Option C",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C"
+          }
+        },
+        "scored_question_V4y9Ey": {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "Question 3",
+            "label_a": "Option A",
+            "label_b": "Option B",
+            "label_c": "Option C",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C"
+          }
+        },
+        "scored_question_XnNdXH": {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "Question 4",
+            "label_a": "Option A",
+            "label_b": "Option B",
+            "label_c": "Option C",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C"
+          }
+        },
+        "qualification_question_AQewJL": {
+          "type": "qualification_question",
+          "settings": {
+            "question_text": "Question 5",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C",
+            "answer_d": "",
+            "answer_e": ""
+          }
+        }
+      },
+      "block_order": [
+        "scored_question_erjWkR",
+        "scored_question_8V4TNh",
+        "scored_question_V4y9Ey",
+        "scored_question_XnNdXH",
+        "qualification_question_AQewJL"
+      ],
+      "name": "Body Type Quiz",
+      "settings": {
+        "quiz_heading": "Discover Your Body Type",
+        "quiz_description": "Answer these questions to discover your unique body type and get personalized recommendations.",
+        "submit_button_text": "Get my body type",
+        "ectomorph_url": "",
+        "mesomorph_url": "",
+        "endomorph_url": ""
       }
     }
   },
   "order": [
-    "main"
+    "main",
+    "quiz_landing_RmfnhE"
   ]
 }
