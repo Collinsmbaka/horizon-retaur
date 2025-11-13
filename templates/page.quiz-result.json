@@ -1,12 +1,111 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main": {
       "type": "main-page",
       "disabled": true,
-      "settings": {}
+      "settings": {
+        "content_direction": "column",
+        "gap": 12,
+        "color_scheme": "",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "quiz_landing_nJN3gg": {
+      "type": "quiz-landing",
+      "blocks": {
+        "scored_question_LRVq36": {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "Which body frame describes you best?",
+            "image_a": "shopify://shop_images/CleanShot_2025-11-12_at_11.29.30_2x_b1f0e293-cc33-4051-aed0-f5b9f315d052.png",
+            "label_a": "Ectomorph",
+            "image_b": "shopify://shop_images/CleanShot_2025-11-12_at_11.29.38_2x_7a705a58-ebcc-4804-b817-0cf576021620.png",
+            "label_b": "Mesomorph",
+            "image_c": "shopify://shop_images/CleanShot_2025-11-12_at_11.29.47_2x_4812a2e6-d9c5-4041-810e-da6e9489e690.png",
+            "label_c": "Endomorph",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C"
+          }
+        },
+        "scored_question_NWmBjh": {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "Which statement is most true for you?",
+            "label_a": "Option A",
+            "label_b": "Option B",
+            "label_c": "Option C",
+            "answer_a": "I eat a lot but stay skinny - \"Where does the food go?",
+            "answer_b": "I can gain or lose weight fairly easily depending on what I do",
+            "answer_c": "I gain weight very easily - have to watch what I eat"
+          }
+        },
+        "scored_question_XLVNCc": {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "When you work out consistently for a month, what happens?",
+            "label_a": "Option A",
+            "label_b": "Option B",
+            "label_c": "Option C",
+            "answer_a": "Very little change - I get stronger but don't look bigger",
+            "answer_b": "I see noticeable muscle growth and definition",
+            "answer_c": "I get bigger and stronger, but also gain fat easily"
+          }
+        },
+        "scored_question_X9Cm9W": {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "What's your BIGGEST frustration right now?",
+            "label_a": "Option A",
+            "label_b": "Option B",
+            "label_c": "Option C",
+            "answer_a": "I can't gain weight/muscle no matter how much I eat or train",
+            "answer_b": "I know what to do but can't stay consistent long-term",
+            "answer_c": "I gain weight easily but it's mostly fat, not muscle"
+          }
+        },
+        "qualification_question_MherkC": {
+          "type": "qualification_question",
+          "settings": {
+            "question_text": "Question 5",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C",
+            "answer_d": "",
+            "answer_e": ""
+          }
+        }
+      },
+      "block_order": [
+        "scored_question_LRVq36",
+        "scored_question_NWmBjh",
+        "scored_question_XLVNCc",
+        "scored_question_X9Cm9W",
+        "qualification_question_MherkC"
+      ],
+      "name": "Body Type Quiz",
+      "settings": {
+        "quiz_heading": "What's Your Muscle-Building Type?",
+        "quiz_description": "Find out in 60 seconds and Join Our FREE 7-Day Challenge",
+        "submit_button_text": "Get my body type",
+        "ectomorph_url": "",
+        "mesomorph_url": "",
+        "endomorph_url": ""
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "quiz_landing_nJN3gg"
   ]
 }
