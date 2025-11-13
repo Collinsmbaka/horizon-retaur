@@ -1,8 +1,92 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "quiz": {
       "type": "quiz-landing",
-      "settings": {}
+      "blocks": {
+        "scored_question_MN3XmN": {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "Question text goes here",
+            "label_a": "Option A",
+            "label_b": "Option B",
+            "label_c": "Option C",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C"
+          }
+        },
+        "scored_question_A6QRqp": {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "Question text goes here",
+            "label_a": "Option A",
+            "label_b": "Option B",
+            "label_c": "Option C",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C"
+          }
+        },
+        "scored_question_bKRm96": {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "Question text goes here",
+            "label_a": "Option A",
+            "label_b": "Option B",
+            "label_c": "Option C",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C"
+          }
+        },
+        "scored_question_Y94WTk": {
+          "type": "scored_question",
+          "settings": {
+            "question_text": "Question text goes here",
+            "label_a": "Option A",
+            "label_b": "Option B",
+            "label_c": "Option C",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C"
+          }
+        },
+        "qualification_question_9nqeRy": {
+          "type": "qualification_question",
+          "settings": {
+            "question_text": "Question text goes here",
+            "answer_a": "Answer A",
+            "answer_b": "Answer B",
+            "answer_c": "Answer C",
+            "answer_d": "",
+            "answer_e": ""
+          }
+        }
+      },
+      "block_order": [
+        "scored_question_MN3XmN",
+        "scored_question_A6QRqp",
+        "scored_question_bKRm96",
+        "scored_question_Y94WTk",
+        "qualification_question_9nqeRy"
+      ],
+      "settings": {
+        "quiz_heading": "Discover Your Body Type",
+        "quiz_description": "Answer these questions to discover your unique body type and get personalized recommendations.",
+        "submit_button_text": "Get my body type",
+        "ectomorph_url": "",
+        "mesomorph_url": "",
+        "endomorph_url": ""
+      }
     }
   },
   "order": [
