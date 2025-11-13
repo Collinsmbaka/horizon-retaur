@@ -8,9 +8,7 @@
    ========================================================================== */
 
 .quiz-result-form {
-  --padding-block: 0px;
-  --padding-block-start: var(--padding-block, 40px);
-  --padding-block-end: var(--padding-block, 80px);
+  /* Spacing controlled via theme customizer settings */
   --padding-inline: 0px;
   --padding-inline-start: var(--padding-inline, 0px);
   --padding-inline-end: var(--padding-inline, 0px);
@@ -234,8 +232,9 @@
 
 @media screen and (max-width: 749px) {
   .quiz-result-form {
-    --padding-block-start: 24px;
-    --padding-block-end: 48px;
+    /* Mobile spacing: 60% of desktop value for better proportions */
+    --padding-block-start: calc(var(--padding-block-start) * 0.6);
+    --padding-block-end: calc(var(--padding-block-end) * 0.6);
   }
 
   .form-heading {

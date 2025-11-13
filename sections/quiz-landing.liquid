@@ -1,5 +1,12 @@
 {{ 'quiz-landing.css' | asset_url | stylesheet_tag }}
 
+<style>
+  #shopify-section-{{ section.id }} .quiz-landing {
+    --padding-block-start: {{ section.settings.padding_top }}px;
+    --padding-block-end: {{ section.settings.padding_bottom }}px;
+  }
+</style>
+
 <div class="quiz-landing" data-section-id="{{ section.id }}">
   <div class="quiz-container">
     {% comment %} Quiz Header {% endcomment %}
@@ -275,6 +282,32 @@
       "id": "submit_button_text",
       "label": "Submit button text",
       "default": "Get my body type"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top spacing",
+      "default": 80,
+      "info": "Space above quiz section"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom spacing",
+      "default": 80,
+      "info": "Space below quiz section"
     },
     {
       "type": "header",
