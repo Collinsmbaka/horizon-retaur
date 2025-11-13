@@ -623,7 +623,7 @@
         "form_heading": "",
         "name_label": "Full Name",
         "whatsapp_label": "WhatsApp Number",
-        "whatsapp_placeholder": "+234 801 234 5678",
+        "whatsapp_placeholder": "",
         "submit_button_text": "Join 7 Day Challenge",
         "loading_text": "Submitting...",
         "error_message": "Something went wrong. Please try again.",
