@@ -86,9 +86,9 @@
         "quiz_heading": "What's Your Muscle-Building Type?",
         "quiz_description": "Find out in 60 seconds and Join Our FREE 7-Day Challenge",
         "submit_button_text": "Get my body type",
-        "ectomorph_url": "",
-        "mesomorph_url": "",
-        "endomorph_url": ""
+        "ectomorph_url": "shopify://pages/quiz-result-ectomorph",
+        "mesomorph_url": "shopify://pages/quiz-result-mesomorph",
+        "endomorph_url": "shopify://pages/quiz-result-endomorph"
       }
     }
   },
