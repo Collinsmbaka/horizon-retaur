@@ -15,10 +15,13 @@
         "scored_question_MN3XmN": {
           "type": "scored_question",
           "settings": {
-            "question_text": "Question text goes here",
-            "label_a": "Option A",
-            "label_b": "Option B",
-            "label_c": "Option C",
+            "question_text": "Which body frame describes you best?",
+            "image_a": "shopify://shop_images/CleanShot_2025-11-12_at_11.29.30_2x_b1f0e293-cc33-4051-aed0-f5b9f315d052.png",
+            "label_a": "Ectomorph",
+            "image_b": "shopify://shop_images/CleanShot_2025-11-12_at_11.29.38_2x_7a705a58-ebcc-4804-b817-0cf576021620.png",
+            "label_b": "Mesomorph",
+            "image_c": "shopify://shop_images/CleanShot_2025-11-12_at_11.29.47_2x_4812a2e6-d9c5-4041-810e-da6e9489e690.png",
+            "label_c": "Endomorph",
             "answer_a": "Answer A",
             "answer_b": "Answer B",
             "answer_c": "Answer C"
@@ -80,8 +83,8 @@
         "qualification_question_9nqeRy"
       ],
       "settings": {
-        "quiz_heading": "Discover Your Body Type",
-        "quiz_description": "Answer these questions to discover your unique body type and get personalized recommendations.",
+        "quiz_heading": "What's Your Muscle-Building Type?",
+        "quiz_description": "Find out in 60 seconds and Join Our FREE 7-Day Challenge",
         "submit_button_text": "Get my body type",
         "ectomorph_url": "",
         "mesomorph_url": "",
