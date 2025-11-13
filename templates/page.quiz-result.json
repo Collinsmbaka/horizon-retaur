@@ -506,7 +506,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p><strong>Starting this Monday, join 50 other Nigerian ectomorphs in a FREE WhatsApp challenge:<br/><br/>What you'll get:</strong></p>",
+            "text": "<p><strong>Starting this Monday, join other Nigerian ectomorphs in a FREE WhatsApp challenge:<br/><br/>What you'll get:</strong></p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "left",
@@ -553,12 +553,39 @@
             "padding-inline-end": 0
           },
           "blocks": {}
+        },
+        "text_cTwyXQ": {
+          "type": "text",
+          "name": "t:names.text",
+          "settings": {
+            "text": "<p><em><strong>The Goal is to prove to you in 7 days that you CAN gain weight when you eat and train for YOUR body type.</strong></em><br/><br/>👇 Complete the form below to JOIN the group NOW<br/><br/>⏰ Challenge starts Monday at 6 am<br/><br/>📍 Limited slots (We cap it to keep the group focused)</p>",
+            "width": "100%",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-body--family)",
+            "font_size": "1rem",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
         }
       },
       "block_order": [
         "text_naiTpa",
         "text_GRhedn",
-        "text_TpTdzH"
+        "text_TpTdzH",
+        "text_cTwyXQ"
       ],
       "name": "t:names.rich_text_section",
       "settings": {
