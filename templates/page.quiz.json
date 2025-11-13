@@ -1,0 +1,11 @@
+{
+  "sections": {
+    "quiz": {
+      "type": "quiz-landing",
+      "settings": {}
+    }
+  },
+  "order": [
+    "quiz"
+  ]
+}
