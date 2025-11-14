@@ -480,7 +480,7 @@
           "type": "text",
           "name": "t:names.heading",
           "settings": {
-            "text": "<p>Your 7-Day Hardgainer Challenge:</p>",
+            "text": "<p>Your 7-Day Challenge:</p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "center",
