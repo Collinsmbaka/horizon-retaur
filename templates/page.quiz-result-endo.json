@@ -506,7 +506,7 @@
           "type": "text",
           "name": "t:names.text",
           "settings": {
-            "text": "<p><strong>Starting this Monday, join other guys like you in a FREE WhatsApp challenge:<br/><br/>What you'll get:</strong></p>",
+            "text": "<p><strong>Starting this Monday, join our FREE WhatsApp challenge:<br/><br/>What you'll get:</strong></p>",
             "width": "100%",
             "max_width": "normal",
             "alignment": "left",
