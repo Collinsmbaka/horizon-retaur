@@ -273,7 +273,7 @@
       ],
       "name": "Sales Guarantee",
       "settings": {
-        "title": "THE PERFORMANCE GUARANTEE",
+        "title": "Performance Guarantee",
         "subtitle": "We pay for results. Here is the deal:",
         "faq_1_question": "Why 3cm?",
         "faq_1_answer": "Because 3cm is the difference between \"do you workout?\" and \"wow, you got big.\" It is visibly noticeable, achievable in 6 months, and 100% measurable.",
@@ -287,16 +287,16 @@
       "name": "Sales About",
       "settings": {
         "image": "shopify://shop_images/IMG_6732.jpg",
-        "title": "WHY I BUILT THIS",
-        "paragraph_1": "In 2023, I started Retaur because I was tired of paying <span class=\"accent bold\">₦100k+</span> for imported protein that often turned out to be fake.",
-        "paragraph_2": "<span class=\"bold\">I wanted to make quality nutrition affordable for Nigerians.</span>",
+        "title": "Why We Built This",
+        "paragraph_1": "In 2023, We started Retaur because i was tired of paying <span class=\"accent bold\">₦100k+</span> for imported protein that tasted bland and often low quality.",
+        "paragraph_2": "<span class=\"bold\">We wanted to make quality sports nutrition affordable for Nigerians.</span>",
         "paragraph_3": "But I quickly noticed a bigger problem.",
         "paragraph_4": "Guys were buying our protein, using it for a few weeks, and quitting because they didn't see results.",
         "quote_1": "<span class=\"bold\">They weren't failing because of the product.</span><br><span class=\"accent bold\">They were failing because of the strategy.</span>",
         "paragraph_5": "They were following influencers/trainers with a different body type and genetics from them and hoping it works for them.",
-        "highlight_text": "I realized selling supplements without coaching is like selling running shoes without teaching someone how to run.",
+        "highlight_text": "We realized selling supplements without coaching is like selling running shoes without teaching someone how to run.",
         "paragraph_6": "That's why this program exists. We combined our local products (like our Whey and Protein Yogurt) with the missing piece: <span class=\"accent bold\">Guidance.</span>",
-        "statement": "I don't just want to sell you powder. I want to sell you the <span class=\"accent\">result.</span> That's why if you don't hit your goals, I lose money.",
+        "statement": "We don't just want to sell you powder. We want to sell you the <span class=\"accent\">result.</span> That's why if you don't hit your goals, We lose money.",
         "signature": "— Collins"
       }
     },
