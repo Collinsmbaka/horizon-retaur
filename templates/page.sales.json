@@ -3489,7 +3489,7 @@
             "para_3": {
               "type": "text",
               "settings": {
-                "text": "<p>But I quickly noticed a bigger problem. Guys were buying our protein, using it for a few weeks, and quitting because they didn't see results.</p>",
+                "text": "<p>But we quickly noticed a bigger problem. Guys were buying our protein, using it for a few weeks, and quitting because they didn't see results.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -3553,7 +3553,7 @@
                 "text": {
                   "type": "text",
                   "settings": {
-                    "text": "<p><strong>They weren't failing because of the product.</strong><br><strong>They were failing because of the strategy.</strong></p>",
+                    "text": "<p><strong>They weren't failing because of the product.</strong><br/><strong>They were failing because of the strategy.</strong></p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
@@ -3583,7 +3583,7 @@
             "para_4": {
               "type": "text",
               "settings": {
-                "text": "<p>I realized selling supplements without coaching is like selling running shoes without teaching someone how to run.</p>",
+                "text": "<p>We realized selling supplements without coaching is like selling running shoes without teaching someone how to run.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -3608,7 +3608,7 @@
             "para_5": {
               "type": "text",
               "settings": {
-                "text": "<p><strong>I don't just want to sell you powder. I want to sell you the result.</strong> That's why if you don't hit your goals, I lose money.</p>",
+                "text": "<p><strong>We don't just want to sell you powder. We want to sell you the result.</strong> That's why if you don't hit your goals, I lose money.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
