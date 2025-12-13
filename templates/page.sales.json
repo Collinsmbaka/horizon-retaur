@@ -112,6 +112,7 @@
       "type": "sales-why-us",
       "name": "Sales Why Us",
       "settings": {
+        "image": "shopify://shop_images/optimized_d9600608-ba71-4641-9243-e73d99fd1d6d.png",
         "headline": "Most supplement companies sell you protein and say <span class=\"accent\">good luck.</span>",
         "paragraph_1": "We give you the <span class=\"bold\">full system:</span> supplements, certified trainer, meal plans, community. Built for YOUR body.",
         "highlight_text": "And we pay you <span class=\"amount\">₦200,000</span> when you hit your goals. Not if you fail - <span class=\"bold\">when you succeed.</span>",
