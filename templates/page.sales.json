@@ -9,473 +9,119 @@
  */
 {
   "sections": {
-    "faq": {
-      "type": "section",
+    "sales_hero_riEgG6": {
+      "type": "sales-hero",
+      "name": "Sales Hero",
+      "settings": {
+        "badge_text": "3,000+ Customers",
+        "headline_part1": "We'll Pay You",
+        "headline_accent": "₦200,000",
+        "headline_part2": "to Build Muscle in 6 Months",
+        "subtitle": "Body-Type-Specific Muscle Guarantee Program",
+        "benefit_1": "<strong>All supplements</strong> for 6 months",
+        "benefit_2": "<strong>Certified trainer</strong> coaching",
+        "benefit_3": "<strong>Custom meal plans</strong> &amp; training",
+        "benefit_4": "<strong>24/7 community</strong> support",
+        "spots_text": "Limited: 50 spots only",
+        "spots_left_text": "15 spots left!",
+        "start_date_text": "Starts: January 17, 2026",
+        "cta_text": "Enroll Now",
+        "cta_link": ""
+      }
+    },
+    "sales_brand_logos_gaBCAb": {
+      "type": "sales-brand-logos",
       "blocks": {
-        "header": {
-          "type": "group",
+        "brand_nJpWc4": {
+          "type": "brand",
           "settings": {
-            "link": "",
-            "open_in_new_tab": false,
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 8,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "placeholder": "",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "padding-block-start": 0,
-            "padding-block-end": 32,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "accent_bar": {
-              "type": "group",
-              "settings": {
-                "link": "",
-                "open_in_new_tab": false,
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 12,
-                "width": "custom",
-                "custom_width": 5,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "custom",
-                "custom_height": 1,
-                "inherit_color_scheme": false,
-                "color_scheme": "scheme-4",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "placeholder": "",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "title": {
-              "type": "text",
-              "settings": {
-                "text": "<h2>Frequently Asked Questions</h2>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "h1",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "subtitle": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Got questions? We've got answers. Email us at support@retaur.com anytime.</p>",
-                "width": "fit-content",
-                "max_width": "narrow",
-                "alignment": "center",
-                "type_preset": "paragraph",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "accent_bar",
-            "title",
-            "subtitle"
-          ]
+            "name": "Nike"
+          }
         },
-        "accordion": {
-          "type": "accordion",
+        "brand_tn7NmW": {
+          "type": "brand",
           "settings": {
-            "icon": "plus",
-            "dividers": false,
-            "type_preset": "h4",
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "faq_1": {
-              "type": "_accordion-row",
-              "settings": {
-                "heading": "What if I don't hit my goals?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "answer": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>The ₦200,000 is a performance bonus for hitting your goals. If you don't reach the target measurements, you won't receive the cashback, but you keep everything else - all the supplements, coaching sessions, meal plans, and the progress you've made. Most of our participants still see significant improvements even if they miss the exact targets.</p>",
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "paragraph",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "loose",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "answer"
-              ]
-            },
-            "faq_2": {
-              "type": "_accordion-row",
-              "settings": {
-                "heading": "What supplements are included?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "answer": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>You'll receive a 6-month supply of our premium Whey Protein and Creatine, delivered to your door every 2 months. These are the same high-quality supplements we sell individually, specifically selected to support muscle growth and recovery.</p>",
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "paragraph",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "loose",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "answer"
-              ]
-            },
-            "faq_3": {
-              "type": "_accordion-row",
-              "settings": {
-                "heading": "How do I track my progress?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "answer": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Your certified trainer will take official measurements at the start and end of the program. We measure your biceps, chest, and thighs using a standardized process. You'll also receive guidance on tracking your own progress throughout the program.</p>",
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "paragraph",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "loose",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "answer"
-              ]
-            },
-            "faq_4": {
-              "type": "_accordion-row",
-              "settings": {
-                "heading": "Can I get a refund?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "answer": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Due to the personalized nature of this program and the supplements provided, we cannot offer refunds once the program begins. However, we're committed to your success - that's why we offer the ₦200,000 cashback guarantee. If you have concerns, reach out before enrolling and we'll help determine if this program is right for you.</p>",
-                    "width": "fit-content",
-                    "max_width": "normal",
-                    "alignment": "left",
-                    "type_preset": "paragraph",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "loose",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "answer"
-              ]
-            }
-          },
-          "block_order": [
-            "faq_1",
-            "faq_2",
-            "faq_3",
-            "faq_4"
-          ]
+            "name": "Adidas"
+          }
         },
-        "final_cta": {
-          "type": "group",
+        "brand_gRp49H": {
+          "type": "brand",
           "settings": {
-            "link": "",
-            "open_in_new_tab": false,
-            "content_direction": "column",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "center",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 16,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": false,
-            "color_scheme": "scheme-4",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 16,
-            "placeholder": "",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "padding-block-start": 48,
-            "padding-block-end": 48,
-            "padding-inline-start": 32,
-            "padding-inline-end": 32
-          },
-          "blocks": {
-            "cta_title": {
-              "type": "text",
-              "settings": {
-                "text": "<h3>Ready to Transform Your Body?</h3>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "h2",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "cta_subtitle": {
-              "type": "text",
-              "settings": {
-                "text": "<p>Join 50 men committed to building muscle the right way</p>",
-                "width": "fit-content",
-                "max_width": "normal",
-                "alignment": "center",
-                "type_preset": "paragraph",
-                "font": "var(--font-body--family)",
-                "font_size": "1.25rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
-                "case": "none",
-                "wrap": "pretty",
-                "color": "var(--color-foreground)",
-                "background": false,
-                "background_color": "#00000026",
-                "corner_radius": 0,
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {}
-            },
-            "cta_button": {
-              "type": "button",
-              "settings": {
-                "label": "Secure Your Spot Now →",
-                "link": "",
-                "open_in_new_tab": false,
-                "style_class": "button-secondary",
-                "width": "fit-content",
-                "custom_width": 100,
-                "width_mobile": "fit-content",
-                "custom_width_mobile": 100
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "cta_title",
-            "cta_subtitle",
-            "cta_button"
-          ]
+            "name": "Puma"
+          }
+        },
+        "brand_6RqQtr": {
+          "type": "brand",
+          "settings": {
+            "name": "Under Armour"
+          }
+        },
+        "brand_fPpJMt": {
+          "type": "brand",
+          "settings": {
+            "name": "Reebok"
+          }
+        },
+        "brand_4t3PYi": {
+          "type": "brand",
+          "settings": {
+            "name": "Gymshark"
+          }
+        },
+        "brand_CwwmiV": {
+          "type": "brand",
+          "settings": {
+            "name": "MyProtein"
+          }
+        },
+        "brand_VQJCbU": {
+          "type": "brand",
+          "settings": {
+            "name": "Optimum Nutrition"
+          }
         }
       },
       "block_order": [
-        "header",
-        "accordion",
-        "final_cta"
+        "brand_nJpWc4",
+        "brand_tn7NmW",
+        "brand_gRp49H",
+        "brand_6RqQtr",
+        "brand_fPpJMt",
+        "brand_4t3PYi",
+        "brand_CwwmiV",
+        "brand_VQJCbU"
       ],
+      "name": "Sales Brand Logos",
       "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "center",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "scheme-1",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 60,
-        "padding-block-end": 60
+        "title": "Trusted by athletes who use these brands"
+      }
+    },
+    "sales_problem_fN8HXz": {
+      "type": "sales-problem",
+      "name": "Sales Problem",
+      "settings": {
+        "headline": "You're working hard on the wrong blueprint.",
+        "paragraph_1": "You've put in the time. You've bought the protein. You've dragged yourself to the gym 4 days a week. Yet, <span class=\"accent bold\">the mirror looks exactly the same.</span>",
+        "paragraph_2": "You're starting to think you just have <span class=\"bold\">\"bad genetics.\"</span>",
+        "quote_text": "<span class=\"accent bold\">Here's the truth:</span> Your genetics aren't the issue. The problem is you're using a generic \"one-size-fits-all\" program for a body that requires a specific approach.",
+        "statement": "You don't have a discipline problem, you have a strategy problem."
+      }
+    },
+    "sales_why_us_3xyrJ9": {
+      "type": "sales-why-us",
+      "name": "Sales Why Us",
+      "settings": {
+        "headline": "Most supplement companies sell you protein and say <span class=\"accent\">good luck.</span>",
+        "paragraph_1": "We give you the <span class=\"bold\">full system:</span> supplements, certified trainer, meal plans, community. Built for YOUR body.",
+        "highlight_text": "And we pay you <span class=\"amount\">₦200,000</span> when you hit your goals. Not if you fail - <span class=\"bold\">when you succeed.</span>",
+        "callout_text": "₦10 million on the line. 50 men. We only do this because it works."
       }
     }
   },
   "order": [
-    "faq"
+    "sales_hero_riEgG6",
+    "sales_brand_logos_gaBCAb",
+    "sales_problem_fN8HXz",
+    "sales_why_us_3xyrJ9"
   ]
 }
