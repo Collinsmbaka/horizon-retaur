@@ -101,7 +101,7 @@
                 "customer_count": {
                   "type": "text",
                   "settings": {
-                    "text": "<p><strong>3,000+ Customers</strong></p>",
+                    "text": "<p><strong>958+ Customers</strong></p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
