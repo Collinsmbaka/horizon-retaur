@@ -3414,11 +3414,11 @@
             "title": {
               "type": "text",
               "settings": {
-                "text": "<h2>WHY I BUILT THIS</h2>",
+                "text": "<h2>Why I Built This</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h1",
+                "type_preset": "h2",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -3430,7 +3430,7 @@
                 "background_color": "#00000026",
                 "corner_radius": 0,
                 "padding-block-start": 16,
-                "padding-block-end": 24,
+                "padding-block-end": 16,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
               },
