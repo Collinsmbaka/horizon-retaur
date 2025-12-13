@@ -1,0 +1,196 @@
+{% comment %}
+  Sales Page FAQ Section
+  Exact replica of React design with accordion FAQ and final CTA
+{% endcomment %}
+
+{{ 'sales-page.css' | asset_url | stylesheet_tag }}
+
+<section class="sales-faq">
+  <div class="sales-faq__container">
+    <div class="sales-faq__wrapper">
+      {%- comment -%} Header {%- endcomment -%}
+      <div class="sales-faq__header">
+        <div class="sales-faq__accent-bar"></div>
+        <h2 class="sales-faq__title">{{ section.settings.title }}</h2>
+        <p class="sales-faq__subtitle">{{ section.settings.subtitle }}</p>
+      </div>
+
+      {%- comment -%} FAQ Items {%- endcomment -%}
+      <div class="sales-faq__list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq' -%}
+            <div class="sales-faq__item" {{ block.shopify_attributes }} data-faq-item>
+              <div class="sales-faq__item-header" data-faq-toggle>
+                <p class="sales-faq__question">{{ block.settings.question }}</p>
+                <div class="sales-faq__toggle">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="12" y1="5" x2="12" y2="19"/>
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                  </svg>
+                </div>
+              </div>
+              <div class="sales-faq__answer">
+                <p>{{ block.settings.answer }}</p>
+              </div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Final CTA {%- endcomment -%}
+      <div class="sales-faq__cta">
+        <h3 class="sales-faq__cta-title">{{ section.settings.cta_title }}</h3>
+        <p class="sales-faq__cta-text">{{ section.settings.cta_text }}</p>
+        <a href="#payment-options" class="sales-faq__cta-button" data-scroll-to-payment>
+          <span>{{ section.settings.cta_button_text }}</span>
+          <svg class="sales-faq__cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="9 18 15 12 9 6"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // FAQ accordion functionality
+    const faqItems = document.querySelectorAll('[data-faq-item]');
+
+    faqItems.forEach(item => {
+      const toggle = item.querySelector('[data-faq-toggle]');
+
+      toggle.addEventListener('click', () => {
+        // Close other items
+        faqItems.forEach(otherItem => {
+          if (otherItem !== item && otherItem.classList.contains('active')) {
+            otherItem.classList.remove('active');
+          }
+        });
+
+        // Toggle current item
+        item.classList.toggle('active');
+      });
+    });
+
+    // Scroll to payment functionality
+    const scrollButtons = document.querySelectorAll('[data-scroll-to-payment]');
+    scrollButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const paymentSection = document.getElementById('payment-options');
+        if (paymentSection) {
+          paymentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Sales FAQ",
+  "tag": "section",
+  "class": "sales-faq-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Frequently Asked Questions"
+    },
+    {
+      "type": "textarea",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "No matter what your question is our products, the team at Retaur is always on hand to provide prompt and accurate answers. Email us at support@retaur.com anytime."
+    },
+    {
+      "type": "header",
+      "content": "Final CTA"
+    },
+    {
+      "type": "text",
+      "id": "cta_title",
+      "label": "CTA Title",
+      "default": "Ready to Transform Your Body?"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA Text",
+      "default": "Join 50 men committed to building muscle the right way"
+    },
+    {
+      "type": "text",
+      "id": "cta_button_text",
+      "label": "Button Text",
+      "default": "Secure Your Spot Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "faq",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What if I don't hit my goals?"
+        },
+        {
+          "type": "textarea",
+          "id": "answer",
+          "label": "Answer",
+          "default": "The ₦200,000 is a performance bonus, so you won't receive the cash back if you don't meet the goal. However, you keep all the supplements, coaching, and progress you've made. You still walk away bigger, stronger, and more knowledgeable than when you started."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sales FAQ",
+      "blocks": [
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What if I don't hit my goals?",
+            "answer": "The ₦200,000 is a performance bonus, so you won't receive the cash back if you don't meet the goal. However, you keep all the supplements, coaching, and progress you've made. You still walk away bigger, stronger, and more knowledgeable than when you started."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "What is included in the box?",
+            "answer": "Your package includes a 6-month supply of premium whey protein and creatine (delivered every 2 months), access to 6 monthly video coaching calls with a certified trainer, custom meal plans using Nigerian foods, a personalized training program, and 24/7 access to our WhatsApp community."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "How do I track my progress?",
+            "answer": "Your certified trainer will take your initial measurements (biceps, chest, and thighs) during your first coaching call. These measurements are recorded and tracked throughout the 6-month program. At the end, your trainer will measure again to verify your results for the cashback bonus."
+          }
+        },
+        {
+          "type": "faq",
+          "settings": {
+            "question": "Can I get a refund?",
+            "answer": "Due to the nature of the program and the supplements being delivered, we cannot offer refunds once the program has started. However, if you commit to the program and follow the plan, our 92% success rate speaks for itself. We're confident you'll see results."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

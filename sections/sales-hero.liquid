@@ -1,0 +1,273 @@
+{% comment %}
+  Sales Page Hero Section
+  Exact replica of React design with full customization via theme editor
+{% endcomment %}
+
+{{ 'sales-page.css' | asset_url | stylesheet_tag }}
+
+<section class="sales-hero">
+  {%- comment -%} Hero Image with Overlay {%- endcomment -%}
+  <div class="sales-hero__image-container">
+    {%- if section.settings.hero_image != blank -%}
+      <img
+        src="{{ section.settings.hero_image | image_url: width: 1920 }}"
+        alt="{{ section.settings.hero_image.alt | default: 'Hero image' }}"
+        class="sales-hero__image"
+        loading="eager"
+        width="1920"
+        height="{{ 1920 | divided_by: section.settings.hero_image.aspect_ratio | round }}"
+      >
+    {%- else -%}
+      {{ 'lifestyle-2' | placeholder_svg_tag: 'sales-hero__image sales-hero__image--placeholder' }}
+    {%- endif -%}
+    <div class="sales-hero__overlay"></div>
+
+    {%- comment -%} Social Proof Badge {%- endcomment -%}
+    <div class="sales-hero__badge">
+      <div class="sales-hero__badge-content">
+        <div class="sales-hero__stars">
+          {%- for i in (1..5) -%}
+            <svg class="sales-hero__star" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+            </svg>
+          {%- endfor -%}
+        </div>
+        <p class="sales-hero__badge-text">{{ section.settings.badge_text }}</p>
+      </div>
+    </div>
+  </div>
+
+  {%- comment -%} Hero Content {%- endcomment -%}
+  <div class="sales-hero__content">
+    {%- comment -%} Headline {%- endcomment -%}
+    <div class="sales-hero__headline-wrapper">
+      <h1 class="sales-hero__headline">
+        {{ section.settings.headline_part1 }} <span class="sales-hero__accent">{{ section.settings.headline_accent }}</span> {{ section.settings.headline_part2 }}
+      </h1>
+      <p class="sales-hero__subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    {%- comment -%} Package Details {%- endcomment -%}
+    <div class="sales-hero__package">
+      {%- comment -%} Benefits List {%- endcomment -%}
+      <div class="sales-hero__benefits">
+        {%- if section.settings.benefit_1 != blank -%}
+          <div class="sales-hero__benefit">
+            <svg class="sales-hero__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <p>{{ section.settings.benefit_1 }}</p>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.benefit_2 != blank -%}
+          <div class="sales-hero__benefit">
+            <svg class="sales-hero__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <p>{{ section.settings.benefit_2 }}</p>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.benefit_3 != blank -%}
+          <div class="sales-hero__benefit">
+            <svg class="sales-hero__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <p>{{ section.settings.benefit_3 }}</p>
+          </div>
+        {%- endif -%}
+        {%- if section.settings.benefit_4 != blank -%}
+          <div class="sales-hero__benefit">
+            <svg class="sales-hero__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+              <polyline points="22 4 12 14.01 9 11.01"/>
+            </svg>
+            <p>{{ section.settings.benefit_4 }}</p>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Urgency Box {%- endcomment -%}
+      <div class="sales-hero__urgency">
+        <div class="sales-hero__urgency-row">
+          <svg class="sales-hero__target-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <circle cx="12" cy="12" r="6"/>
+            <circle cx="12" cy="12" r="2"/>
+          </svg>
+          <p>{{ section.settings.spots_text }}</p>
+          <div class="sales-hero__spots-left">
+            <span class="sales-hero__ping-wrapper">
+              <span class="sales-hero__ping"></span>
+              <span class="sales-hero__ping-dot"></span>
+            </span>
+            <span class="sales-hero__spots-number">{{ section.settings.spots_left_text }}</span>
+          </div>
+        </div>
+        <div class="sales-hero__urgency-row">
+          <svg class="sales-hero__calendar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+            <line x1="16" y1="2" x2="16" y2="6"/>
+            <line x1="8" y1="2" x2="8" y2="6"/>
+            <line x1="3" y1="10" x2="21" y2="10"/>
+          </svg>
+          <p>{{ section.settings.start_date_text }}</p>
+        </div>
+      </div>
+    </div>
+
+    {%- comment -%} CTA Button {%- endcomment -%}
+    <div class="sales-hero__cta-wrapper">
+      <a href="#payment-options" class="sales-hero__cta" data-scroll-to-payment>
+        <span>{{ section.settings.cta_text }}</span>
+        <svg class="sales-hero__cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <polyline points="9 18 15 12 9 6"/>
+        </svg>
+      </a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const scrollButtons = document.querySelectorAll('[data-scroll-to-payment]');
+    scrollButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const paymentSection = document.getElementById('payment-options');
+        if (paymentSection) {
+          paymentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Sales Hero",
+  "tag": "section",
+  "class": "sales-hero-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Hero Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "hero_image",
+      "label": "Hero Image"
+    },
+    {
+      "type": "header",
+      "content": "Social Proof Badge"
+    },
+    {
+      "type": "text",
+      "id": "badge_text",
+      "label": "Badge Text",
+      "default": "3,000+ Customers"
+    },
+    {
+      "type": "header",
+      "content": "Headline"
+    },
+    {
+      "type": "text",
+      "id": "headline_part1",
+      "label": "Headline Part 1",
+      "default": "We'll Pay You"
+    },
+    {
+      "type": "text",
+      "id": "headline_accent",
+      "label": "Headline Accent (colored)",
+      "default": "₦200,000"
+    },
+    {
+      "type": "text",
+      "id": "headline_part2",
+      "label": "Headline Part 2",
+      "default": "to Build Muscle in 6 Months"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Body-Type-Specific Muscle Guarantee Program"
+    },
+    {
+      "type": "header",
+      "content": "Benefits"
+    },
+    {
+      "type": "html",
+      "id": "benefit_1",
+      "label": "Benefit 1",
+      "default": "<strong>All supplements</strong> for 6 months"
+    },
+    {
+      "type": "html",
+      "id": "benefit_2",
+      "label": "Benefit 2",
+      "default": "<strong>Certified trainer</strong> coaching"
+    },
+    {
+      "type": "html",
+      "id": "benefit_3",
+      "label": "Benefit 3",
+      "default": "<strong>Custom meal plans</strong> & training"
+    },
+    {
+      "type": "html",
+      "id": "benefit_4",
+      "label": "Benefit 4",
+      "default": "<strong>24/7 community</strong> support"
+    },
+    {
+      "type": "header",
+      "content": "Urgency Box"
+    },
+    {
+      "type": "text",
+      "id": "spots_text",
+      "label": "Spots Text",
+      "default": "Limited: 50 spots only"
+    },
+    {
+      "type": "text",
+      "id": "spots_left_text",
+      "label": "Spots Left Text",
+      "default": "15 spots left!"
+    },
+    {
+      "type": "text",
+      "id": "start_date_text",
+      "label": "Start Date Text",
+      "default": "Starts: January 17, 2026"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button Text",
+      "default": "Enroll Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sales Hero"
+    }
+  ]
+}
+{% endschema %}

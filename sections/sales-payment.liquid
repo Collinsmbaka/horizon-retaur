@@ -1,0 +1,365 @@
+{% comment %}
+  Sales Page Payment Section
+  Exact replica of React design with payment cards
+{% endcomment %}
+
+{{ 'sales-page.css' | asset_url | stylesheet_tag }}
+
+<section class="sales-payment" id="payment-options">
+  <div class="sales-payment__container">
+    {%- comment -%} Header {%- endcomment -%}
+    <div class="sales-payment__header">
+      <div class="sales-payment__accent-bar"></div>
+      <h2 class="sales-payment__title">{{ section.settings.title }}</h2>
+      <p class="sales-payment__subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    {%- comment -%} Payment Options {%- endcomment -%}
+    <div class="sales-payment__options">
+      {%- comment -%} Pay Once Option {%- endcomment -%}
+      <div class="sales-payment__card">
+        <div class="sales-payment__card-header sales-payment__card-header--primary">
+          <div class="sales-payment__badge">
+            <p>{{ section.settings.card_1_badge }}</p>
+          </div>
+          <h3 class="sales-payment__card-title">{{ section.settings.card_1_title }}</h3>
+          <p class="sales-payment__card-desc">{{ section.settings.card_1_desc }}</p>
+        </div>
+        <div class="sales-payment__card-body">
+          <div class="sales-payment__price-wrapper">
+            <div class="sales-payment__price">{{ section.settings.card_1_price }}</div>
+            <p class="sales-payment__price-note">{{ section.settings.card_1_price_note }}</p>
+          </div>
+
+          <div class="sales-payment__features">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'feature' -%}
+                <div class="sales-payment__feature" {{ block.shopify_attributes }}>
+                  <svg class="sales-payment__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                  <p>{{ block.settings.text }}</p>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          <button type="button" class="sales-payment__cta sales-payment__cta--primary" data-add-to-cart data-product-handle="{{ section.settings.card_1_product_handle }}">
+            <svg class="sales-payment__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+              <line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
+            <span>{{ section.settings.card_1_cta }}</span>
+            <svg class="sales-payment__cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      {%- comment -%} Pay Monthly Option {%- endcomment -%}
+      <div class="sales-payment__card">
+        <div class="sales-payment__card-header sales-payment__card-header--secondary">
+          <div class="sales-payment__badge">
+            <p>{{ section.settings.card_2_badge }}</p>
+          </div>
+          <h3 class="sales-payment__card-title">{{ section.settings.card_2_title }}</h3>
+          <p class="sales-payment__card-desc">{{ section.settings.card_2_desc }}</p>
+        </div>
+        <div class="sales-payment__card-body">
+          <div class="sales-payment__price-wrapper">
+            <div class="sales-payment__price">{{ section.settings.card_2_price }}</div>
+            <p class="sales-payment__price-note">{{ section.settings.card_2_price_note }}</p>
+            {%- if section.settings.card_2_total != blank -%}
+              <p class="sales-payment__price-total">{{ section.settings.card_2_total }}</p>
+            {%- endif -%}
+          </div>
+
+          <div class="sales-payment__features">
+            {%- for block in section.blocks -%}
+              {%- if block.type == 'feature' -%}
+                <div class="sales-payment__feature">
+                  <svg class="sales-payment__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                    <polyline points="22 4 12 14.01 9 11.01"/>
+                  </svg>
+                  <p>{{ block.settings.text }}</p>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          <button type="button" class="sales-payment__cta sales-payment__cta--secondary" data-add-to-cart data-product-handle="{{ section.settings.card_2_product_handle }}">
+            <svg class="sales-payment__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+              <line x1="1" y1="10" x2="23" y2="10"/>
+            </svg>
+            <span>{{ section.settings.card_2_cta }}</span>
+            <svg class="sales-payment__cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    {%- comment -%} Terms {%- endcomment -%}
+    <div class="sales-payment__terms">
+      <p class="sales-payment__terms-text">{{ section.settings.terms_text }}</p>
+      {%- if section.settings.terms_link_text != blank -%}
+        <a href="{{ section.settings.terms_link }}" class="sales-payment__terms-link">
+          <span>{{ section.settings.terms_link_text }}</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+            <polyline points="15 3 21 3 21 9"/>
+            <line x1="10" y1="14" x2="21" y2="3"/>
+          </svg>
+        </a>
+      {%- endif -%}
+      {%- if section.settings.terms_note != blank -%}
+        <p class="sales-payment__terms-note">{{ section.settings.terms_note }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const addToCartButtons = document.querySelectorAll('[data-add-to-cart]');
+
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', async function(e) {
+        e.preventDefault();
+
+        const productHandle = this.dataset.productHandle;
+        if (!productHandle) {
+          console.error('No product handle specified');
+          return;
+        }
+
+        // Disable button and show loading state
+        const originalContent = this.innerHTML;
+        this.disabled = true;
+        this.innerHTML = '<span>Adding to cart...</span>';
+
+        try {
+          // Fetch product data to get variant ID
+          const response = await fetch(`/products/${productHandle}.js`);
+          if (!response.ok) {
+            throw new Error('Product not found');
+          }
+
+          const product = await response.json();
+          const variantId = product.variants[0].id;
+
+          // Add to cart
+          const addResponse = await fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              items: [{
+                id: variantId,
+                quantity: 1
+              }]
+            })
+          });
+
+          if (!addResponse.ok) {
+            throw new Error('Failed to add to cart');
+          }
+
+          // Redirect to checkout
+          window.location.href = '/checkout';
+
+        } catch (error) {
+          console.error('Error:', error);
+          this.disabled = false;
+          this.innerHTML = originalContent;
+          alert('Sorry, there was an error. Please try again.');
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Sales Payment",
+  "tag": "section",
+  "class": "sales-payment-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Choose Your Payment Plan"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Same great program, flexible payment options"
+    },
+    {
+      "type": "header",
+      "content": "Pay Once Card"
+    },
+    {
+      "type": "text",
+      "id": "card_1_badge",
+      "label": "Badge Text",
+      "default": "MOST POPULAR"
+    },
+    {
+      "type": "text",
+      "id": "card_1_title",
+      "label": "Card Title",
+      "default": "Pay Once"
+    },
+    {
+      "type": "text",
+      "id": "card_1_desc",
+      "label": "Card Description",
+      "default": "Save money with full payment"
+    },
+    {
+      "type": "text",
+      "id": "card_1_price",
+      "label": "Price",
+      "default": "₦400,000"
+    },
+    {
+      "type": "text",
+      "id": "card_1_price_note",
+      "label": "Price Note",
+      "default": "One-time payment"
+    },
+    {
+      "type": "text",
+      "id": "card_1_cta",
+      "label": "Button Text",
+      "default": "Pay ₦400,000 Now"
+    },
+    {
+      "type": "text",
+      "id": "card_1_product_handle",
+      "label": "Product Handle",
+      "info": "The product handle (URL slug) to add to cart",
+      "default": "bulk-up-challenge-bundle-otp"
+    },
+    {
+      "type": "header",
+      "content": "Pay Monthly Card"
+    },
+    {
+      "type": "text",
+      "id": "card_2_badge",
+      "label": "Badge Text",
+      "default": "FLEXIBLE"
+    },
+    {
+      "type": "text",
+      "id": "card_2_title",
+      "label": "Card Title",
+      "default": "Pay as You Go"
+    },
+    {
+      "type": "text",
+      "id": "card_2_desc",
+      "label": "Card Description",
+      "default": "Spread payments over time"
+    },
+    {
+      "type": "text",
+      "id": "card_2_price",
+      "label": "Price",
+      "default": "₦135,000"
+    },
+    {
+      "type": "text",
+      "id": "card_2_price_note",
+      "label": "Price Note",
+      "default": "Every 2 months (3 payments)"
+    },
+    {
+      "type": "text",
+      "id": "card_2_total",
+      "label": "Total (optional)",
+      "default": "Total: ₦405,000"
+    },
+    {
+      "type": "text",
+      "id": "card_2_cta",
+      "label": "Button Text",
+      "default": "Pay ₦135,000 Now"
+    },
+    {
+      "type": "text",
+      "id": "card_2_product_handle",
+      "label": "Product Handle",
+      "info": "The product handle (URL slug) to add to cart",
+      "default": "bulk-up-challenge-bundle"
+    },
+    {
+      "type": "header",
+      "content": "Terms"
+    },
+    {
+      "type": "text",
+      "id": "terms_text",
+      "label": "Terms Text",
+      "default": "By enrolling, you agree to our program terms and conditions"
+    },
+    {
+      "type": "text",
+      "id": "terms_link_text",
+      "label": "Terms Link Text",
+      "default": "Read Full Terms & Conditions"
+    },
+    {
+      "type": "url",
+      "id": "terms_link",
+      "label": "Terms Link"
+    },
+    {
+      "type": "text",
+      "id": "terms_note",
+      "label": "Terms Note",
+      "default": "*T&C Apply - Cash back is awarded upon successful completion of program goals and requirements"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "html",
+          "id": "text",
+          "label": "Feature Text",
+          "default": "6-month supply of supplements"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sales Payment",
+      "blocks": [
+        { "type": "feature", "settings": { "text": "6-month supply of supplements" } },
+        { "type": "feature", "settings": { "text": "6 coaching video calls" } },
+        { "type": "feature", "settings": { "text": "Custom meal & training plans" } },
+        { "type": "feature", "settings": { "text": "24/7 WhatsApp community" } },
+        { "type": "feature", "settings": { "text": "<span class=\"bold\">₦200,000 cashback on success</span>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,81 @@
+{% comment %}
+  Sales Page Problem Section
+  Exact replica of React design
+{% endcomment %}
+
+{{ 'sales-page.css' | asset_url | stylesheet_tag }}
+
+<section class="sales-problem">
+  <div class="sales-problem__container">
+    <div class="sales-problem__content">
+      <div class="sales-problem__accent-bar"></div>
+
+      <h2 class="sales-problem__headline">{{ section.settings.headline }}</h2>
+
+      <div class="sales-problem__body">
+        {%- if section.settings.paragraph_1 != blank -%}
+          <p>{{ section.settings.paragraph_1 }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.paragraph_2 != blank -%}
+          <p>{{ section.settings.paragraph_2 }}</p>
+        {%- endif -%}
+
+        {%- if section.settings.quote_text != blank -%}
+          <div class="sales-problem__quote">
+            <p>{{ section.settings.quote_text }}</p>
+          </div>
+        {%- endif -%}
+
+        {%- if section.settings.statement != blank -%}
+          <p class="sales-problem__statement">{{ section.settings.statement }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Sales Problem",
+  "tag": "section",
+  "class": "sales-problem-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "You're working hard on the wrong blueprint."
+    },
+    {
+      "type": "html",
+      "id": "paragraph_1",
+      "label": "Paragraph 1",
+      "default": "You've put in the time. You've bought the protein. You've dragged yourself to the gym 4 days a week. Yet, <span class=\"accent bold\">the mirror looks exactly the same.</span>"
+    },
+    {
+      "type": "html",
+      "id": "paragraph_2",
+      "label": "Paragraph 2",
+      "default": "You're starting to think you just have <span class=\"bold\">\"bad genetics.\"</span>"
+    },
+    {
+      "type": "html",
+      "id": "quote_text",
+      "label": "Quote Text",
+      "default": "<span class=\"accent bold\">Here's the truth:</span> Your genetics aren't the issue. The problem is you're using a generic \"one-size-fits-all\" program for a body that requires a specific approach."
+    },
+    {
+      "type": "text",
+      "id": "statement",
+      "label": "Final Statement",
+      "default": "You don't have a discipline problem, you have a strategy problem."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sales Problem"
+    }
+  ]
+}
+{% endschema %}

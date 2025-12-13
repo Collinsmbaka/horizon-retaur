@@ -1,0 +1,313 @@
+{% comment %}
+  Sales Page Value Stack Section
+  Exact replica of React design
+{% endcomment %}
+
+{{ 'sales-page.css' | asset_url | stylesheet_tag }}
+
+<section class="sales-value-stack">
+  <div class="sales-value-stack__container">
+    {%- comment -%} Header {%- endcomment -%}
+    <div class="sales-value-stack__header">
+      <div class="sales-value-stack__accent-bar"></div>
+      <h2 class="sales-value-stack__title">{{ section.settings.title }}</h2>
+      <p class="sales-value-stack__subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    <div class="sales-value-stack__grid">
+      {%- comment -%} Product Image {%- endcomment -%}
+      <div class="sales-value-stack__image-wrapper">
+        {%- if section.settings.product_image != blank -%}
+          <img
+            src="{{ section.settings.product_image | image_url: width: 1000 }}"
+            alt="{{ section.settings.product_image.alt | default: 'Product package' }}"
+            class="sales-value-stack__image"
+            loading="lazy"
+          >
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'sales-value-stack__image' }}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Value List and Pricing {%- endcomment -%}
+      <div>
+        <div class="sales-value-stack__list">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'value_item' -%}
+              <div class="sales-value-stack__item" {{ block.shopify_attributes }}>
+                <div class="sales-value-stack__item-content">
+                  <div class="sales-value-stack__icon-wrapper">
+                    {%- case block.settings.icon -%}
+                      {%- when 'package' -%}
+                        <svg class="sales-value-stack__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M12.89 1.45l8 4A2 2 0 0 1 22 7.24v9.53a2 2 0 0 1-1.11 1.79l-8 4a2 2 0 0 1-1.79 0l-8-4a2 2 0 0 1-1.1-1.8V7.24a2 2 0 0 1 1.11-1.79l8-4a2 2 0 0 1 1.78 0z"/>
+                          <polyline points="2.32 6.16 12 11 21.68 6.16"/>
+                          <line x1="12" y1="22.76" x2="12" y2="11"/>
+                        </svg>
+                      {%- when 'users' -%}
+                        <svg class="sales-value-stack__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                          <circle cx="9" cy="7" r="4"/>
+                          <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                          <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                      {%- when 'book' -%}
+                        <svg class="sales-value-stack__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                      {%- when 'dumbbell' -%}
+                        <svg class="sales-value-stack__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M6.5 6.5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2h-7a2 2 0 0 1-2-2v-11z"/>
+                          <path d="M3.5 10.5a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3z"/>
+                          <path d="M17.5 10.5a1 1 0 0 1 1-1h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-3z"/>
+                        </svg>
+                      {%- when 'message' -%}
+                        <svg class="sales-value-stack__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                        </svg>
+                      {%- else -%}
+                        <svg class="sales-value-stack__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                          <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    {%- endcase -%}
+                  </div>
+                  <div>
+                    <p class="sales-value-stack__item-title">{{ block.settings.title }}</p>
+                    <p class="sales-value-stack__item-desc">{{ block.settings.description }}</p>
+                  </div>
+                </div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+
+        {%- comment -%} Pricing Card {%- endcomment -%}
+        <div class="sales-value-stack__pricing">
+          <div class="sales-value-stack__prices">
+            <span class="sales-value-stack__original-price">{{ section.settings.original_price }}</span>
+            <span class="sales-value-stack__sale-price">{{ section.settings.sale_price }}</span>
+          </div>
+
+          <div class="sales-value-stack__cashback">
+            <p><span class="amount">{{ section.settings.cashback_amount }}</span> {{ section.settings.cashback_text }}</p>
+          </div>
+
+          <div class="sales-value-stack__meta">
+            <div class="sales-value-stack__meta-item">
+              <svg class="sales-value-stack__meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+              <p>{{ section.settings.spots_text }}</p>
+            </div>
+            <div class="sales-value-stack__meta-item">
+              <svg class="sales-value-stack__meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+                <line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/>
+                <line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+              <p>{{ section.settings.start_date }}</p>
+            </div>
+          </div>
+
+          <a href="#payment-options" class="sales-value-stack__cta" data-scroll-to-payment>
+            <span>{{ section.settings.cta_text }}</span>
+            <svg class="sales-value-stack__cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="9 18 15 12 9 6"/>
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const scrollButtons = document.querySelectorAll('[data-scroll-to-payment]');
+    scrollButtons.forEach(button => {
+      button.addEventListener('click', function(e) {
+        e.preventDefault();
+        const paymentSection = document.getElementById('payment-options');
+        if (paymentSection) {
+          paymentSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Sales Value Stack",
+  "tag": "section",
+  "class": "sales-value-stack-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "WHAT YOU GET"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Everything you need for 6 months"
+    },
+    {
+      "type": "header",
+      "content": "Product Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "product_image",
+      "label": "Product Image"
+    },
+    {
+      "type": "header",
+      "content": "Pricing"
+    },
+    {
+      "type": "text",
+      "id": "original_price",
+      "label": "Original Price",
+      "default": "₦550,000"
+    },
+    {
+      "type": "text",
+      "id": "sale_price",
+      "label": "Sale Price",
+      "default": "₦400,000"
+    },
+    {
+      "type": "text",
+      "id": "cashback_amount",
+      "label": "Cashback Amount",
+      "default": "+₦200,000"
+    },
+    {
+      "type": "text",
+      "id": "cashback_text",
+      "label": "Cashback Text",
+      "default": "cash back when you achieve your GOAL"
+    },
+    {
+      "type": "text",
+      "id": "spots_text",
+      "label": "Spots Text",
+      "default": "Limited: 50 spots only"
+    },
+    {
+      "type": "text",
+      "id": "start_date",
+      "label": "Start Date",
+      "default": "Starts: January 17, 2026"
+    },
+    {
+      "type": "header",
+      "content": "Call to Action"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button Text",
+      "default": "Enroll Now"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button Link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "value_item",
+      "name": "Value Item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "default": "package",
+          "options": [
+            { "value": "package", "label": "Package" },
+            { "value": "users", "label": "Users" },
+            { "value": "book", "label": "Book" },
+            { "value": "dumbbell", "label": "Dumbbell" },
+            { "value": "message", "label": "Message" },
+            { "value": "check", "label": "Checkmark" }
+          ]
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Supplements (₦200k Value)"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "6-Month supply of Whey & Creatine. Delivered free every 2 months."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sales Value Stack",
+      "blocks": [
+        {
+          "type": "value_item",
+          "settings": {
+            "icon": "package",
+            "title": "Supplements (₦200k Value)",
+            "description": "6-Month supply of Whey & Creatine. Delivered free every 2 months."
+          }
+        },
+        {
+          "type": "value_item",
+          "settings": {
+            "icon": "users",
+            "title": "Coaching (₦150k Value)",
+            "description": "6 Monthly video calls with a pro trainer."
+          }
+        },
+        {
+          "type": "value_item",
+          "settings": {
+            "icon": "book",
+            "title": "Meal Plans (₦100k Value)",
+            "description": "Body-type specific plans using Nigerian foods."
+          }
+        },
+        {
+          "type": "value_item",
+          "settings": {
+            "icon": "dumbbell",
+            "title": "Training (₦100k Value)",
+            "description": "Custom hypertrophy program for your genetics."
+          }
+        },
+        {
+          "type": "value_item",
+          "settings": {
+            "icon": "message",
+            "title": "Community (Priceless)",
+            "description": "24/7 WhatsApp support group."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

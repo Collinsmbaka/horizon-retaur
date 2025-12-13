@@ -1,0 +1,100 @@
+{% comment %}
+  Sales Page Brand Logos Section (Marquee)
+  Exact replica of React design with scrolling animation
+{% endcomment %}
+
+{{ 'sales-page.css' | asset_url | stylesheet_tag }}
+
+<section class="sales-brand-logos">
+  <div class="sales-brand-logos__title">
+    <p>{{ section.settings.title }}</p>
+  </div>
+
+  <div class="sales-brand-logos__track-wrapper" style="position: relative;">
+    <div class="sales-brand-logos__track">
+      {%- comment -%} First set of logos {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        <div class="sales-brand-logos__item" {{ block.shopify_attributes }}>
+          <div class="sales-brand-logos__logo">
+            {%- if block.settings.logo != blank -%}
+              <img
+                src="{{ block.settings.logo | image_url: width: 200 }}"
+                alt="{{ block.settings.logo.alt | default: block.settings.name }}"
+                loading="lazy"
+              >
+            {%- else -%}
+              <span>{{ block.settings.name }}</span>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+
+      {%- comment -%} Duplicate for seamless loop {%- endcomment -%}
+      {%- for block in section.blocks -%}
+        <div class="sales-brand-logos__item">
+          <div class="sales-brand-logos__logo">
+            {%- if block.settings.logo != blank -%}
+              <img
+                src="{{ block.settings.logo | image_url: width: 200 }}"
+                alt="{{ block.settings.logo.alt | default: block.settings.name }}"
+                loading="lazy"
+              >
+            {%- else -%}
+              <span>{{ block.settings.name }}</span>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Sales Brand Logos",
+  "tag": "section",
+  "class": "sales-brand-logos-section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Section Title",
+      "default": "Trusted by athletes who use these brands"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "brand",
+      "name": "Brand",
+      "settings": [
+        {
+          "type": "text",
+          "id": "name",
+          "label": "Brand Name",
+          "default": "Brand"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo",
+          "label": "Brand Logo"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sales Brand Logos",
+      "blocks": [
+        { "type": "brand", "settings": { "name": "Nike" } },
+        { "type": "brand", "settings": { "name": "Adidas" } },
+        { "type": "brand", "settings": { "name": "Puma" } },
+        { "type": "brand", "settings": { "name": "Under Armour" } },
+        { "type": "brand", "settings": { "name": "Reebok" } },
+        { "type": "brand", "settings": { "name": "Gymshark" } },
+        { "type": "brand", "settings": { "name": "MyProtein" } },
+        { "type": "brand", "settings": { "name": "Optimum Nutrition" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

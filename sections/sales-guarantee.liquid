@@ -1,0 +1,170 @@
+{% comment %}
+  Sales Page Guarantee Section
+  Exact replica of React design with step cards
+{% endcomment %}
+
+{{ 'sales-page.css' | asset_url | stylesheet_tag }}
+
+<section class="sales-guarantee">
+  <div class="sales-guarantee__container">
+    {%- comment -%} Header {%- endcomment -%}
+    <div class="sales-guarantee__header">
+      <div class="sales-guarantee__accent-bar"></div>
+      <h2 class="sales-guarantee__title">{{ section.settings.title }}</h2>
+      <p class="sales-guarantee__subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+
+    {%- comment -%} Step Cards {%- endcomment -%}
+    <div class="sales-guarantee__steps">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'step' -%}
+          <div class="sales-guarantee__step" {{ block.shopify_attributes }}>
+            <div class="sales-guarantee__step-header">
+              <div class="sales-guarantee__step-number">{{ block.settings.number }}</div>
+              <p class="sales-guarantee__step-title">{{ block.settings.title }}</p>
+            </div>
+            <div class="sales-guarantee__step-content">
+              <p class="sales-guarantee__step-text">{{ block.settings.text }}</p>
+            </div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- comment -%} FAQ within Guarantee {%- endcomment -%}
+    <div class="sales-guarantee__faq">
+      <div class="sales-guarantee__faq-item">
+        <p class="sales-guarantee__faq-question">{{ section.settings.faq_1_question }}</p>
+        <p class="sales-guarantee__faq-answer">{{ section.settings.faq_1_answer }}</p>
+      </div>
+      <div class="sales-guarantee__faq-item">
+        <p class="sales-guarantee__faq-question">{{ section.settings.faq_2_question }}</p>
+        <p class="sales-guarantee__faq-answer">{{ section.settings.faq_2_answer }}</p>
+        {%- if section.settings.faq_2_note != blank -%}
+          <p class="sales-guarantee__faq-note">{{ section.settings.faq_2_note }}</p>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Sales Guarantee",
+  "tag": "section",
+  "class": "sales-guarantee-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "THE PERFORMANCE GUARANTEE"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "We pay for results. Here is the deal:"
+    },
+    {
+      "type": "header",
+      "content": "FAQ Item 1"
+    },
+    {
+      "type": "text",
+      "id": "faq_1_question",
+      "label": "Question 1",
+      "default": "Why 3cm?"
+    },
+    {
+      "type": "textarea",
+      "id": "faq_1_answer",
+      "label": "Answer 1",
+      "default": "Because 3cm is the difference between \"do you workout?\" and \"wow, you got big.\" It is visibly noticeable, achievable in 6 months, and 100% measurable."
+    },
+    {
+      "type": "header",
+      "content": "FAQ Item 2"
+    },
+    {
+      "type": "text",
+      "id": "faq_2_question",
+      "label": "Question 2",
+      "default": "What if you miss the goal?"
+    },
+    {
+      "type": "textarea",
+      "id": "faq_2_answer",
+      "label": "Answer 2",
+      "default": "The ₦200,000 is a performance bonus, so you don't get the cash back. However, you keep the supplements, the coaching, and the months of progress. You still walk away bigger, stronger, and smarter than when you started."
+    },
+    {
+      "type": "text",
+      "id": "faq_2_note",
+      "label": "Note (optional)",
+      "default": "T&C Apply"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Step Number",
+          "default": "1"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Step Title",
+          "default": "The Commitment"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Step Text",
+          "default": "You invest ₦400k (or ₦135k) to join the 6-month program. Your certified trainer records your starting measurements (Biceps, Chest, Thighs)."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sales Guarantee",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "number": "1",
+            "title": "The Commitment",
+            "text": "You invest ₦400k (or ₦135k) to join the 6-month program. Your certified trainer records your starting measurements (Biceps, Chest, Thighs)."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "2",
+            "title": "The Work",
+            "text": "You follow the plan. You take the supplements, eat the food, and attend at least 5 of your 6 coaching calls. We give you every tool needed to win."
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "number": "3",
+            "title": "The Reward",
+            "text": "At Month 6, we measure again. If you gain 3cm+ on at least 2 body parts (e.g., Arms & Chest), we send ₦200,000 back to your account."
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

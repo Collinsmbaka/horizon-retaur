@@ -1,0 +1,166 @@
+{% comment %}
+  Sales Page About Section
+  Exact replica of React design with founder story
+{% endcomment %}
+
+{{ 'sales-page.css' | asset_url | stylesheet_tag }}
+
+<section class="sales-about">
+  <div class="sales-about__container">
+    <div class="sales-about__grid">
+      {%- comment -%} Founder Image {%- endcomment -%}
+      <div class="sales-about__image-wrapper">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 1000 }}"
+            alt="{{ section.settings.image.alt | default: 'Founder' }}"
+            class="sales-about__image"
+            loading="lazy"
+          >
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'sales-about__image' }}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Content {%- endcomment -%}
+      <div class="sales-about__content">
+        <div class="sales-about__header">
+          <div class="sales-about__accent-bar"></div>
+          <h2 class="sales-about__title">{{ section.settings.title }}</h2>
+        </div>
+
+        <div class="sales-about__body">
+          {%- if section.settings.paragraph_1 != blank -%}
+            <p>{{ section.settings.paragraph_1 }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.paragraph_2 != blank -%}
+            <p>{{ section.settings.paragraph_2 }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.paragraph_3 != blank -%}
+            <p>{{ section.settings.paragraph_3 }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.paragraph_4 != blank -%}
+            <p>{{ section.settings.paragraph_4 }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.quote_1 != blank -%}
+            <div class="sales-about__quote">
+              <p>{{ section.settings.quote_1 }}</p>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.paragraph_5 != blank -%}
+            <p>{{ section.settings.paragraph_5 }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.highlight_text != blank -%}
+            <div class="sales-about__highlight">
+              <p>{{ section.settings.highlight_text }}</p>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.paragraph_6 != blank -%}
+            <p>{{ section.settings.paragraph_6 }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.statement != blank -%}
+            <p class="sales-about__statement">{{ section.settings.statement }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.signature != blank -%}
+            <p class="sales-about__signature">{{ section.settings.signature }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Sales About",
+  "tag": "section",
+  "class": "sales-about-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Founder Image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "WHY I BUILT THIS"
+    },
+    {
+      "type": "html",
+      "id": "paragraph_1",
+      "label": "Paragraph 1",
+      "default": "In 2023, I started Retaur because I was tired of paying <span class=\"accent bold\">₦100k+</span> for imported protein that often turned out to be fake."
+    },
+    {
+      "type": "html",
+      "id": "paragraph_2",
+      "label": "Paragraph 2",
+      "default": "<span class=\"bold\">I wanted to make quality nutrition affordable for Nigerians.</span>"
+    },
+    {
+      "type": "text",
+      "id": "paragraph_3",
+      "label": "Paragraph 3",
+      "default": "But I quickly noticed a bigger problem."
+    },
+    {
+      "type": "text",
+      "id": "paragraph_4",
+      "label": "Paragraph 4",
+      "default": "Guys were buying our protein, using it for a few weeks, and quitting because they didn't see results."
+    },
+    {
+      "type": "html",
+      "id": "quote_1",
+      "label": "Quote 1",
+      "default": "<span class=\"bold\">They weren't failing because of the product.</span><br><span class=\"accent bold\">They were failing because of the strategy.</span>"
+    },
+    {
+      "type": "text",
+      "id": "paragraph_5",
+      "label": "Paragraph 5",
+      "default": "They were following influencers/trainers with a different body type and genetics from them and hoping it works for them."
+    },
+    {
+      "type": "text",
+      "id": "highlight_text",
+      "label": "Highlight Text",
+      "default": "I realized selling supplements without coaching is like selling running shoes without teaching someone how to run."
+    },
+    {
+      "type": "html",
+      "id": "paragraph_6",
+      "label": "Paragraph 6",
+      "default": "That's why this program exists. We combined our local products (like our Whey and Protein Yogurt) with the missing piece: <span class=\"accent bold\">Guidance.</span>"
+    },
+    {
+      "type": "html",
+      "id": "statement",
+      "label": "Statement",
+      "default": "I don't just want to sell you powder. I want to sell you the <span class=\"accent\">result.</span> That's why if you don't hit your goals, I lose money."
+    },
+    {
+      "type": "text",
+      "id": "signature",
+      "label": "Signature",
+      "default": "— Collins"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sales About"
+    }
+  ]
+}
+{% endschema %}

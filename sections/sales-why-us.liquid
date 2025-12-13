@@ -1,0 +1,101 @@
+{% comment %}
+  Sales Page Why Us Section
+  Exact replica of React design with two-column layout
+{% endcomment %}
+
+{{ 'sales-page.css' | asset_url | stylesheet_tag }}
+
+<section class="sales-why-us">
+  <div class="sales-why-us__container">
+    <div class="sales-why-us__grid">
+      {%- comment -%} Image Column {%- endcomment -%}
+      <div class="sales-why-us__image-wrapper">
+        {%- if section.settings.image != blank -%}
+          <img
+            src="{{ section.settings.image | image_url: width: 1200 }}"
+            alt="{{ section.settings.image.alt | default: 'Trainer coaching' }}"
+            class="sales-why-us__image"
+            loading="lazy"
+          >
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'sales-why-us__image' }}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Content Column {%- endcomment -%}
+      <div class="sales-why-us__content">
+        <div class="sales-why-us__accent-bar"></div>
+
+        <h2 class="sales-why-us__headline">{{ section.settings.headline }}</h2>
+
+        <div class="sales-why-us__body">
+          {%- if section.settings.paragraph_1 != blank -%}
+            <p>{{ section.settings.paragraph_1 }}</p>
+          {%- endif -%}
+
+          {%- if section.settings.highlight_text != blank -%}
+            <div class="sales-why-us__highlight">
+              <p>{{ section.settings.highlight_text }}</p>
+            </div>
+          {%- endif -%}
+
+          {%- if section.settings.callout_text != blank -%}
+            <div class="sales-why-us__callout">
+              <div class="sales-why-us__callout-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
+                  <polyline points="17 6 23 6 23 12"/>
+                </svg>
+              </div>
+              <p>{{ section.settings.callout_text }}</p>
+            </div>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Sales Why Us",
+  "tag": "section",
+  "class": "sales-why-us-section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Section Image"
+    },
+    {
+      "type": "html",
+      "id": "headline",
+      "label": "Headline",
+      "default": "Most supplement companies sell you protein and say <span class=\"accent\">good luck.</span>"
+    },
+    {
+      "type": "html",
+      "id": "paragraph_1",
+      "label": "Paragraph 1",
+      "default": "We give you the <span class=\"bold\">full system:</span> supplements, certified trainer, meal plans, community. Built for YOUR body."
+    },
+    {
+      "type": "html",
+      "id": "highlight_text",
+      "label": "Highlight Box Text",
+      "default": "And we pay you <span class=\"amount\">₦200,000</span> when you hit your goals. Not if you fail - <span class=\"bold\">when you succeed.</span>"
+    },
+    {
+      "type": "text",
+      "id": "callout_text",
+      "label": "Callout Text",
+      "default": "₦10 million on the line. 50 men. We only do this because it works."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sales Why Us"
+    }
+  ]
+}
+{% endschema %}
