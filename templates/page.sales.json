@@ -731,7 +731,7 @@
           "settings": {
             "horizontal_alignment_flex_direction_column": "flex-start",
             "vertical_alignment_flex_direction_column": "center",
-            "gap": 24
+            "gap": 20
           },
           "blocks": {
             "accent_bar": {
