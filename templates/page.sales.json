@@ -134,21 +134,21 @@
               "type": "text",
               "settings": {
                 "text": "<h1>We'll Pay You <strong>₦200,000</strong> to Build Muscle in 6 Months</h1>",
-                "width": "fit-content",
+                "width": "100%",
                 "max_width": "normal",
                 "alignment": "left",
-                "type_preset": "h1",
-                "font": "var(--font-body--family)",
-                "font_size": "1rem",
-                "line_height": "normal",
-                "letter_spacing": "normal",
+                "type_preset": "custom",
+                "font": "var(--font-heading--family)",
+                "font_size": "2rem",
+                "line_height": "tight",
+                "letter_spacing": "tight",
                 "case": "none",
-                "wrap": "balance",
+                "wrap": "pretty",
                 "color": "var(--color-foreground-heading)",
                 "background": false,
                 "background_color": "#00000026",
                 "corner_radius": 0,
-                "padding-block-start": 16,
+                "padding-block-start": 8,
                 "padding-block-end": 8,
                 "padding-inline-start": 0,
                 "padding-inline-end": 0
@@ -411,7 +411,7 @@
         "extend_media": true,
         "color_scheme": "scheme-1",
         "padding-block-start": 0,
-        "padding-block-end": 40
+        "padding-block-end": 20
       }
     },
     "brand_logos": {
