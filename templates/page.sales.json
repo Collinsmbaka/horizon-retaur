@@ -11,6 +11,9 @@
   "sections": {
     "sales_hero_riEgG6": {
       "type": "sales-hero",
+      "custom_css": [
+        ".sales-hero__image {object-position: center 20%;}"
+      ],
       "name": "Sales Hero",
       "settings": {
         "hero_image": "shopify://shop_images/WhatsApp_Image_2025-12-01_at_09.27.39_1.jpg",
