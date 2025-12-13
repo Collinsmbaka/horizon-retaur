@@ -2685,7 +2685,7 @@
                 "description": {
                   "type": "text",
                   "settings": {
-                    "text": "<p>You invest ₦400k (or ₦135k) to join the 6-month program. Your certified trainer records your starting measurements (💪 Biceps | 👕 Chest | 🦵 Thighs).</p>",
+                    "text": "<p>You invest ₦400k (or ₦135k) to join the 6-month program. Your certified trainer records your starting measurements <br/><br/>(💪 Biceps | 👕 Chest | 🦵 Thighs).</p>",
                     "width": "fit-content",
                     "max_width": "normal",
                     "alignment": "left",
