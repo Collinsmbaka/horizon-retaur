@@ -12,7 +12,7 @@
     "sales_hero_riEgG6": {
       "type": "sales-hero",
       "custom_css": [
-        ".sales-hero__image {object-position: center 20%;}"
+        ".sales-hero__image {object-position: center 10%;}"
       ],
       "name": "Sales Hero",
       "settings": {
