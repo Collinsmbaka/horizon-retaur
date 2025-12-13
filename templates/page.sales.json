@@ -13,6 +13,7 @@
       "type": "sales-hero",
       "name": "Sales Hero",
       "settings": {
+        "hero_image": "shopify://shop_images/WhatsApp_Image_2025-12-01_at_09.27.39_1.jpg",
         "badge_text": "3,000+ Customers",
         "headline_part1": "We'll Pay You",
         "headline_accent": "₦200,000",
@@ -220,6 +221,7 @@
       "settings": {
         "title": "WHAT YOU GET",
         "subtitle": "Everything you need for 6 months",
+        "product_image": "shopify://shop_images/4_b1078ec9-f798-4458-8ff9-8b0e00635c95.png",
         "original_price": "₦550,000",
         "sale_price": "₦400,000",
         "cashback_amount": "+₦200,000",
@@ -278,6 +280,7 @@
       "type": "sales-about",
       "name": "Sales About",
       "settings": {
+        "image": "shopify://shop_images/IMG_6732.jpg",
         "title": "WHY I BUILT THIS",
         "paragraph_1": "In 2023, I started Retaur because I was tired of paying <span class=\"accent bold\">₦100k+</span> for imported protein that often turned out to be fake.",
         "paragraph_2": "<span class=\"bold\">I wanted to make quality nutrition affordable for Nigerians.</span>",
