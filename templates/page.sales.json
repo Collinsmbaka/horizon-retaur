@@ -21,7 +21,7 @@
             "link": "",
             "video_loop": true,
             "video_autoplay": false,
-            "image_position": "contain",
+            "image_position": "cover",
             "video_position": "cover"
           },
           "blocks": {}
@@ -404,13 +404,13 @@
         }
       },
       "settings": {
-        "media_position": "right",
-        "media_width": "medium",
+        "media_position": "left",
+        "media_width": "wide",
         "media_height": "50svh",
         "section_width": "page-width",
         "extend_media": true,
         "color_scheme": "scheme-1",
-        "padding-block-start": 40,
+        "padding-block-start": 0,
         "padding-block-end": 40
       }
     },
