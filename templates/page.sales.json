@@ -4507,7 +4507,7 @@
                         "border": "none",
                         "border_width": 1,
                         "border_opacity": 100,
-                        "border_radius": 0,
+                        "border_radius": 39,
                         "placeholder": "",
                         "toggle_overlay": false,
                         "overlay_color": "#00000026",
@@ -4526,7 +4526,7 @@
                             "link": "shopify://products/whey-protein-creatine",
                             "open_in_new_tab": false,
                             "style_class": "button-secondary",
-                            "width": "fill",
+                            "width": "custom",
                             "custom_width": 100,
                             "width_mobile": "custom",
                             "custom_width_mobile": 100
