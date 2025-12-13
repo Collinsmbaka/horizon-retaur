@@ -135,13 +135,16 @@
         "testimonial_Fxixqg": {
           "type": "testimonial",
           "settings": {
-            "heading": "A Magical Experience",
-            "quote": "I struggled with consistency and I figured I just didn't have the 'fitness gene.' But the coaching calls kept me accountable. My trainer showed me exactly what my body needed. The meal plans using Nigerian food made it so easy. I gained 3.5cm on my thighs and 3cm on my arms. Worth every kobo!",
-            "name": "Chukwudi Emmanuel"
+            "before_image": "shopify://shop_images/CleanShot_2025-05-08_at_14.38.25.png",
+            "after_image": "shopify://shop_images/CleanShot_2025-05-08_at_14.38.25.png",
+            "heading": "Thank you Retaur",
+            "quote": "Thank you veryyy muchh⁩ @⁨Retaur Store⁩ \nI honestly can’t explain how much this challenge shaped mee. For the first time I’m loosing weight and I’m still confident about my bodyy because most times when I try to lose weight I lose mostly my lower body 😭\nYansh wey no dey before buh this time it’s different,,feels like I’m doing something right..The compliments nko even tho I don’t see it😂I’m so happy I came across that post on IG and just decided to just pay jhur. The motivation no be for hereee and I will miss our inside jokessss🥹\nMay the gains continue to be with us and may the losses never find its way back😂🤲",
+            "name": "Hadassah Chinamerem"
           }
         },
         "testimonial_8UX8Mc": {
           "type": "testimonial",
+          "disabled": true,
           "settings": {
             "heading": "My Dream Come True",
             "quote": "After years of on-and-off gym routines with zero results, I was ready to quit. This program was a last shot. Six months later, I gained 4cm on my chest and I finally saw the results I've been chasing for YEARS. The WhatsApp community is unmatched - real support, real accountability. 10/10 would recommend!",
