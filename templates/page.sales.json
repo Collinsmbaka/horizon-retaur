@@ -4523,12 +4523,12 @@
                           "type": "button",
                           "settings": {
                             "label": "Pay ₦135,000 Now →",
-                            "link": "",
+                            "link": "shopify://products/whey-protein-creatine",
                             "open_in_new_tab": false,
                             "style_class": "button-secondary",
                             "width": "fill",
                             "custom_width": 100,
-                            "width_mobile": "fit-content",
+                            "width_mobile": "custom",
                             "custom_width_mobile": 100
                           },
                           "blocks": {}
