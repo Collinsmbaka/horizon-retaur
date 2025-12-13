@@ -3391,7 +3391,7 @@
                 "height": "custom",
                 "custom_height": 1,
                 "inherit_color_scheme": false,
-                "color_scheme": "scheme-4",
+                "color_scheme": "scheme-3",
                 "background_media": "none",
                 "video_position": "cover",
                 "background_image_position": "cover",
@@ -3414,7 +3414,7 @@
             "title": {
               "type": "text",
               "settings": {
-                "text": "<h2>Why I Built This</h2>",
+                "text": "<h2>Why We Built This</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -3439,7 +3439,7 @@
             "para_1": {
               "type": "text",
               "settings": {
-                "text": "<p>In 2023, I started Retaur because I was tired of paying <strong>₦100k+</strong> for imported protein that often turned out to be fake.</p>",
+                "text": "<p>In 2023, We started Retaur because I was tired of paying <strong>₦100k+</strong> for imported protein that often turned out to be fake.</p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
@@ -3464,7 +3464,7 @@
             "para_2": {
               "type": "text",
               "settings": {
-                "text": "<p><strong>I wanted to make quality nutrition affordable for Nigerians.</strong></p>",
+                "text": "<p><strong>We wanted to make quality sports nutrition affordable for Nigerians.</strong></p>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "left",
