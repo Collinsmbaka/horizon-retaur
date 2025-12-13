@@ -12,7 +12,8 @@
     "sales_hero_riEgG6": {
       "type": "sales-hero",
       "custom_css": [
-        ".sales-hero__image {object-position: center 18%;}"
+        ".sales-hero__image {object-position: center 18%;}",
+        "p.sales-hero__badge-text {margin-block-start: 0;}"
       ],
       "name": "Sales Hero",
       "settings": {
