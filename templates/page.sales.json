@@ -1073,11 +1073,11 @@
             "title": {
               "type": "text",
               "settings": {
-                "text": "<h2>WHAT YOU GET</h2>",
+                "text": "<h2>What You Get</h2>",
                 "width": "fit-content",
                 "max_width": "normal",
                 "alignment": "center",
-                "type_preset": "h1",
+                "type_preset": "h2",
                 "font": "var(--font-body--family)",
                 "font_size": "1rem",
                 "line_height": "normal",
@@ -1169,8 +1169,9 @@
             "product_image": {
               "type": "image",
               "settings": {
+                "image": "shopify://shop_images/Generated_Image_September_25_2025_-_6_28AM.png",
                 "link": "",
-                "image_ratio": "portrait",
+                "image_ratio": "square",
                 "width": "custom",
                 "custom_width": 45,
                 "width_mobile": "fill",
@@ -2102,7 +2103,7 @@
                         "align_baseline": false,
                         "horizontal_alignment_flex_direction_column": "flex-start",
                         "vertical_alignment_flex_direction_column": "center",
-                        "gap": 16,
+                        "gap": 0,
                         "width": "fill",
                         "custom_width": 100,
                         "width_mobile": "fill",
@@ -2136,14 +2137,14 @@
                             "width": "fit-content",
                             "max_width": "normal",
                             "alignment": "left",
-                            "type_preset": "h3",
-                            "font": "var(--font-body--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
+                            "type_preset": "custom",
+                            "font": "var(--font-heading--family)",
+                            "font_size": "1.5rem",
+                            "line_height": "tight",
+                            "letter_spacing": "tight",
                             "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
+                            "wrap": "balance",
+                            "color": "var(--color-primary)",
                             "background": false,
                             "background_color": "#00000026",
                             "corner_radius": 0,
@@ -2254,25 +2255,70 @@
                         "text"
                       ]
                     },
-                    "cta": {
-                      "type": "button",
+                    "group_PwxQm8": {
+                      "type": "group",
+                      "name": "t:names.group",
                       "settings": {
-                        "label": "Enroll Now →",
                         "link": "",
                         "open_in_new_tab": false,
-                        "style_class": "button",
+                        "content_direction": "column",
+                        "vertical_on_mobile": true,
+                        "horizontal_alignment": "flex-start",
+                        "vertical_alignment": "center",
+                        "align_baseline": false,
+                        "horizontal_alignment_flex_direction_column": "flex-start",
+                        "vertical_alignment_flex_direction_column": "center",
+                        "gap": 12,
                         "width": "fill",
                         "custom_width": 100,
-                        "width_mobile": "fit-content",
-                        "custom_width_mobile": 100
+                        "width_mobile": "fill",
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "custom_height": 100,
+                        "inherit_color_scheme": false,
+                        "color_scheme": "scheme-3",
+                        "background_media": "none",
+                        "video_position": "cover",
+                        "background_image_position": "cover",
+                        "border": "none",
+                        "border_width": 1,
+                        "border_opacity": 100,
+                        "border_radius": 0,
+                        "placeholder": "",
+                        "toggle_overlay": false,
+                        "overlay_color": "#00000026",
+                        "overlay_style": "solid",
+                        "gradient_direction": "to top",
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
                       },
-                      "blocks": {}
+                      "blocks": {
+                        "button_eXcPxP": {
+                          "type": "button",
+                          "settings": {
+                            "label": "Enroll Now →",
+                            "link": "#",
+                            "open_in_new_tab": false,
+                            "style_class": "button-secondary",
+                            "width": "custom",
+                            "custom_width": 100,
+                            "width_mobile": "custom",
+                            "custom_width_mobile": 100
+                          },
+                          "blocks": {}
+                        }
+                      },
+                      "block_order": [
+                        "button_eXcPxP"
+                      ]
                     }
                   },
                   "block_order": [
                     "prices",
                     "cashback",
-                    "cta"
+                    "group_PwxQm8"
                   ]
                 }
               },
