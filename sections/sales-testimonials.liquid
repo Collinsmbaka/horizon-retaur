@@ -1,0 +1,775 @@
+{% liquid
+  assign testimonials_count = 0
+
+  for i in (1..6)
+    assign before_image_key = 'before_image_' | append: i
+    assign after_image_key = 'after_image_' | append: i
+    assign before_image = section.settings[before_image_key]
+    assign after_image = section.settings[after_image_key]
+    if before_image != blank or after_image != blank
+      assign testimonials_count = testimonials_count | plus: 1
+    endif
+  endfor
+%}
+
+<div class="section-background color-{{ section.settings.color_scheme }}"></div>
+
+<div
+  class="
+    section
+    section--{{ section.settings.section_width }}
+    color-{{ section.settings.color_scheme }}
+    sales-testimonials
+    spacing-style
+  "
+  style="
+    {% render 'spacing-style', settings: section.settings %}
+    --content-gap: {{ section.settings.gap }}px;
+  "
+>
+  {% if section.settings.heading != blank or section.settings.subheading != blank %}
+    <div class="sales-testimonials__header">
+      <div class="sales-testimonials__accent-bar"></div>
+      {% if section.settings.heading != blank %}
+        <h2 class="sales-testimonials__heading h1">{{ section.settings.heading }}</h2>
+      {% endif %}
+      {% if section.settings.subheading != blank %}
+        <p class="sales-testimonials__subheading">{{ section.settings.subheading }}</p>
+      {% endif %}
+    </div>
+  {% endif %}
+
+  <div class="sales-testimonials__list">
+    {% for i in (1..6) %}
+      {% liquid
+        assign before_image_key = 'before_image_' | append: i
+        assign after_image_key = 'after_image_' | append: i
+        assign title_key = 'title_' | append: i
+        assign quote_key = 'quote_' | append: i
+        assign name_key = 'customer_name_' | append: i
+        assign rating_key = 'rating_' | append: i
+
+        assign before_image = section.settings[before_image_key]
+        assign after_image = section.settings[after_image_key]
+        assign title = section.settings[title_key]
+        assign quote = section.settings[quote_key]
+        assign customer_name = section.settings[name_key]
+        assign rating = section.settings[rating_key]
+
+        assign reverse_layout = forloop.index | modulo: 2
+      %}
+
+      {% if before_image != blank or after_image != blank or quote != blank %}
+        <div class="sales-testimonials__item {% if reverse_layout == 0 %}sales-testimonials__item--reverse{% endif %}">
+          <div class="sales-testimonials__images">
+            <div class="sales-testimonials__image-wrapper sales-testimonials__image-wrapper--before">
+              {% if before_image != blank %}
+                {{ before_image | image_url: width: 800 | image_tag: loading: 'lazy', class: 'sales-testimonials__image' }}
+              {% else %}
+                <div class="sales-testimonials__placeholder"></div>
+              {% endif %}
+              <div class="sales-testimonials__image-label sales-testimonials__image-label--before">
+                {{ section.settings.before_label | default: 'BEFORE' }}
+              </div>
+            </div>
+            <div class="sales-testimonials__image-wrapper sales-testimonials__image-wrapper--after">
+              {% if after_image != blank %}
+                {{ after_image | image_url: width: 800 | image_tag: loading: 'lazy', class: 'sales-testimonials__image' }}
+              {% else %}
+                <div class="sales-testimonials__placeholder"></div>
+              {% endif %}
+              <div class="sales-testimonials__image-label sales-testimonials__image-label--after">
+                {{ section.settings.after_label | default: 'AFTER' }}
+              </div>
+            </div>
+          </div>
+
+          <div class="sales-testimonials__content">
+            {% if rating > 0 %}
+              <div class="sales-testimonials__rating" aria-label="{{ rating }} out of 5 stars">
+                {% for star in (1..5) %}
+                  <svg
+                    class="sales-testimonials__star {% if star <= rating %}sales-testimonials__star--filled{% endif %}"
+                    width="{{ section.settings.star_size }}"
+                    height="{{ section.settings.star_size }}"
+                    viewBox="0 0 24 24"
+                    fill="{% if star <= rating %}currentColor{% else %}none{% endif %}"
+                    stroke="currentColor"
+                    stroke-width="2"
+                  >
+                    <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
+                  </svg>
+                {% endfor %}
+              </div>
+            {% endif %}
+
+            {% if title != blank %}
+              <h3 class="sales-testimonials__title h3">{{ title }}</h3>
+            {% endif %}
+
+            {% if quote != blank %}
+              <div class="sales-testimonials__quote-wrapper">
+                <svg class="sales-testimonials__quote-icon" width="40" height="40" viewBox="0 0 24 24" fill="currentColor" opacity="0.2">
+                  <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+                </svg>
+                <p class="sales-testimonials__quote">{{ quote }}</p>
+              </div>
+            {% endif %}
+
+            {% if customer_name != blank %}
+              <div class="sales-testimonials__customer">
+                <span class="sales-testimonials__customer-name">— {{ customer_name }}</span>
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+  {% if section.settings.show_stats %}
+    <div class="sales-testimonials__stats">
+      {% if section.settings.stat_1_value != blank %}
+        <div class="sales-testimonials__stat">
+          <div class="sales-testimonials__stat-value h1">{{ section.settings.stat_1_value }}</div>
+          <p class="sales-testimonials__stat-label">{{ section.settings.stat_1_label }}</p>
+          {% if section.settings.stat_1_description != blank %}
+            <p class="sales-testimonials__stat-description">{{ section.settings.stat_1_description }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if section.settings.stat_2_value != blank %}
+        <div class="sales-testimonials__stat">
+          <div class="sales-testimonials__stat-value h1">{{ section.settings.stat_2_value }}</div>
+          <p class="sales-testimonials__stat-label">{{ section.settings.stat_2_label }}</p>
+          {% if section.settings.stat_2_description != blank %}
+            <p class="sales-testimonials__stat-description">{{ section.settings.stat_2_description }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+      {% if section.settings.stat_3_value != blank %}
+        <div class="sales-testimonials__stat">
+          <div class="sales-testimonials__stat-value h1">{{ section.settings.stat_3_value }}</div>
+          <p class="sales-testimonials__stat-label">{{ section.settings.stat_3_label }}</p>
+          {% if section.settings.stat_3_description != blank %}
+            <p class="sales-testimonials__stat-description">{{ section.settings.stat_3_description }}</p>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+
+{% stylesheet %}
+  .sales-testimonials {
+    display: flex;
+    flex-direction: column;
+    gap: var(--content-gap, 48px);
+  }
+
+  .sales-testimonials__header {
+    text-align: center;
+  }
+
+  .sales-testimonials__accent-bar {
+    width: 64px;
+    height: 4px;
+    background-color: var(--color-accent);
+    margin-inline: auto;
+    margin-block-end: 24px;
+  }
+
+  .sales-testimonials__heading {
+    margin-block-end: 16px;
+  }
+
+  .sales-testimonials__subheading {
+    font-size: 1.25rem;
+    color: var(--color-foreground);
+    opacity: 0.7;
+  }
+
+  .sales-testimonials__list {
+    display: flex;
+    flex-direction: column;
+    gap: 48px;
+  }
+
+  .sales-testimonials__item {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    align-items: center;
+  }
+
+  @media screen and (min-width: 750px) {
+    .sales-testimonials__item {
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    .sales-testimonials__item--reverse .sales-testimonials__images {
+      order: 2;
+    }
+
+    .sales-testimonials__item--reverse .sales-testimonials__content {
+      order: 1;
+    }
+  }
+
+  .sales-testimonials__images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .sales-testimonials__image-wrapper {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    aspect-ratio: 3 / 4;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .sales-testimonials__image-wrapper--after {
+    border: 4px solid var(--color-accent);
+  }
+
+  .sales-testimonials__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .sales-testimonials__placeholder {
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-background-secondary, #f5f5f5);
+  }
+
+  .sales-testimonials__image-label {
+    position: absolute;
+    inset-block-end: 0;
+    inset-inline-start: 0;
+    inset-inline-end: 0;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 0.875rem;
+    color: white;
+  }
+
+  .sales-testimonials__image-label--before {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  }
+
+  .sales-testimonials__image-label--after {
+    background: linear-gradient(to top, var(--color-accent), transparent);
+  }
+
+  .sales-testimonials__content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .sales-testimonials__rating {
+    display: flex;
+    gap: 4px;
+  }
+
+  .sales-testimonials__star {
+    color: var(--color-accent);
+  }
+
+  .sales-testimonials__star--filled {
+    fill: var(--color-accent);
+  }
+
+  .sales-testimonials__title {
+    margin: 0;
+  }
+
+  .sales-testimonials__quote-wrapper {
+    position: relative;
+    padding-inline-start: 24px;
+  }
+
+  .sales-testimonials__quote-icon {
+    position: absolute;
+    inset-block-start: -8px;
+    inset-inline-start: -8px;
+    color: var(--color-accent);
+  }
+
+  .sales-testimonials__quote {
+    font-size: 1.125rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media screen and (min-width: 750px) {
+    .sales-testimonials__quote {
+      font-size: 1.25rem;
+    }
+  }
+
+  .sales-testimonials__customer {
+    padding-block-start: 16px;
+    border-block-start: 1px solid var(--color-border);
+  }
+
+  .sales-testimonials__customer-name {
+    font-weight: 700;
+    font-size: 1.125rem;
+    color: var(--color-accent);
+  }
+
+  .sales-testimonials__stats {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 32px;
+    background-color: var(--color-background-secondary, #f5f5f5);
+    border-radius: 16px;
+    text-align: center;
+    margin-block-start: 16px;
+  }
+
+  @media screen and (min-width: 750px) {
+    .sales-testimonials__stats {
+      grid-template-columns: repeat(3, 1fr);
+      padding: 48px;
+    }
+  }
+
+  .sales-testimonials__stat-value {
+    color: var(--color-accent);
+    margin-block-end: 8px;
+  }
+
+  .sales-testimonials__stat-label {
+    font-weight: 600;
+    font-size: 1.125rem;
+    margin-block-end: 4px;
+  }
+
+  .sales-testimonials__stat-description {
+    font-size: 0.875rem;
+    color: var(--color-foreground);
+    opacity: 0.7;
+    margin: 0;
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Sales Testimonials",
+  "class": "sales-testimonials-section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "What Our Customers Are Saying"
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Real transformations from real customers"
+    },
+    {
+      "type": "text",
+      "id": "before_label",
+      "label": "Before label",
+      "default": "BEFORE"
+    },
+    {
+      "type": "text",
+      "id": "after_label",
+      "label": "After label",
+      "default": "AFTER"
+    },
+    {
+      "type": "range",
+      "id": "star_size",
+      "label": "Star size",
+      "min": 16,
+      "max": 32,
+      "step": 2,
+      "unit": "px",
+      "default": 20
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 1"
+    },
+    {
+      "type": "image_picker",
+      "id": "before_image_1",
+      "label": "Before image"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_image_1",
+      "label": "After image"
+    },
+    {
+      "type": "range",
+      "id": "rating_1",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "title_1",
+      "label": "Title",
+      "default": "The Greatest Gift I've Ever Received!"
+    },
+    {
+      "type": "textarea",
+      "id": "quote_1",
+      "label": "Quote",
+      "default": "I was skeptical at first but decided to go all in and commit. It's not just about the supplements, it's about having a plan designed for MY body type."
+    },
+    {
+      "type": "text",
+      "id": "customer_name_1",
+      "label": "Customer name",
+      "default": "Adebayo Martins"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 2"
+    },
+    {
+      "type": "image_picker",
+      "id": "before_image_2",
+      "label": "Before image"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_image_2",
+      "label": "After image"
+    },
+    {
+      "type": "range",
+      "id": "rating_2",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "title_2",
+      "label": "Title",
+      "default": "A Magical Experience"
+    },
+    {
+      "type": "textarea",
+      "id": "quote_2",
+      "label": "Quote",
+      "default": "I struggled with consistency and I figured I just didn't have the 'fitness gene.' But the coaching calls kept me accountable."
+    },
+    {
+      "type": "text",
+      "id": "customer_name_2",
+      "label": "Customer name",
+      "default": "Chukwudi Emmanuel"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 3"
+    },
+    {
+      "type": "image_picker",
+      "id": "before_image_3",
+      "label": "Before image"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_image_3",
+      "label": "After image"
+    },
+    {
+      "type": "range",
+      "id": "rating_3",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "title_3",
+      "label": "Title",
+      "default": "My Dream Come True"
+    },
+    {
+      "type": "textarea",
+      "id": "quote_3",
+      "label": "Quote",
+      "default": "After years of on-and-off gym routines with zero results, I was ready to quit. This program was a last shot."
+    },
+    {
+      "type": "text",
+      "id": "customer_name_3",
+      "label": "Customer name",
+      "default": "Ollie the Bodyguard"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 4"
+    },
+    {
+      "type": "image_picker",
+      "id": "before_image_4",
+      "label": "Before image"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_image_4",
+      "label": "After image"
+    },
+    {
+      "type": "range",
+      "id": "rating_4",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "title_4",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "quote_4",
+      "label": "Quote"
+    },
+    {
+      "type": "text",
+      "id": "customer_name_4",
+      "label": "Customer name"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 5"
+    },
+    {
+      "type": "image_picker",
+      "id": "before_image_5",
+      "label": "Before image"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_image_5",
+      "label": "After image"
+    },
+    {
+      "type": "range",
+      "id": "rating_5",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "title_5",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "quote_5",
+      "label": "Quote"
+    },
+    {
+      "type": "text",
+      "id": "customer_name_5",
+      "label": "Customer name"
+    },
+    {
+      "type": "header",
+      "content": "Testimonial 6"
+    },
+    {
+      "type": "image_picker",
+      "id": "before_image_6",
+      "label": "Before image"
+    },
+    {
+      "type": "image_picker",
+      "id": "after_image_6",
+      "label": "After image"
+    },
+    {
+      "type": "range",
+      "id": "rating_6",
+      "label": "Rating",
+      "min": 0,
+      "max": 5,
+      "step": 1,
+      "default": 5
+    },
+    {
+      "type": "text",
+      "id": "title_6",
+      "label": "Title"
+    },
+    {
+      "type": "textarea",
+      "id": "quote_6",
+      "label": "Quote"
+    },
+    {
+      "type": "text",
+      "id": "customer_name_6",
+      "label": "Customer name"
+    },
+    {
+      "type": "header",
+      "content": "Stats Section"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_stats",
+      "label": "Show stats section",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "stat_1_value",
+      "label": "Stat 1 value",
+      "default": "92%"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Stat 1 label",
+      "default": "Success Rate"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_description",
+      "label": "Stat 1 description",
+      "default": "Hit their goals & got cashback"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_value",
+      "label": "Stat 2 value",
+      "default": "4.2cm"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Stat 2 label",
+      "default": "Average Growth"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_description",
+      "label": "Stat 2 description",
+      "default": "Across measured body parts"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_value",
+      "label": "Stat 3 value",
+      "default": "3K+"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_label",
+      "label": "Stat 3 label",
+      "default": "Transformations"
+    },
+    {
+      "type": "text",
+      "id": "stat_3_description",
+      "label": "Stat 3 description",
+      "default": "And counting every month"
+    },
+    {
+      "type": "header",
+      "content": "Section Layout"
+    },
+    {
+      "type": "select",
+      "id": "section_width",
+      "label": "Width",
+      "options": [
+        {
+          "value": "page-width",
+          "label": "Page width"
+        },
+        {
+          "value": "full-width",
+          "label": "Full width"
+        }
+      ],
+      "default": "page-width"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Content gap",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    }
+  ],
+  "presets": [
+    {
+      "name": "Sales Testimonials",
+      "category": "Social proof"
+    }
+  ]
+}
+{% endschema %}
