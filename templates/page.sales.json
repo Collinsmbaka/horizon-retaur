@@ -116,12 +116,306 @@
         "highlight_text": "And we pay you <span class=\"amount\">₦200,000</span> when you hit your goals. Not if you fail - <span class=\"bold\">when you succeed.</span>",
         "callout_text": "₦10 million on the line. 50 men. We only do this because it works."
       }
+    },
+    "sales_testimonials_JCd3mP": {
+      "type": "sales-testimonials",
+      "blocks": {
+        "testimonial_HNdmdz": {
+          "type": "testimonial",
+          "settings": {
+            "heading": "The Greatest Gift I've Ever Received!",
+            "quote": "I was skeptical at first but decided to go all in and commit. It's not just about the supplements, it's about having a plan designed for MY body type. In 6 months, I gained 5cm on my chest and 4cm on my arms. I got the ₦200k back and a new level of confidence.",
+            "name": "Adebayo Martins"
+          }
+        },
+        "testimonial_Fxixqg": {
+          "type": "testimonial",
+          "settings": {
+            "heading": "A Magical Experience",
+            "quote": "I struggled with consistency and I figured I just didn't have the 'fitness gene.' But the coaching calls kept me accountable. My trainer showed me exactly what my body needed. The meal plans using Nigerian food made it so easy. I gained 3.5cm on my thighs and 3cm on my arms. Worth every kobo!",
+            "name": "Chukwudi Emmanuel"
+          }
+        },
+        "testimonial_8UX8Mc": {
+          "type": "testimonial",
+          "settings": {
+            "heading": "My Dream Come True",
+            "quote": "After years of on-and-off gym routines with zero results, I was ready to quit. This program was a last shot. Six months later, I gained 4cm on my chest and I finally saw the results I've been chasing for YEARS. The WhatsApp community is unmatched - real support, real accountability. 10/10 would recommend!",
+            "name": "Ollie the Bodyguard"
+          }
+        }
+      },
+      "block_order": [
+        "testimonial_HNdmdz",
+        "testimonial_Fxixqg",
+        "testimonial_8UX8Mc"
+      ],
+      "name": "Sales Testimonials",
+      "settings": {
+        "title": "What Our Customers Are Saying",
+        "subtitle": "A Magical Box That Changed My Life!",
+        "stat_1_value": "92%",
+        "stat_1_label": "Success Rate",
+        "stat_1_desc": "Hit their goals & got cashback",
+        "stat_2_value": "4.2cm",
+        "stat_2_label": "Average Growth",
+        "stat_2_desc": "Across measured body parts",
+        "stat_3_value": "3K+",
+        "stat_3_label": "Transformations",
+        "stat_3_desc": "And counting every month"
+      }
+    },
+    "sales_value_stack_MUYFUa": {
+      "type": "sales-value-stack",
+      "blocks": {
+        "value_item_d6CjaF": {
+          "type": "value_item",
+          "settings": {
+            "icon": "package",
+            "title": "Supplements (₦200k Value)",
+            "description": "6-Month supply of Whey & Creatine. Delivered free every 2 months."
+          }
+        },
+        "value_item_TwUcCV": {
+          "type": "value_item",
+          "settings": {
+            "icon": "users",
+            "title": "Coaching (₦150k Value)",
+            "description": "6 Monthly video calls with a pro trainer."
+          }
+        },
+        "value_item_zGVBdc": {
+          "type": "value_item",
+          "settings": {
+            "icon": "book",
+            "title": "Meal Plans (₦100k Value)",
+            "description": "Body-type specific plans using Nigerian foods."
+          }
+        },
+        "value_item_WMzYc8": {
+          "type": "value_item",
+          "settings": {
+            "icon": "dumbbell",
+            "title": "Training (₦100k Value)",
+            "description": "Custom hypertrophy program for your genetics."
+          }
+        },
+        "value_item_PTYTgA": {
+          "type": "value_item",
+          "settings": {
+            "icon": "message",
+            "title": "Community (Priceless)",
+            "description": "24/7 WhatsApp support group."
+          }
+        }
+      },
+      "block_order": [
+        "value_item_d6CjaF",
+        "value_item_TwUcCV",
+        "value_item_zGVBdc",
+        "value_item_WMzYc8",
+        "value_item_PTYTgA"
+      ],
+      "name": "Sales Value Stack",
+      "settings": {
+        "title": "WHAT YOU GET",
+        "subtitle": "Everything you need for 6 months",
+        "original_price": "₦550,000",
+        "sale_price": "₦400,000",
+        "cashback_amount": "+₦200,000",
+        "cashback_text": "cash back when you achieve your GOAL",
+        "spots_text": "Limited: 50 spots only",
+        "start_date": "Starts: January 17, 2026",
+        "cta_text": "Enroll Now",
+        "cta_link": ""
+      }
+    },
+    "sales_guarantee_rzYkdw": {
+      "type": "sales-guarantee",
+      "blocks": {
+        "step_kT4Qma": {
+          "type": "step",
+          "settings": {
+            "number": "1",
+            "title": "The Commitment",
+            "text": "You invest ₦400k (or ₦135k) to join the 6-month program. Your certified trainer records your starting measurements (Biceps, Chest, Thighs)."
+          }
+        },
+        "step_Frcff4": {
+          "type": "step",
+          "settings": {
+            "number": "2",
+            "title": "The Work",
+            "text": "You follow the plan. You take the supplements, eat the food, and attend at least 5 of your 6 coaching calls. We give you every tool needed to win."
+          }
+        },
+        "step_D9AW9n": {
+          "type": "step",
+          "settings": {
+            "number": "3",
+            "title": "The Reward",
+            "text": "At Month 6, we measure again. If you gain 3cm+ on at least 2 body parts (e.g., Arms & Chest), we send ₦200,000 back to your account."
+          }
+        }
+      },
+      "block_order": [
+        "step_kT4Qma",
+        "step_Frcff4",
+        "step_D9AW9n"
+      ],
+      "name": "Sales Guarantee",
+      "settings": {
+        "title": "THE PERFORMANCE GUARANTEE",
+        "subtitle": "We pay for results. Here is the deal:",
+        "faq_1_question": "Why 3cm?",
+        "faq_1_answer": "Because 3cm is the difference between \"do you workout?\" and \"wow, you got big.\" It is visibly noticeable, achievable in 6 months, and 100% measurable.",
+        "faq_2_question": "What if you miss the goal?",
+        "faq_2_answer": "The ₦200,000 is a performance bonus, so you don't get the cash back. However, you keep the supplements, the coaching, and the months of progress. You still walk away bigger, stronger, and smarter than when you started.",
+        "faq_2_note": "T&C Apply"
+      }
+    },
+    "sales_about_xm8dwz": {
+      "type": "sales-about",
+      "name": "Sales About",
+      "settings": {
+        "title": "WHY I BUILT THIS",
+        "paragraph_1": "In 2023, I started Retaur because I was tired of paying <span class=\"accent bold\">₦100k+</span> for imported protein that often turned out to be fake.",
+        "paragraph_2": "<span class=\"bold\">I wanted to make quality nutrition affordable for Nigerians.</span>",
+        "paragraph_3": "But I quickly noticed a bigger problem.",
+        "paragraph_4": "Guys were buying our protein, using it for a few weeks, and quitting because they didn't see results.",
+        "quote_1": "<span class=\"bold\">They weren't failing because of the product.</span><br><span class=\"accent bold\">They were failing because of the strategy.</span>",
+        "paragraph_5": "They were following influencers/trainers with a different body type and genetics from them and hoping it works for them.",
+        "highlight_text": "I realized selling supplements without coaching is like selling running shoes without teaching someone how to run.",
+        "paragraph_6": "That's why this program exists. We combined our local products (like our Whey and Protein Yogurt) with the missing piece: <span class=\"accent bold\">Guidance.</span>",
+        "statement": "I don't just want to sell you powder. I want to sell you the <span class=\"accent\">result.</span> That's why if you don't hit your goals, I lose money.",
+        "signature": "— Collins"
+      }
+    },
+    "sales_payment_MCTFFR": {
+      "type": "sales-payment",
+      "blocks": {
+        "feature_6HymF7": {
+          "type": "feature",
+          "settings": {
+            "text": "6-month supply of supplements"
+          }
+        },
+        "feature_HcUrTQ": {
+          "type": "feature",
+          "settings": {
+            "text": "6 coaching video calls"
+          }
+        },
+        "feature_b6UFeF": {
+          "type": "feature",
+          "settings": {
+            "text": "Custom meal &amp; training plans"
+          }
+        },
+        "feature_HJpefd": {
+          "type": "feature",
+          "settings": {
+            "text": "24/7 WhatsApp community"
+          }
+        },
+        "feature_LCiHtJ": {
+          "type": "feature",
+          "settings": {
+            "text": "<span class=\"bold\">₦200,000 cashback on success</span>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_6HymF7",
+        "feature_HcUrTQ",
+        "feature_b6UFeF",
+        "feature_HJpefd",
+        "feature_LCiHtJ"
+      ],
+      "name": "Sales Payment",
+      "settings": {
+        "title": "Choose Your Payment Plan",
+        "subtitle": "Same great program, flexible payment options",
+        "card_1_badge": "MOST POPULAR",
+        "card_1_title": "Pay Once",
+        "card_1_desc": "Save money with full payment",
+        "card_1_price": "₦400,000",
+        "card_1_price_note": "One-time payment",
+        "card_1_cta": "Pay ₦400,000 Now",
+        "card_1_product_handle": "bulk-up-challenge-bundle-otp",
+        "card_2_badge": "FLEXIBLE",
+        "card_2_title": "Pay as You Go",
+        "card_2_desc": "Spread payments over time",
+        "card_2_price": "₦135,000",
+        "card_2_price_note": "Every 2 months (3 payments)",
+        "card_2_total": "Total: ₦405,000",
+        "card_2_cta": "Pay ₦135,000 Now",
+        "card_2_product_handle": "bulk-up-challenge-bundle",
+        "terms_text": "By enrolling, you agree to our program terms and conditions",
+        "terms_link_text": "Read Full Terms & Conditions",
+        "terms_link": "",
+        "terms_note": "*T&C Apply - Cash back is awarded upon successful completion of program goals and requirements"
+      }
+    },
+    "sales_faq_kaKKUK": {
+      "type": "sales-faq",
+      "blocks": {
+        "faq_ap87Tj": {
+          "type": "faq",
+          "settings": {
+            "question": "What if I don't hit my goals?",
+            "answer": "The ₦200,000 is a performance bonus, so you won't receive the cash back if you don't meet the goal. However, you keep all the supplements, coaching, and progress you've made. You still walk away bigger, stronger, and more knowledgeable than when you started."
+          }
+        },
+        "faq_krhmza": {
+          "type": "faq",
+          "settings": {
+            "question": "What is included in the box?",
+            "answer": "Your package includes a 6-month supply of premium whey protein and creatine (delivered every 2 months), access to 6 monthly video coaching calls with a certified trainer, custom meal plans using Nigerian foods, a personalized training program, and 24/7 access to our WhatsApp community."
+          }
+        },
+        "faq_Jx8jp4": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I track my progress?",
+            "answer": "Your certified trainer will take your initial measurements (biceps, chest, and thighs) during your first coaching call. These measurements are recorded and tracked throughout the 6-month program. At the end, your trainer will measure again to verify your results for the cashback bonus."
+          }
+        },
+        "faq_Ayy7Yd": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I get a refund?",
+            "answer": "Due to the nature of the program and the supplements being delivered, we cannot offer refunds once the program has started. However, if you commit to the program and follow the plan, our 92% success rate speaks for itself. We're confident you'll see results."
+          }
+        }
+      },
+      "block_order": [
+        "faq_ap87Tj",
+        "faq_krhmza",
+        "faq_Jx8jp4",
+        "faq_Ayy7Yd"
+      ],
+      "name": "Sales FAQ",
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "No matter what your question is our products, the team at Retaur is always on hand to provide prompt and accurate answers. Email us at support@retaur.com anytime.",
+        "cta_title": "Ready to Transform Your Body?",
+        "cta_text": "Join 50 men committed to building muscle the right way",
+        "cta_button_text": "Secure Your Spot Now",
+        "cta_link": ""
+      }
     }
   },
   "order": [
     "sales_hero_riEgG6",
     "sales_brand_logos_gaBCAb",
     "sales_problem_fN8HXz",
-    "sales_why_us_3xyrJ9"
+    "sales_why_us_3xyrJ9",
+    "sales_testimonials_JCd3mP",
+    "sales_value_stack_MUYFUa",
+    "sales_guarantee_rzYkdw",
+    "sales_about_xm8dwz",
+    "sales_payment_MCTFFR",
+    "sales_faq_kaKKUK"
   ]
 }
