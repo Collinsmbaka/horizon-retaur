@@ -305,72 +305,6 @@
         "signature": "— Collins"
       }
     },
-    "sales_payment_MCTFFR": {
-      "type": "sales-payment",
-      "blocks": {
-        "feature_6HymF7": {
-          "type": "feature",
-          "settings": {
-            "text": "6-month supply of supplements"
-          }
-        },
-        "feature_HcUrTQ": {
-          "type": "feature",
-          "settings": {
-            "text": "6 coaching video calls"
-          }
-        },
-        "feature_b6UFeF": {
-          "type": "feature",
-          "settings": {
-            "text": "Custom meal &amp; training plans"
-          }
-        },
-        "feature_HJpefd": {
-          "type": "feature",
-          "settings": {
-            "text": "24/7 WhatsApp community"
-          }
-        },
-        "feature_LCiHtJ": {
-          "type": "feature",
-          "settings": {
-            "text": "<span class=\"bold\">₦200,000 cashback on success</span>"
-          }
-        }
-      },
-      "block_order": [
-        "feature_6HymF7",
-        "feature_HcUrTQ",
-        "feature_b6UFeF",
-        "feature_HJpefd",
-        "feature_LCiHtJ"
-      ],
-      "name": "Sales Payment",
-      "settings": {
-        "title": "Choose Your Payment Plan",
-        "subtitle": "Same great program, flexible payment options",
-        "card_1_badge": "MOST POPULAR",
-        "card_1_title": "Pay Once",
-        "card_1_desc": "Save money with full payment",
-        "card_1_price": "₦400,000",
-        "card_1_price_note": "One-time payment",
-        "card_1_cta": "Pay ₦400,000 Now",
-        "card_1_product_handle": "bulk-up-challenge-bundle-otp",
-        "card_2_badge": "FLEXIBLE",
-        "card_2_title": "Pay as You Go",
-        "card_2_desc": "Spread payments over time",
-        "card_2_price": "₦135,000",
-        "card_2_price_note": "Every 2 months (3 payments)",
-        "card_2_total": "Total: ₦405,000",
-        "card_2_cta": "Pay ₦135,000 Now",
-        "card_2_product_handle": "bulk-up-challenge-bundle",
-        "terms_text": "By enrolling, you agree to our program terms and conditions",
-        "terms_link_text": "Read Full Terms & Conditions",
-        "terms_link": "",
-        "terms_note": "*T&C Apply - Cash back is awarded upon successful completion of program goals and requirements"
-      }
-    },
     "sales_faq_kaKKUK": {
       "type": "sales-faq",
       "blocks": {
@@ -418,6 +352,81 @@
         "cta_button_text": "Secure Your Spot Now",
         "cta_link": ""
       }
+    },
+    "sales_payment_LN7HPN": {
+      "type": "sales-payment",
+      "blocks": {
+        "feature_gJAQW3": {
+          "type": "feature",
+          "settings": {
+            "card_target": "both",
+            "text": "6-month supply of supplements"
+          }
+        },
+        "feature_LhhVHC": {
+          "type": "feature",
+          "settings": {
+            "card_target": "both",
+            "text": "6 coaching video calls"
+          }
+        },
+        "feature_FNbk8n": {
+          "type": "feature",
+          "settings": {
+            "card_target": "both",
+            "text": "Custom meal &amp; training plans"
+          }
+        },
+        "feature_e3mqzV": {
+          "type": "feature",
+          "settings": {
+            "card_target": "both",
+            "text": "24/7 WhatsApp community"
+          }
+        },
+        "feature_UParPM": {
+          "type": "feature",
+          "settings": {
+            "card_target": "premium",
+            "text": "<span class=\"bold\">₦200,000 cashback on success</span>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_gJAQW3",
+        "feature_LhhVHC",
+        "feature_FNbk8n",
+        "feature_e3mqzV",
+        "feature_UParPM"
+      ],
+      "name": "Sales Payment (Dual Buttons)",
+      "settings": {
+        "title": "Choose Your Payment Plan",
+        "subtitle": "Same great program, flexible payment options",
+        "card_1_badge": "STANDARD",
+        "card_1_title": "Standard Package",
+        "card_1_desc": "Complete transformation program",
+        "card_1_payg_product": "",
+        "card_1_payg_price": "₦90,000",
+        "card_1_payg_cta": "Pay ₦90,000",
+        "card_1_otp_product": "",
+        "card_1_otp_price": "₦250,000",
+        "card_1_otp_cta": "Pay ₦250,000",
+        "card_2_badge": "MOST POPULAR",
+        "card_2_title": "Premium Package",
+        "card_2_desc": "Complete transformation with cashback reward",
+        "card_2_cashback": "₦200,000 Cashback",
+        "card_2_payg_product": "",
+        "card_2_payg_price": "₦135,000",
+        "card_2_payg_cta": "Pay ₦135,000",
+        "card_2_otp_product": "",
+        "card_2_otp_price": "₦400,000",
+        "card_2_otp_cta": "Pay ₦400,000",
+        "terms_text": "By enrolling, you agree to our program terms and conditions",
+        "terms_link_text": "Read Full Terms & Conditions",
+        "terms_link": "",
+        "terms_note": "*T&C Apply - Cash back is awarded upon successful completion of program goals and requirements"
+      }
     }
   },
   "order": [
@@ -427,9 +436,9 @@
     "sales_why_us_3xyrJ9",
     "sales_testimonials_JCd3mP",
     "sales_value_stack_MUYFUa",
-    "sales_guarantee_rzYkdw",
     "sales_about_xm8dwz",
-    "sales_payment_MCTFFR",
+    "sales_guarantee_rzYkdw",
+    "sales_payment_LN7HPN",
     "sales_faq_kaKKUK"
   ]
 }
