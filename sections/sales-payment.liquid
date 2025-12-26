@@ -16,9 +16,9 @@
 
     {%- comment -%} Payment Options {%- endcomment -%}
     <div class="sales-payment__options">
-      {%- comment -%} Pay Once Option {%- endcomment -%}
+      {%- comment -%} STANDARD CARD (No Cashback) {%- endcomment -%}
       <div class="sales-payment__card">
-        <div class="sales-payment__card-header sales-payment__card-header--primary">
+        <div class="sales-payment__card-header sales-payment__card-header--standard">
           <div class="sales-payment__badge">
             <p>{{ section.settings.card_1_badge }}</p>
           </div>
@@ -26,80 +26,179 @@
           <p class="sales-payment__card-desc">{{ section.settings.card_1_desc }}</p>
         </div>
         <div class="sales-payment__card-body">
+          {%- comment -%} Dual Price Display {%- endcomment -%}
           <div class="sales-payment__price-wrapper">
-            <div class="sales-payment__price">{{ section.settings.card_1_price }}</div>
-            <p class="sales-payment__price-note">{{ section.settings.card_1_price_note }}</p>
+            <div class="sales-payment__price-group">
+              <div class="sales-payment__price">{{ section.settings.card_1_payg_price }}</div>
+              <p class="sales-payment__price-label">Every 2 months</p>
+            </div>
+            <div class="sales-payment__price-divider">
+              <span>or</span>
+            </div>
+            <div class="sales-payment__price-group">
+              <div class="sales-payment__price">{{ section.settings.card_1_otp_price }}</div>
+              <p class="sales-payment__price-label">One time payment</p>
+            </div>
           </div>
 
+          {%- comment -%} Features List {%- endcomment -%}
           <div class="sales-payment__features">
             {%- for block in section.blocks -%}
               {%- if block.type == 'feature' -%}
-                <div class="sales-payment__feature" {{ block.shopify_attributes }}>
-                  <svg class="sales-payment__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                    <polyline points="22 4 12 14.01 9 11.01"/>
-                  </svg>
-                  <p>{{ block.settings.text }}</p>
-                </div>
+                {%- assign show_on_standard = false -%}
+                {%- if block.settings.card_target == 'standard' or block.settings.card_target == 'both' -%}
+                  {%- assign show_on_standard = true -%}
+                {%- endif -%}
+                {%- if show_on_standard -%}
+                  <div class="sales-payment__feature" {{ block.shopify_attributes }}>
+                    <svg class="sales-payment__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                      <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    <p>{{ block.settings.text }}</p>
+                  </div>
+                {%- endif -%}
               {%- endif -%}
             {%- endfor -%}
           </div>
 
-          <button type="button" class="sales-payment__cta sales-payment__cta--primary" data-add-to-cart data-product-handle="{{ section.settings.card_1_product_handle }}">
-            <svg class="sales-payment__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
-              <line x1="1" y1="10" x2="23" y2="10"/>
-            </svg>
-            <span>{{ section.settings.card_1_cta }}</span>
-            <svg class="sales-payment__cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="9 18 15 12 9 6"/>
-            </svg>
-          </button>
+          {%- comment -%} Dual Buttons {%- endcomment -%}
+          <div class="sales-payment__cta-group">
+            {%- if section.settings.card_1_payg_product != blank -%}
+              <button
+                type="button"
+                class="sales-payment__cta sales-payment__cta--secondary"
+                data-add-to-cart
+                data-variant-id="{{ section.settings.card_1_payg_product.selected_or_first_available_variant.id }}"
+                data-payment-type="payg"
+              >
+                <svg class="sales-payment__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                  <line x1="1" y1="10" x2="23" y2="10"/>
+                </svg>
+                <span>{{ section.settings.card_1_payg_cta }}</span>
+                <svg class="sales-payment__cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"/>
+                </svg>
+              </button>
+            {%- endif -%}
+
+            {%- if section.settings.card_1_otp_product != blank -%}
+              <button
+                type="button"
+                class="sales-payment__cta sales-payment__cta--primary"
+                data-add-to-cart
+                data-variant-id="{{ section.settings.card_1_otp_product.selected_or_first_available_variant.id }}"
+                data-payment-type="otp"
+              >
+                <svg class="sales-payment__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                  <line x1="1" y1="10" x2="23" y2="10"/>
+                </svg>
+                <span>{{ section.settings.card_1_otp_cta }}</span>
+                <svg class="sales-payment__cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"/>
+                </svg>
+              </button>
+            {%- endif -%}
+          </div>
         </div>
       </div>
 
-      {%- comment -%} Pay Monthly Option {%- endcomment -%}
-      <div class="sales-payment__card">
-        <div class="sales-payment__card-header sales-payment__card-header--secondary">
-          <div class="sales-payment__badge">
+      {%- comment -%} PREMIUM CARD (₦200k Cashback) {%- endcomment -%}
+      <div class="sales-payment__card sales-payment__card--featured">
+        <div class="sales-payment__card-header sales-payment__card-header--premium">
+          <div class="sales-payment__badge sales-payment__badge--featured">
             <p>{{ section.settings.card_2_badge }}</p>
           </div>
           <h3 class="sales-payment__card-title">{{ section.settings.card_2_title }}</h3>
           <p class="sales-payment__card-desc">{{ section.settings.card_2_desc }}</p>
+          {%- if section.settings.card_2_cashback != blank -%}
+            <div class="sales-payment__cashback-badge">
+              <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/>
+              </svg>
+              <span>{{ section.settings.card_2_cashback }}</span>
+            </div>
+          {%- endif -%}
         </div>
         <div class="sales-payment__card-body">
+          {%- comment -%} Dual Price Display {%- endcomment -%}
           <div class="sales-payment__price-wrapper">
-            <div class="sales-payment__price">{{ section.settings.card_2_price }}</div>
-            <p class="sales-payment__price-note">{{ section.settings.card_2_price_note }}</p>
-            {%- if section.settings.card_2_total != blank -%}
-              <p class="sales-payment__price-total">{{ section.settings.card_2_total }}</p>
-            {%- endif -%}
+            <div class="sales-payment__price-group">
+              <div class="sales-payment__price">{{ section.settings.card_2_payg_price }}</div>
+              <p class="sales-payment__price-label">Every 2 months</p>
+            </div>
+            <div class="sales-payment__price-divider">
+              <span>or</span>
+            </div>
+            <div class="sales-payment__price-group">
+              <div class="sales-payment__price">{{ section.settings.card_2_otp_price }}</div>
+              <p class="sales-payment__price-label">One time payment</p>
+            </div>
           </div>
 
+          {%- comment -%} Features List {%- endcomment -%}
           <div class="sales-payment__features">
             {%- for block in section.blocks -%}
               {%- if block.type == 'feature' -%}
-                <div class="sales-payment__feature">
-                  <svg class="sales-payment__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
-                    <polyline points="22 4 12 14.01 9 11.01"/>
-                  </svg>
-                  <p>{{ block.settings.text }}</p>
-                </div>
+                {%- assign show_on_premium = false -%}
+                {%- if block.settings.card_target == 'premium' or block.settings.card_target == 'both' -%}
+                  {%- assign show_on_premium = true -%}
+                {%- endif -%}
+                {%- if show_on_premium -%}
+                  <div class="sales-payment__feature" {{ block.shopify_attributes }}>
+                    <svg class="sales-payment__check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                      <polyline points="22 4 12 14.01 9 11.01"/>
+                    </svg>
+                    <p>{{ block.settings.text }}</p>
+                  </div>
+                {%- endif -%}
               {%- endif -%}
             {%- endfor -%}
           </div>
 
-          <button type="button" class="sales-payment__cta sales-payment__cta--secondary" data-add-to-cart data-product-handle="{{ section.settings.card_2_product_handle }}">
-            <svg class="sales-payment__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
-              <line x1="1" y1="10" x2="23" y2="10"/>
-            </svg>
-            <span>{{ section.settings.card_2_cta }}</span>
-            <svg class="sales-payment__cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="9 18 15 12 9 6"/>
-            </svg>
-          </button>
+          {%- comment -%} Dual Buttons {%- endcomment -%}
+          <div class="sales-payment__cta-group">
+            {%- if section.settings.card_2_payg_product != blank -%}
+              <button
+                type="button"
+                class="sales-payment__cta sales-payment__cta--secondary"
+                data-add-to-cart
+                data-variant-id="{{ section.settings.card_2_payg_product.selected_or_first_available_variant.id }}"
+                data-payment-type="payg"
+              >
+                <svg class="sales-payment__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                  <line x1="1" y1="10" x2="23" y2="10"/>
+                </svg>
+                <span>{{ section.settings.card_2_payg_cta }}</span>
+                <svg class="sales-payment__cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"/>
+                </svg>
+              </button>
+            {%- endif -%}
+
+            {%- if section.settings.card_2_otp_product != blank -%}
+              <button
+                type="button"
+                class="sales-payment__cta sales-payment__cta--primary"
+                data-add-to-cart
+                data-variant-id="{{ section.settings.card_2_otp_product.selected_or_first_available_variant.id }}"
+                data-payment-type="otp"
+              >
+                <svg class="sales-payment__cta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+                  <line x1="1" y1="10" x2="23" y2="10"/>
+                </svg>
+                <span>{{ section.settings.card_2_otp_cta }}</span>
+                <svg class="sales-payment__cta-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <polyline points="9 18 15 12 9 6"/>
+                </svg>
+              </button>
+            {%- endif -%}
+          </div>
         </div>
       </div>
     </div>
@@ -125,64 +224,229 @@
 </section>
 
 <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const addToCartButtons = document.querySelectorAll('[data-add-to-cart]');
+  (function() {
+    'use strict';
 
-    addToCartButtons.forEach(button => {
-      button.addEventListener('click', async function(e) {
-        e.preventDefault();
+    // Configuration
+    const CONFIG = {
+      loadingClass: 'is-loading',
+      loadingText: 'Adding to cart...',
+      errorText: 'Error. Please try again.',
+      redirectDelay: 500, // ms before redirect
+    };
 
-        const productHandle = this.dataset.productHandle;
-        if (!productHandle) {
-          console.error('No product handle specified');
+    /**
+     * Add to cart handler for sales payment buttons
+     */
+    class SalesPaymentCart {
+      constructor() {
+        this.buttons = document.querySelectorAll('[data-add-to-cart]');
+        this.init();
+      }
+
+      init() {
+        this.buttons.forEach(button => {
+          button.addEventListener('click', this.handleAddToCart.bind(this));
+        });
+      }
+
+      /**
+       * Handle add to cart click
+       * @param {Event} event
+       */
+      async handleAddToCart(event) {
+        event.preventDefault();
+
+        const button = event.currentTarget;
+        const variantId = button.dataset.variantId;
+        const paymentType = button.dataset.paymentType;
+
+        if (!variantId) {
+          console.error('No variant ID specified');
+          this.showError(button, 'Configuration error');
           return;
         }
 
-        // Disable button and show loading state
-        const originalContent = this.innerHTML;
-        this.disabled = true;
-        this.innerHTML = '<span>Adding to cart...</span>';
+        // Prevent double-clicks
+        if (button.disabled || button.classList.contains(CONFIG.loadingClass)) {
+          return;
+        }
 
         try {
-          // Fetch product data to get variant ID
-          const response = await fetch(`/products/${productHandle}.js`);
-          if (!response.ok) {
-            throw new Error('Product not found');
-          }
+          await this.addProductToCart(button, variantId, paymentType);
+        } catch (error) {
+          this.showError(button, error.message);
+        }
+      }
 
-          const product = await response.json();
-          const variantId = product.variants[0].id;
+      /**
+       * Add product to cart
+       * @param {HTMLButtonElement} button
+       * @param {string} variantId
+       * @param {string} paymentType
+       */
+      async addProductToCart(button, variantId, paymentType) {
+        // Store original state
+        const originalContent = button.innerHTML;
 
+        // Set loading state
+        this.setLoadingState(button, true);
+
+        try {
           // Add to cart
-          const addResponse = await fetch('/cart/add.js', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-              items: [{
-                id: variantId,
-                quantity: 1
-              }]
-            })
-          });
+          const cartItem = await this.addToCart(variantId, 1);
 
-          if (!addResponse.ok) {
-            throw new Error('Failed to add to cart');
-          }
+          // Track analytics if available
+          this.trackAddToCart(cartItem, paymentType);
 
-          // Redirect to checkout
-          window.location.href = '/checkout';
+          // Success - redirect to checkout
+          await this.redirectToCheckout();
 
         } catch (error) {
-          console.error('Error:', error);
-          this.disabled = false;
-          this.innerHTML = originalContent;
-          alert('Sorry, there was an error. Please try again.');
+          // Restore original state on error
+          this.setLoadingState(button, false);
+          button.innerHTML = originalContent;
+          throw error;
         }
+      }
+
+      /**
+       * Add item to cart via Shopify Cart API
+       * @param {number} variantId
+       * @param {number} quantity
+       * @returns {Promise<Object>}
+       */
+      async addToCart(variantId, quantity) {
+        const response = await fetch('/cart/add.js', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({
+            items: [{
+              id: variantId,
+              quantity: quantity
+            }]
+          })
+        });
+
+        if (!response.ok) {
+          const error = await response.json();
+          throw new Error(error.description || 'Failed to add to cart');
+        }
+
+        return response.json();
+      }
+
+      /**
+       * Set button loading state
+       * @param {HTMLButtonElement} button
+       * @param {boolean} isLoading
+       */
+      setLoadingState(button, isLoading) {
+        if (isLoading) {
+          button.disabled = true;
+          button.classList.add(CONFIG.loadingClass);
+          button.setAttribute('aria-busy', 'true');
+
+          // Store original content
+          if (!button.dataset.originalContent) {
+            button.dataset.originalContent = button.innerHTML;
+          }
+
+          // Show loading text
+          const span = button.querySelector('span');
+          if (span) {
+            span.textContent = CONFIG.loadingText;
+          }
+        } else {
+          button.disabled = false;
+          button.classList.remove(CONFIG.loadingClass);
+          button.setAttribute('aria-busy', 'false');
+        }
+      }
+
+      /**
+       * Show error message
+       * @param {HTMLButtonElement} button
+       * @param {string} message
+       */
+      showError(button, message) {
+        console.error('Cart error:', message);
+
+        // Show user-friendly error
+        alert(`Sorry, there was an error: ${message}. Please try again.`);
+
+        // Could also dispatch custom event for error tracking
+        window.dispatchEvent(new CustomEvent('cart:error', {
+          detail: { message, button }
+        }));
+      }
+
+      /**
+       * Track add to cart event
+       * @param {Object} cartItem
+       * @param {string} paymentType
+       */
+      trackAddToCart(cartItem, paymentType) {
+        // Google Analytics 4
+        if (typeof gtag === 'function') {
+          gtag('event', 'add_to_cart', {
+            currency: 'NGN',
+            value: cartItem.price / 100,
+            items: [{
+              item_id: cartItem.product_id,
+              item_name: cartItem.product_title,
+              item_variant: cartItem.variant_title,
+              payment_type: paymentType,
+              price: cartItem.price / 100,
+              quantity: 1
+            }]
+          });
+        }
+
+        // Facebook Pixel
+        if (typeof fbq === 'function') {
+          fbq('track', 'AddToCart', {
+            content_ids: [cartItem.product_id],
+            content_name: cartItem.product_title,
+            content_type: 'product',
+            value: cartItem.price / 100,
+            currency: 'NGN'
+          });
+        }
+
+        // Custom event for other tracking
+        window.dispatchEvent(new CustomEvent('sales:add_to_cart', {
+          detail: {
+            cartItem,
+            paymentType,
+            timestamp: Date.now()
+          }
+        }));
+      }
+
+      /**
+       * Redirect to checkout
+       * @returns {Promise<void>}
+       */
+      async redirectToCheckout() {
+        // Small delay for better UX
+        await new Promise(resolve => setTimeout(resolve, CONFIG.redirectDelay));
+        window.location.href = '/checkout';
+      }
+    }
+
+    // Initialize when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        new SalesPaymentCart();
       });
-    });
-  });
+    } else {
+      new SalesPaymentCart();
+    }
+  })();
 </script>
 
 {% schema %}
@@ -209,107 +473,150 @@
     },
     {
       "type": "header",
-      "content": "Pay Once Card"
+      "content": "Standard Card (No Cashback)"
     },
     {
       "type": "text",
       "id": "card_1_badge",
       "label": "Badge Text",
-      "default": "MOST POPULAR"
+      "default": "STANDARD"
     },
     {
       "type": "text",
       "id": "card_1_title",
       "label": "Card Title",
-      "default": "Pay Once"
+      "default": "Standard Package"
     },
     {
-      "type": "text",
+      "type": "textarea",
       "id": "card_1_desc",
       "label": "Card Description",
-      "default": "Save money with full payment"
+      "default": "Complete transformation program"
+    },
+    {
+      "type": "paragraph",
+      "content": "Every 2 Months Option"
+    },
+    {
+      "type": "product",
+      "id": "card_1_payg_product",
+      "label": "Payment Plan Product",
+      "info": "Select the product for every 2 months payment option"
     },
     {
       "type": "text",
-      "id": "card_1_price",
-      "label": "Price",
-      "default": "₦400,000"
+      "id": "card_1_payg_price",
+      "label": "Display Price",
+      "default": "₦90,000",
+      "info": "Price to display (e.g., ₦90,000)"
     },
     {
       "type": "text",
-      "id": "card_1_price_note",
-      "label": "Price Note",
-      "default": "One-time payment"
-    },
-    {
-      "type": "text",
-      "id": "card_1_cta",
+      "id": "card_1_payg_cta",
       "label": "Button Text",
-      "default": "Pay ₦400,000 Now"
+      "default": "Pay ₦90,000"
+    },
+    {
+      "type": "paragraph",
+      "content": "One Time Payment Option"
+    },
+    {
+      "type": "product",
+      "id": "card_1_otp_product",
+      "label": "One Time Payment Product",
+      "info": "Select the product for one-time payment option"
     },
     {
       "type": "text",
-      "id": "card_1_product_handle",
-      "label": "Product Handle",
-      "info": "The product handle (URL slug) to add to cart",
-      "default": "bulk-up-challenge-bundle-otp"
+      "id": "card_1_otp_price",
+      "label": "Display Price",
+      "default": "₦250,000",
+      "info": "Price to display (e.g., ₦250,000)"
+    },
+    {
+      "type": "text",
+      "id": "card_1_otp_cta",
+      "label": "Button Text",
+      "default": "Pay ₦250,000"
     },
     {
       "type": "header",
-      "content": "Pay Monthly Card"
+      "content": "Premium Card (₦200k Cashback)"
     },
     {
       "type": "text",
       "id": "card_2_badge",
       "label": "Badge Text",
-      "default": "FLEXIBLE"
+      "default": "MOST POPULAR"
     },
     {
       "type": "text",
       "id": "card_2_title",
       "label": "Card Title",
-      "default": "Pay as You Go"
+      "default": "Premium Package"
     },
     {
-      "type": "text",
+      "type": "textarea",
       "id": "card_2_desc",
       "label": "Card Description",
-      "default": "Spread payments over time"
+      "default": "Complete transformation with cashback reward"
     },
     {
       "type": "text",
-      "id": "card_2_price",
-      "label": "Price",
-      "default": "₦135,000"
+      "id": "card_2_cashback",
+      "label": "Cashback Badge Text",
+      "default": "₦200,000 Cashback",
+      "info": "Leave blank to hide cashback badge"
+    },
+    {
+      "type": "paragraph",
+      "content": "Every 2 Months Option"
+    },
+    {
+      "type": "product",
+      "id": "card_2_payg_product",
+      "label": "Payment Plan Product",
+      "info": "Select the product for every 2 months payment option"
     },
     {
       "type": "text",
-      "id": "card_2_price_note",
-      "label": "Price Note",
-      "default": "Every 2 months (3 payments)"
+      "id": "card_2_payg_price",
+      "label": "Display Price",
+      "default": "₦135,000",
+      "info": "Price to display (e.g., ₦135,000)"
     },
     {
       "type": "text",
-      "id": "card_2_total",
-      "label": "Total (optional)",
-      "default": "Total: ₦405,000"
-    },
-    {
-      "type": "text",
-      "id": "card_2_cta",
+      "id": "card_2_payg_cta",
       "label": "Button Text",
-      "default": "Pay ₦135,000 Now"
+      "default": "Pay ₦135,000"
+    },
+    {
+      "type": "paragraph",
+      "content": "One Time Payment Option"
+    },
+    {
+      "type": "product",
+      "id": "card_2_otp_product",
+      "label": "One Time Payment Product",
+      "info": "Select the product for one-time payment option"
     },
     {
       "type": "text",
-      "id": "card_2_product_handle",
-      "label": "Product Handle",
-      "info": "The product handle (URL slug) to add to cart",
-      "default": "bulk-up-challenge-bundle"
+      "id": "card_2_otp_price",
+      "label": "Display Price",
+      "default": "₦400,000",
+      "info": "Price to display (e.g., ₦400,000)"
+    },
+    {
+      "type": "text",
+      "id": "card_2_otp_cta",
+      "label": "Button Text",
+      "default": "Pay ₦400,000"
     },
     {
       "type": "header",
-      "content": "Terms"
+      "content": "Terms & Conditions"
     },
     {
       "type": "text",
@@ -329,7 +636,7 @@
       "label": "Terms Link"
     },
     {
-      "type": "text",
+      "type": "textarea",
       "id": "terms_note",
       "label": "Terms Note",
       "default": "*T&C Apply - Cash back is awarded upon successful completion of program goals and requirements"
@@ -341,6 +648,27 @@
       "name": "Feature",
       "settings": [
         {
+          "type": "select",
+          "id": "card_target",
+          "label": "Show on Card",
+          "options": [
+            {
+              "value": "both",
+              "label": "Both Cards"
+            },
+            {
+              "value": "standard",
+              "label": "Standard Card Only"
+            },
+            {
+              "value": "premium",
+              "label": "Premium Card Only"
+            }
+          ],
+          "default": "both",
+          "info": "Choose which card(s) display this feature"
+        },
+        {
           "type": "html",
           "id": "text",
           "label": "Feature Text",
@@ -351,13 +679,43 @@
   ],
   "presets": [
     {
-      "name": "Sales Payment",
+      "name": "Sales Payment (Dual Buttons)",
       "blocks": [
-        { "type": "feature", "settings": { "text": "6-month supply of supplements" } },
-        { "type": "feature", "settings": { "text": "6 coaching video calls" } },
-        { "type": "feature", "settings": { "text": "Custom meal & training plans" } },
-        { "type": "feature", "settings": { "text": "24/7 WhatsApp community" } },
-        { "type": "feature", "settings": { "text": "<span class=\"bold\">₦200,000 cashback on success</span>" } }
+        {
+          "type": "feature",
+          "settings": {
+            "text": "6-month supply of supplements",
+            "card_target": "both"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "text": "6 coaching video calls",
+            "card_target": "both"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "text": "Custom meal & training plans",
+            "card_target": "both"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "text": "24/7 WhatsApp community",
+            "card_target": "both"
+          }
+        },
+        {
+          "type": "feature",
+          "settings": {
+            "text": "<span class=\"bold\">₦200,000 cashback on success</span>",
+            "card_target": "premium"
+          }
+        }
       ]
     }
   ]
