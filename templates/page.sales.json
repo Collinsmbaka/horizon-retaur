@@ -243,6 +243,24 @@
         "cta_link": ""
       }
     },
+    "sales_about_xm8dwz": {
+      "type": "sales-about",
+      "name": "Sales About",
+      "settings": {
+        "image": "shopify://shop_images/IMG_6732.jpg",
+        "title": "Why We Built This",
+        "paragraph_1": "In 2023, We started Retaur because i was tired of paying <span class=\"accent bold\">₦100k+</span> for imported protein that tasted bland and often low quality.",
+        "paragraph_2": "<span class=\"bold\">We wanted to make quality sports nutrition affordable for Nigerians.</span>",
+        "paragraph_3": "But I quickly noticed a bigger problem.",
+        "paragraph_4": "Guys were buying our protein, using it for a few weeks, and quitting because they didn't see results.",
+        "quote_1": "<span class=\"bold\">They weren't failing because of the product.</span><br><span class=\"accent bold\">They were failing because of the strategy.</span>",
+        "paragraph_5": "They were following influencers/trainers with a different body type and genetics from them and hoping it works for them.",
+        "highlight_text": "We realized selling supplements without coaching is like selling running shoes without teaching someone how to run.",
+        "paragraph_6": "That's why this program exists. We combined our local products (like our Whey and Protein Yogurt) with the missing piece: <span class=\"accent bold\">Guidance.</span>",
+        "statement": "We don't just want to sell you powder. We want to sell you the <span class=\"accent\">result.</span> That's why if you don't hit your goals, We lose money.",
+        "signature": "— Collins"
+      }
+    },
     "sales_guarantee_rzYkdw": {
       "type": "sales-guarantee",
       "blocks": {
@@ -285,72 +303,6 @@
         "faq_2_question": "What if you miss the goal?",
         "faq_2_answer": "The ₦200,000 is a performance bonus, so you don't get the cash back. However, you keep the supplements, the coaching, and the months of progress. You still walk away bigger, stronger, and smarter than when you started.",
         "faq_2_note": "T&C Apply"
-      }
-    },
-    "sales_about_xm8dwz": {
-      "type": "sales-about",
-      "name": "Sales About",
-      "settings": {
-        "image": "shopify://shop_images/IMG_6732.jpg",
-        "title": "Why We Built This",
-        "paragraph_1": "In 2023, We started Retaur because i was tired of paying <span class=\"accent bold\">₦100k+</span> for imported protein that tasted bland and often low quality.",
-        "paragraph_2": "<span class=\"bold\">We wanted to make quality sports nutrition affordable for Nigerians.</span>",
-        "paragraph_3": "But I quickly noticed a bigger problem.",
-        "paragraph_4": "Guys were buying our protein, using it for a few weeks, and quitting because they didn't see results.",
-        "quote_1": "<span class=\"bold\">They weren't failing because of the product.</span><br><span class=\"accent bold\">They were failing because of the strategy.</span>",
-        "paragraph_5": "They were following influencers/trainers with a different body type and genetics from them and hoping it works for them.",
-        "highlight_text": "We realized selling supplements without coaching is like selling running shoes without teaching someone how to run.",
-        "paragraph_6": "That's why this program exists. We combined our local products (like our Whey and Protein Yogurt) with the missing piece: <span class=\"accent bold\">Guidance.</span>",
-        "statement": "We don't just want to sell you powder. We want to sell you the <span class=\"accent\">result.</span> That's why if you don't hit your goals, We lose money.",
-        "signature": "— Collins"
-      }
-    },
-    "sales_faq_kaKKUK": {
-      "type": "sales-faq",
-      "blocks": {
-        "faq_ap87Tj": {
-          "type": "faq",
-          "settings": {
-            "question": "What if I don't hit my goals?",
-            "answer": "The ₦200,000 is a performance bonus, so you won't receive the cash back if you don't meet the goal. However, you keep all the supplements, coaching, and progress you've made. You still walk away bigger, stronger, and more knowledgeable than when you started."
-          }
-        },
-        "faq_krhmza": {
-          "type": "faq",
-          "settings": {
-            "question": "What is included in the program?",
-            "answer": "Your package includes a 6-month supply of premium 1.5kg of whey protein and 3 tubs of creatine (delivered every 2 months), access to 6 monthly video coaching calls with a certified trainer, personalised meal plans for your body type, a personalized training program, and 24/7 access to our WhatsApp community."
-          }
-        },
-        "faq_Jx8jp4": {
-          "type": "faq",
-          "settings": {
-            "question": "How do I track my progress?",
-            "answer": "Your certified trainer will take your initial measurements (biceps, chest, and thighs) during your first coaching call. These measurements are recorded and tracked throughout the 6-month program. At the end, your trainer will measure again to verify your results for the cashback bonus."
-          }
-        },
-        "faq_Ayy7Yd": {
-          "type": "faq",
-          "settings": {
-            "question": "Can I get a refund?",
-            "answer": "Due to the nature of the program and the supplements being delivered, we cannot offer refunds once the program has started. However, if you commit to the program and follow the plan, our 92% success rate speaks for itself. We're confident you'll see results."
-          }
-        }
-      },
-      "block_order": [
-        "faq_ap87Tj",
-        "faq_krhmza",
-        "faq_Jx8jp4",
-        "faq_Ayy7Yd"
-      ],
-      "name": "Sales FAQ",
-      "settings": {
-        "title": "Frequently Asked Questions",
-        "subtitle": "No matter what your question is our products, the team at Retaur is always on hand to provide prompt and accurate answers. Email us at hello@retaur.com anytime.",
-        "cta_title": "Ready to Transform Your Body?",
-        "cta_text": "Join 50 men committed to building muscle the right way",
-        "cta_button_text": "Secure Your Spot Now",
-        "cta_link": ""
       }
     },
     "sales_payment_LN7HPN": {
@@ -406,12 +358,12 @@
         "card_1_badge": "STANDARD",
         "card_1_title": "Standard Package",
         "card_1_desc": "Complete transformation program",
-        "card_1_payg_product": "",
+        "card_1_payg_product": "bulk-up-challange-bundle-standard-payg",
         "card_1_payg_price": "₦90,000",
         "card_1_payg_cta": "Pay ₦90,000",
-        "card_1_otp_product": "",
-        "card_1_otp_price": "₦250,000",
-        "card_1_otp_cta": "Pay ₦250,000",
+        "card_1_otp_product": "bulk-up-challenge-bunlde-standard-otp",
+        "card_1_otp_price": "₦260,000",
+        "card_1_otp_cta": "Pay ₦260,000",
         "card_2_badge": "MOST POPULAR",
         "card_2_title": "Premium Package",
         "card_2_desc": "Complete transformation with cashback reward",
@@ -426,6 +378,54 @@
         "terms_link_text": "Read Full Terms & Conditions",
         "terms_link": "",
         "terms_note": "*T&C Apply - Cash back is awarded upon successful completion of program goals and requirements"
+      }
+    },
+    "sales_faq_kaKKUK": {
+      "type": "sales-faq",
+      "blocks": {
+        "faq_ap87Tj": {
+          "type": "faq",
+          "settings": {
+            "question": "What if I don't hit my goals?",
+            "answer": "The ₦200,000 is a performance bonus, so you won't receive the cash back if you don't meet the goal. However, you keep all the supplements, coaching, and progress you've made. You still walk away bigger, stronger, and more knowledgeable than when you started."
+          }
+        },
+        "faq_krhmza": {
+          "type": "faq",
+          "settings": {
+            "question": "What is included in the program?",
+            "answer": "Your package includes a 6-month supply of premium 1.5kg of whey protein and 3 tubs of creatine (delivered every 2 months), access to 6 monthly video coaching calls with a certified trainer, personalised meal plans for your body type, a personalized training program, and 24/7 access to our WhatsApp community."
+          }
+        },
+        "faq_Jx8jp4": {
+          "type": "faq",
+          "settings": {
+            "question": "How do I track my progress?",
+            "answer": "Your certified trainer will take your initial measurements (biceps, chest, and thighs) during your first coaching call. These measurements are recorded and tracked throughout the 6-month program. At the end, your trainer will measure again to verify your results for the cashback bonus."
+          }
+        },
+        "faq_Ayy7Yd": {
+          "type": "faq",
+          "settings": {
+            "question": "Can I get a refund?",
+            "answer": "Due to the nature of the program and the supplements being delivered, we cannot offer refunds once the program has started. However, if you commit to the program and follow the plan, our 92% success rate speaks for itself. We're confident you'll see results."
+          }
+        }
+      },
+      "block_order": [
+        "faq_ap87Tj",
+        "faq_krhmza",
+        "faq_Jx8jp4",
+        "faq_Ayy7Yd"
+      ],
+      "name": "Sales FAQ",
+      "settings": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "No matter what your question is our products, the team at Retaur is always on hand to provide prompt and accurate answers. Email us at hello@retaur.com anytime.",
+        "cta_title": "Ready to Transform Your Body?",
+        "cta_text": "Join 50 men committed to building muscle the right way",
+        "cta_button_text": "Secure Your Spot Now",
+        "cta_link": ""
       }
     }
   },
