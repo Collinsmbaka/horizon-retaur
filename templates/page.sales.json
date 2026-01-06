@@ -376,7 +376,7 @@
         "card_2_otp_cta": "Pay ₦400,000",
         "terms_text": "By enrolling, you agree to our program terms and conditions",
         "terms_link_text": "Read Full Terms & Conditions",
-        "terms_link": "",
+        "terms_link": "shopify://policies/terms-of-service",
         "terms_note": "*T&C Apply - Cash back is awarded upon successful completion of program goals and requirements"
       }
     },
