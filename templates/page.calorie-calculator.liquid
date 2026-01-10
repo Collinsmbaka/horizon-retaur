@@ -89,6 +89,11 @@
     color: var(--brand-black);
   }
 
+  .form-input::placeholder {
+    color: #bbb;
+    opacity: 1;
+  }
+
   .form-input:focus,
   .form-select:focus {
     outline: none;
@@ -460,6 +465,13 @@
     gap: var(--spacing-4, 1rem);
   }
 
+  .product-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: var(--spacing-4, 1rem);
+  }
+
   .product-benefits {
     list-style: none;
     padding: 0;
@@ -521,7 +533,7 @@
 
   /* Muscle Program */
   .muscle-program {
-    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    background: linear-gradient(135deg, #d81159 0%, #c10e4d 100%);
     color: var(--brand-white);
     border-radius: 12px;
     padding: var(--spacing-6, 1.5rem);
@@ -561,7 +573,7 @@
     content: '✓';
     position: absolute;
     left: 0;
-    color: var(--brand-pink);
+    color: var(--brand-white);
     font-weight: 700;
   }
 
@@ -571,7 +583,7 @@
   }
 
   .muscle-program .cta-button:hover {
-    background-color: var(--brand-pink);
+    background-color: var(--brand-black);
     color: var(--brand-white);
   }
 
@@ -630,6 +642,12 @@
       padding: var(--spacing-6, 1.5rem);
     }
 
+    .form-input,
+    .form-select {
+      font-size: 16px; /* Prevents zoom on iOS */
+      width: 100%;
+    }
+
     .calorie-target {
       font-size: 2.5rem;
     }
@@ -642,8 +660,33 @@
       grid-template-columns: 1fr;
     }
 
+    /* Make meal breakdown horizontal on mobile for compactness */
+    .meal-breakdown {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-3, 0.75rem);
+    }
+
+    .meal-option {
+      padding: var(--spacing-3, 0.75rem);
+    }
+
+    .meal-option h4 {
+      font-size: 0.875rem;
+      margin-bottom: var(--spacing-2, 0.5rem);
+    }
+
     .meal-stats {
-      grid-template-columns: 1fr;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-2, 0.5rem);
+    }
+
+    .meal-stat {
+      font-size: 0.8125rem;
+    }
+
+    .product-image {
+      max-width: 100%;
     }
   }
 
@@ -654,6 +697,17 @@
 
     .form-group.full-width {
       grid-column: 1 / -1;
+    }
+
+    .product-section h3 {
+      text-align: center;
+    }
+
+    .product-image {
+      max-width: 400px;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
     }
   }
 </style>
@@ -906,6 +960,15 @@
       <div class="product-section">
         <h3 ref="yogurtHeading">Meet Your Calorie & Protein Goals:<br>Retaur Protein Yogurt</h3>
 
+        {%- if yogurt_product.featured_image -%}
+          <img
+            src="{{ yogurt_product.featured_image | image_url: width: 560 }}"
+            alt="{{ yogurt_product.title }}"
+            class="product-image"
+            loading="lazy"
+          />
+        {%- endif -%}
+
         <div class="product-content" ref="yogurtContent">
           <!-- Content will be dynamically inserted by JavaScript -->
         </div>
@@ -918,6 +981,15 @@
       <!-- Product Recommendations: Whey -->
       <div class="product-section">
         <h3 ref="wheyHeading">Boost Your Protein Intake:<br>Retaur Whey Protein</h3>
+
+        {%- if whey_product.featured_image -%}
+          <img
+            src="{{ whey_product.featured_image | image_url: width: 560 }}"
+            alt="{{ whey_product.title }}"
+            class="product-image"
+            loading="lazy"
+          />
+        {%- endif -%}
 
         <div class="product-content" ref="wheyContent">
           <!-- Content will be dynamically inserted by JavaScript -->
@@ -956,4 +1028,4 @@
   </div>
 </div>
 
-<script src="{{ 'calorie-calculator.js' | asset_url }}" defer></script>
+<script src="{{ 'calorie-calculator.js' | asset_url }}" type="module" defer></script>
