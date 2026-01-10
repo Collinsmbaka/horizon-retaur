@@ -389,7 +389,7 @@
                   "settings": {
                     "heading": "Ingredients",
                     "open_by_default": false,
-                    "icon": "none",
+                    "icon": "banana",
                     "width": 20
                   },
                   "blocks": {
@@ -422,12 +422,50 @@
                   "block_order": [
                     "text_wTAKrq"
                   ]
+                },
+                "accordion_row_fmw7AG": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Nutritional Information",
+                    "open_by_default": false,
+                    "icon": "dairy",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "image_GE3QEr": {
+                      "type": "image",
+                      "name": "t:names.image",
+                      "settings": {
+                        "image": "shopify://shop_images/4_f1c715e0-291e-441b-bbb8-c98e97c43f5d.png",
+                        "link": "",
+                        "image_ratio": "square",
+                        "width": "fill",
+                        "custom_width": 100,
+                        "width_mobile": "fill",
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "border": "none",
+                        "border_width": 1,
+                        "border_opacity": 100,
+                        "border_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "image_GE3QEr"
+                  ]
                 }
               },
               "block_order": [
                 "accordion_row_4E6p7j",
                 "accordion_row_793xYz",
-                "accordion_row_tpdR67"
+                "accordion_row_tpdR67",
+                "accordion_row_fmw7AG"
               ]
             }
           },
@@ -2342,9 +2380,9 @@
           "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
           "settings": {
             "review_data": "sample_data",
+            "max_width": 1200,
             "show_shop_reviews": false,
-            "empty_state": "empty_widget",
-            "max_width": 1200
+            "empty_state": "empty_widget"
           }
         }
       },
