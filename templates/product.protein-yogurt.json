@@ -432,24 +432,22 @@
                     "width": 20
                   },
                   "blocks": {
-                    "text_qNGTiw": {
-                      "type": "text",
+                    "image_GE3QEr": {
+                      "type": "image",
+                      "name": "t:names.image",
                       "settings": {
-                        "text": "<p>Low-Fat Milk, Whey Protein Concentrate, Sugar</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
+                        "image": "shopify://shop_images/4_f1c715e0-291e-441b-bbb8-c98e97c43f5d.png",
+                        "link": "",
+                        "image_ratio": "square",
+                        "width": "fit-content",
+                        "custom_width": 100,
+                        "width_mobile": "fit-content",
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "border": "none",
+                        "border_width": 1,
+                        "border_opacity": 100,
+                        "border_radius": 0,
                         "padding-block-start": 0,
                         "padding-block-end": 0,
                         "padding-inline-start": 0,
@@ -459,7 +457,7 @@
                     }
                   },
                   "block_order": [
-                    "text_qNGTiw"
+                    "image_GE3QEr"
                   ]
                 }
               },
