@@ -28,8 +28,8 @@
         "benefit_3": "<strong>Personalised workout and meal plans </strong> for your <strong> BODY type and Genetics </strong>",
         "benefit_4": "<strong>24/7 community</strong> support",
         "spots_text": "Limited: 50 spots only",
-        "spots_left_text": "35 spots left!",
-        "start_date_text": "Starts: January 17, 2026",
+        "spots_left_text": "20 spots left!",
+        "start_date_text": "Starts: January 31, 2026",
         "cta_text": "Enroll Now",
         "cta_link": ""
       }
@@ -238,53 +238,9 @@
         "cashback_amount": "+₦200,000",
         "cashback_text": "cash back when you achieve your GOAL",
         "spots_text": "Limited: 50 spots only",
-        "start_date": "Starts: January 17, 2026",
+        "start_date": "Starts: January 31, 2026",
         "cta_text": "Enroll Now",
         "cta_link": ""
-      }
-    },
-    "sales_guarantee_rzYkdw": {
-      "type": "sales-guarantee",
-      "blocks": {
-        "step_kT4Qma": {
-          "type": "step",
-          "settings": {
-            "number": "1",
-            "title": "The Commitment",
-            "text": "You invest ₦400k (or ₦135k) to join the 6-month program. Your certified trainer records your starting measurements (Biceps, Chest, Thighs)."
-          }
-        },
-        "step_Frcff4": {
-          "type": "step",
-          "settings": {
-            "number": "2",
-            "title": "The Work",
-            "text": "You follow the plan. You take the supplements, eat the food, and attend at least 5 of your 6 coaching calls. We give you every tool needed to win."
-          }
-        },
-        "step_D9AW9n": {
-          "type": "step",
-          "settings": {
-            "number": "3",
-            "title": "The Reward",
-            "text": "At Month 6, we measure again. If you gain 4cm+ on at least 2 body parts (e.g., Arms & Chest), we send ₦200,000 back to your account."
-          }
-        }
-      },
-      "block_order": [
-        "step_kT4Qma",
-        "step_Frcff4",
-        "step_D9AW9n"
-      ],
-      "name": "Sales Guarantee",
-      "settings": {
-        "title": "Performance Guarantee",
-        "subtitle": "We pay for results. Here is the deal:",
-        "faq_1_question": "Why 4cm?",
-        "faq_1_answer": "Because 4cm is the difference between \"do you workout?\" and \"wow, you got big.\" It is visibly noticeable, achievable in 6 months, and 100% measurable.",
-        "faq_2_question": "What if you miss the goal?",
-        "faq_2_answer": "The ₦200,000 is a performance bonus, so you don't get the cash back. However, you keep the supplements, the coaching, and the months of progress. You still walk away bigger, stronger, and smarter than when you started.",
-        "faq_2_note": "T&C Apply"
       }
     },
     "sales_about_xm8dwz": {
@@ -305,69 +261,122 @@
         "signature": "— Collins"
       }
     },
-    "sales_payment_MCTFFR": {
+    "sales_guarantee_rzYkdw": {
+      "type": "sales-guarantee",
+      "blocks": {
+        "step_kT4Qma": {
+          "type": "step",
+          "settings": {
+            "number": "1",
+            "title": "The Commitment",
+            "text": "You invest ₦400k (or ₦135k) / ₦260k (or ₦90k)  to join the 6-month program. Your certified trainer records your starting measurements (Biceps, Chest, Thighs)."
+          }
+        },
+        "step_Frcff4": {
+          "type": "step",
+          "settings": {
+            "number": "2",
+            "title": "The Work",
+            "text": "You follow the plan. You take the supplements, eat the food, and attend at least 5 of your 6 coaching calls. We give you every tool needed to win."
+          }
+        },
+        "step_D9AW9n": {
+          "type": "step",
+          "settings": {
+            "number": "3",
+            "title": "The Reward",
+            "text": "At Month 6, we measure again. If you gain 3cm+ on at least 2 body parts (e.g., Arms & Chest), we send ₦200,000 back to your account."
+          }
+        }
+      },
+      "block_order": [
+        "step_kT4Qma",
+        "step_Frcff4",
+        "step_D9AW9n"
+      ],
+      "name": "Sales Guarantee",
+      "settings": {
+        "title": "Performance Guarantee",
+        "subtitle": "We pay for results. Here is the deal:",
+        "faq_1_question": "Why 3cm?",
+        "faq_1_answer": "Because 3cm is the difference between \"do you workout?\" and \"wow, you got big.\" It is visibly noticeable, achievable in 6 months, and 100% measurable.",
+        "faq_2_question": "What if you miss the goal?",
+        "faq_2_answer": "The ₦200,000 is a performance bonus, so you don't get the cash back. However, you keep the supplements, the coaching, and the months of progress. You still walk away bigger, stronger, and smarter than when you started.",
+        "faq_2_note": "T&C Apply"
+      }
+    },
+    "sales_payment_LN7HPN": {
       "type": "sales-payment",
       "blocks": {
-        "feature_6HymF7": {
+        "feature_gJAQW3": {
           "type": "feature",
           "settings": {
-            "text": "6-month supply of supplements"
+            "card_target": "both",
+            "text": "500g whey protein and 300g creatine * 3"
           }
         },
-        "feature_HcUrTQ": {
+        "feature_LhhVHC": {
           "type": "feature",
           "settings": {
-            "text": "6 coaching video calls"
+            "card_target": "both",
+            "text": "6 Months of Coaching and Guidance"
           }
         },
-        "feature_b6UFeF": {
+        "feature_FNbk8n": {
           "type": "feature",
           "settings": {
-            "text": "Custom meal &amp; training plans"
+            "card_target": "both",
+            "text": "Personalised meal &amp; training plans"
           }
         },
-        "feature_HJpefd": {
+        "feature_e3mqzV": {
           "type": "feature",
           "settings": {
+            "card_target": "both",
             "text": "24/7 WhatsApp community"
           }
         },
-        "feature_LCiHtJ": {
+        "feature_UParPM": {
           "type": "feature",
           "settings": {
+            "card_target": "premium",
             "text": "<span class=\"bold\">₦200,000 cashback on success</span>"
           }
         }
       },
       "block_order": [
-        "feature_6HymF7",
-        "feature_HcUrTQ",
-        "feature_b6UFeF",
-        "feature_HJpefd",
-        "feature_LCiHtJ"
+        "feature_gJAQW3",
+        "feature_LhhVHC",
+        "feature_FNbk8n",
+        "feature_e3mqzV",
+        "feature_UParPM"
       ],
-      "name": "Sales Payment",
+      "name": "Sales Payment (Dual Buttons)",
       "settings": {
         "title": "Choose Your Payment Plan",
         "subtitle": "Same great program, flexible payment options",
-        "card_1_badge": "MOST POPULAR",
-        "card_1_title": "Pay Once",
-        "card_1_desc": "Save money with full payment",
-        "card_1_price": "₦400,000",
-        "card_1_price_note": "One-time payment",
-        "card_1_cta": "Pay ₦400,000 Now",
-        "card_1_product_handle": "bulk-up-challenge-bundle-otp",
-        "card_2_badge": "FLEXIBLE",
-        "card_2_title": "Pay as You Go",
-        "card_2_desc": "Spread payments over time",
-        "card_2_price": "₦135,000",
-        "card_2_price_note": "Every 2 months (3 payments)",
-        "card_2_total": "Total: ₦405,000",
-        "card_2_cta": "Pay ₦135,000 Now",
-        "card_2_product_handle": "bulk-up-challenge-bundle",
+        "card_1_badge": "STANDARD",
+        "card_1_title": "Standard Package",
+        "card_1_desc": "Complete transformation program",
+        "card_1_payg_product": "bulk-up-challenge-standard",
+        "card_1_payg_price": "₦90,000",
+        "card_1_payg_cta": "Pay ₦90,000",
+        "card_1_otp_product": "bulk-up-challenge-standard-otp",
+        "card_1_otp_price": "₦260,000",
+        "card_1_otp_cta": "Pay ₦260,000",
+        "card_2_badge": "MOST POPULAR",
+        "card_2_title": "Premium Package",
+        "card_2_desc": "Complete transformation with cashback reward",
+        "card_2_cashback": "₦200,000 Cashback",
+        "card_2_payg_product": "bulk-up-challenge-premium",
+        "card_2_payg_price": "₦135,000",
+        "card_2_payg_cta": "Pay ₦135,000",
+        "card_2_otp_product": "bulk-up-challenge-premium-otp",
+        "card_2_otp_price": "₦400,000",
+        "card_2_otp_cta": "Pay ₦400,000",
         "terms_text": "By enrolling, you agree to our program terms and conditions",
         "terms_link_text": "Read Full Terms & Conditions",
-        "terms_link": "",
+        "terms_link": "shopify://pages/muscle-guarantee-program-terms-and-conditions",
         "terms_note": "*T&C Apply - Cash back is awarded upon successful completion of program goals and requirements"
       }
     },
@@ -399,7 +408,7 @@
           "type": "faq",
           "settings": {
             "question": "Can I get a refund?",
-            "answer": "Due to the nature of the program and the supplements being delivered, we cannot offer refunds once the program has started. However, if you commit to the program and follow the plan, our 92% success rate speaks for itself. We're confident you'll see results."
+            "answer": "Due to the nature of the program and the supplements being delivered, we cannot offer refunds once the program has started. However, if you commit to the program and follow the plan, our 72% success rate speaks for itself. We're confident you'll see results."
           }
         }
       },
@@ -427,9 +436,9 @@
     "sales_why_us_3xyrJ9",
     "sales_testimonials_JCd3mP",
     "sales_value_stack_MUYFUa",
-    "sales_guarantee_rzYkdw",
     "sales_about_xm8dwz",
-    "sales_payment_MCTFFR",
+    "sales_guarantee_rzYkdw",
+    "sales_payment_LN7HPN",
     "sales_faq_kaKKUK"
   ]
 }
