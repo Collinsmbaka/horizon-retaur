@@ -18,6 +18,7 @@ import { Component } from '@theme/component';
  * @property {HTMLElement} resultSubtext - Result subtext
  * @property {HTMLElement} perMeal2 - Protein per meal (2 meals)
  * @property {HTMLElement} perMeal3 - Protein per meal (3 meals)
+ * @property {HTMLElement} yogurtHeading - Yogurt recommendation heading
  * @property {HTMLElement} yogurtRecommendation - Yogurt recommendation details
  * @property {HTMLElement} wheyRecommendation - Whey recommendation details
  * @property {HTMLElement} programCard - Muscle guarantee program card
@@ -71,6 +72,14 @@ class ProteinCalculator extends Component {
     build_muscle: 'muscle building',
     maintain: 'weight maintenance',
     athletic: 'athletic performance',
+  };
+
+  /** @type {Object} */
+  static GOAL_HEADLINES = {
+    lose_weight: 'Easiest Way to Lose Weight & Maintain Muscle',
+    build_muscle: 'Easiest Way to Build Muscle',
+    maintain: 'Easiest Way to Maintain Your Weight',
+    athletic: 'Easiest Way to Improve Athletic Performance',
   };
 
   /**
@@ -383,7 +392,7 @@ class ProteinCalculator extends Component {
     this.refs.perMeal3.textContent = `${perMeal3}g`;
 
     // Display product recommendations
-    this.displayYogurtRecommendation(proteinTarget);
+    this.displayYogurtRecommendation(proteinTarget, formData.goal);
     this.displayWheyRecommendation(proteinTarget);
 
     // Conditional recommendations
@@ -405,8 +414,13 @@ class ProteinCalculator extends Component {
   /**
    * Display yogurt recommendation
    * @param {number} proteinTarget
+   * @param {string} goal - User's selected goal
    */
-  displayYogurtRecommendation(proteinTarget) {
+  displayYogurtRecommendation(proteinTarget, goal) {
+    // Update heading based on goal
+    const goalHeadline = ProteinCalculator.GOAL_HEADLINES[goal];
+    this.refs.yogurtHeading.innerHTML = `${goalHeadline}:<br>Retaur Protein Yogurt`;
+
     const isHighProtein = proteinTarget >= 140;
     const servingSize = isHighProtein ? '1 cup' : '1/2 cup';
     const proteinFromYogurt = isHighProtein ? 50 : 25;
