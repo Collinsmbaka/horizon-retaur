@@ -24,6 +24,15 @@ Complete documentation for the Protein Calculator feature:
 
 See [protein-calculator/README.md](./protein-calculator/README.md) for details.
 
+### `calorie-calculator/`
+Complete documentation for the Calorie Calculator feature:
+- Technical specifications with implementation decisions
+- Calculation formulas (BMR, TDEE, macros, timeline)
+- Product recommendations logic
+- UX flow and two-stage calculation approach
+
+See [calorie-calculator/calorie-calculator-spec.md](./calorie-calculator/calorie-calculator-spec.md) for details.
+
 ---
 
 **Note:** This entire docs folder is git-ignored and kept for local development reference only.

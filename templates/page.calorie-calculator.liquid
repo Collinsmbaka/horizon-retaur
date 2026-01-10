@@ -1,0 +1,959 @@
+{% comment %}
+  Retaur Calorie Calculator
+  Custom page template for calculating BMR, TDEE, daily calorie needs, macros, and timeline
+{% endcomment %}
+
+{% liquid
+  assign protein_yogurt_url = 'https://retaur.com/products/retaur-protein-yogurt'
+  assign whey_protein_url = 'https://retaur.com/products/retaur-advanced-100-whey-protein'
+  assign muscle_program_url = 'https://retaur.com/pages/muscle-guarantee-program'
+
+  assign yogurt_product = all_products['retaur-protein-yogurt']
+  assign whey_product = all_products['retaur-advanced-100-whey-protein']
+%}
+
+<style>
+  /* Calorie Calculator Critical CSS with Brand Colors */
+  :root {
+    --brand-pink: #d81159;
+    --brand-black: #000000;
+    --brand-white: #ffffff;
+    --brand-gray: #f5f5f5;
+    --brand-gray-dark: #666666;
+    --warning-orange: #ff6b35;
+    --warning-red: #dc2626;
+  }
+
+  .calorie-calculator {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: var(--spacing-8, 2rem) var(--spacing-4, 1rem);
+  }
+
+  .calculator-header {
+    text-align: center;
+    margin-bottom: var(--spacing-8, 2rem);
+  }
+
+  .calculator-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--brand-black);
+    margin-bottom: var(--spacing-4, 1rem);
+    line-height: 1.2;
+  }
+
+  .calculator-header p {
+    font-size: 1.125rem;
+    color: var(--brand-gray-dark);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Form Styles */
+  .calculator-form {
+    background: var(--brand-white);
+    border: 2px solid var(--brand-pink);
+    border-radius: 12px;
+    padding: var(--spacing-8, 2rem);
+    margin-bottom: var(--spacing-8, 2rem);
+  }
+
+  .form-grid {
+    display: grid;
+    gap: var(--spacing-6, 1.5rem);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-2, 0.5rem);
+  }
+
+  .form-label {
+    font-weight: 600;
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--brand-black);
+  }
+
+  .form-input,
+  .form-select {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e5e5e5;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+    background: var(--brand-white);
+    color: var(--brand-black);
+  }
+
+  .form-input:focus,
+  .form-select:focus {
+    outline: none;
+    border-color: var(--brand-pink);
+  }
+
+  .form-input.error,
+  .form-select.error {
+    border-color: var(--warning-red);
+  }
+
+  .error-message {
+    color: var(--warning-red);
+    font-size: 0.875rem;
+    margin-top: var(--spacing-1, 0.25rem);
+    display: none;
+  }
+
+  .error-message.visible {
+    display: block;
+  }
+
+  .calculate-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--brand-pink);
+    color: var(--brand-white);
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    margin-top: var(--spacing-4, 1rem);
+  }
+
+  .calculate-button:hover {
+    background-color: #c10e4d;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+
+  .calculate-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Results Section */
+  .results-section {
+    display: none;
+    margin-top: var(--spacing-8, 2rem);
+  }
+
+  .results-section.visible {
+    display: block;
+  }
+
+  /* Warning Banner */
+  .warning-banner {
+    display: none;
+    background: linear-gradient(135deg, #fff3cd 0%, #ffe5b4 100%);
+    border: 2px solid var(--warning-orange);
+    border-radius: 12px;
+    padding: var(--spacing-6, 1.5rem);
+    margin-bottom: var(--spacing-6, 1.5rem);
+  }
+
+  .warning-banner.visible {
+    display: block;
+  }
+
+  .warning-banner h3 {
+    color: #d97706;
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-2, 0.5rem);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .warning-banner p {
+    color: #92400e;
+    line-height: 1.6;
+  }
+
+  /* Metrics Display */
+  .metrics-section {
+    background: var(--brand-gray);
+    border-radius: 12px;
+    padding: var(--spacing-6, 1.5rem);
+    margin-bottom: var(--spacing-6, 1.5rem);
+  }
+
+  .primary-metric {
+    text-align: center;
+    margin-bottom: var(--spacing-6, 1.5rem);
+  }
+
+  .primary-metric h2 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--brand-gray-dark);
+    margin-bottom: var(--spacing-2, 0.5rem);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .calorie-target {
+    font-size: 3.5rem;
+    font-weight: 900;
+    font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--brand-pink);
+    line-height: 1;
+  }
+
+  .secondary-metrics {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-4, 1rem);
+    padding-top: var(--spacing-6, 1.5rem);
+    border-top: 2px solid #e5e5e5;
+  }
+
+  .metric-item {
+    text-align: center;
+  }
+
+  .metric-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--brand-gray-dark);
+    margin-bottom: var(--spacing-1, 0.25rem);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--brand-black);
+  }
+
+  /* Deficit Adjuster */
+  .deficit-adjuster {
+    background: var(--brand-white);
+    border: 2px solid var(--brand-pink);
+    border-radius: 12px;
+    padding: var(--spacing-6, 1.5rem);
+    margin-bottom: var(--spacing-6, 1.5rem);
+  }
+
+  .deficit-adjuster h3 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--brand-black);
+    margin-bottom: var(--spacing-4, 1rem);
+    text-align: center;
+  }
+
+  .deficit-buttons {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-3, 0.75rem);
+  }
+
+  .deficit-button {
+    padding: 0.75rem 1rem;
+    border: 2px solid #e5e5e5;
+    border-radius: 8px;
+    background: var(--brand-white);
+    color: var(--brand-black);
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+  }
+
+  .deficit-button:hover {
+    border-color: var(--brand-pink);
+  }
+
+  .deficit-button.active {
+    background: var(--brand-pink);
+    color: var(--brand-white);
+    border-color: var(--brand-pink);
+  }
+
+  .deficit-label {
+    display: block;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+  }
+
+  .deficit-amount {
+    display: block;
+    font-size: 0.75rem;
+    opacity: 0.8;
+  }
+
+  /* Timeline Section */
+  .timeline-section {
+    background: var(--brand-white);
+    border: 2px solid #e5e5e5;
+    border-radius: 12px;
+    padding: var(--spacing-6, 1.5rem);
+    margin-bottom: var(--spacing-6, 1.5rem);
+  }
+
+  .timeline-section h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--brand-black);
+    margin-bottom: var(--spacing-4, 1rem);
+  }
+
+  .timeline-stats {
+    display: grid;
+    gap: var(--spacing-3, 0.75rem);
+  }
+
+  .timeline-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-3, 0.75rem);
+    background: var(--brand-gray);
+    border-radius: 8px;
+  }
+
+  .timeline-stat-label {
+    font-weight: 600;
+    color: var(--brand-gray-dark);
+  }
+
+  .timeline-stat-value {
+    font-weight: 700;
+    color: var(--brand-black);
+  }
+
+  .timeline-highlight {
+    background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%);
+    border: 2px solid var(--brand-pink);
+    padding: var(--spacing-4, 1rem);
+    border-radius: 8px;
+    margin-top: var(--spacing-4, 1rem);
+  }
+
+  .timeline-highlight p {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--brand-black);
+    text-align: center;
+    margin: 0;
+  }
+
+  .timeline-highlight strong {
+    color: var(--brand-pink);
+  }
+
+  /* Macro Breakdown */
+  .macro-section {
+    margin-bottom: var(--spacing-6, 1.5rem);
+  }
+
+  .macro-section h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--brand-black);
+    margin-bottom: var(--spacing-4, 1rem);
+  }
+
+  .macro-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-4, 1rem);
+    margin-bottom: var(--spacing-6, 1.5rem);
+  }
+
+  .macro-card {
+    background: var(--brand-white);
+    border: 2px solid #e5e5e5;
+    border-radius: 12px;
+    padding: var(--spacing-4, 1rem);
+    text-align: center;
+  }
+
+  .macro-card-label {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--brand-gray-dark);
+    margin-bottom: var(--spacing-2, 0.5rem);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .macro-card-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--brand-pink);
+    line-height: 1;
+    margin-bottom: var(--spacing-1, 0.25rem);
+  }
+
+  .macro-card-calories {
+    font-size: 0.875rem;
+    color: var(--brand-gray-dark);
+  }
+
+  /* Meal Breakdown */
+  .meal-breakdown {
+    display: grid;
+    gap: var(--spacing-4, 1rem);
+  }
+
+  .meal-option {
+    background: var(--brand-gray);
+    border-radius: 12px;
+    padding: var(--spacing-4, 1rem);
+  }
+
+  .meal-option h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--brand-black);
+    margin-bottom: var(--spacing-3, 0.75rem);
+  }
+
+  .meal-stats {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-2, 0.5rem);
+  }
+
+  .meal-stat {
+    font-size: 0.875rem;
+    color: var(--brand-gray-dark);
+  }
+
+  .meal-stat strong {
+    color: var(--brand-black);
+    font-weight: 700;
+  }
+
+  /* Product Recommendations */
+  .product-section {
+    background: var(--brand-white);
+    border: 2px solid var(--brand-pink);
+    border-radius: 12px;
+    padding: var(--spacing-6, 1.5rem);
+    margin-bottom: var(--spacing-6, 1.5rem);
+  }
+
+  .product-section h3 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--brand-black);
+    margin-bottom: var(--spacing-4, 1rem);
+    line-height: 1.3;
+  }
+
+  .product-content {
+    display: grid;
+    gap: var(--spacing-4, 1rem);
+  }
+
+  .product-benefits {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-4, 1rem) 0;
+  }
+
+  .product-benefits li {
+    padding-left: 1.5rem;
+    margin-bottom: var(--spacing-2, 0.5rem);
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .product-benefits li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--brand-pink);
+    font-weight: 700;
+  }
+
+  .product-recommendation {
+    background: var(--brand-gray);
+    border-radius: 8px;
+    padding: var(--spacing-4, 1rem);
+    margin: var(--spacing-4, 1rem) 0;
+  }
+
+  .product-recommendation p {
+    margin: 0;
+    line-height: 1.8;
+  }
+
+  .product-recommendation strong {
+    color: var(--brand-pink);
+    font-weight: 700;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--brand-pink);
+    color: var(--brand-white);
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    margin-top: var(--spacing-4, 1rem);
+  }
+
+  .cta-button:hover {
+    background-color: #c10e4d;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+
+  /* Muscle Program */
+  .muscle-program {
+    background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+    color: var(--brand-white);
+    border-radius: 12px;
+    padding: var(--spacing-6, 1.5rem);
+    margin-bottom: var(--spacing-6, 1.5rem);
+    display: none;
+  }
+
+  .muscle-program.visible {
+    display: block;
+  }
+
+  .muscle-program h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-4, 1rem);
+    line-height: 1.3;
+  }
+
+  .muscle-program p {
+    line-height: 1.8;
+    margin-bottom: var(--spacing-4, 1rem);
+  }
+
+  .muscle-program ul {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-4, 1rem) 0;
+  }
+
+  .muscle-program li {
+    padding-left: 1.5rem;
+    margin-bottom: var(--spacing-2, 0.5rem);
+    position: relative;
+  }
+
+  .muscle-program li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--brand-pink);
+    font-weight: 700;
+  }
+
+  .muscle-program .cta-button {
+    background-color: var(--brand-white);
+    color: var(--brand-black);
+  }
+
+  .muscle-program .cta-button:hover {
+    background-color: var(--brand-pink);
+    color: var(--brand-white);
+  }
+
+  /* Recalculate Button */
+  .recalculate-section {
+    text-align: center;
+    padding: var(--spacing-6, 1.5rem) 0;
+  }
+
+  .recalculate-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    color: var(--brand-pink);
+    padding: 0.75rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    border: 2px solid var(--brand-pink);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .recalculate-button:hover {
+    background-color: var(--brand-pink);
+    color: var(--brand-white);
+  }
+
+  /* Disclaimer */
+  .disclaimer {
+    background: var(--brand-gray);
+    border-radius: 12px;
+    padding: var(--spacing-6, 1.5rem);
+    margin-top: var(--spacing-8, 2rem);
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--brand-gray-dark);
+  }
+
+  .disclaimer strong {
+    color: var(--brand-black);
+  }
+
+  /* Mobile Responsive */
+  @media (max-width: 749px) {
+    .calculator-header h1 {
+      font-size: 1.75rem;
+    }
+
+    .calculator-header p {
+      font-size: 1rem;
+    }
+
+    .calculator-form {
+      padding: var(--spacing-6, 1.5rem);
+    }
+
+    .calorie-target {
+      font-size: 2.5rem;
+    }
+
+    .macro-card-value {
+      font-size: 2rem;
+    }
+
+    .deficit-buttons {
+      grid-template-columns: 1fr;
+    }
+
+    .meal-stats {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (min-width: 750px) {
+    .form-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+  }
+</style>
+
+<div class="calorie-calculator">
+  <div class="calculator-header">
+    <h1>Calorie Calculator</h1>
+    <p>Calculate your daily calorie needs, macro breakdown, and timeline to reach your goals. Get personalized Retaur product recommendations.</p>
+  </div>
+
+  <calorie-calculator class="calorie-calculator-component">
+    <!-- Calculator Form -->
+    <form class="calculator-form" ref="form">
+      <div class="form-grid">
+        <!-- Biological Sex -->
+        <div class="form-group">
+          <label for="sex-select" class="form-label">Biological Sex</label>
+          <select
+            id="sex-select"
+            class="form-select"
+            ref="sexInput"
+            required
+          >
+            <option value="">Select your biological sex</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <span class="error-message" ref="sexError"></span>
+        </div>
+
+        <!-- Age -->
+        <div class="form-group">
+          <label for="age-input" class="form-label">Age (years)</label>
+          <input
+            type="number"
+            id="age-input"
+            class="form-input"
+            ref="ageInput"
+            placeholder="e.g., 28"
+            min="18"
+            max="80"
+            required
+          />
+          <span class="error-message" ref="ageError"></span>
+        </div>
+
+        <!-- Height -->
+        <div class="form-group">
+          <label for="height-input" class="form-label">Height (cm)</label>
+          <input
+            type="number"
+            id="height-input"
+            class="form-input"
+            ref="heightInput"
+            placeholder="e.g., 175"
+            min="120"
+            max="250"
+            required
+          />
+          <span class="error-message" ref="heightError"></span>
+        </div>
+
+        <!-- Current Weight -->
+        <div class="form-group">
+          <label for="weight-input" class="form-label">Current Weight (kg)</label>
+          <input
+            type="number"
+            id="weight-input"
+            class="form-input"
+            ref="weightInput"
+            placeholder="e.g., 85"
+            min="40"
+            max="200"
+            step="0.1"
+            required
+          />
+          <span class="error-message" ref="weightError"></span>
+        </div>
+
+        <!-- Goal Weight -->
+        <div class="form-group">
+          <label for="goal-weight-input" class="form-label">Goal Weight (kg)</label>
+          <input
+            type="number"
+            id="goal-weight-input"
+            class="form-input"
+            ref="goalWeightInput"
+            placeholder="e.g., 75"
+            min="40"
+            max="200"
+            step="0.1"
+            required
+          />
+          <span class="error-message" ref="goalWeightError"></span>
+        </div>
+
+        <!-- Activity Level -->
+        <div class="form-group full-width">
+          <label for="activity-select" class="form-label">Activity Level</label>
+          <select
+            id="activity-select"
+            class="form-select"
+            ref="activityInput"
+            required
+          >
+            <option value="">Select your activity level</option>
+            <option value="sedentary">Sedentary (little or no exercise)</option>
+            <option value="lightly_active">Lightly Active (exercise 1-3 days/week)</option>
+            <option value="moderately_active">Moderately Active (exercise 3-5 days/week)</option>
+            <option value="very_active">Very Active (exercise 6-7 days/week)</option>
+            <option value="extremely_active">Extremely Active (intense exercise daily + physical job)</option>
+          </select>
+          <span class="error-message" ref="activityError"></span>
+        </div>
+      </div>
+
+      <button type="submit" class="calculate-button">
+        Calculate My Calorie Needs
+      </button>
+    </form>
+
+    <!-- Results Section -->
+    <div class="results-section" ref="resultsSection">
+      <!-- Warning Banner -->
+      <div class="warning-banner" ref="warningBanner">
+        <h3>⚠️ Low Calorie Warning</h3>
+        <p ref="warningText"></p>
+      </div>
+
+      <!-- Primary Metrics -->
+      <div class="metrics-section">
+        <div class="primary-metric">
+          <h2>Your Daily Calorie Target</h2>
+          <div class="calorie-target" ref="calorieTarget">0</div>
+        </div>
+
+        <div class="secondary-metrics">
+          <div class="metric-item">
+            <div class="metric-label">BMR</div>
+            <div class="metric-value" ref="bmrValue">0</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-label">TDEE</div>
+            <div class="metric-value" ref="tdeeValue">0</div>
+          </div>
+          <div class="metric-item">
+            <div class="metric-label">Daily Deficit/Surplus</div>
+            <div class="metric-value" ref="deficitValue">0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Deficit Adjuster -->
+      <div class="deficit-adjuster" ref="deficitAdjuster">
+        <h3 ref="deficitAdjusterTitle">Adjust Your Calorie Deficit</h3>
+        <div class="deficit-buttons">
+          <button type="button" class="deficit-button" data-level="conservative" ref="deficitButtonSmall">
+            <span class="deficit-label">Small</span>
+            <span class="deficit-amount" ref="deficitAmountSmall">-300 cal/day</span>
+          </button>
+          <button type="button" class="deficit-button active" data-level="moderate" ref="deficitButtonModerate">
+            <span class="deficit-label">Moderate</span>
+            <span class="deficit-amount" ref="deficitAmountModerate">-500 cal/day</span>
+          </button>
+          <button type="button" class="deficit-button" data-level="aggressive" ref="deficitButtonAggressive">
+            <span class="deficit-label">Aggressive</span>
+            <span class="deficit-amount" ref="deficitAmountAggressive">-750 cal/day</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Timeline Section -->
+      <div class="timeline-section">
+        <h3 ref="timelineTitle">Your Weight Loss Journey</h3>
+        <div class="timeline-stats">
+          <div class="timeline-stat">
+            <span class="timeline-stat-label">Current weight:</span>
+            <span class="timeline-stat-value" ref="currentWeightDisplay">0kg</span>
+          </div>
+          <div class="timeline-stat">
+            <span class="timeline-stat-label">Goal weight:</span>
+            <span class="timeline-stat-value" ref="goalWeightDisplay">0kg</span>
+          </div>
+          <div class="timeline-stat">
+            <span class="timeline-stat-label" ref="weightChangeLabel">Weight to lose:</span>
+            <span class="timeline-stat-value" ref="weightChangeDisplay">0kg</span>
+          </div>
+        </div>
+
+        <div class="timeline-highlight">
+          <p ref="timelineHighlight">
+            At <strong>0</strong> calories per day, you'll lose approximately <strong>0kg</strong> per week
+          </p>
+          <p style="margin-top: 0.5rem;" ref="timelineEstimate">
+            Estimated time to goal: <strong>0 weeks (0 months)</strong>
+          </p>
+          <p style="margin-top: 0.5rem;" ref="targetDate">
+            Target date: <strong>January 1, 2026</strong>
+          </p>
+        </div>
+      </div>
+
+      <!-- Macro Breakdown -->
+      <div class="macro-section">
+        <h3>Your Daily Macros</h3>
+
+        <div class="macro-cards">
+          <div class="macro-card">
+            <div class="macro-card-label">Protein</div>
+            <div class="macro-card-value" ref="proteinGrams">0g</div>
+            <div class="macro-card-calories" ref="proteinCalories">0 calories</div>
+          </div>
+          <div class="macro-card">
+            <div class="macro-card-label">Carbs</div>
+            <div class="macro-card-value" ref="carbGrams">0g</div>
+            <div class="macro-card-calories" ref="carbCalories">0 calories</div>
+          </div>
+          <div class="macro-card">
+            <div class="macro-card-label">Fats</div>
+            <div class="macro-card-value" ref="fatGrams">0g</div>
+            <div class="macro-card-calories" ref="fatCalories">0 calories</div>
+          </div>
+        </div>
+
+        <!-- Meal Breakdown -->
+        <div class="meal-breakdown">
+          <div class="meal-option">
+            <h4>Per Meal Breakdown (2 meals per day)</h4>
+            <div class="meal-stats">
+              <div class="meal-stat">Calories: <strong ref="meal2Calories">0</strong></div>
+              <div class="meal-stat">Protein: <strong ref="meal2Protein">0g</strong></div>
+              <div class="meal-stat">Carbs: <strong ref="meal2Carbs">0g</strong></div>
+              <div class="meal-stat">Fats: <strong ref="meal2Fats">0g</strong></div>
+            </div>
+          </div>
+
+          <div class="meal-option">
+            <h4>Per Meal Breakdown (3 meals per day)</h4>
+            <div class="meal-stats">
+              <div class="meal-stat">Calories: <strong ref="meal3Calories">0</strong></div>
+              <div class="meal-stat">Protein: <strong ref="meal3Protein">0g</strong></div>
+              <div class="meal-stat">Carbs: <strong ref="meal3Carbs">0g</strong></div>
+              <div class="meal-stat">Fats: <strong ref="meal3Fats">0g</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Recommendations: Yogurt -->
+      <div class="product-section">
+        <h3 ref="yogurtHeading">Meet Your Calorie & Protein Goals:<br>Retaur Protein Yogurt</h3>
+
+        <div class="product-content" ref="yogurtContent">
+          <!-- Content will be dynamically inserted by JavaScript -->
+        </div>
+
+        <a href="{{ protein_yogurt_url }}" class="cta-button" data-cta-product="yogurt">
+          Buy Protein Yogurt
+        </a>
+      </div>
+
+      <!-- Product Recommendations: Whey -->
+      <div class="product-section">
+        <h3 ref="wheyHeading">Boost Your Protein Intake:<br>Retaur Whey Protein</h3>
+
+        <div class="product-content" ref="wheyContent">
+          <!-- Content will be dynamically inserted by JavaScript -->
+        </div>
+
+        <a href="{{ whey_protein_url }}" class="cta-button" data-cta-product="whey">
+          Buy Whey Protein
+        </a>
+      </div>
+
+      <!-- Muscle Guarantee Program -->
+      <div class="muscle-program" ref="muscleProgram">
+        <h3>Serious About Building Muscle? Join Our 6-Month Guarantee Program</h3>
+
+        <div ref="muscleProgramContent">
+          <!-- Content will be dynamically inserted by JavaScript -->
+        </div>
+
+        <a href="{{ muscle_program_url }}" class="cta-button" data-cta-product="muscle_program">
+          Join Muscle Guarantee Program
+        </a>
+      </div>
+
+      <!-- Recalculate Button -->
+      <div class="recalculate-section">
+        <button type="button" class="recalculate-button" ref="recalculateButton">
+          ← Recalculate with Different Values
+        </button>
+      </div>
+    </div>
+  </calorie-calculator>
+
+  <!-- Disclaimer -->
+  <div class="disclaimer">
+    <p><strong>Disclaimer:</strong> This calculator provides general calorie and macro estimates based on the Mifflin-St Jeor equation and standard activity multipliers. Individual needs may vary based on metabolism, health conditions, and other factors. For weight changes >20kg or if you have any medical conditions, consult with a healthcare provider or registered dietitian before starting a new diet. This tool is for educational purposes only and should not replace professional medical or nutritional advice.</p>
+  </div>
+</div>
+
+<script src="{{ 'calorie-calculator.js' | asset_url }}" defer></script>
