@@ -437,16 +437,26 @@ class ProteinCalculator extends Component {
    * @param {number} proteinTarget
    */
   displayWheyRecommendation(proteinTarget) {
-    const scoopsPerDay = (proteinTarget / 26).toFixed(1);
-    const packsPerMonth = Math.ceil((proteinTarget / 26) * 30 / 24);
+    // Whey protein is a supplement - recommend 1-2 scoops per day
+    const proteinPerScoop = 26; // grams
+    const minScoops = 1;
+    const maxScoops = 2;
+    const minProtein = minScoops * proteinPerScoop; // 26g
+    const maxProtein = maxScoops * proteinPerScoop; // 52g
+
+    // Calculate packs per month for 1-2 scoops daily
+    // 1 pack = 24 servings
+    // 1-2 scoops/day = 30-60 scoops/month = 1.25-2.5 packs/month
+    const packsPerMonthMin = Math.ceil((minScoops * 30) / 24); // 2 packs
+    const packsPerMonthMax = Math.ceil((maxScoops * 30) / 24); // 3 packs
 
     const html = `
-      <p><strong>To hit ${proteinTarget}g daily:</strong></p>
+      <p><strong>Supplement your diet with whey protein:</strong></p>
       <p>
-        → You need <strong>${scoopsPerDay} scoops</strong> of whey protein per day<br>
-        → That's <strong>${packsPerMonth} ${packsPerMonth === 1 ? 'pack' : 'packs'} per month</strong>
+        → Add <strong>1-2 scoops per day</strong> (${minProtein}g-${maxProtein}g protein)<br>
+        → That's <strong>${packsPerMonthMin}-${packsPerMonthMax} packs per month</strong>
       </p>
-      ${parseFloat(scoopsPerDay) < 1 ? '<p><em>Use whey protein to supplement your diet with extra protein daily</em></p>' : ''}
+      <p><em>Use whey protein to boost your daily intake alongside regular meals.</em></p>
     `;
 
     this.refs.wheyRecommendation.innerHTML = html;
