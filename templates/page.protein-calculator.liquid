@@ -1,0 +1,744 @@
+{% comment %}
+  Retaur Protein Calculator
+  Custom page template for calculating daily protein needs and recommending products
+{% endcomment %}
+
+{% liquid
+  assign protein_yogurt_url = 'https://retaur.com/products/retaur-protein-yogurt'
+  assign whey_protein_url = 'https://retaur.com/products/retaur-advanced-100-whey-protein'
+  assign muscle_program_url = 'https://retaur.com/pages/muscle-guarantee-program'
+
+  assign yogurt_product = all_products['retaur-protein-yogurt']
+  assign whey_product = all_products['retaur-advanced-100-whey-protein']
+%}
+
+<style>
+  /* Protein Calculator Critical CSS with Brand Colors */
+  :root {
+    --brand-pink: #d81159;
+    --brand-black: #000000;
+    --brand-white: #ffffff;
+  }
+
+  .protein-calculator {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: var(--spacing-8, 2rem) var(--spacing-4, 1rem);
+  }
+
+  .calculator-header {
+    text-align: center;
+    margin-bottom: var(--spacing-8, 2rem);
+  }
+
+  .calculator-header h1 {
+    margin-bottom: var(--spacing-4, 1rem);
+  }
+
+  .calculator-header .subheadline {
+    font-size: 1.125rem;
+    color: rgb(var(--color-foreground-rgb) / 0.75);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .calculator-form {
+    background: var(--color-background);
+    border: 2px solid var(--brand-pink);
+    border-radius: var(--style-border-radius-inputs, 0.5rem);
+    padding: var(--spacing-6, 1.5rem);
+    margin-bottom: var(--spacing-8, 2rem);
+  }
+
+  .form-group {
+    margin-bottom: var(--spacing-6, 1.5rem);
+  }
+
+  .form-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .form-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: var(--spacing-2, 0.5rem);
+    color: var(--color-foreground);
+  }
+
+  .field-hint {
+    display: block;
+    font-size: 0.875rem;
+    color: rgb(var(--color-foreground-rgb) / 0.65);
+    margin-top: var(--spacing-1, 0.25rem);
+  }
+
+  .form-input,
+  .form-select {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgb(var(--color-foreground-rgb) / 0.2);
+    border-radius: var(--style-border-radius-inputs, 0.5rem);
+    font-size: 1rem;
+    background: var(--color-background);
+    color: var(--color-foreground);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .form-input:focus,
+  .form-select:focus {
+    outline: none;
+    border-color: var(--brand-pink);
+    box-shadow: 0 0 0 3px rgba(216, 17, 89, 0.1);
+  }
+
+  .form-input:hover:not(:focus),
+  .form-select:hover:not(:focus) {
+    background-color: rgb(var(--color-foreground-rgb) / 0.02);
+  }
+
+  .form-input.error,
+  .form-select.error {
+    border-color: var(--color-error, #dc2626);
+  }
+
+  .error-message {
+    display: none;
+    color: var(--color-error, #dc2626);
+    font-size: 0.875rem;
+    margin-top: var(--spacing-2, 0.5rem);
+  }
+
+  .error-message.visible {
+    display: block;
+  }
+
+  /* Fix mobile spacing between weight and activity level */
+  @media (max-width: 749px) {
+    .form-grid .form-group:last-child {
+      margin-bottom: var(--spacing-6, 1.5rem);
+    }
+  }
+
+  @media (min-width: 750px) {
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-6, 1.5rem);
+    }
+  }
+
+  .calculate-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--brand-pink);
+    color: var(--brand-white);
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  @media (min-width: 768px) {
+    .calculate-button {
+      padding: 1.25rem 3rem;
+      font-size: 1.25rem;
+    }
+  }
+
+  .calculate-button:hover:not(:disabled) {
+    background-color: rgba(216, 17, 89, 0.9);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+
+  .calculate-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .results-section {
+    display: none;
+  }
+
+  .results-section.visible {
+    display: block;
+  }
+
+  .result-hero {
+    text-align: center;
+    padding: var(--spacing-8, 2rem);
+    background: linear-gradient(135deg, rgba(216, 17, 89, 0.08), rgba(216, 17, 89, 0.03));
+    border: 2px solid var(--brand-pink);
+    border-radius: var(--style-border-radius-inputs, 0.5rem);
+    margin-bottom: var(--spacing-8, 2rem);
+  }
+
+  .protein-target {
+    font-size: 3.5rem;
+    font-weight: 900;
+    font-family: 'Proxima Nova', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    color: var(--brand-pink);
+    margin-bottom: var(--spacing-2, 0.5rem);
+  }
+
+  .result-subtext {
+    font-size: 1.125rem;
+    color: rgb(var(--color-foreground-rgb) / 0.7);
+  }
+
+  .breakdown-section {
+    background: var(--color-background);
+    border: 1px solid rgb(var(--color-foreground-rgb) / 0.1);
+    border-radius: var(--style-border-radius-inputs, 0.5rem);
+    padding: var(--spacing-6, 1.5rem);
+    margin-bottom: var(--spacing-8, 2rem);
+  }
+
+  .breakdown-section h3 {
+    margin-bottom: var(--spacing-4, 1rem);
+  }
+
+  .breakdown-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .breakdown-list li {
+    padding: var(--spacing-3, 0.75rem) 0;
+    border-bottom: 1px solid rgb(var(--color-foreground-rgb) / 0.1);
+    font-size: 1.125rem;
+  }
+
+  .breakdown-list li:last-child {
+    border-bottom: none;
+  }
+
+  .recommendation-card {
+    background: var(--color-background);
+    border: 2px solid rgb(var(--color-foreground-rgb) / 0.1);
+    border-radius: var(--style-border-radius-inputs, 0.5rem);
+    padding: var(--spacing-6, 1.5rem);
+    margin-bottom: var(--spacing-6, 1.5rem);
+  }
+
+  .recommendation-card.primary {
+    border-width: 3px;
+    border-color: var(--brand-pink);
+    box-shadow: 0 4px 20px rgba(216, 17, 89, 0.15);
+  }
+
+  .recommendation-card.program {
+    background: linear-gradient(135deg, rgba(216, 17, 89, 0.08), rgba(216, 17, 89, 0.03));
+    border: 3px solid var(--brand-pink);
+    position: relative;
+  }
+
+  .recommendation-badge {
+    display: inline-block;
+    background: var(--brand-pink);
+    color: var(--brand-white);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    margin-bottom: var(--spacing-4, 1rem);
+    letter-spacing: 0.5px;
+  }
+
+  .recommendation-header {
+    text-align: center;
+    margin-bottom: var(--spacing-4, 1rem);
+  }
+
+  .product-image {
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    object-fit: cover;
+    border-radius: var(--style-border-radius-inputs, 0.5rem);
+    margin: 0 auto var(--spacing-4, 1rem);
+    display: block;
+  }
+
+  .recommendation-title h3 {
+    margin-bottom: var(--spacing-3, 0.75rem);
+    font-size: 1.5rem;
+  }
+
+  .recommendation-copy {
+    line-height: 1.6;
+    margin-bottom: var(--spacing-4, 1rem);
+  }
+
+  .benefit-list {
+    list-style: none;
+    padding: 0;
+    margin: var(--spacing-4, 1rem) 0;
+  }
+
+  .benefit-list li {
+    padding: var(--spacing-2, 0.5rem) 0;
+    padding-left: 1.5rem;
+    position: relative;
+  }
+
+  .benefit-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+    color: var(--brand-pink);
+    font-size: 1.2rem;
+  }
+
+  .recommendation-details {
+    background: rgba(216, 17, 89, 0.05);
+    border-left: 4px solid var(--brand-pink);
+    border-radius: var(--style-border-radius-inputs, 0.5rem);
+    padding: var(--spacing-4, 1rem);
+    margin: var(--spacing-4, 1rem) 0;
+  }
+
+  .cta-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    background-color: var(--brand-pink);
+    color: var(--brand-white);
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.15s ease;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    text-transform: none;
+    letter-spacing: normal;
+  }
+
+  @media (min-width: 768px) {
+    .cta-button {
+      padding: 1.25rem 3rem;
+      font-size: 1.25rem;
+    }
+  }
+
+  .cta-button:hover {
+    background-color: rgba(216, 17, 89, 0.9);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  }
+
+  .cta-button-secondary {
+    background-color: var(--brand-black);
+    color: var(--brand-white);
+    border: none;
+  }
+
+  .cta-button-secondary:hover {
+    background-color: rgba(0, 0, 0, 0.85);
+  }
+
+  .recalculate-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: var(--spacing-8, 2rem) auto;
+    padding: 0.75rem 2rem;
+    background-color: transparent;
+    color: var(--brand-pink);
+    border: 2px solid var(--brand-pink);
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-transform: none;
+  }
+
+  @media (min-width: 768px) {
+    .recalculate-button {
+      padding: 1rem 2.5rem;
+      font-size: 1.125rem;
+    }
+  }
+
+  .recalculate-button:hover {
+    background-color: var(--brand-pink);
+    color: var(--brand-white);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  }
+
+  .disclaimer {
+    margin-top: var(--spacing-8, 2rem);
+    padding: var(--spacing-6, 1.5rem);
+    background: rgb(var(--color-foreground-rgb) / 0.05);
+    border-radius: var(--style-border-radius-inputs, 0.5rem);
+    font-size: 0.875rem;
+    color: rgb(var(--color-foreground-rgb) / 0.7);
+    line-height: 1.6;
+  }
+
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  @media (max-width: 749px) {
+    .protein-target {
+      font-size: 2.5rem;
+    }
+
+    .product-image {
+      max-width: 200px;
+    }
+  }
+</style>
+
+<div class="protein-calculator section section--page-width">
+  <!-- Header Section -->
+  <div class="calculator-header">
+    <h1>Calculate Your Daily Protein Needs</h1>
+    <p class="subheadline">
+      Get science-backed protein recommendations based on your goals and body stats,
+      plus personalized Retaur product suggestions to help you hit your targets.
+    </p>
+  </div>
+
+  <!-- Calculator Form -->
+  <protein-calculator>
+    <form class="calculator-form" ref="form" novalidate>
+      <div class="form-grid">
+        <!-- Biological Sex - DROPDOWN -->
+        <div class="form-group">
+          <label for="sex-select" class="form-label" id="sex-label">Biological Sex</label>
+          <select
+            id="sex-select"
+            class="form-select"
+            ref="sexInput"
+            aria-labelledby="sex-label"
+            aria-describedby="sex-error"
+            required
+          >
+            <option value="">Select your biological sex</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
+          <div class="error-message" ref="sexError" id="sex-error" role="alert"></div>
+        </div>
+
+        <!-- Age -->
+        <div class="form-group">
+          <label for="age-input" class="form-label" id="age-label">Age</label>
+          <input
+            type="number"
+            id="age-input"
+            class="form-input"
+            ref="ageInput"
+            min="18"
+            max="80"
+            placeholder="Enter your age"
+            aria-labelledby="age-label"
+            aria-describedby="age-hint age-error"
+            required
+          >
+          <span class="field-hint" id="age-hint">Must be 18 or older</span>
+          <div class="error-message" ref="ageError" id="age-error" role="alert"></div>
+        </div>
+
+        <!-- Height -->
+        <div class="form-group">
+          <label for="height-input" class="form-label" id="height-label">Height (cm)</label>
+          <input
+            type="number"
+            id="height-input"
+            class="form-input"
+            ref="heightInput"
+            min="120"
+            max="250"
+            placeholder="Enter your height in cm"
+            aria-labelledby="height-label"
+            aria-describedby="height-hint height-error"
+            required
+          >
+          <span class="field-hint" id="height-hint">120-250 cm</span>
+          <div class="error-message" ref="heightError" id="height-error" role="alert"></div>
+        </div>
+
+        <!-- Weight -->
+        <div class="form-group">
+          <label for="weight-input" class="form-label" id="weight-label">Weight (kg)</label>
+          <input
+            type="number"
+            id="weight-input"
+            class="form-input"
+            ref="weightInput"
+            min="40"
+            max="200"
+            placeholder="Enter your weight in kg"
+            aria-labelledby="weight-label"
+            aria-describedby="weight-hint weight-error"
+            required
+          >
+          <span class="field-hint" id="weight-hint">40-200 kg</span>
+          <div class="error-message" ref="weightError" id="weight-error" role="alert"></div>
+        </div>
+      </div>
+
+      <!-- Activity Level -->
+      <div class="form-group">
+        <label for="activity-select" class="form-label" id="activity-label">Activity Level</label>
+        <select
+          id="activity-select"
+          class="form-select"
+          ref="activityInput"
+          aria-labelledby="activity-label"
+          aria-describedby="activity-hint activity-error"
+          required
+        >
+          <option value="">Select your activity level</option>
+          <option value="sedentary">Sedentary (little or no exercise)</option>
+          <option value="lightly_active">Lightly active (exercise 1-3 days/week)</option>
+          <option value="moderately_active">Moderately active (exercise 3-5 days/week)</option>
+          <option value="very_active">Very active (exercise 6-7 days/week)</option>
+          <option value="extremely_active">Extremely active (intense exercise daily + physical job)</option>
+        </select>
+        <span class="field-hint" id="activity-hint">Used for context in your results</span>
+        <div class="error-message" ref="activityError" id="activity-error" role="alert"></div>
+      </div>
+
+      <!-- Primary Goal - DROPDOWN -->
+      <div class="form-group">
+        <label for="goal-select" class="form-label" id="goal-label">Primary Goal</label>
+        <select
+          id="goal-select"
+          class="form-select"
+          ref="goalInput"
+          aria-labelledby="goal-label"
+          aria-describedby="goal-error"
+          required
+        >
+          <option value="">Select your primary goal</option>
+          <option value="lose_weight">Lose weight & maintain muscle</option>
+          <option value="build_muscle">Build muscle & gain weight</option>
+          <option value="maintain">Maintain current weight</option>
+          <option value="athletic">Improve athletic performance</option>
+        </select>
+        <div class="error-message" ref="goalError" id="goal-error" role="alert"></div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="calculate-button" ref="submitButton">
+        Calculate My Protein Needs
+      </button>
+    </form>
+
+    <!-- Screen Reader Announcements -->
+    <div role="status" aria-live="polite" aria-atomic="true" class="sr-only" ref="srAnnouncement"></div>
+
+    <!-- Results Section -->
+    <div class="results-section" ref="results">
+      <!-- Hero Result -->
+      <div class="result-hero">
+        <div class="protein-target" ref="proteinTarget">150g</div>
+        <p class="result-subtext" ref="resultSubtext">
+          Based on your muscle building goal and moderately active lifestyle
+        </p>
+      </div>
+
+      <!-- Breakdown -->
+      <div class="breakdown-section">
+        <h3>Per Meal Breakdown</h3>
+        <ul class="breakdown-list">
+          <li ref="breakdown2Meals"><strong>2 meals per day:</strong> <span ref="perMeal2">75g</span> each</li>
+          <li ref="breakdown3Meals"><strong>3 meals per day:</strong> <span ref="perMeal3">50g</span> each</li>
+        </ul>
+      </div>
+
+      <!-- Primary Recommendation: Protein Yogurt -->
+      <div class="recommendation-card primary">
+        <span class="recommendation-badge">🏆 Primary Recommendation</span>
+
+        <div class="recommendation-header">
+          {%- if yogurt_product.featured_image -%}
+            <img
+              src="{{ yogurt_product.featured_image | image_url: width: 560 }}"
+              alt="{{ yogurt_product.title }}"
+              class="product-image"
+              loading="lazy"
+              width="280"
+              height="280"
+            >
+          {%- endif -%}
+          <div class="recommendation-title">
+            <h3>Easiest Way to Hit Your Protein Goal:<br>Retaur Protein Yogurt</h3>
+          </div>
+        </div>
+
+        <div class="recommendation-copy">
+          <p>
+            Unlike protein powders that need mixing, our Protein Yogurt is grab-and-go nutrition.
+            Each cup delivers 50g of high-quality protein plus gut-friendly probiotics—no blender
+            required. Think of it as real food that works as hard as supplements, but tastes like
+            a treat.
+          </p>
+
+          <ul class="benefit-list">
+            <li>Busy mornings when you need quick protein</li>
+            <li>Post-workout recovery (protein + carbs for glycogen replenishment)</li>
+            <li>Healthy meal replacement (260 calories, 50g protein)</li>
+            <li>Late-night protein without heavy digestion</li>
+          </ul>
+        </div>
+
+        <div class="recommendation-details" ref="yogurtRecommendation">
+          <!-- Dynamically populated with serving recommendation -->
+        </div>
+
+        <a
+          href="{{ protein_yogurt_url }}"
+          class="cta-button"
+          data-cta-product="yogurt"
+        >
+          Buy Protein Yogurt
+        </a>
+      </div>
+
+      <!-- Secondary Recommendation: Whey Protein -->
+      <div class="recommendation-card">
+        <span class="recommendation-badge" style="background: var(--brand-black);">Traditional Option</span>
+
+        <div class="recommendation-header">
+          {%- if whey_product.featured_image -%}
+            <img
+              src="{{ whey_product.featured_image | image_url: width: 560 }}"
+              alt="{{ whey_product.title }}"
+              class="product-image"
+              loading="lazy"
+              width="280"
+              height="280"
+            >
+          {%- endif -%}
+          <div class="recommendation-title">
+            <h3>Traditional Option:<br>Retaur Whey Protein</h3>
+          </div>
+        </div>
+
+        <div class="recommendation-copy">
+          <p>
+            Prefer the classic protein shake? Our Whey Protein delivers 26g of protein per
+            scoop—perfect for smoothies, shakes, or mixing into recipes. One pack gives you
+            24 servings of clean, fast-absorbing protein.
+          </p>
+        </div>
+
+        <div class="recommendation-details" ref="wheyRecommendation">
+          <!-- Dynamically populated with serving recommendation -->
+        </div>
+
+        <a
+          href="{{ whey_protein_url }}"
+          class="cta-button cta-button-secondary"
+          data-cta-product="whey"
+        >
+          Buy Whey Protein
+        </a>
+      </div>
+
+      <!-- Muscle Guarantee Program (Conditional) -->
+      <div class="recommendation-card program" ref="programCard" style="display: none;">
+        <span class="recommendation-badge">🎯 Most Complete Option</span>
+
+        <h3>Want the Complete System? Join Our 6-Month Muscle Guarantee Program</h3>
+
+        <div class="recommendation-copy">
+          <p ref="programIntro">
+            You've just calculated that you need <strong ref="programProtein">150g</strong> of protein daily to build muscle.
+            That's the nutrition piece solved. But what about your training program? Your meal plans? The accountability?
+          </p>
+
+          <p><strong>Our Muscle Guarantee Program gives you everything:</strong></p>
+
+          <ul class="benefit-list">
+            <li>6-month supply of whey protein + creatine (delivered every 2 months)</li>
+            <li>Certified coach & monthly video calls</li>
+            <li>Personalized meal & training plans for YOUR body type</li>
+            <li>24/7 WhatsApp community support</li>
+          </ul>
+
+          <p>
+            <strong>The best part?</strong> We pay you ₦200,000 when you gain 3cm+ on 2 body parts.
+          </p>
+
+          <p>
+            72% of our members hit their goals and get the cashback. We put our money where our mouth is.
+          </p>
+
+          <p style="margin-top: var(--spacing-4, 1rem);">
+            <strong>Premium Package:</strong> ₦400,000 (or ₦135k every 2 months) + ₦200,000 cashback when you succeed<br>
+            <strong>Standard Package:</strong> ₦260,000 (or ₦90k every 2 months)
+          </p>
+
+          <p style="font-size: 0.875rem; margin-top: var(--spacing-3, 0.75rem);">
+            Limited to 50 spots • Starts January 31, 2026
+          </p>
+        </div>
+
+        <a
+          href="{{ muscle_program_url }}"
+          class="cta-button"
+          data-cta-product="muscle_program"
+        >
+          Join Muscle Guarantee Program →
+        </a>
+      </div>
+
+      <!-- Combo Suggestion (Conditional) -->
+      <div class="recommendation-card" ref="comboCard" style="display: none;">
+        <h3>Smart Combo Approach</h3>
+
+        <div class="recommendation-copy">
+          <p>Mix both products for variety and convenience:</p>
+        </div>
+
+        <div class="recommendation-details" ref="comboRecommendation">
+          <!-- Dynamically populated with combo suggestion -->
+        </div>
+      </div>
+
+      <!-- Recalculate Button -->
+      <button type="button" class="recalculate-button" ref="recalculateButton">
+        ← Recalculate with Different Values
+      </button>
+
+      <!-- Disclaimer -->
+      <div class="disclaimer">
+        <strong>Disclaimer:</strong> This calculator provides general protein intake estimates based on peer-reviewed research
+        (Morton et al. 2017, Nunes et al. 2022). Individual protein needs may vary based on health conditions,
+        training intensity, and other factors. This tool is for educational purposes only and should not replace
+        professional medical or nutritional advice. Consult with a healthcare provider or registered dietitian
+        for personalized nutrition guidance.
+      </div>
+    </div>
+  </protein-calculator>
+</div>
+
+<!-- Load Component JavaScript -->
+<script src="{{ 'protein-calculator.js' | asset_url }}" type="module" defer></script>
