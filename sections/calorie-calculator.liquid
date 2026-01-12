@@ -1,6 +1,6 @@
 {% comment %}
   Retaur Calorie Calculator
-  Custom page template for calculating BMR, TDEE, daily calorie needs, macros, and timeline
+  Custom section for calculating BMR, TDEE, daily calorie needs, macros, and timeline
 {% endcomment %}
 
 {% liquid
@@ -714,8 +714,8 @@
 
 <div class="calorie-calculator">
   <div class="calculator-header">
-    <h1>Calorie Calculator</h1>
-    <p>Calculate your daily calorie needs, macro breakdown, and timeline to reach your goals. Get personalized Retaur product recommendations.</p>
+    <h1>{{ section.settings.heading | default: "Calorie Calculator" }}</h1>
+    <p>{{ section.settings.subheading | default: "Calculate your daily calorie needs, macro breakdown, and timeline to reach your goals. Get personalized Retaur product recommendations." }}</p>
   </div>
 
   <calorie-calculator class="calorie-calculator-component">
@@ -1029,3 +1029,30 @@
 </div>
 
 <script src="{{ 'calorie-calculator.js' | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+  "name": "Calorie Calculator",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Calorie Calculator"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Calculate your daily calorie needs, macro breakdown, and timeline to reach your goals. Get personalized Retaur product recommendations."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Calorie Calculator"
+    }
+  ]
+}
+{% endschema %}

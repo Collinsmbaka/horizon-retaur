@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "calorie-calculator",
+      "settings": {
+        "heading": "Calorie Calculator",
+        "subheading": "Calculate your daily calorie needs, macro breakdown, and timeline to reach your goals. Get personalized Retaur product recommendations."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

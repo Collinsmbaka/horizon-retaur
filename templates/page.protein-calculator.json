@@ -1,0 +1,14 @@
+{
+  "sections": {
+    "main": {
+      "type": "protein-calculator",
+      "settings": {
+        "heading": "Calculate Your Daily Protein Needs",
+        "subheading": "Get science-backed protein recommendations based on your goals and body stats, plus personalized Retaur product suggestions to help you hit your targets."
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

@@ -1,6 +1,6 @@
 {% comment %}
   Retaur Protein Calculator
-  Custom page template for calculating daily protein needs and recommending products
+  Custom section for calculating daily protein needs and recommending products
 {% endcomment %}
 
 {% liquid
@@ -415,10 +415,9 @@
 <div class="protein-calculator section section--page-width">
   <!-- Header Section -->
   <div class="calculator-header">
-    <h1>Calculate Your Daily Protein Needs</h1>
+    <h1>{{ section.settings.heading | default: "Calculate Your Daily Protein Needs" }}</h1>
     <p class="subheadline">
-      Get science-backed protein recommendations based on your goals and body stats,
-      plus personalized Retaur product suggestions to help you hit your targets.
+      {{ section.settings.subheading | default: "Get science-backed protein recommendations based on your goals and body stats, plus personalized Retaur product suggestions to help you hit your targets." }}
     </p>
   </div>
 
@@ -742,3 +741,30 @@
 
 <!-- Load Component JavaScript -->
 <script src="{{ 'protein-calculator.js' | asset_url }}" type="module" defer></script>
+
+{% schema %}
+{
+  "name": "Protein Calculator",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Calculate Your Daily Protein Needs"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Get science-backed protein recommendations based on your goals and body stats, plus personalized Retaur product suggestions to help you hit your targets."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Protein Calculator"
+    }
+  ]
+}
+{% endschema %}
