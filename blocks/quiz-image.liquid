@@ -1,0 +1,416 @@
+{% liquid
+  assign block_settings = block.settings
+  assign ratio = 1
+
+  case block_settings.image_ratio
+    when 'landscape'
+      assign ratio = '16 / 9'
+    when 'portrait'
+      assign ratio = '4 / 5'
+    when 'adapt'
+      if block_settings.male_image
+        assign ratio = block_settings.male_image.aspect_ratio
+      elsif block_settings.female_image
+        assign ratio = block_settings.female_image.aspect_ratio
+      endif
+  endcase
+
+  if ratio == 0 or ratio == null
+    assign ratio = 1
+  endif
+%}
+
+{% capture class %}
+  quiz-image-block quiz-image-block--{{ block.id }} quiz-image-block--height-{{ block_settings.height }} spacing-style size-style
+{% endcapture %}
+
+{% capture style %}
+  --ratio: {{ ratio }};
+  {% render 'size-style', settings: block_settings %}
+  {% render 'spacing-style', settings: block_settings %}
+{% endcapture %}
+
+{% capture image_border_style %}
+  --ratio: {{ ratio }};
+  {% render 'border-override', settings: block_settings %}
+{% endcapture %}
+
+{% liquid
+  assign media_width_desktop = '100vw'
+  assign media_width_mobile = '100vw'
+  assign sizes = 'auto, (min-width: 750px) ' | append: media_width_desktop | append: ', ' | append: media_width_mobile
+  assign widths = '240, 352, 832, 1200, 1600, 1920, 2560, 3840'
+%}
+
+{% comment %} Male Image {% endcomment %}
+{% capture male_image %}
+  {%- if block_settings.male_image -%}
+    {{
+      block_settings.male_image
+      | image_url: width: 3840
+      | image_tag:
+        width: block_settings.male_image.width,
+        widths: widths,
+        height: block_settings.male_image.height,
+        class: 'quiz-image-block__image border-style',
+        style: image_border_style,
+        sizes: sizes
+    }}
+  {%- else -%}
+    <div class="placeholder-image border-style size-style" style="{{ image_border_style }}">
+      {{ 'detailed-apparel-1' | placeholder_svg_tag: 'hero__image' }}
+    </div>
+  {%- endif -%}
+{% endcapture %}
+
+{% comment %} Female Image {% endcomment %}
+{% capture female_image %}
+  {%- if block_settings.female_image -%}
+    {{
+      block_settings.female_image
+      | image_url: width: 3840
+      | image_tag:
+        width: block_settings.female_image.width,
+        widths: widths,
+        height: block_settings.female_image.height,
+        class: 'quiz-image-block__image border-style',
+        style: image_border_style,
+        sizes: sizes
+    }}
+  {%- else -%}
+    <div class="placeholder-image border-style size-style" style="{{ image_border_style }}">
+      {{ 'detailed-apparel-1' | placeholder_svg_tag: 'hero__image' }}
+    </div>
+  {%- endif -%}
+{% endcapture %}
+
+<div
+  class="{{ class }}"
+  style="{{ style }}"
+  {{ block.shopify_attributes }}
+>
+  {% comment %} Male wrapper - hidden by default {% endcomment %}
+  <div class="quiz-image-block__gender-wrapper" data-quiz-gender="male" style="display: none;">
+    {% if block_settings.link == blank %}
+      {{ male_image }}
+    {% else %}
+      <a href="{{ block_settings.link }}">{{ male_image }}</a>
+    {% endif %}
+  </div>
+
+  {% comment %} Female wrapper - shown by default {% endcomment %}
+  <div class="quiz-image-block__gender-wrapper" data-quiz-gender="female">
+    {% if block_settings.link == blank %}
+      {{ female_image }}
+    {% else %}
+      <a href="{{ block_settings.link }}">{{ female_image }}</a>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  (function() {
+    const blockId = '{{ block.id }}';
+    const storedGender = localStorage.getItem('quizGender') || 'female';
+    const block = document.querySelector('.quiz-image-block--' + blockId);
+
+    if (block) {
+      const maleWrapper = block.querySelector('[data-quiz-gender="male"]');
+      const femaleWrapper = block.querySelector('[data-quiz-gender="female"]');
+
+      if (maleWrapper && femaleWrapper) {
+        if (storedGender === 'male') {
+          maleWrapper.style.display = '';
+          femaleWrapper.style.display = 'none';
+        } else {
+          maleWrapper.style.display = 'none';
+          femaleWrapper.style.display = '';
+        }
+      }
+    }
+  })();
+</script>
+
+{% stylesheet %}
+  .quiz-image-block {
+    display: flex;
+    justify-content: var(--horizontal-alignment, 'inline-start');
+  }
+
+  .quiz-image-block--height-fill .quiz-image-block__image {
+    height: 100%;
+  }
+
+  .quiz-image-block__image {
+    object-fit: cover;
+    aspect-ratio: var(--ratio);
+  }
+
+  .quiz-image-block__gender-wrapper {
+    width: 100%;
+  }
+
+  .quiz-image-block__gender-wrapper a {
+    display: block;
+  }
+
+  .quiz-image-block .placeholder-image {
+    position: relative;
+    aspect-ratio: var(--ratio);
+    overflow: hidden;
+  }
+
+  .quiz-image-block .placeholder-image img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: var(--ratio);
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Quiz Image (Gender)",
+  "tag": null,
+  "class": "quiz-image-block-wrapper",
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "This block shows different images based on quiz gender selection (Lady/Gent)."
+    },
+    {
+      "type": "header",
+      "content": "Male Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "male_image",
+      "label": "Male (Gent) Image",
+      "info": "Shown when quiz taker selected 'Gent'"
+    },
+    {
+      "type": "header",
+      "content": "Female Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "female_image",
+      "label": "Female (Lady) Image",
+      "info": "Shown when quiz taker selected 'Lady'"
+    },
+    {
+      "type": "url",
+      "id": "link",
+      "label": "Link"
+    },
+    {
+      "type": "header",
+      "content": "Size"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "options": [
+        {
+          "value": "adapt",
+          "label": "Auto"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait"
+        },
+        {
+          "value": "square",
+          "label": "Square"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape"
+        }
+      ],
+      "default": "adapt",
+      "label": "Aspect ratio"
+    },
+    {
+      "type": "select",
+      "id": "width",
+      "label": "Width (Desktop)",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "Fit content"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width",
+      "label": "Custom width",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "width_mobile",
+      "label": "Width (Mobile)",
+      "options": [
+        {
+          "value": "fit-content",
+          "label": "Fit content"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        },
+        {
+          "value": "custom",
+          "label": "Custom"
+        }
+      ],
+      "default": "fill"
+    },
+    {
+      "type": "range",
+      "id": "custom_width_mobile",
+      "label": "Custom width",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "default": 100,
+      "visible_if": "{{ block.settings.width_mobile == 'custom' }}"
+    },
+    {
+      "type": "select",
+      "id": "height",
+      "label": "Height",
+      "options": [
+        {
+          "value": "fit",
+          "label": "Fit content"
+        },
+        {
+          "value": "fill",
+          "label": "Fill"
+        }
+      ],
+      "default": "fit",
+      "visible_if": "{{ block.settings.image_ratio == 'adapt' }}"
+    },
+    {
+      "type": "header",
+      "content": "Borders"
+    },
+    {
+      "type": "select",
+      "id": "border",
+      "label": "Style",
+      "options": [
+        {
+          "value": "none",
+          "label": "None"
+        },
+        {
+          "value": "solid",
+          "label": "Solid"
+        }
+      ],
+      "default": "none"
+    },
+    {
+      "type": "range",
+      "id": "border_width",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "label": "Thickness",
+      "default": 1,
+      "visible_if": "{{ block.settings.border != 'none' }}"
+    },
+    {
+      "type": "range",
+      "id": "border_opacity",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "%",
+      "label": "Opacity",
+      "default": 100,
+      "visible_if": "{{ block.settings.border != 'none' }}"
+    },
+    {
+      "type": "range",
+      "id": "border_radius",
+      "label": "Border radius",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "header",
+      "content": "Padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "Top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "Bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "Left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "Right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quiz Image (Gender)",
+      "category": "t:categories.basic"
+    }
+  ]
+}
+{% endschema %}
