@@ -1,0 +1,183 @@
+{% comment %}
+  Quiz Result Image Section
+  Displays gender-specific images based on quiz selection stored in localStorage
+{% endcomment %}
+
+{{ 'quiz-result-image.css' | asset_url | stylesheet_tag }}
+
+<style>
+  #shopify-section-{{ section.id }} .quiz-result-image {
+    --padding-block-start: {{ section.settings.padding_top }}px;
+    --padding-block-end: {{ section.settings.padding_bottom }}px;
+  }
+  #shopify-section-{{ section.id }} {
+    --image-width: {{ section.settings.image_width }};
+  }
+</style>
+
+<div
+  class="quiz-result-image"
+  data-section-id="{{ section.id }}"
+  data-image-width="{{ section.settings.image_width }}"
+  data-image-ratio="{{ section.settings.image_ratio }}"
+>
+  <div class="quiz-result-image__container">
+    {% comment %} Male Image (hidden by default) {% endcomment %}
+    {% if section.settings.male_image != blank %}
+      <div class="quiz-result-image__wrapper" data-gender="male" style="display: none;">
+        {{ section.settings.male_image | image_url: width: 800 | image_tag:
+          class: 'quiz-result-image__img',
+          loading: 'lazy',
+          alt: section.settings.image_alt
+        }}
+      </div>
+    {% endif %}
+
+    {% comment %} Female Image (shown by default) {% endcomment %}
+    {% if section.settings.female_image != blank %}
+      <div class="quiz-result-image__wrapper" data-gender="female">
+        {{ section.settings.female_image | image_url: width: 800 | image_tag:
+          class: 'quiz-result-image__img',
+          loading: 'lazy',
+          alt: section.settings.image_alt
+        }}
+      </div>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  (function() {
+    // Get stored gender from quiz
+    const storedGender = localStorage.getItem('quizGender') || 'female';
+
+    // Get image wrappers in this section
+    const section = document.querySelector('#shopify-section-{{ section.id }}');
+    const maleWrapper = section.querySelector('[data-gender="male"]');
+    const femaleWrapper = section.querySelector('[data-gender="female"]');
+
+    // Show appropriate image based on gender
+    if (maleWrapper && femaleWrapper) {
+      if (storedGender === 'male') {
+        maleWrapper.style.display = '';
+        femaleWrapper.style.display = 'none';
+      } else {
+        maleWrapper.style.display = 'none';
+        femaleWrapper.style.display = '';
+      }
+    }
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Quiz Result Image",
+  "tag": "section",
+  "class": "section-quiz-result-image",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Images"
+    },
+    {
+      "type": "image_picker",
+      "id": "male_image",
+      "label": "Male Image",
+      "info": "Shown when quiz taker selected 'Gent'"
+    },
+    {
+      "type": "image_picker",
+      "id": "female_image",
+      "label": "Female Image",
+      "info": "Shown when quiz taker selected 'Lady'"
+    },
+    {
+      "type": "text",
+      "id": "image_alt",
+      "label": "Image alt text",
+      "default": "Body type illustration"
+    },
+    {
+      "type": "header",
+      "content": "Layout"
+    },
+    {
+      "type": "select",
+      "id": "image_width",
+      "label": "Image width",
+      "options": [
+        {
+          "value": "small",
+          "label": "Small"
+        },
+        {
+          "value": "medium",
+          "label": "Medium"
+        },
+        {
+          "value": "large",
+          "label": "Large"
+        },
+        {
+          "value": "full",
+          "label": "Full width"
+        }
+      ],
+      "default": "medium"
+    },
+    {
+      "type": "select",
+      "id": "image_ratio",
+      "label": "Image ratio",
+      "options": [
+        {
+          "value": "auto",
+          "label": "Original"
+        },
+        {
+          "value": "square",
+          "label": "Square (1:1)"
+        },
+        {
+          "value": "portrait",
+          "label": "Portrait (3:4)"
+        },
+        {
+          "value": "landscape",
+          "label": "Landscape (4:3)"
+        }
+      ],
+      "default": "auto"
+    },
+    {
+      "type": "header",
+      "content": "Section Spacing"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Top spacing",
+      "default": 40
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom spacing",
+      "default": 40
+    }
+  ],
+  "presets": [
+    {
+      "name": "Quiz Result Image"
+    }
+  ]
+}
+{% endschema %}

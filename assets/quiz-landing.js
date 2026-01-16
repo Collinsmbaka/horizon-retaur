@@ -10,7 +10,8 @@
   const STORAGE_KEYS = {
     ANSWERS: 'quizAnswers',
     RESULT: 'quizResult',
-    TIMESTAMP: 'quizTimestamp'
+    TIMESTAMP: 'quizTimestamp',
+    GENDER: 'quizGender'
   };
 
   const EXPIRY_HOURS = 48;
@@ -27,6 +28,8 @@
   let submitButton = null;
   let progressCount = null;
   let progressFill = null;
+  let genderSelect = null;
+  let currentGender = 'female'; // Default to female
 
   /**
    * Initialize quiz on page load
@@ -37,6 +40,7 @@
     submitButton = document.querySelector('.quiz-submit-btn');
     progressCount = document.querySelector('.progress-count');
     progressFill = document.querySelector('.progress-fill');
+    genderSelect = document.getElementById('genderSelect');
 
     if (!quizForm) {
       console.error('Quiz form not found');
@@ -50,8 +54,16 @@
     // Clear expired data
     clearExpiredData();
 
+    // Load saved gender from localStorage
+    loadSavedGender();
+
     // Load saved answers from localStorage
     loadSavedAnswers();
+
+    // Add event listener for gender selection
+    if (genderSelect) {
+      genderSelect.addEventListener('change', handleGenderChange);
+    }
 
     // Add event listeners to all radio buttons
     const radioButtons = quizForm.querySelectorAll('.answer-radio');
@@ -80,6 +92,77 @@
       if (hoursDiff > EXPIRY_HOURS) {
         // Data expired, clear everything
         clearQuizData();
+      }
+    }
+  }
+
+  /**
+   * Load saved gender from localStorage
+   */
+  function loadSavedGender() {
+    const savedGender = localStorage.getItem(STORAGE_KEYS.GENDER);
+
+    if (savedGender && (savedGender === 'male' || savedGender === 'female')) {
+      currentGender = savedGender;
+    } else {
+      // Default to female
+      currentGender = 'female';
+      localStorage.setItem(STORAGE_KEYS.GENDER, currentGender);
+    }
+
+    // Update dropdown to match saved gender
+    if (genderSelect) {
+      genderSelect.value = currentGender;
+    }
+
+    // Update image visibility
+    updateGenderImages();
+  }
+
+  /**
+   * Handle gender dropdown change
+   */
+  function handleGenderChange(event) {
+    const newGender = event.target.value;
+
+    // Get current answer for Q1 before switching
+    const currentQ1Answer = quizAnswers['q1'];
+
+    // Update current gender
+    currentGender = newGender;
+
+    // Save to localStorage
+    localStorage.setItem(STORAGE_KEYS.GENDER, currentGender);
+    localStorage.setItem(STORAGE_KEYS.TIMESTAMP, new Date().toISOString());
+
+    // Update image visibility
+    updateGenderImages();
+
+    // If Q1 was answered, re-select the same answer in the new gender's radio buttons
+    if (currentQ1Answer) {
+      const newRadio = document.querySelector(
+        `.question-answers--images[data-gender="${currentGender}"] input[value="${currentQ1Answer}"]`
+      );
+      if (newRadio) {
+        newRadio.checked = true;
+      }
+    }
+  }
+
+  /**
+   * Update visibility of gender-specific images
+   */
+  function updateGenderImages() {
+    const maleImages = document.querySelector('.question-answers--images[data-gender="male"]');
+    const femaleImages = document.querySelector('.question-answers--images[data-gender="female"]');
+
+    if (maleImages && femaleImages) {
+      if (currentGender === 'male') {
+        maleImages.style.display = '';
+        femaleImages.style.display = 'none';
+      } else {
+        maleImages.style.display = 'none';
+        femaleImages.style.display = '';
       }
     }
   }
@@ -256,7 +339,9 @@
     localStorage.removeItem(STORAGE_KEYS.ANSWERS);
     localStorage.removeItem(STORAGE_KEYS.RESULT);
     localStorage.removeItem(STORAGE_KEYS.TIMESTAMP);
+    localStorage.removeItem(STORAGE_KEYS.GENDER);
     quizAnswers = {};
+    currentGender = 'female';
   }
 
   // Initialize when DOM is ready

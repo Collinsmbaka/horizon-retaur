@@ -19,6 +19,15 @@
       {% endif %}
     </div>
 
+    {% comment %} Gender Selection Dropdown {% endcomment %}
+    <div class="gender-select-wrapper">
+      <label for="genderSelect" class="gender-label">{{ section.settings.gender_label }}</label>
+      <select id="genderSelect" class="gender-select">
+        <option value="female">{{ section.settings.female_option_text }}</option>
+        <option value="male">{{ section.settings.male_option_text }}</option>
+      </select>
+    </div>
+
     {% comment %} Progress Indicator {% endcomment %}
     <div class="quiz-progress">
       <div class="progress-text">
@@ -43,14 +52,15 @@
               <h3 class="question-text">{{ block.settings.question_text }}</h3>
             </div>
 
-            {% comment %} First scored question: Image-Based {% endcomment %}
+            {% comment %} First scored question: Image-Based (Gender-Specific) {% endcomment %}
             {% if forloop.index == 1 %}
-              <div class="question-answers question-answers--images">
-                {% comment %} Answer A {% endcomment %}
+              {% comment %} Male Images (hidden by default since female is default) {% endcomment %}
+              <div class="question-answers question-answers--images" data-gender="male" style="display: none;">
+                {% comment %} Answer A - Male {% endcomment %}
                 <div class="answer-option answer-option--image">
-                  {% if block.settings.image_a != blank %}
+                  {% if block.settings.image_a_male != blank %}
                     <div class="answer-image-wrapper">
-                      {{ block.settings.image_a | image_url: width: 400 | image_tag: class: 'answer-image', loading: 'lazy', alt: block.settings.label_a }}
+                      {{ block.settings.image_a_male | image_url: width: 400 | image_tag: class: 'answer-image', loading: 'lazy', alt: block.settings.label_a }}
                     </div>
                   {% endif %}
                   <div class="answer-radio-wrapper">
@@ -58,20 +68,20 @@
                       type="radio"
                       name="q{{ question_index }}"
                       value="A"
-                      id="q{{ question_index }}_a"
+                      id="q{{ question_index }}_a_male"
                       class="answer-radio"
                     >
-                    <label for="q{{ question_index }}_a" class="answer-label">
+                    <label for="q{{ question_index }}_a_male" class="answer-label">
                       {{ block.settings.label_a }}
                     </label>
                   </div>
                 </div>
 
-                {% comment %} Answer B {% endcomment %}
+                {% comment %} Answer B - Male {% endcomment %}
                 <div class="answer-option answer-option--image">
-                  {% if block.settings.image_b != blank %}
+                  {% if block.settings.image_b_male != blank %}
                     <div class="answer-image-wrapper">
-                      {{ block.settings.image_b | image_url: width: 400 | image_tag: class: 'answer-image', loading: 'lazy', alt: block.settings.label_b }}
+                      {{ block.settings.image_b_male | image_url: width: 400 | image_tag: class: 'answer-image', loading: 'lazy', alt: block.settings.label_b }}
                     </div>
                   {% endif %}
                   <div class="answer-radio-wrapper">
@@ -79,20 +89,20 @@
                       type="radio"
                       name="q{{ question_index }}"
                       value="B"
-                      id="q{{ question_index }}_b"
+                      id="q{{ question_index }}_b_male"
                       class="answer-radio"
                     >
-                    <label for="q{{ question_index }}_b" class="answer-label">
+                    <label for="q{{ question_index }}_b_male" class="answer-label">
                       {{ block.settings.label_b }}
                     </label>
                   </div>
                 </div>
 
-                {% comment %} Answer C {% endcomment %}
+                {% comment %} Answer C - Male {% endcomment %}
                 <div class="answer-option answer-option--image">
-                  {% if block.settings.image_c != blank %}
+                  {% if block.settings.image_c_male != blank %}
                     <div class="answer-image-wrapper">
-                      {{ block.settings.image_c | image_url: width: 400 | image_tag: class: 'answer-image', loading: 'lazy', alt: block.settings.label_c }}
+                      {{ block.settings.image_c_male | image_url: width: 400 | image_tag: class: 'answer-image', loading: 'lazy', alt: block.settings.label_c }}
                     </div>
                   {% endif %}
                   <div class="answer-radio-wrapper">
@@ -100,10 +110,76 @@
                       type="radio"
                       name="q{{ question_index }}"
                       value="C"
-                      id="q{{ question_index }}_c"
+                      id="q{{ question_index }}_c_male"
                       class="answer-radio"
                     >
-                    <label for="q{{ question_index }}_c" class="answer-label">
+                    <label for="q{{ question_index }}_c_male" class="answer-label">
+                      {{ block.settings.label_c }}
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              {% comment %} Female Images (shown by default) {% endcomment %}
+              <div class="question-answers question-answers--images" data-gender="female">
+                {% comment %} Answer A - Female {% endcomment %}
+                <div class="answer-option answer-option--image">
+                  {% if block.settings.image_a_female != blank %}
+                    <div class="answer-image-wrapper">
+                      {{ block.settings.image_a_female | image_url: width: 400 | image_tag: class: 'answer-image', loading: 'lazy', alt: block.settings.label_a }}
+                    </div>
+                  {% endif %}
+                  <div class="answer-radio-wrapper">
+                    <input
+                      type="radio"
+                      name="q{{ question_index }}"
+                      value="A"
+                      id="q{{ question_index }}_a_female"
+                      class="answer-radio"
+                    >
+                    <label for="q{{ question_index }}_a_female" class="answer-label">
+                      {{ block.settings.label_a }}
+                    </label>
+                  </div>
+                </div>
+
+                {% comment %} Answer B - Female {% endcomment %}
+                <div class="answer-option answer-option--image">
+                  {% if block.settings.image_b_female != blank %}
+                    <div class="answer-image-wrapper">
+                      {{ block.settings.image_b_female | image_url: width: 400 | image_tag: class: 'answer-image', loading: 'lazy', alt: block.settings.label_b }}
+                    </div>
+                  {% endif %}
+                  <div class="answer-radio-wrapper">
+                    <input
+                      type="radio"
+                      name="q{{ question_index }}"
+                      value="B"
+                      id="q{{ question_index }}_b_female"
+                      class="answer-radio"
+                    >
+                    <label for="q{{ question_index }}_b_female" class="answer-label">
+                      {{ block.settings.label_b }}
+                    </label>
+                  </div>
+                </div>
+
+                {% comment %} Answer C - Female {% endcomment %}
+                <div class="answer-option answer-option--image">
+                  {% if block.settings.image_c_female != blank %}
+                    <div class="answer-image-wrapper">
+                      {{ block.settings.image_c_female | image_url: width: 400 | image_tag: class: 'answer-image', loading: 'lazy', alt: block.settings.label_c }}
+                    </div>
+                  {% endif %}
+                  <div class="answer-radio-wrapper">
+                    <input
+                      type="radio"
+                      name="q{{ question_index }}"
+                      value="C"
+                      id="q{{ question_index }}_c_female"
+                      class="answer-radio"
+                    >
+                    <label for="q{{ question_index }}_c_female" class="answer-label">
                       {{ block.settings.label_c }}
                     </label>
                   </div>
@@ -285,6 +361,28 @@
     },
     {
       "type": "header",
+      "content": "Gender Selection"
+    },
+    {
+      "type": "text",
+      "id": "gender_label",
+      "label": "Gender dropdown label",
+      "default": "I am a..."
+    },
+    {
+      "type": "text",
+      "id": "female_option_text",
+      "label": "Female option text",
+      "default": "Lady"
+    },
+    {
+      "type": "text",
+      "id": "male_option_text",
+      "label": "Male option text",
+      "default": "Gent"
+    },
+    {
+      "type": "header",
       "content": "Section Spacing"
     },
     {
@@ -350,43 +448,66 @@
         },
         {
           "type": "header",
-          "content": "Image Options (First Question Only)"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_a",
-          "label": "Image A"
+          "content": "Image Labels (First Question Only)"
         },
         {
           "type": "text",
           "id": "label_a",
-          "label": "Label for A",
-          "default": "Option A",
-          "info": "Used for image-based first question"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_b",
-          "label": "Image B"
+          "label": "Label for Option A",
+          "default": "Ectomorph",
+          "info": "Label shown below image A"
         },
         {
           "type": "text",
           "id": "label_b",
-          "label": "Label for B",
-          "default": "Option B",
-          "info": "Used for image-based first question"
-        },
-        {
-          "type": "image_picker",
-          "id": "image_c",
-          "label": "Image C"
+          "label": "Label for Option B",
+          "default": "Mesomorph",
+          "info": "Label shown below image B"
         },
         {
           "type": "text",
           "id": "label_c",
-          "label": "Label for C",
-          "default": "Option C",
-          "info": "Used for image-based first question"
+          "label": "Label for Option C",
+          "default": "Endomorph",
+          "info": "Label shown below image C"
+        },
+        {
+          "type": "header",
+          "content": "Male Body Type Images (First Question)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_a_male",
+          "label": "Male - Ectomorph Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_b_male",
+          "label": "Male - Mesomorph Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_c_male",
+          "label": "Male - Endomorph Image"
+        },
+        {
+          "type": "header",
+          "content": "Female Body Type Images (First Question)"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_a_female",
+          "label": "Female - Ectomorph Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_b_female",
+          "label": "Female - Mesomorph Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_c_female",
+          "label": "Female - Endomorph Image"
         },
         {
           "type": "header",

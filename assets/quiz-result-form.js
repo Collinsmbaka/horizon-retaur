@@ -10,14 +10,16 @@
   const STORAGE_KEYS = {
     ANSWERS: 'quizAnswers',
     RESULT: 'quizResult',
-    TIMESTAMP: 'quizTimestamp'
+    TIMESTAMP: 'quizTimestamp',
+    GENDER: 'quizGender'
   };
 
   // State
   let quizData = {
     bodyType: null,
     answers: null,
-    timestamp: null
+    timestamp: null,
+    gender: null
   };
 
   let resultForm = null;
@@ -41,7 +43,8 @@
     }
 
     // Load quiz data from localStorage
-    if (!loadQuizData()) {
+    // Skip redirect if in Shopify theme editor
+    if (!loadQuizData() && !window.Shopify?.designMode) {
       // No quiz data found, redirect back to quiz
       redirectToQuiz();
       return;
@@ -60,6 +63,7 @@
       const bodyType = localStorage.getItem(STORAGE_KEYS.RESULT);
       const answersJson = localStorage.getItem(STORAGE_KEYS.ANSWERS);
       const timestamp = localStorage.getItem(STORAGE_KEYS.TIMESTAMP);
+      const gender = localStorage.getItem(STORAGE_KEYS.GENDER);
 
       // Validate data exists
       if (!bodyType || !answersJson || !timestamp) {
@@ -78,7 +82,8 @@
       quizData = {
         bodyType: bodyType,
         answers: answers,
-        timestamp: timestamp
+        timestamp: timestamp,
+        gender: gender || 'female' // Default to female if not set
       };
 
       return true;
@@ -129,6 +134,7 @@
       timestamp: quizData.timestamp,
       name: name,
       whatsapp: formattedWhatsapp,
+      gender: quizData.gender,
       body_type: quizData.bodyType,
       q1: quizData.answers.q1 || null,
       q2: quizData.answers.q2 || null,
@@ -245,6 +251,7 @@
     localStorage.removeItem(STORAGE_KEYS.ANSWERS);
     localStorage.removeItem(STORAGE_KEYS.RESULT);
     localStorage.removeItem(STORAGE_KEYS.TIMESTAMP);
+    localStorage.removeItem(STORAGE_KEYS.GENDER);
   }
 
   /**
