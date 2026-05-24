@@ -829,7 +829,7 @@
       ],
       "settings": {
         "eyebrow": "Ingredients you trust",
-        "title": "<p>Three ingredients.<br><em>That's it.</em></p>",
+        "title": "<p>Three ingredients.<br/><em>That's it.</em></p>",
         "lede": "<p>We could write a longer label. We don't need to. Every cup is built from three things you can pronounce — and nothing you can't.</p>",
         "trust_line": "NAFDAC approved · Made in Lagos",
         "padding-block-start": 64,
@@ -1291,12 +1291,12 @@
       "type": "retaur-final-cta",
       "settings": {
         "eyebrow": "Order direct from Lagos",
-        "title": "<p>Stop<br>skipping<br><em>meals</em>.</p>",
+        "title": "<p>Stop<br/>skipping<br/><em>meals</em>.</p>",
         "body": "<p>The next time you'd skip lunch — don't. Grab a cup. 54 grams of protein, three ingredients, one minute.</p>",
         "price_eyebrow": "Single cups from",
         "price": "₦5,500",
         "cta_label": "Order now",
-        "cta_link": "",
+        "cta_link": "shopify://products/retaur-protein-yogurt",
         "bg_number": "54g",
         "padding-block-start": 80,
         "padding-block-end": 80,
