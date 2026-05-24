@@ -1,0 +1,144 @@
+{%- liquid
+  assign section_settings = section.settings
+-%}
+
+<section
+  class="retaur-hero-claim retaur-section--dark spacing-style"
+  style="{% render 'spacing-style', settings: section_settings %}"
+>
+  <div class="retaur-container">
+    <div class="retaur-hero-claim__grid">
+
+      <div class="retaur-hero-claim__text">
+        {%- if section_settings.eyebrow != blank -%}
+          <div class="retaur-section-eyebrow">{{ section_settings.eyebrow | escape }}</div>
+        {%- endif -%}
+
+        <h2 class="retaur-hero-claim__title">
+          {%- if section_settings.title_lead != blank -%}
+            {{ section_settings.title_lead | escape | newline_to_br }}
+          {%- endif -%}
+          {%- if section_settings.title_highlight != blank -%}
+            {%- if section_settings.title_lead != blank %} {% endif -%}
+            <span class="magenta-tag">{{ section_settings.title_highlight | escape }}</span>
+          {%- endif -%}
+          {%- if section_settings.title_trail != blank -%}{{ section_settings.title_trail | escape }}{%- endif -%}
+        </h2>
+
+        {%- if section_settings.lede != blank -%}
+          <div class="retaur-section-lede retaur-hero-claim__lede">{{ section_settings.lede }}</div>
+        {%- endif -%}
+
+        {%- if section.blocks.size > 0 -%}
+          <div class="retaur-hero-claim__stats">
+            {%- for block in section.blocks -%}
+              <div class="retaur-hero-claim__stat" {{ block.shopify_attributes }}>
+                <div class="retaur-hero-claim__stat-num">{{ block.settings.number | escape }}</div>
+                <div class="retaur-hero-claim__stat-meta">
+                  <span class="retaur-hero-claim__stat-label">{{ block.settings.label | escape }}</span>
+                  {%- if block.settings.sub_label != blank -%}
+                    <span class="retaur-hero-claim__stat-sub">{{ block.settings.sub_label | escape }}</span>
+                  {%- endif -%}
+                </div>
+              </div>
+            {%- endfor -%}
+          </div>
+        {%- endif -%}
+      </div>
+
+      <div class="retaur-hero-claim__media">
+        {%- if section_settings.image != blank -%}
+          <img
+            class="retaur-hero-claim__image"
+            src="{{ section_settings.image | image_url: width: 800 }}"
+            alt="{{ section_settings.image.alt | escape }}"
+            width="{{ section_settings.image.width }}"
+            height="{{ section_settings.image.height }}"
+            loading="lazy"
+          />
+        {%- else -%}
+          {{ 'product-1' | placeholder_svg_tag: 'retaur-hero-claim__image retaur-hero-claim__image--placeholder' }}
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Retaur hero claim",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "hero-stat",
+      "name": "Hero stat",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number", "default": "54g" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Protein" },
+        { "type": "text", "id": "sub_label", "label": "Sub-label", "default": "per cup" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Retaur · Protein Yogurt" },
+    {
+      "type": "header",
+      "content": "Title (3 parts — \"lead [highlight] trail\")"
+    },
+    {
+      "type": "textarea",
+      "id": "title_lead",
+      "label": "Title lead (newlines render as line breaks)",
+      "default": "Your meal.\nIn a"
+    },
+    {
+      "type": "text",
+      "id": "title_highlight",
+      "label": "Highlighted word (magenta tag)",
+      "default": "cup"
+    },
+    {
+      "type": "text",
+      "id": "title_trail",
+      "label": "Title trail",
+      "default": "."
+    },
+    {
+      "type": "header",
+      "content": "Body"
+    },
+    {
+      "type": "richtext",
+      "id": "lede",
+      "label": "Lede paragraph",
+      "default": "<p>54 grams of complete protein in one 400g cup — about the same protein as 10 eggs, with the texture of ice cream. Made for people who don't have time to cook but won't skip a meal.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Image"
+    },
+    { "type": "image_picker", "id": "image", "label": "Product image" },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    { "type": "range", "id": "padding-block-start", "label": "t:settings.top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding-block-end", "label": "t:settings.bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding-inline-start", "label": "t:settings.left", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding-inline-end", "label": "t:settings.right", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 }
+  ],
+  "presets": [
+    {
+      "name": "Retaur hero claim",
+      "blocks": [
+        { "type": "hero-stat", "settings": { "number": "54g", "label": "Protein", "sub_label": "per cup" } },
+        { "type": "hero-stat", "settings": { "number": "540", "label": "Calories", "sub_label": "per cup" } },
+        { "type": "hero-stat", "settings": { "number": "917", "label": "mg Calcium", "sub_label": "nearly your full daily requirement" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,141 @@
+{%- liquid
+  assign section_settings = section.settings
+  assign ingredient_blocks = section.blocks | where: 'type', 'ingredient'
+  assign neg_blocks = section.blocks | where: 'type', 'neg-claim'
+-%}
+
+<section
+  class="retaur-ingredients retaur-section--cream spacing-style"
+  style="{% render 'spacing-style', settings: section_settings %}"
+>
+  <div class="retaur-container">
+    {%- if section_settings.eyebrow != blank -%}
+      <div class="retaur-section-eyebrow">{{ section_settings.eyebrow | escape }}</div>
+    {%- endif -%}
+    {%- if section_settings.title != blank -%}
+      <h2 class="retaur-section-title">{{ section_settings.title }}</h2>
+    {%- endif -%}
+    {%- if section_settings.lede != blank -%}
+      <div class="retaur-section-lede">{{ section_settings.lede }}</div>
+    {%- endif -%}
+
+    {%- if ingredient_blocks.size > 0 -%}
+      <div class="retaur-ingredients__grid">
+        {%- for block in ingredient_blocks -%}
+          {%- assign bs = block.settings -%}
+          <div class="retaur-ingredients__card" {{ block.shopify_attributes }}>
+            <div class="retaur-ingredients__photo">
+              {%- if bs.photo != blank -%}
+                <img
+                  src="{{ bs.photo | image_url: width: 400 }}"
+                  alt="{{ bs.photo.alt | default: bs.name | strip_html | escape }}"
+                  loading="lazy"
+                  width="{{ bs.photo.width }}"
+                  height="{{ bs.photo.height }}"
+                />
+              {%- else -%}
+                <span class="retaur-ingredients__photo-placeholder">{{ bs.photo_placeholder | default: bs.name | strip_html | escape }}</span>
+              {%- endif -%}
+            </div>
+            <div class="retaur-ingredients__body">
+              {%- if bs.number != blank -%}
+                <div class="retaur-ingredients__num">{{ bs.number | escape }}</div>
+              {%- endif -%}
+              {%- if bs.name != blank -%}
+                <h3 class="retaur-ingredients__name">{{ bs.name }}</h3>
+              {%- endif -%}
+              {%- if bs.desc != blank -%}
+                <div class="retaur-ingredients__desc">{{ bs.desc }}</div>
+              {%- endif -%}
+            </div>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if neg_blocks.size > 0 -%}
+      <div class="retaur-ingredients__neg">
+        {%- for block in neg_blocks -%}
+          <span class="retaur-ingredients__neg-pill" {{ block.shopify_attributes }}>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M5 5l14 14"/>
+            </svg>
+            {{ block.settings.label | escape }}
+          </span>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section_settings.trust_line != blank -%}
+      <div class="retaur-ingredients__trust">{{ section_settings.trust_line | escape }}</div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Retaur ingredients",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 12,
+  "blocks": [
+    {
+      "type": "ingredient",
+      "name": "Ingredient",
+      "settings": [
+        { "type": "image_picker", "id": "photo", "label": "Photo" },
+        { "type": "text", "id": "photo_placeholder", "label": "Photo placeholder text (used if no photo)", "default": "Low-fat milk" },
+        { "type": "text", "id": "number", "label": "Number", "default": "01" },
+        { "type": "richtext", "id": "name", "label": "Name", "default": "<p>Low-fat milk</p>" },
+        { "type": "richtext", "id": "desc", "label": "Description", "default": "<p>Delivers essential calcium and complete protein with fewer calories than whole milk.</p>" }
+      ]
+    },
+    {
+      "type": "neg-claim",
+      "name": "Negative claim pill",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "No preservatives" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Ingredients you trust" },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title (use italic for accent)",
+      "default": "<p>Three ingredients.<br><em>That's it.</em></p>"
+    },
+    {
+      "type": "richtext",
+      "id": "lede",
+      "label": "Lede paragraph",
+      "default": "<p>We could write a longer label. We don't need to. Every cup is built from three things you can pronounce — and nothing you can't.</p>"
+    },
+    { "type": "text", "id": "trust_line", "label": "Trust line (bottom)", "default": "NAFDAC approved · Made in Lagos" },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    { "type": "range", "id": "padding-block-start", "label": "t:settings.top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding-block-end", "label": "t:settings.bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding-inline-start", "label": "t:settings.left", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding-inline-end", "label": "t:settings.right", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 }
+  ],
+  "presets": [
+    {
+      "name": "Retaur ingredients",
+      "blocks": [
+        { "type": "ingredient", "settings": { "number": "01", "name": "<p>Low-fat milk</p>", "desc": "<p>Delivers essential calcium and complete protein with fewer calories than whole milk.</p>", "photo_placeholder": "High-quality low-fat milk" } },
+        { "type": "ingredient", "settings": { "number": "02", "name": "<p>Whey protein<br>concentrate</p>", "desc": "<p>Rapidly absorbed complete protein that supports muscle recovery and growth.</p>", "photo_placeholder": "Whey protein concentrate" } },
+        { "type": "ingredient", "settings": { "number": "03", "name": "<p>A touch of sugar</p>", "desc": "<p>Just enough to balance the tartness — no fillers, no high-fructose corn syrup.</p>", "photo_placeholder": "A touch of sugar" } },
+        { "type": "neg-claim", "settings": { "label": "No preservatives" } },
+        { "type": "neg-claim", "settings": { "label": "No artificial flavors" } },
+        { "type": "neg-claim", "settings": { "label": "No fillers" } },
+        { "type": "neg-claim", "settings": { "label": "No artificial colors" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -359,7 +359,7 @@
         "type": "checkbox",
         "id": "enable_proxima_nova",
         "label": "Enable Proxima Nova",
-        "default": false,
+        "default": true,
         "info": "Enable the custom Proxima Nova font family with multiple weights"
       },
       {

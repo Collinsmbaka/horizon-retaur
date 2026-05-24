@@ -1,0 +1,118 @@
+{%- liquid
+  assign section_settings = section.settings
+-%}
+
+<section
+  class="retaur-stat-band retaur-section--dark spacing-style"
+  style="{% render 'spacing-style', settings: section_settings %}"
+>
+  <div class="retaur-container">
+    {%- if section_settings.eyebrow != blank or section_settings.title != blank -%}
+      <div class="retaur-stat-band__head">
+        {%- if section_settings.eyebrow != blank -%}
+          <div class="retaur-section-eyebrow">{{ section_settings.eyebrow | escape }}</div>
+        {%- endif -%}
+        {%- if section_settings.title != blank -%}
+          <h2 class="retaur-section-title retaur-stat-band__title">{{ section_settings.title }}</h2>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="retaur-stat-band__grid">
+      {%- for block in section.blocks -%}
+        <div class="retaur-stat-band__stat" {{ block.shopify_attributes }}>
+          <div class="retaur-stat-band__num">{{ block.settings.number | escape }}</div>
+          <div class="retaur-stat-band__label">{{ block.settings.label | escape }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Retaur stat band",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "stat-item",
+      "name": "Stat",
+      "settings": [
+        { "type": "text", "id": "number", "label": "Number", "default": "54g" },
+        { "type": "text", "id": "label", "label": "Label", "default": "Protein" }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "A meal in a cup"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title (use italic for magenta accent)",
+      "default": "<p>Not a snack. Not a shake. <em>A meal.</em></p>"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 200,
+      "step": 4,
+      "unit": "px",
+      "default": 48
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Retaur stat band",
+      "blocks": [
+        { "type": "stat-item", "settings": { "number": "54g", "label": "Protein" } },
+        { "type": "stat-item", "settings": { "number": "540", "label": "Calories" } },
+        { "type": "stat-item", "settings": { "number": "3", "label": "Ingredients" } },
+        { "type": "stat-item", "settings": { "number": "0", "label": "Fillers" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,130 @@
+{%- liquid
+  assign section_settings = section.settings
+-%}
+
+<section
+  class="retaur-meal-cards retaur-section--cream spacing-style"
+  style="{% render 'spacing-style', settings: section_settings %}"
+>
+  <div class="retaur-container">
+    {%- if section_settings.eyebrow != blank -%}
+      <div class="retaur-section-eyebrow">{{ section_settings.eyebrow | escape }}</div>
+    {%- endif -%}
+    {%- if section_settings.title != blank -%}
+      <h2 class="retaur-section-title">{{ section_settings.title }}</h2>
+    {%- endif -%}
+    {%- if section_settings.lede != blank -%}
+      <div class="retaur-section-lede">{{ section_settings.lede }}</div>
+    {%- endif -%}
+
+    <div class="retaur-meal-cards__grid">
+      {%- for block in section.blocks -%}
+        {%- assign bs = block.settings -%}
+        <div class="retaur-meal-cards__card" {{ block.shopify_attributes }}>
+          <div class="retaur-meal-cards__icon">
+            {%- case bs.icon_preset -%}
+              {%- when 'sun' -%}
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="32" cy="32" r="9"/>
+                  <path d="M32 8v6M32 50v6M8 32h6M50 32h6M14 14l4 4M46 46l4 4M50 14l-4 4M14 50l4-4"/>
+                </svg>
+              {%- when 'box' -%}
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="10" y="20" width="44" height="30" rx="3"/>
+                  <path d="M24 20v-6h16v6M10 32h44"/>
+                </svg>
+              {%- when 'moon' -%}
+                <svg viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M44 12a22 22 0 1010 32A18 18 0 0144 12z"/>
+                </svg>
+              {%- when 'custom' -%}
+                {%- if bs.icon_custom != blank -%}
+                  <img src="{{ bs.icon_custom | image_url: width: 88 }}" alt="" loading="lazy" />
+                {%- endif -%}
+            {%- endcase -%}
+          </div>
+          {%- if bs.eyebrow != blank -%}
+            <div class="retaur-meal-cards__eyebrow">{{ bs.eyebrow | escape }}</div>
+          {%- endif -%}
+          {%- if bs.title != blank -%}
+            <h3 class="retaur-meal-cards__title">{{ bs.title | escape | newline_to_br }}</h3>
+          {%- endif -%}
+          {%- if bs.body != blank -%}
+            <div class="retaur-meal-cards__body">{{ bs.body }}</div>
+          {%- endif -%}
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Retaur meal cards",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "meal-card",
+      "name": "Meal card",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon_preset",
+          "label": "Icon",
+          "options": [
+            { "value": "sun", "label": "Sun (breakfast)" },
+            { "value": "box", "label": "Lunchbox" },
+            { "value": "moon", "label": "Moon (dinner)" },
+            { "value": "custom", "label": "Custom image" }
+          ],
+          "default": "sun"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon_custom",
+          "label": "Custom icon image",
+          "visible_if": "{{ block.settings.icon_preset == 'custom' }}"
+        },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Breakfast" },
+        { "type": "textarea", "id": "title", "label": "Title (newlines render as line breaks)", "default": "Out the door\nby 7:30." },
+        { "type": "richtext", "id": "body", "label": "Body", "default": "<p>Grab and go on busy mornings — no prep, no dishes, no excuse to skip.</p>" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Every meal" },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title (use italic for accent)",
+      "default": "<p>One cup. Every <em>meal</em>.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "lede",
+      "label": "Lede paragraph",
+      "default": "<p>Built for busy weekdays. Real protein, real calories, no prep — whenever you need a meal but don't have time to make one.</p>"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    { "type": "range", "id": "padding-block-start", "label": "t:settings.top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding-block-end", "label": "t:settings.bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding-inline-start", "label": "t:settings.left", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding-inline-end", "label": "t:settings.right", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 }
+  ],
+  "presets": [
+    {
+      "name": "Retaur meal cards",
+      "blocks": [
+        { "type": "meal-card", "settings": { "icon_preset": "sun", "eyebrow": "Breakfast", "title": "Out the door\nby 7:30.", "body": "<p>Grab and go on busy mornings — no prep, no dishes, no excuse to skip.</p>" } },
+        { "type": "meal-card", "settings": { "icon_preset": "box", "eyebrow": "Lunch", "title": "Meeting at noon,\nno time to cook.", "body": "<p>One cup keeps you sharp through back-to-back meetings without the 3pm crash.</p>" } },
+        { "type": "meal-card", "settings": { "icon_preset": "moon", "eyebrow": "Dinner", "title": "Too tired to\nmake something.", "body": "<p>A full meal's worth of protein, fast and filling. Sleep on a full stomach.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

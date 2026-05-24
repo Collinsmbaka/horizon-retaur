@@ -1,0 +1,107 @@
+{%- liquid
+  assign section_settings = section.settings
+-%}
+
+<section
+  class="retaur-versus retaur-section--dark spacing-style"
+  style="{% render 'spacing-style', settings: section_settings %}"
+>
+  <div class="retaur-container">
+    {%- if section_settings.eyebrow != blank -%}
+      <div class="retaur-section-eyebrow">{{ section_settings.eyebrow | escape }}</div>
+    {%- endif -%}
+    {%- if section_settings.title != blank -%}
+      <h2 class="retaur-section-title">{{ section_settings.title }}</h2>
+    {%- endif -%}
+    {%- if section_settings.lede != blank -%}
+      <div class="retaur-section-lede">{{ section_settings.lede }}</div>
+    {%- endif -%}
+
+    <div class="retaur-versus__cards">
+      {%- for block in section.blocks -%}
+        {%- assign bs = block.settings -%}
+        <div
+          class="retaur-versus__card{% if bs.is_highlighted %} retaur-versus__card--highlighted{% endif %}"
+          {{ block.shopify_attributes }}
+        >
+          <div class="retaur-versus__card-head">
+            <div class="retaur-versus__card-eyebrow">{{ bs.card_eyebrow | escape }}</div>
+            {%- if bs.card_sub != blank -%}
+              <div class="retaur-versus__card-sub">{{ bs.card_sub | escape }}</div>
+            {%- endif -%}
+          </div>
+          <div class="retaur-versus__card-num">{{ bs.card_number | escape }}</div>
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if section_settings.tag_lead != blank or section_settings.tag_muted != blank -%}
+      <div class="retaur-versus__tag">
+        {%- if section_settings.tag_lead != blank -%}{{ section_settings.tag_lead | escape }}{%- endif -%}
+        {%- if section_settings.tag_muted != blank -%}
+          {%- if section_settings.tag_lead != blank %} {% endif -%}
+          <span class="retaur-versus__tag-muted">{{ section_settings.tag_muted | escape }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Retaur versus card",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 4,
+  "blocks": [
+    {
+      "type": "versus-card",
+      "name": "Versus card",
+      "settings": [
+        { "type": "text", "id": "card_eyebrow", "label": "Card eyebrow", "default": "Greek yogurt" },
+        { "type": "text", "id": "card_sub", "label": "Sub-label", "default": "per cup" },
+        { "type": "text", "id": "card_number", "label": "Big number", "default": "25–30g" },
+        { "type": "checkbox", "id": "is_highlighted", "label": "Highlight (magenta)", "default": false }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Versus Greek yogurt" },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title (use italic for accent)",
+      "default": "<p>Still eating Greek<br>yogurt for <em>protein</em>?</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "lede",
+      "label": "Lede paragraph",
+      "default": "<p>Greek yogurt has been the go-to protein snack for years. The math doesn't quite work out anymore.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Bottom tag line"
+    },
+    { "type": "text", "id": "tag_lead", "label": "Tag lead", "default": "Same size." },
+    { "type": "text", "id": "tag_muted", "label": "Tag muted", "default": "Twice the fuel." },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    { "type": "range", "id": "padding-block-start", "label": "t:settings.top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding-block-end", "label": "t:settings.bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding-inline-start", "label": "t:settings.left", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding-inline-end", "label": "t:settings.right", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 }
+  ],
+  "presets": [
+    {
+      "name": "Retaur versus card",
+      "blocks": [
+        { "type": "versus-card", "settings": { "card_eyebrow": "Greek yogurt", "card_sub": "per cup", "card_number": "25–30g", "is_highlighted": false } },
+        { "type": "versus-card", "settings": { "card_eyebrow": "Retaur", "card_sub": "per cup", "card_number": "54g", "is_highlighted": true } }
+      ]
+    }
+  ]
+}
+{% endschema %}

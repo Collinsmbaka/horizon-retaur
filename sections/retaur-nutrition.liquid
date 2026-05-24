@@ -1,0 +1,177 @@
+{%- liquid
+  assign section_settings = section.settings
+  assign panel_rows = section.blocks | where: 'type', 'nutrition-row'
+  assign percup_rows = section.blocks | where: 'type', 'percup-row'
+-%}
+
+<section
+  class="retaur-nutrition retaur-section--dark spacing-style"
+  style="{% render 'spacing-style', settings: section_settings %}"
+>
+  <div class="retaur-container">
+    {%- if section_settings.eyebrow != blank -%}
+      <div class="retaur-section-eyebrow">{{ section_settings.eyebrow | escape }}</div>
+    {%- endif -%}
+    {%- if section_settings.title != blank -%}
+      <h2 class="retaur-section-title">{{ section_settings.title }}</h2>
+    {%- endif -%}
+    {%- if section_settings.lede != blank -%}
+      <div class="retaur-section-lede">{{ section_settings.lede }}</div>
+    {%- endif -%}
+
+    <div class="retaur-nutrition__wrap">
+
+      <div class="retaur-nutrition__panel">
+        {%- if section_settings.panel_heading != blank -%}
+          <div class="retaur-nutrition__panel-head">{{ section_settings.panel_heading | escape }}</div>
+        {%- endif -%}
+        {%- if section_settings.panel_sub != blank -%}
+          <div class="retaur-nutrition__panel-sub">{{ section_settings.panel_sub | escape }}</div>
+        {%- endif -%}
+
+        {%- if section_settings.panel_serving_label != blank or section_settings.panel_serving_value != blank -%}
+          <div class="retaur-nutrition__row retaur-nutrition__row--first">
+            <span>{{ section_settings.panel_serving_label | escape }}</span>
+            <span>{{ section_settings.panel_serving_value | escape }}</span>
+          </div>
+        {%- endif -%}
+
+        {%- if section_settings.panel_calories_value != blank -%}
+          <div class="retaur-nutrition__cal">
+            <div class="retaur-nutrition__cal-label">{{ section_settings.panel_calories_label | escape }}</div>
+            <div class="retaur-nutrition__cal-val">{{ section_settings.panel_calories_value | escape }}</div>
+          </div>
+        {%- endif -%}
+
+        {%- for block in panel_rows -%}
+          {%- assign bs = block.settings -%}
+          <div
+            class="retaur-nutrition__row retaur-nutrition__row--{{ bs.style | default: 'normal' }}"
+            {{ block.shopify_attributes }}
+          >
+            <span>{{ bs.label | escape }}</span>
+            <span>{{ bs.value | escape }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div class="retaur-nutrition__percup">
+        {%- if section_settings.percup_eyebrow != blank -%}
+          <div class="retaur-nutrition__percup-eyebrow">{{ section_settings.percup_eyebrow | escape }}</div>
+        {%- endif -%}
+        {%- for block in percup_rows -%}
+          {%- assign bs = block.settings -%}
+          <div class="retaur-nutrition__percup-row" {{ block.shopify_attributes }}>
+            <span class="retaur-nutrition__percup-label">{{ bs.label | escape }}</span>
+            <span class="retaur-nutrition__percup-val">{{ bs.value | escape }}</span>
+          </div>
+        {%- endfor -%}
+        {%- if section_settings.percup_footer != blank -%}
+          <div class="retaur-nutrition__percup-footer">{{ section_settings.percup_footer }}</div>
+        {%- endif -%}
+      </div>
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Retaur nutrition",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 40,
+  "blocks": [
+    {
+      "type": "nutrition-row",
+      "name": "Nutrition Facts row",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Fat" },
+        { "type": "text", "id": "value", "label": "Value", "default": "11.4g" },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Row style",
+          "options": [
+            { "value": "normal", "label": "Normal" },
+            { "value": "bold", "label": "Bold" },
+            { "value": "indent", "label": "Indented (sub-row)" }
+          ],
+          "default": "normal"
+        }
+      ]
+    },
+    {
+      "type": "percup-row",
+      "name": "Per-cup row",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Calories" },
+        { "type": "text", "id": "value", "label": "Value", "default": "540" }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Built inside & out" },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title (use italic for accent)",
+      "default": "<p>The numbers<br>don't <em>lie</em>.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "lede",
+      "label": "Lede paragraph",
+      "default": "<p>A full panel for the people who read labels. Per cup, per serving, every number that matters.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Nutrition Facts panel (left)"
+    },
+    { "type": "text", "id": "panel_heading", "label": "Panel heading", "default": "Nutrition Facts" },
+    { "type": "text", "id": "panel_sub", "label": "Panel sub-text", "default": "2 servings per cup" },
+    { "type": "text", "id": "panel_serving_label", "label": "Serving size label", "default": "Serving size" },
+    { "type": "text", "id": "panel_serving_value", "label": "Serving size value", "default": "½ cup (200g)" },
+    { "type": "text", "id": "panel_calories_label", "label": "Calories label", "default": "Calories" },
+    { "type": "text", "id": "panel_calories_value", "label": "Calories value", "default": "270" },
+    {
+      "type": "header",
+      "content": "Per-cup list (right)"
+    },
+    { "type": "text", "id": "percup_eyebrow", "label": "Per-cup eyebrow", "default": "Per full cup (400g)" },
+    { "type": "richtext", "id": "percup_footer", "label": "Per-cup footer note", "default": "<p>Everything your body needs. <strong>One cup. No supplements.</strong></p>" },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    { "type": "range", "id": "padding-block-start", "label": "t:settings.top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding-block-end", "label": "t:settings.bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding-inline-start", "label": "t:settings.left", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding-inline-end", "label": "t:settings.right", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 }
+  ],
+  "presets": [
+    {
+      "name": "Retaur nutrition",
+      "blocks": [
+        { "type": "nutrition-row", "settings": { "label": "Fat", "value": "11.4g", "style": "bold" } },
+        { "type": "nutrition-row", "settings": { "label": "Total Carbohydrate", "value": "15g", "style": "bold" } },
+        { "type": "nutrition-row", "settings": { "label": "Sucrose", "value": "4.4g", "style": "indent" } },
+        { "type": "nutrition-row", "settings": { "label": "Lactose", "value": "17.4g", "style": "indent" } },
+        { "type": "nutrition-row", "settings": { "label": "Protein", "value": "27.2g", "style": "bold" } },
+        { "type": "nutrition-row", "settings": { "label": "Calcium", "value": "458.6mg", "style": "normal" } },
+        { "type": "nutrition-row", "settings": { "label": "Sodium", "value": "113.6mg", "style": "normal" } },
+        { "type": "nutrition-row", "settings": { "label": "Potassium", "value": "99.6mg", "style": "normal" } },
+        { "type": "nutrition-row", "settings": { "label": "Magnesium", "value": "278.0mg", "style": "normal" } },
+        { "type": "nutrition-row", "settings": { "label": "Phosphorus", "value": "60.4mg", "style": "normal" } },
+        { "type": "percup-row", "settings": { "label": "Calories", "value": "540" } },
+        { "type": "percup-row", "settings": { "label": "Protein", "value": "54g" } },
+        { "type": "percup-row", "settings": { "label": "Fat", "value": "22.8g" } },
+        { "type": "percup-row", "settings": { "label": "Carbohydrate", "value": "36g" } },
+        { "type": "percup-row", "settings": { "label": "Calcium", "value": "917mg" } },
+        { "type": "percup-row", "settings": { "label": "Magnesium", "value": "556mg" } },
+        { "type": "percup-row", "settings": { "label": "Potassium", "value": "199mg" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

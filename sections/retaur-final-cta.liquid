@@ -1,0 +1,98 @@
+{%- liquid
+  assign section_settings = section.settings
+-%}
+
+<section
+  class="retaur-final-cta retaur-section--magenta spacing-style"
+  style="{% render 'spacing-style', settings: section_settings %}"
+>
+  <div class="retaur-container">
+    <div class="retaur-final-cta__grid">
+
+      <div class="retaur-final-cta__text">
+        {%- if section_settings.eyebrow != blank -%}
+          <div class="retaur-section-eyebrow">{{ section_settings.eyebrow | escape }}</div>
+        {%- endif -%}
+        {%- if section_settings.title != blank -%}
+          <h2 class="retaur-final-cta__title">{{ section_settings.title }}</h2>
+        {%- endif -%}
+        {%- if section_settings.body != blank -%}
+          <div class="retaur-final-cta__body">{{ section_settings.body }}</div>
+        {%- endif -%}
+      </div>
+
+      <div class="retaur-final-cta__row">
+        <div class="retaur-final-cta__price">
+          {%- if section_settings.price_eyebrow != blank -%}
+            <div class="retaur-final-cta__price-eyebrow">{{ section_settings.price_eyebrow | escape }}</div>
+          {%- endif -%}
+          {%- if section_settings.price != blank -%}
+            <div class="retaur-final-cta__price-amount">{{ section_settings.price | escape }}</div>
+          {%- endif -%}
+        </div>
+        {%- if section_settings.cta_label != blank -%}
+          <a class="retaur-final-cta__btn" href="{{ section_settings.cta_link | default: '#' | escape }}">
+            {{ section_settings.cta_label | escape }}
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M5 12h14M13 5l7 7-7 7"/>
+            </svg>
+          </a>
+        {%- endif -%}
+      </div>
+
+      {%- if section_settings.bg_number != blank -%}
+        <div class="retaur-final-cta__bg-num" aria-hidden="true">{{ section_settings.bg_number | escape }}</div>
+      {%- endif -%}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Retaur final CTA",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Order direct from Lagos" },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title (use italic for accent)",
+      "default": "<p>Stop<br>skipping<br><em>meals</em>.</p>"
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body paragraph",
+      "default": "<p>The next time you'd skip lunch — don't. Grab a cup. 54 grams of protein, three ingredients, one minute.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Price & CTA"
+    },
+    { "type": "text", "id": "price_eyebrow", "label": "Price eyebrow", "default": "Single cups from" },
+    { "type": "text", "id": "price", "label": "Price", "default": "₦5,500" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Order now" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    {
+      "type": "header",
+      "content": "Background number"
+    },
+    { "type": "text", "id": "bg_number", "label": "Giant background number", "default": "54g" },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    { "type": "range", "id": "padding-block-start", "label": "t:settings.top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding-block-end", "label": "t:settings.bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 80 },
+    { "type": "range", "id": "padding-inline-start", "label": "t:settings.left", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding-inline-end", "label": "t:settings.right", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 }
+  ],
+  "presets": [
+    {
+      "name": "Retaur final CTA"
+    }
+  ]
+}
+{% endschema %}

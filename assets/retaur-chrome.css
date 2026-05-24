@@ -1,0 +1,218 @@
+/* Retaur sitewide chrome overrides.
+   No Liquid changes to sections/header.liquid, sections/footer.liquid, sections/header-announcements.liquid.
+   Cart toggle, search overlay, mobile menu drawer, sticky scroll all remain functional. */
+
+/* ─── Announcement bar ──────────────────────────────────────── */
+/* Horizon root: aside.announcement-bar (color scheme + spacing applied via classes). */
+
+.announcement-bar {
+  background: var(--retaur-black);
+  color: #fff;
+  font-family: 'Proxima Nova', system-ui, sans-serif;
+  border-block-end: 0;
+}
+
+.announcement-bar .announcement-bar__slide {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+}
+
+.announcement-bar .announcement-bar__text {
+  color: #fff;
+}
+
+/* Magenta accent on any inline dot/separator the merchant types into an announcement */
+.announcement-bar .announce-dot,
+.announcement-bar [data-dot] {
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--retaur-magenta);
+  margin-inline: 14px;
+  vertical-align: middle;
+}
+
+.announcement-bar .slideshow-control {
+  color: rgba(255, 255, 255, 0.6);
+}
+.announcement-bar .slideshow-control:hover {
+  color: var(--retaur-magenta);
+}
+
+/* ─── Header ────────────────────────────────────────────────── */
+/* Horizon root: header-component (custom element) with .header__row + .header__column rows. */
+
+#header-component {
+  background: var(--retaur-cream);
+  border-block-end: 1px solid var(--retaur-line);
+  font-family: 'Proxima Nova', system-ui, sans-serif;
+}
+
+#header-component .header__row {
+  background: var(--retaur-cream);
+}
+
+/* Brand mark + magenta dot. The logo block class is .logo-block. */
+#header-component .logo-block {
+  position: relative;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--retaur-ink);
+}
+
+#header-component .logo-block::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--retaur-magenta);
+  border-radius: 50%;
+  vertical-align: baseline;
+  margin-inline-start: 6px;
+  flex-shrink: 0;
+}
+
+/* Hide the dot if the merchant uses an image logo (it sits awkwardly next to a bitmap) */
+#header-component .logo-block:has(img)::after,
+#header-component .logo-block:has(.logo-block__image-wrapper img)::after {
+  display: none;
+}
+
+/* Nav links — uppercase tracked, magenta on hover.
+   Horizon's menu uses .menu-list__link and .menu-list__link-title inside header-menu snippets. */
+#header-component .menu-list__link,
+#header-component .menu-list__link-title {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--retaur-ink);
+  transition: color 0.12s;
+}
+#header-component .menu-list__link:hover,
+#header-component .menu-list__link-title:hover {
+  color: var(--retaur-magenta);
+}
+
+/* Header action icon buttons (search, account, cart) — circular w/ thin border.
+   Horizon's header-actions is a custom element, not a class. Action buttons are .header-actions__action. */
+#header-component header-actions .header-actions__action,
+#header-component header-actions button,
+#header-component header-actions > a {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--retaur-line);
+  background: transparent;
+  color: var(--retaur-ink);
+  transition: background 0.12s, border-color 0.12s, color 0.12s;
+}
+#header-component header-actions .header-actions__action:hover,
+#header-component header-actions button:hover,
+#header-component header-actions > a:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: var(--retaur-black);
+}
+
+/* Cart count badge — magenta. Match common Horizon class candidates. */
+#header-component .cart-count,
+#header-component .cart-bubble,
+#header-component [data-cart-count],
+#header-component .header-actions__cart-count {
+  background: var(--retaur-magenta);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 900;
+  min-width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+}
+
+/* ─── Footer ────────────────────────────────────────────────── */
+/* Horizon root: <footer>.section with color scheme. Merchant should set this scheme to a dark one. */
+
+footer.section,
+.footer-section {
+  font-family: 'Proxima Nova', system-ui, sans-serif;
+}
+
+footer.section a,
+.footer-section a {
+  color: inherit;
+  transition: color 0.12s;
+}
+footer.section a:hover,
+.footer-section a:hover {
+  color: var(--retaur-magenta);
+}
+
+/* Footer column headings — uppercase tracked */
+footer.section h4,
+footer.section h5,
+.footer-section h4,
+.footer-section h5 {
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  opacity: 0.5;
+}
+
+/* Newsletter signup button — magenta */
+footer.section form button[type="submit"],
+footer.section .email-signup button,
+.footer-section form button[type="submit"],
+.footer-section .email-signup button {
+  background: var(--retaur-magenta);
+  color: #fff;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 0;
+  transition: background 0.15s;
+}
+footer.section form button[type="submit"]:hover,
+footer.section .email-signup button:hover,
+.footer-section form button[type="submit"]:hover,
+.footer-section .email-signup button:hover {
+  background: var(--retaur-magenta-dark);
+}
+
+/* Newsletter input — subtle on dark */
+footer.section .email-signup input[type="email"],
+.footer-section .email-signup input[type="email"] {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: inherit;
+}
+footer.section .email-signup input[type="email"]::placeholder,
+.footer-section .email-signup input[type="email"]::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Social icon circles on dark footer.
+   Horizon's footer social icons render through the social-icons snippet using .social-icons__icon-wrapper. */
+footer.section .social-icons__icon-wrapper,
+.footer-section .social-icons__icon-wrapper {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s, border-color 0.15s;
+}
+footer.section .social-icons__icon-wrapper:hover,
+.footer-section .social-icons__icon-wrapper:hover {
+  background: var(--retaur-magenta);
+  border-color: var(--retaur-magenta);
+}

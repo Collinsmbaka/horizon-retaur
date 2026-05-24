@@ -1,0 +1,108 @@
+{%- liquid
+  assign block_settings = block.settings
+  assign style = block_settings.style | default: 'subtitle'
+-%}
+
+<div
+  class="retaur-text retaur-text--{{ style }} spacing-style"
+  style="{% render 'spacing-style', settings: block_settings %}"
+  {{ block.shopify_attributes }}
+>
+  {{ block_settings.text }}
+</div>
+
+{% schema %}
+{
+  "name": "Retaur text",
+  "tag": null,
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        { "value": "eyebrow", "label": "Eyebrow (uppercase tracked magenta)" },
+        { "value": "subtitle", "label": "Subtitle (body, muted)" },
+        { "value": "shipping-note", "label": "Shipping note (small, muted)" }
+      ],
+      "default": "subtitle"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text",
+      "default": "<p>Edit me</p>"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Retaur eyebrow",
+      "category": "t:categories.product",
+      "settings": {
+        "style": "eyebrow",
+        "text": "<p>Retaur · Protein Yogurt</p>"
+      }
+    },
+    {
+      "name": "Retaur subtitle",
+      "category": "t:categories.product",
+      "settings": {
+        "style": "subtitle",
+        "text": "<p>54g of protein in a single cup. A full meal, in a cup. Made for people who move.</p>"
+      }
+    },
+    {
+      "name": "Retaur shipping note",
+      "category": "t:categories.product",
+      "settings": {
+        "style": "shipping-note",
+        "text": "<p>Free delivery on orders over ₦150,000 · Pay on delivery available</p>"
+      }
+    }
+  ]
+}
+{% endschema %}

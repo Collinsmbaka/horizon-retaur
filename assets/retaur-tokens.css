@@ -1,0 +1,72 @@
+/* Retaur design tokens + utility classes.
+   Loaded before retaur-chrome.css and retaur-marketing.css so both can rely on these vars. */
+
+:root {
+  --retaur-black: #000000;
+  --retaur-ink: #0a0a0a;
+  --retaur-cream: #fbfaf8;
+  --retaur-cream-2: #f3efe7;
+  --retaur-magenta: #d81159;
+  --retaur-magenta-dark: #b00d48;
+
+  --retaur-line: rgba(0, 0, 0, 0.12);
+  --retaur-line-strong: rgba(0, 0, 0, 0.22);
+  --retaur-line-light: rgba(0, 0, 0, 0.06);
+  --retaur-muted: rgba(0, 0, 0, 0.6);
+  --retaur-muted-dark: rgba(0, 0, 0, 0.45);
+
+  --retaur-line-on-dark: rgba(255, 255, 255, 0.12);
+  --retaur-line-on-dark-strong: rgba(255, 255, 255, 0.22);
+  --retaur-muted-on-dark: rgba(255, 255, 255, 0.65);
+  --retaur-subtle-on-dark: rgba(255, 255, 255, 0.45);
+
+  --retaur-container: 1200px;
+  --retaur-gutter: 20px;
+
+  --retaur-r-sm: 6px;
+  --retaur-r-md: 10px;
+  --retaur-r-lg: 16px;
+  --retaur-r-full: 9999px;
+
+  --retaur-tr-eyebrow: 0.22em;
+  --retaur-tr-tight: -0.02em;
+  --retaur-tr-display: -0.04em;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --retaur-gutter: 32px;
+  }
+}
+
+.retaur-container {
+  width: 100%;
+  max-width: var(--retaur-container);
+  margin-inline: auto;
+  padding-inline: var(--retaur-gutter);
+}
+
+.em-italic {
+  font-style: italic;
+  font-weight: 900;
+  color: var(--retaur-magenta);
+}
+
+.magenta-tag {
+  background: var(--retaur-magenta);
+  color: #fff;
+  padding: 0 0.12em;
+  font-style: italic;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.brand-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background: var(--retaur-magenta);
+  border-radius: 50%;
+  vertical-align: baseline;
+  margin-inline-start: 4px;
+}

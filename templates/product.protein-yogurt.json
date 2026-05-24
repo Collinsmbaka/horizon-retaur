@@ -107,10 +107,6 @@
                 "padding-inline-end": 0
               },
               "blocks": {
-                "judge_me_reviews_preview_badge_TYxWCG": {
-                  "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-                  "settings": {}
-                },
                 "text_xrnftG": {
                   "type": "text",
                   "settings": {
@@ -216,11 +212,48 @@
                     "price_97GqNF",
                     "product_inventory_UbaWkT"
                   ]
+                },
+                "retaur_stars_row_top": {
+                  "type": "retaur-stars-row",
+                  "settings": {
+                    "rating": "4.9",
+                    "stars_filled": 5,
+                    "review_count_label": "Based on 13 reviews",
+                    "review_link": "#reviews",
+                    "padding-block-start": 0,
+                    "padding-block-end": 4,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  }
+                },
+                "retaur_eyebrow_top": {
+                  "type": "retaur-text",
+                  "settings": {
+                    "style": "eyebrow",
+                    "text": "<p>Retaur · Protein Yogurt</p>",
+                    "padding-block-start": 6,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  }
+                },
+                "retaur_subtitle_top": {
+                  "type": "retaur-text",
+                  "settings": {
+                    "style": "subtitle",
+                    "text": "<p>54g of protein in a single cup. A full meal, in a cup. Made for people who move.</p>",
+                    "padding-block-start": 4,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  }
                 }
               },
               "block_order": [
-                "judge_me_reviews_preview_badge_TYxWCG",
+                "retaur_stars_row_top",
+                "retaur_eyebrow_top",
                 "text_xrnftG",
+                "retaur_subtitle_top",
                 "group_8B3NLh"
               ]
             },
@@ -467,6 +500,17 @@
                 "accordion_row_tpdR67",
                 "accordion_row_fmw7AG"
               ]
+            },
+            "retaur_shipping_note": {
+              "type": "retaur-text",
+              "settings": {
+                "style": "shipping-note",
+                "text": "<p>Free delivery on orders over ₦150,000 · Pay on delivery available</p>",
+                "padding-block-start": 8,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              }
             }
           },
           "block_order": [
@@ -474,6 +518,7 @@
             "variant_picker",
             "granola_addon",
             "buy_buttons",
+            "retaur_shipping_note",
             "accordion_bEMMQQ"
           ]
         }
@@ -487,112 +532,6 @@
         "color_scheme": "",
         "padding-block-start": 0,
         "padding-block-end": 0
-      }
-    },
-    "marquee_Etc8gV": {
-      "type": "marquee",
-      "blocks": {
-        "text_Em89bB": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Free Nationwide Delivery On Orders Above ₦150,000</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "custom",
-            "font": "var(--font-heading--family)",
-            "font_size": "1rem",
-            "line_height": "tight",
-            "letter_spacing": "tight",
-            "case": "none",
-            "wrap": "nowrap",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "icon_7MAhfg": {
-          "type": "icon",
-          "name": "t:names.icon",
-          "settings": {
-            "icon": "truck",
-            "width": 24,
-            "link": "",
-            "open_in_new_tab": false
-          },
-          "blocks": {}
-        },
-        "text_3rRz9R": {
-          "type": "text",
-          "name": "t:names.text",
-          "settings": {
-            "text": "<p>Join Our Active Community</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "custom",
-            "font": "var(--font-heading--family)",
-            "font_size": "1rem",
-            "line_height": "tight",
-            "letter_spacing": "tight",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "icon_eyKwwF": {
-          "type": "icon",
-          "name": "t:names.icon",
-          "settings": {
-            "icon": "plant",
-            "width": 24,
-            "link": "",
-            "open_in_new_tab": false
-          },
-          "blocks": {}
-        }
-      },
-      "block_order": [
-        "text_Em89bB",
-        "icon_7MAhfg",
-        "text_3rRz9R",
-        "icon_eyKwwF"
-      ],
-      "name": "t:names.marquee_section",
-      "settings": {
-        "movement_direction": "normal",
-        "color_scheme": "scheme-2",
-        "padding-block-start": 16,
-        "padding-block-end": 16,
-        "gap_between_elements": 60
-      }
-    },
-    "divider_VDGepn": {
-      "type": "divider",
-      "name": "t:names.divider_section",
-      "settings": {
-        "color_scheme": "scheme-6",
-        "section_width": "page-width",
-        "thickness": 1,
-        "corner_radius": "square",
-        "width_percent": 100,
-        "alignment_horizontal": "center",
-        "padding-block-start": 30,
-        "padding-block-end": 30
       }
     },
     "video_testimonials_QkK37L": {
@@ -646,1597 +585,6 @@
         "color_scheme": "",
         "padding-block-start": 48,
         "padding-block-end": 48
-      }
-    },
-    "divider_aGiUVL": {
-      "type": "divider",
-      "name": "t:names.divider_section",
-      "settings": {
-        "color_scheme": "scheme-6",
-        "section_width": "page-width",
-        "thickness": 1,
-        "corner_radius": "square",
-        "width_percent": 100,
-        "alignment_horizontal": "center",
-        "padding-block-start": 30,
-        "padding-block-end": 30
-      }
-    },
-    "section_6mt3Ra": {
-      "type": "section",
-      "blocks": {
-        "text_KQjyfP": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h2>Benefits</h2>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "custom",
-            "font": "var(--font-heading--family)",
-            "font_size": "2.5rem",
-            "line_height": "tight",
-            "letter_spacing": "tight",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "group_bbVq3z": {
-          "type": "group",
-          "name": "t:names.group",
-          "settings": {
-            "link": "",
-            "open_in_new_tab": false,
-            "content_direction": "row",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 12,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "placeholder": "",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "group_kBFWpf": {
-              "type": "group",
-              "name": "t:names.group",
-              "settings": {
-                "link": "",
-                "open_in_new_tab": false,
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 30,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "inherit_color_scheme": true,
-                "color_scheme": "",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "placeholder": "",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "group_8zXNkK": {
-                  "type": "group",
-                  "name": "t:names.group",
-                  "settings": {
-                    "link": "",
-                    "open_in_new_tab": false,
-                    "content_direction": "column",
-                    "vertical_on_mobile": true,
-                    "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
-                    "align_baseline": false,
-                    "horizontal_alignment_flex_direction_column": "flex-start",
-                    "vertical_alignment_flex_direction_column": "center",
-                    "gap": 12,
-                    "width": "fill",
-                    "custom_width": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "background_media": "none",
-                    "video_position": "cover",
-                    "background_image_position": "cover",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "placeholder": "",
-                    "toggle_overlay": false,
-                    "overlay_color": "#00000026",
-                    "overlay_style": "solid",
-                    "gradient_direction": "to top",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {
-                    "group_9kcwd9": {
-                      "type": "group",
-                      "name": "t:names.group",
-                      "settings": {
-                        "link": "",
-                        "open_in_new_tab": false,
-                        "content_direction": "row",
-                        "vertical_on_mobile": true,
-                        "horizontal_alignment": "flex-start",
-                        "vertical_alignment": "center",
-                        "align_baseline": false,
-                        "horizontal_alignment_flex_direction_column": "flex-start",
-                        "vertical_alignment_flex_direction_column": "center",
-                        "gap": 20,
-                        "width": "fit-content",
-                        "custom_width": 100,
-                        "width_mobile": "fit-content",
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "inherit_color_scheme": true,
-                        "color_scheme": "",
-                        "background_media": "none",
-                        "video_position": "cover",
-                        "background_image_position": "cover",
-                        "border": "none",
-                        "border_width": 1,
-                        "border_opacity": 100,
-                        "border_radius": 0,
-                        "placeholder": "",
-                        "toggle_overlay": false,
-                        "overlay_color": "#00000026",
-                        "overlay_style": "solid",
-                        "gradient_direction": "to top",
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {
-                        "image_zDLYVn": {
-                          "type": "image",
-                          "name": "t:names.image",
-                          "settings": {
-                            "image": "shopify://shop_images/fc54705e-28f0-4c7c-9264-f67b29705cf4.png",
-                            "link": "",
-                            "image_ratio": "adapt",
-                            "width": "custom",
-                            "custom_width": 8,
-                            "width_mobile": "custom",
-                            "custom_width_mobile": 8,
-                            "height": "fit",
-                            "border": "none",
-                            "border_width": 1,
-                            "border_opacity": 100,
-                            "border_radius": 0,
-                            "padding-block-start": 0,
-                            "padding-block-end": 0,
-                            "padding-inline-start": 0,
-                            "padding-inline-end": 0
-                          },
-                          "blocks": {}
-                        },
-                        "text_VpaUpE": {
-                          "type": "text",
-                          "name": "t:names.text",
-                          "settings": {
-                            "text": "<p>Muscle Recovery Powerhouse</p>",
-                            "width": "fit-content",
-                            "max_width": "normal",
-                            "alignment": "left",
-                            "type_preset": "custom",
-                            "font": "var(--font-heading--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": false,
-                            "background_color": "#00000026",
-                            "corner_radius": 0,
-                            "padding-block-start": 0,
-                            "padding-block-end": 0,
-                            "padding-inline-start": 0,
-                            "padding-inline-end": 0
-                          },
-                          "blocks": {}
-                        }
-                      },
-                      "block_order": [
-                        "image_zDLYVn",
-                        "text_VpaUpE"
-                      ]
-                    },
-                    "text_QxHfrE": {
-                      "type": "text",
-                      "name": "t:names.text",
-                      "settings": {
-                        "text": "<p>High-quality protein fuels your muscles after workouts, promoting faster recovery and growth for optimal physical performance.</p>",
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "group_9kcwd9",
-                    "text_QxHfrE"
-                  ]
-                },
-                "group_QXTANz": {
-                  "type": "group",
-                  "name": "t:names.group",
-                  "settings": {
-                    "link": "",
-                    "open_in_new_tab": false,
-                    "content_direction": "column",
-                    "vertical_on_mobile": true,
-                    "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
-                    "align_baseline": false,
-                    "horizontal_alignment_flex_direction_column": "flex-start",
-                    "vertical_alignment_flex_direction_column": "center",
-                    "gap": 12,
-                    "width": "fill",
-                    "custom_width": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "background_media": "none",
-                    "video_position": "cover",
-                    "background_image_position": "cover",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "placeholder": "",
-                    "toggle_overlay": false,
-                    "overlay_color": "#00000026",
-                    "overlay_style": "solid",
-                    "gradient_direction": "to top",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {
-                    "group_bXg6eU": {
-                      "type": "group",
-                      "name": "t:names.group",
-                      "settings": {
-                        "link": "",
-                        "open_in_new_tab": false,
-                        "content_direction": "row",
-                        "vertical_on_mobile": true,
-                        "horizontal_alignment": "flex-start",
-                        "vertical_alignment": "center",
-                        "align_baseline": false,
-                        "horizontal_alignment_flex_direction_column": "flex-start",
-                        "vertical_alignment_flex_direction_column": "center",
-                        "gap": 20,
-                        "width": "fit-content",
-                        "custom_width": 100,
-                        "width_mobile": "fit-content",
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "inherit_color_scheme": true,
-                        "color_scheme": "",
-                        "background_media": "none",
-                        "video_position": "cover",
-                        "background_image_position": "cover",
-                        "border": "none",
-                        "border_width": 1,
-                        "border_opacity": 100,
-                        "border_radius": 0,
-                        "placeholder": "",
-                        "toggle_overlay": false,
-                        "overlay_color": "#00000026",
-                        "overlay_style": "solid",
-                        "gradient_direction": "to top",
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {
-                        "image_QnkhTi": {
-                          "type": "image",
-                          "name": "t:names.image",
-                          "settings": {
-                            "image": "shopify://shop_images/dedb4b40-fc6e-43d6-b770-f78451dd7451.png",
-                            "link": "",
-                            "image_ratio": "adapt",
-                            "width": "custom",
-                            "custom_width": 8,
-                            "width_mobile": "custom",
-                            "custom_width_mobile": 8,
-                            "height": "fit",
-                            "border": "none",
-                            "border_width": 1,
-                            "border_opacity": 100,
-                            "border_radius": 0,
-                            "padding-block-start": 0,
-                            "padding-block-end": 0,
-                            "padding-inline-start": 0,
-                            "padding-inline-end": 0
-                          },
-                          "blocks": {}
-                        },
-                        "text_xYLBQg": {
-                          "type": "text",
-                          "name": "t:names.text",
-                          "settings": {
-                            "text": "<p>Gut Health Booster</p>",
-                            "width": "fit-content",
-                            "max_width": "normal",
-                            "alignment": "left",
-                            "type_preset": "custom",
-                            "font": "var(--font-heading--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": false,
-                            "background_color": "#00000026",
-                            "corner_radius": 0,
-                            "padding-block-start": 0,
-                            "padding-block-end": 0,
-                            "padding-inline-start": 0,
-                            "padding-inline-end": 0
-                          },
-                          "blocks": {}
-                        }
-                      },
-                      "block_order": [
-                        "image_QnkhTi",
-                        "text_xYLBQg"
-                      ]
-                    },
-                    "text_zaajiz": {
-                      "type": "text",
-                      "name": "t:names.text",
-                      "settings": {
-                        "text": "<p>Beneficial probiotics support digestive wellness while extra protein nourishes your body for total health benefits.</p>",
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "group_bXg6eU",
-                    "text_zaajiz"
-                  ]
-                }
-              },
-              "block_order": [
-                "group_8zXNkK",
-                "group_QXTANz"
-              ]
-            },
-            "group_KkCWeL": {
-              "type": "group",
-              "name": "t:names.group",
-              "settings": {
-                "link": "",
-                "open_in_new_tab": false,
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 12,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "inherit_color_scheme": true,
-                "color_scheme": "",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "placeholder": "",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "image_7nw4mD": {
-                  "type": "image",
-                  "name": "t:names.image",
-                  "settings": {
-                    "image": "shopify://shop_images/0001-5504980317671359720.png",
-                    "link": "",
-                    "image_ratio": "adapt",
-                    "width": "fill",
-                    "custom_width": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "image_7nw4mD"
-              ]
-            },
-            "group_EVBDqy": {
-              "type": "group",
-              "name": "t:names.group",
-              "settings": {
-                "link": "",
-                "open_in_new_tab": false,
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "flex-start",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 30,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "inherit_color_scheme": true,
-                "color_scheme": "",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "placeholder": "",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "group_Bt9QVR": {
-                  "type": "group",
-                  "name": "t:names.group",
-                  "settings": {
-                    "link": "",
-                    "open_in_new_tab": false,
-                    "content_direction": "column",
-                    "vertical_on_mobile": true,
-                    "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
-                    "align_baseline": false,
-                    "horizontal_alignment_flex_direction_column": "flex-start",
-                    "vertical_alignment_flex_direction_column": "center",
-                    "gap": 12,
-                    "width": "fill",
-                    "custom_width": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "background_media": "none",
-                    "video_position": "cover",
-                    "background_image_position": "cover",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "placeholder": "",
-                    "toggle_overlay": false,
-                    "overlay_color": "#00000026",
-                    "overlay_style": "solid",
-                    "gradient_direction": "to top",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {
-                    "group_WDThjA": {
-                      "type": "group",
-                      "name": "t:names.group",
-                      "settings": {
-                        "link": "",
-                        "open_in_new_tab": false,
-                        "content_direction": "row",
-                        "vertical_on_mobile": true,
-                        "horizontal_alignment": "flex-start",
-                        "vertical_alignment": "center",
-                        "align_baseline": false,
-                        "horizontal_alignment_flex_direction_column": "flex-start",
-                        "vertical_alignment_flex_direction_column": "center",
-                        "gap": 20,
-                        "width": "fit-content",
-                        "custom_width": 100,
-                        "width_mobile": "fit-content",
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "inherit_color_scheme": true,
-                        "color_scheme": "",
-                        "background_media": "none",
-                        "video_position": "cover",
-                        "background_image_position": "cover",
-                        "border": "none",
-                        "border_width": 1,
-                        "border_opacity": 100,
-                        "border_radius": 0,
-                        "placeholder": "",
-                        "toggle_overlay": false,
-                        "overlay_color": "#00000026",
-                        "overlay_style": "solid",
-                        "gradient_direction": "to top",
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {
-                        "image_FGyXtK": {
-                          "type": "image",
-                          "name": "t:names.image",
-                          "settings": {
-                            "image": "shopify://shop_images/6e658ff6-6678-4a69-a212-1ad21fa9af89.png",
-                            "link": "",
-                            "image_ratio": "adapt",
-                            "width": "custom",
-                            "custom_width": 10,
-                            "width_mobile": "custom",
-                            "custom_width_mobile": 10,
-                            "height": "fit",
-                            "border": "none",
-                            "border_width": 1,
-                            "border_opacity": 100,
-                            "border_radius": 0,
-                            "padding-block-start": 0,
-                            "padding-block-end": 0,
-                            "padding-inline-start": 0,
-                            "padding-inline-end": 0
-                          },
-                          "blocks": {}
-                        },
-                        "text_VmgtzH": {
-                          "type": "text",
-                          "name": "t:names.text",
-                          "settings": {
-                            "text": "<p>Nutrient-Dense Convenience</p>",
-                            "width": "fit-content",
-                            "max_width": "normal",
-                            "alignment": "left",
-                            "type_preset": "custom",
-                            "font": "var(--font-heading--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": false,
-                            "background_color": "#00000026",
-                            "corner_radius": 0,
-                            "padding-block-start": 0,
-                            "padding-block-end": 0,
-                            "padding-inline-start": 0,
-                            "padding-inline-end": 0
-                          },
-                          "blocks": {}
-                        }
-                      },
-                      "block_order": [
-                        "image_FGyXtK",
-                        "text_VmgtzH"
-                      ]
-                    },
-                    "text_UAYdWH": {
-                      "type": "text",
-                      "name": "t:names.text",
-                      "settings": {
-                        "text": "<p>Our protein-rich formula keeps hunger at bay longer than regular yogurts, helping you stay satisfied between meals.</p>",
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "group_WDThjA",
-                    "text_UAYdWH"
-                  ]
-                },
-                "group_HaiAQn": {
-                  "type": "group",
-                  "name": "t:names.group",
-                  "settings": {
-                    "link": "",
-                    "open_in_new_tab": false,
-                    "content_direction": "column",
-                    "vertical_on_mobile": true,
-                    "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
-                    "align_baseline": false,
-                    "horizontal_alignment_flex_direction_column": "flex-start",
-                    "vertical_alignment_flex_direction_column": "center",
-                    "gap": 12,
-                    "width": "fill",
-                    "custom_width": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "background_media": "none",
-                    "video_position": "cover",
-                    "background_image_position": "cover",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "placeholder": "",
-                    "toggle_overlay": false,
-                    "overlay_color": "#00000026",
-                    "overlay_style": "solid",
-                    "gradient_direction": "to top",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {
-                    "group_Lc7WF8": {
-                      "type": "group",
-                      "name": "t:names.group",
-                      "settings": {
-                        "link": "",
-                        "open_in_new_tab": false,
-                        "content_direction": "row",
-                        "vertical_on_mobile": true,
-                        "horizontal_alignment": "flex-start",
-                        "vertical_alignment": "center",
-                        "align_baseline": false,
-                        "horizontal_alignment_flex_direction_column": "flex-start",
-                        "vertical_alignment_flex_direction_column": "center",
-                        "gap": 20,
-                        "width": "fit-content",
-                        "custom_width": 100,
-                        "width_mobile": "fit-content",
-                        "custom_width_mobile": 100,
-                        "height": "fit",
-                        "custom_height": 100,
-                        "inherit_color_scheme": true,
-                        "color_scheme": "",
-                        "background_media": "none",
-                        "video_position": "cover",
-                        "background_image_position": "cover",
-                        "border": "none",
-                        "border_width": 1,
-                        "border_opacity": 100,
-                        "border_radius": 0,
-                        "placeholder": "",
-                        "toggle_overlay": false,
-                        "overlay_color": "#00000026",
-                        "overlay_style": "solid",
-                        "gradient_direction": "to top",
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {
-                        "image_PhEGCT": {
-                          "type": "image",
-                          "name": "t:names.image",
-                          "settings": {
-                            "image": "shopify://shop_images/a75c1b76-1be0-4f3d-b982-f19b4dcb858a.png",
-                            "link": "",
-                            "image_ratio": "adapt",
-                            "width": "custom",
-                            "custom_width": 8,
-                            "width_mobile": "custom",
-                            "custom_width_mobile": 8,
-                            "height": "fit",
-                            "border": "none",
-                            "border_width": 1,
-                            "border_opacity": 100,
-                            "border_radius": 0,
-                            "padding-block-start": 0,
-                            "padding-block-end": 0,
-                            "padding-inline-start": 0,
-                            "padding-inline-end": 0
-                          },
-                          "blocks": {}
-                        },
-                        "text_kdNdWT": {
-                          "type": "text",
-                          "name": "t:names.text",
-                          "settings": {
-                            "text": "<p>Sustained Fullness</p>",
-                            "width": "fit-content",
-                            "max_width": "normal",
-                            "alignment": "left",
-                            "type_preset": "custom",
-                            "font": "var(--font-heading--family)",
-                            "font_size": "1rem",
-                            "line_height": "normal",
-                            "letter_spacing": "normal",
-                            "case": "none",
-                            "wrap": "pretty",
-                            "color": "var(--color-foreground)",
-                            "background": false,
-                            "background_color": "#00000026",
-                            "corner_radius": 0,
-                            "padding-block-start": 0,
-                            "padding-block-end": 0,
-                            "padding-inline-start": 0,
-                            "padding-inline-end": 0
-                          },
-                          "blocks": {}
-                        }
-                      },
-                      "block_order": [
-                        "image_PhEGCT",
-                        "text_kdNdWT"
-                      ]
-                    },
-                    "text_iMD7yV": {
-                      "type": "text",
-                      "name": "t:names.text",
-                      "settings": {
-                        "text": "<p>Our protein-rich formula keeps hunger at bay longer than regular yogurts, helping you stay satisfied between meals.</p>",
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "group_Lc7WF8",
-                    "text_iMD7yV"
-                  ]
-                }
-              },
-              "block_order": [
-                "group_Bt9QVR",
-                "group_HaiAQn"
-              ]
-            }
-          },
-          "block_order": [
-            "group_kBFWpf",
-            "group_KkCWeL",
-            "group_EVBDqy"
-          ]
-        }
-      },
-      "block_order": [
-        "text_KQjyfP",
-        "group_bbVq3z"
-      ],
-      "name": "benefits",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 30,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "divider_mPJWMw": {
-      "type": "divider",
-      "name": "t:names.divider_section",
-      "settings": {
-        "color_scheme": "scheme-6",
-        "section_width": "page-width",
-        "thickness": 1,
-        "corner_radius": "square",
-        "width_percent": 100,
-        "alignment_horizontal": "center",
-        "padding-block-start": 30,
-        "padding-block-end": 30
-      }
-    },
-    "section_CCQJQf": {
-      "type": "section",
-      "blocks": {
-        "text_CGD7qg": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<p>Ingredients You Trust</p>",
-            "width": "fit-content",
-            "max_width": "normal",
-            "alignment": "left",
-            "type_preset": "custom",
-            "font": "var(--font-heading--family)",
-            "font_size": "2.5rem",
-            "line_height": "tight",
-            "letter_spacing": "tight",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "group_jGQhzD": {
-          "type": "group",
-          "name": "t:names.group",
-          "settings": {
-            "link": "",
-            "open_in_new_tab": false,
-            "content_direction": "row",
-            "vertical_on_mobile": true,
-            "horizontal_alignment": "flex-start",
-            "vertical_alignment": "center",
-            "align_baseline": false,
-            "horizontal_alignment_flex_direction_column": "flex-start",
-            "vertical_alignment_flex_direction_column": "center",
-            "gap": 30,
-            "width": "fill",
-            "custom_width": 100,
-            "width_mobile": "fill",
-            "custom_width_mobile": 100,
-            "height": "fit",
-            "custom_height": 100,
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "background_media": "none",
-            "video_position": "cover",
-            "background_image_position": "cover",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "placeholder": "",
-            "toggle_overlay": false,
-            "overlay_color": "#00000026",
-            "overlay_style": "solid",
-            "gradient_direction": "to top",
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "group_gdMhPd": {
-              "type": "group",
-              "name": "t:names.group",
-              "settings": {
-                "link": "",
-                "open_in_new_tab": false,
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "center",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 20,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "inherit_color_scheme": true,
-                "color_scheme": "",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "placeholder": "",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "image_gfmUb4": {
-                  "type": "image",
-                  "name": "t:names.image",
-                  "settings": {
-                    "image": "shopify://shop_images/d2e8b521-09db-4685-99ca-ac218f312c2d.png",
-                    "link": "",
-                    "image_ratio": "adapt",
-                    "width": "custom",
-                    "custom_width": 40,
-                    "width_mobile": "custom",
-                    "custom_width_mobile": 40,
-                    "height": "fit",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "group_UPQxGN": {
-                  "type": "group",
-                  "name": "t:names.group",
-                  "settings": {
-                    "link": "",
-                    "open_in_new_tab": false,
-                    "content_direction": "column",
-                    "vertical_on_mobile": true,
-                    "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
-                    "align_baseline": false,
-                    "horizontal_alignment_flex_direction_column": "center",
-                    "vertical_alignment_flex_direction_column": "center",
-                    "gap": 12,
-                    "width": "fill",
-                    "custom_width": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "background_media": "none",
-                    "video_position": "cover",
-                    "background_image_position": "cover",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "placeholder": "",
-                    "toggle_overlay": false,
-                    "overlay_color": "#00000026",
-                    "overlay_style": "solid",
-                    "gradient_direction": "to top",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {
-                    "text_8Q3NHw": {
-                      "type": "text",
-                      "name": "t:names.heading",
-                      "settings": {
-                        "text": "<p>High Quality Low-Fat Milk</p>",
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "custom",
-                        "font": "var(--font-heading--family)",
-                        "font_size": "1rem",
-                        "line_height": "tight",
-                        "letter_spacing": "tight",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    },
-                    "text_wxrgdq": {
-                      "type": "text",
-                      "name": "t:names.text",
-                      "settings": {
-                        "text": "<p>Delivers essential calcium and high-quality protein with fewer calories than whole milk.</p>",
-                        "width": "fit-content",
-                        "max_width": "normal",
-                        "alignment": "left",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_8Q3NHw",
-                    "text_wxrgdq"
-                  ]
-                }
-              },
-              "block_order": [
-                "image_gfmUb4",
-                "group_UPQxGN"
-              ]
-            },
-            "group_RcRLjm": {
-              "type": "group",
-              "name": "t:names.group",
-              "settings": {
-                "link": "",
-                "open_in_new_tab": false,
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "center",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 20,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "inherit_color_scheme": true,
-                "color_scheme": "",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "placeholder": "",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "image_4z463r": {
-                  "type": "image",
-                  "name": "t:names.image",
-                  "settings": {
-                    "image": "shopify://shop_images/16362a4c-5332-4365-8246-c754450ae448.png",
-                    "link": "",
-                    "image_ratio": "adapt",
-                    "width": "custom",
-                    "custom_width": 40,
-                    "width_mobile": "custom",
-                    "custom_width_mobile": 41,
-                    "height": "fit",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "group_VtxNeh": {
-                  "type": "group",
-                  "name": "t:names.group",
-                  "settings": {
-                    "link": "",
-                    "open_in_new_tab": false,
-                    "content_direction": "column",
-                    "vertical_on_mobile": true,
-                    "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
-                    "align_baseline": false,
-                    "horizontal_alignment_flex_direction_column": "center",
-                    "vertical_alignment_flex_direction_column": "center",
-                    "gap": 12,
-                    "width": "fill",
-                    "custom_width": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "background_media": "none",
-                    "video_position": "cover",
-                    "background_image_position": "cover",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "placeholder": "",
-                    "toggle_overlay": false,
-                    "overlay_color": "#00000026",
-                    "overlay_style": "solid",
-                    "gradient_direction": "to top",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {
-                    "text_c8exW6": {
-                      "type": "text",
-                      "name": "t:names.heading",
-                      "settings": {
-                        "text": "<p>High Quality Whey Protein</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "center",
-                        "type_preset": "custom",
-                        "font": "var(--font-heading--family)",
-                        "font_size": "1rem",
-                        "line_height": "tight",
-                        "letter_spacing": "tight",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    },
-                    "text_MdmNHr": {
-                      "type": "text",
-                      "name": "t:names.text",
-                      "settings": {
-                        "text": "<p>Rapidly absorbed complete protein that supports muscle recovery and growth.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "center",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_c8exW6",
-                    "text_MdmNHr"
-                  ]
-                }
-              },
-              "block_order": [
-                "image_4z463r",
-                "group_VtxNeh"
-              ]
-            },
-            "group_FTVUiF": {
-              "type": "group",
-              "name": "t:names.group",
-              "settings": {
-                "link": "",
-                "open_in_new_tab": false,
-                "content_direction": "column",
-                "vertical_on_mobile": true,
-                "horizontal_alignment": "flex-start",
-                "vertical_alignment": "center",
-                "align_baseline": false,
-                "horizontal_alignment_flex_direction_column": "center",
-                "vertical_alignment_flex_direction_column": "center",
-                "gap": 20,
-                "width": "fill",
-                "custom_width": 100,
-                "width_mobile": "fill",
-                "custom_width_mobile": 100,
-                "height": "fit",
-                "custom_height": 100,
-                "inherit_color_scheme": true,
-                "color_scheme": "",
-                "background_media": "none",
-                "video_position": "cover",
-                "background_image_position": "cover",
-                "border": "none",
-                "border_width": 1,
-                "border_opacity": 100,
-                "border_radius": 0,
-                "placeholder": "",
-                "toggle_overlay": false,
-                "overlay_color": "#00000026",
-                "overlay_style": "solid",
-                "gradient_direction": "to top",
-                "padding-block-start": 0,
-                "padding-block-end": 0,
-                "padding-inline-start": 0,
-                "padding-inline-end": 0
-              },
-              "blocks": {
-                "image_67cKeH": {
-                  "type": "image",
-                  "name": "t:names.image",
-                  "settings": {
-                    "image": "shopify://shop_images/d9557fe0-eded-4c4a-9ae7-23108f6fbf1a.png",
-                    "link": "",
-                    "image_ratio": "adapt",
-                    "width": "custom",
-                    "custom_width": 40,
-                    "width_mobile": "custom",
-                    "custom_width_mobile": 40,
-                    "height": "fit",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                },
-                "group_RMAwTA": {
-                  "type": "group",
-                  "name": "t:names.group",
-                  "settings": {
-                    "link": "",
-                    "open_in_new_tab": false,
-                    "content_direction": "column",
-                    "vertical_on_mobile": true,
-                    "horizontal_alignment": "flex-start",
-                    "vertical_alignment": "center",
-                    "align_baseline": false,
-                    "horizontal_alignment_flex_direction_column": "center",
-                    "vertical_alignment_flex_direction_column": "center",
-                    "gap": 12,
-                    "width": "fill",
-                    "custom_width": 100,
-                    "width_mobile": "fill",
-                    "custom_width_mobile": 100,
-                    "height": "fit",
-                    "custom_height": 100,
-                    "inherit_color_scheme": true,
-                    "color_scheme": "",
-                    "background_media": "none",
-                    "video_position": "cover",
-                    "background_image_position": "cover",
-                    "border": "none",
-                    "border_width": 1,
-                    "border_opacity": 100,
-                    "border_radius": 0,
-                    "placeholder": "",
-                    "toggle_overlay": false,
-                    "overlay_color": "#00000026",
-                    "overlay_style": "solid",
-                    "gradient_direction": "to top",
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {
-                    "text_X9aWYm": {
-                      "type": "text",
-                      "name": "t:names.heading",
-                      "settings": {
-                        "text": "<p>Sugar</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "center",
-                        "type_preset": "custom",
-                        "font": "var(--font-heading--family)",
-                        "font_size": "1rem",
-                        "line_height": "tight",
-                        "letter_spacing": "tight",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    },
-                    "text_UifTDU": {
-                      "type": "text",
-                      "name": "t:names.text",
-                      "settings": {
-                        "text": "<p>Added in small amounts to balance tartness for a perfectly enjoyable taste.</p>",
-                        "width": "100%",
-                        "max_width": "normal",
-                        "alignment": "center",
-                        "type_preset": "rte",
-                        "font": "var(--font-body--family)",
-                        "font_size": "1rem",
-                        "line_height": "normal",
-                        "letter_spacing": "normal",
-                        "case": "none",
-                        "wrap": "pretty",
-                        "color": "var(--color-foreground)",
-                        "background": false,
-                        "background_color": "#00000026",
-                        "corner_radius": 0,
-                        "padding-block-start": 0,
-                        "padding-block-end": 0,
-                        "padding-inline-start": 0,
-                        "padding-inline-end": 0
-                      },
-                      "blocks": {}
-                    }
-                  },
-                  "block_order": [
-                    "text_X9aWYm",
-                    "text_UifTDU"
-                  ]
-                }
-              },
-              "block_order": [
-                "image_67cKeH",
-                "group_RMAwTA"
-              ]
-            }
-          },
-          "block_order": [
-            "group_gdMhPd",
-            "group_RcRLjm",
-            "group_FTVUiF"
-          ]
-        }
-      },
-      "block_order": [
-        "text_CGD7qg",
-        "group_jGQhzD"
-      ],
-      "name": "ingredients",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 50,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "divider_ED9VRc": {
-      "type": "divider",
-      "name": "t:names.divider_section",
-      "settings": {
-        "color_scheme": "scheme-6",
-        "section_width": "page-width",
-        "thickness": 1,
-        "corner_radius": "square",
-        "width_percent": 100,
-        "alignment_horizontal": "center",
-        "padding-block-start": 30,
-        "padding-block-end": 30
       }
     },
     "product_comparison_Xqe4tY": {
@@ -2371,426 +719,6 @@
         "color_scheme": "",
         "padding-block-start": 40,
         "padding-block-end": 40
-      }
-    },
-    "17602644249e14987b": {
-      "type": "_blocks",
-      "blocks": {
-        "judge_me_reviews_review_widget_cnbHHq": {
-          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
-          "settings": {
-            "review_data": "sample_data",
-            "max_width": 1200,
-            "show_shop_reviews": false,
-            "empty_state": "empty_widget"
-          }
-        }
-      },
-      "block_order": [
-        "judge_me_reviews_review_widget_cnbHHq"
-      ],
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 12,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 0,
-        "padding-block-end": 0
-      }
-    },
-    "section_rqycLF": {
-      "type": "section",
-      "blocks": {
-        "text_PcM9Ue": {
-          "type": "text",
-          "name": "t:names.heading",
-          "settings": {
-            "text": "<h3>Frequently asked Questions</h3>",
-            "width": "fit-content",
-            "max_width": "narrow",
-            "alignment": "left",
-            "type_preset": "custom",
-            "font": "var(--font-heading--family)",
-            "font_size": "2.5rem",
-            "line_height": "tight",
-            "letter_spacing": "tight",
-            "case": "none",
-            "wrap": "pretty",
-            "color": "var(--color-foreground)",
-            "background": false,
-            "background_color": "#00000026",
-            "corner_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {}
-        },
-        "accordion_aMi3MT": {
-          "type": "accordion",
-          "name": "t:names.accordion",
-          "settings": {
-            "icon": "caret",
-            "dividers": true,
-            "type_preset": "paragraph",
-            "inherit_color_scheme": true,
-            "color_scheme": "",
-            "border": "none",
-            "border_width": 1,
-            "border_opacity": 100,
-            "border_radius": 0,
-            "padding-block-start": 0,
-            "padding-block-end": 0,
-            "padding-inline-start": 0,
-            "padding-inline-end": 0
-          },
-          "blocks": {
-            "accordion_row_HWnRxN": {
-              "type": "_accordion-row",
-              "settings": {
-                "heading": "Is Retaur protein yogurt suitable for everyday consumption?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_d6Qdnj": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Yes, Retaur protein yogurt is perfect for daily consumption. It's made with high-quality ingredients and provides essential protein to support muscle maintenance and overall nutrition. With its balanced macronutrient profile, it fits nicely into most daily dietary plans while helping you meet your protein needs in a delicious way.</p>",
-                    "width": "100%",
-                    "max_width": "none",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_d6Qdnj"
-              ]
-            },
-            "accordion_row_pYRkAd": {
-              "type": "_accordion-row",
-              "settings": {
-                "heading": "How much protein is in each serving of Retaur protein yogurt?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_QFbjNa": {
-                  "type": "text",
-                  "settings": {
-                    "text": "<p>Each cup of Retaur protein yogurt contains 50g of high-quality protein. This substantial amount helps support muscle recovery, satiety, and your daily protein requirements in a convenient, delicious format.</p>",
-                    "width": "100%",
-                    "max_width": "none",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_QFbjNa"
-              ]
-            },
-            "accordion_row_Jtei9J": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_dash_row",
-              "settings": {
-                "heading": "How does Retaur protein yogurt compare to regular Greek yogurt?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_xMpDRm": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>Retaur protein yogurt offers significantly higher protein content (50g per cup) compared to regular Greek yogurt (typically 5-10g). Our protein yogurt is specially formulated with added whey protein for optimal muscle support while maintaining the creamy texture you love. It also contains less sugar than many commercial Greek yogurts while delivering more targeted nutritional benefits for active lifestyles, all without sacrificing taste.</p>",
-                    "width": "100%",
-                    "max_width": "none",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_xMpDRm"
-              ]
-            },
-            "accordion_row_G7GYHe": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_dash_row",
-              "settings": {
-                "heading": "What are the ingredients in Retaur protein yogurt?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_WURG9D": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>Retaur protein yogurt contains pasteurized milk, live active cultures, whey protein concentrate, natural flavors, and a touch of sugar for sweetness. Our protein yogurt is free from artificial preservatives, colors, and excessive added sugars. We prioritize clean, simple ingredients to deliver maximum nutritional benefit with minimal additives.</p>",
-                    "width": "100%",
-                    "max_width": "none",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_WURG9D"
-              ]
-            },
-            "accordion_row_EmYNYR": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_dash_row",
-              "settings": {
-                "heading": "Can I enjoy Retaur protein yogurt if I'm trying to lose weight?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_nxPJYn": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>Absolutely! Retaur protein yogurt is an excellent choice for weight management goals. The high protein content promotes satiety (feeling full longer), while the balanced nutritional profile provides essential nutrients without excessive calories. It makes for a satisfying snack that can help reduce overall calorie intake by preventing hunger between meals.</p>",
-                    "width": "100%",
-                    "max_width": "none",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_nxPJYn"
-              ]
-            },
-            "accordion_row_YjcTn6": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_dash_row",
-              "settings": {
-                "heading": "When is the best time to consume Retaur protein yogurt?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_ejt9TQ": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>Retaur protein yogurt is versatile and beneficial at various times. It makes an excellent post-workout recovery option within the 2-hour recovery window, a convenient breakfast to start your day with quality protein, a satisfying mid-day snack to prevent hunger, or even a nutritious dessert alternative in the evening. The protein content helps with muscle recovery and maintenance regardless of when you consume it.</p>",
-                    "width": "100%",
-                    "max_width": "none",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_ejt9TQ"
-              ]
-            },
-            "accordion_row_8z7z8A": {
-              "type": "_accordion-row",
-              "name": "t:names.accordion_dash_row",
-              "settings": {
-                "heading": "How can I incorporate Retaur protein yogurt into my meal prep routine?",
-                "open_by_default": false,
-                "icon": "none",
-                "width": 20
-              },
-              "blocks": {
-                "text_gabhBp": {
-                  "type": "text",
-                  "name": "t:names.text",
-                  "settings": {
-                    "text": "<p>Retaur protein yogurt is incredibly versatile for meal prep. Use it as a base for overnight oats by adding oats, chia seeds, and fruits for a ready-to-eat breakfast. Create parfait jars with layers of protein yogurt, granola, and berries for grab-and-go snacks. Blend it into smoothie packs with frozen fruits and greens that can be quickly prepared. It can also be used as a healthier substitute for sour cream in dips or added to protein pancake batter for extra nutrition.</p>",
-                    "width": "100%",
-                    "max_width": "none",
-                    "alignment": "left",
-                    "type_preset": "rte",
-                    "font": "var(--font-body--family)",
-                    "font_size": "1rem",
-                    "line_height": "normal",
-                    "letter_spacing": "normal",
-                    "case": "none",
-                    "wrap": "pretty",
-                    "color": "var(--color-foreground)",
-                    "background": false,
-                    "background_color": "#00000026",
-                    "corner_radius": 0,
-                    "padding-block-start": 0,
-                    "padding-block-end": 0,
-                    "padding-inline-start": 0,
-                    "padding-inline-end": 0
-                  },
-                  "blocks": {}
-                }
-              },
-              "block_order": [
-                "text_gabhBp"
-              ]
-            }
-          },
-          "block_order": [
-            "accordion_row_HWnRxN",
-            "accordion_row_pYRkAd",
-            "accordion_row_Jtei9J",
-            "accordion_row_G7GYHe",
-            "accordion_row_EmYNYR",
-            "accordion_row_YjcTn6",
-            "accordion_row_8z7z8A"
-          ]
-        }
-      },
-      "block_order": [
-        "text_PcM9Ue",
-        "accordion_aMi3MT"
-      ],
-      "name": "t:names.faq_section",
-      "settings": {
-        "content_direction": "column",
-        "vertical_on_mobile": true,
-        "horizontal_alignment": "flex-start",
-        "vertical_alignment": "center",
-        "align_baseline": false,
-        "horizontal_alignment_flex_direction_column": "flex-start",
-        "vertical_alignment_flex_direction_column": "center",
-        "gap": 32,
-        "section_width": "page-width",
-        "section_height": "",
-        "section_height_custom": 50,
-        "color_scheme": "",
-        "background_media": "none",
-        "video_position": "cover",
-        "background_image_position": "cover",
-        "border": "none",
-        "border_width": 1,
-        "border_opacity": 100,
-        "border_radius": 0,
-        "toggle_overlay": false,
-        "overlay_color": "#00000026",
-        "overlay_style": "solid",
-        "gradient_direction": "to top",
-        "padding-block-start": 48,
-        "padding-block-end": 48
       }
     },
     "product-recommendations": {
@@ -2933,21 +861,606 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "retaur_trust_band": {
+      "type": "retaur-trust-band",
+      "blocks": {
+        "tb1": {
+          "type": "trust-item",
+          "settings": {
+            "icon": "nafdac",
+            "label": "NAFDAC approved"
+          }
+        },
+        "tb2": {
+          "type": "trust-item",
+          "settings": {
+            "icon": "pin",
+            "label": "Made in Lagos"
+          }
+        },
+        "tb3": {
+          "type": "trust-item",
+          "settings": {
+            "icon": "truck",
+            "label": "Free delivery ₦150K+"
+          }
+        },
+        "tb4": {
+          "type": "trust-item",
+          "settings": {
+            "icon": "check",
+            "label": "Pay on delivery"
+          }
+        }
+      },
+      "block_order": [
+        "tb1",
+        "tb2",
+        "tb3",
+        "tb4"
+      ],
+      "settings": {
+        "padding-block-start": 18,
+        "padding-block-end": 18,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "retaur_stat_band": {
+      "type": "retaur-stat-band",
+      "blocks": {
+        "sb1": {
+          "type": "stat-item",
+          "settings": {
+            "number": "54g",
+            "label": "Protein"
+          }
+        },
+        "sb2": {
+          "type": "stat-item",
+          "settings": {
+            "number": "540",
+            "label": "Calories"
+          }
+        },
+        "sb3": {
+          "type": "stat-item",
+          "settings": {
+            "number": "3",
+            "label": "Ingredients"
+          }
+        },
+        "sb4": {
+          "type": "stat-item",
+          "settings": {
+            "number": "0",
+            "label": "Fillers"
+          }
+        }
+      },
+      "block_order": [
+        "sb1",
+        "sb2",
+        "sb3",
+        "sb4"
+      ],
+      "settings": {
+        "eyebrow": "A meal in a cup",
+        "title": "<p>Not a snack. Not a shake. <em>A meal.</em></p>",
+        "padding-block-start": 48,
+        "padding-block-end": 48,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "retaur_hero_claim": {
+      "type": "retaur-hero-claim",
+      "blocks": {
+        "hs1": {
+          "type": "hero-stat",
+          "settings": {
+            "number": "54g",
+            "label": "Protein",
+            "sub_label": "per cup"
+          }
+        },
+        "hs2": {
+          "type": "hero-stat",
+          "settings": {
+            "number": "540",
+            "label": "Calories",
+            "sub_label": "per cup"
+          }
+        },
+        "hs3": {
+          "type": "hero-stat",
+          "settings": {
+            "number": "917",
+            "label": "mg Calcium",
+            "sub_label": "nearly your full daily requirement"
+          }
+        }
+      },
+      "block_order": [
+        "hs1",
+        "hs2",
+        "hs3"
+      ],
+      "settings": {
+        "eyebrow": "Retaur · Protein Yogurt",
+        "title_lead": "Your meal.\nIn a",
+        "title_highlight": "cup",
+        "title_trail": ".",
+        "lede": "<p>54 grams of complete protein in one 400g cup — about the same protein as 10 eggs, with the texture of ice cream. Made for people who don't have time to cook but won't skip a meal.</p>",
+        "padding-block-start": 64,
+        "padding-block-end": 64,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "retaur_versus_card": {
+      "type": "retaur-versus-card",
+      "blocks": {
+        "vc1": {
+          "type": "versus-card",
+          "settings": {
+            "card_eyebrow": "Greek yogurt",
+            "card_sub": "per cup",
+            "card_number": "25–30g",
+            "is_highlighted": false
+          }
+        },
+        "vc2": {
+          "type": "versus-card",
+          "settings": {
+            "card_eyebrow": "Retaur",
+            "card_sub": "per cup",
+            "card_number": "54g",
+            "is_highlighted": true
+          }
+        }
+      },
+      "block_order": [
+        "vc1",
+        "vc2"
+      ],
+      "settings": {
+        "eyebrow": "Versus Greek yogurt",
+        "title": "<p>Still eating Greek<br>yogurt for <em>protein</em>?</p>",
+        "lede": "<p>Greek yogurt has been the go-to protein snack for years. The math doesn't quite work out anymore.</p>",
+        "tag_lead": "Same size.",
+        "tag_muted": "Twice the fuel.",
+        "padding-block-start": 32,
+        "padding-block-end": 64,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "retaur_meal_cards": {
+      "type": "retaur-meal-cards",
+      "blocks": {
+        "mc1": {
+          "type": "meal-card",
+          "settings": {
+            "icon_preset": "sun",
+            "eyebrow": "Breakfast",
+            "title": "Out the door\nby 7:30.",
+            "body": "<p>Grab and go on busy mornings — no prep, no dishes, no excuse to skip.</p>"
+          }
+        },
+        "mc2": {
+          "type": "meal-card",
+          "settings": {
+            "icon_preset": "box",
+            "eyebrow": "Lunch",
+            "title": "Meeting at noon,\nno time to cook.",
+            "body": "<p>One cup keeps you sharp through back-to-back meetings without the 3pm crash.</p>"
+          }
+        },
+        "mc3": {
+          "type": "meal-card",
+          "settings": {
+            "icon_preset": "moon",
+            "eyebrow": "Dinner",
+            "title": "Too tired to\nmake something.",
+            "body": "<p>A full meal's worth of protein, fast and filling. Sleep on a full stomach.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "mc1",
+        "mc2",
+        "mc3"
+      ],
+      "settings": {
+        "eyebrow": "Every meal",
+        "title": "<p>One cup. Every <em>meal</em>.</p>",
+        "lede": "<p>Built for busy weekdays. Real protein, real calories, no prep — whenever you need a meal but don't have time to make one.</p>",
+        "padding-block-start": 64,
+        "padding-block-end": 64,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "retaur_ingredients": {
+      "type": "retaur-ingredients",
+      "blocks": {
+        "ing1": {
+          "type": "ingredient",
+          "settings": {
+            "number": "01",
+            "name": "<p>Low-fat milk</p>",
+            "desc": "<p>Delivers essential calcium and complete protein with fewer calories than whole milk.</p>",
+            "photo_placeholder": "High-quality low-fat milk"
+          }
+        },
+        "ing2": {
+          "type": "ingredient",
+          "settings": {
+            "number": "02",
+            "name": "<p>Whey protein<br>concentrate</p>",
+            "desc": "<p>Rapidly absorbed complete protein that supports muscle recovery and growth.</p>",
+            "photo_placeholder": "Whey protein concentrate"
+          }
+        },
+        "ing3": {
+          "type": "ingredient",
+          "settings": {
+            "number": "03",
+            "name": "<p>A touch of sugar</p>",
+            "desc": "<p>Just enough to balance the tartness — no fillers, no high-fructose corn syrup.</p>",
+            "photo_placeholder": "A touch of sugar"
+          }
+        },
+        "neg1": {
+          "type": "neg-claim",
+          "settings": {
+            "label": "No preservatives"
+          }
+        },
+        "neg2": {
+          "type": "neg-claim",
+          "settings": {
+            "label": "No artificial flavors"
+          }
+        },
+        "neg3": {
+          "type": "neg-claim",
+          "settings": {
+            "label": "No fillers"
+          }
+        },
+        "neg4": {
+          "type": "neg-claim",
+          "settings": {
+            "label": "No artificial colors"
+          }
+        }
+      },
+      "block_order": [
+        "ing1",
+        "ing2",
+        "ing3",
+        "neg1",
+        "neg2",
+        "neg3",
+        "neg4"
+      ],
+      "settings": {
+        "eyebrow": "Ingredients you trust",
+        "title": "<p>Three ingredients.<br><em>That's it.</em></p>",
+        "lede": "<p>We could write a longer label. We don't need to. Every cup is built from three things you can pronounce — and nothing you can't.</p>",
+        "trust_line": "NAFDAC approved · Made in Lagos",
+        "padding-block-start": 64,
+        "padding-block-end": 64,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "retaur_nutrition": {
+      "type": "retaur-nutrition",
+      "blocks": {
+        "nr1": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Fat",
+            "value": "11.4g",
+            "style": "bold"
+          }
+        },
+        "nr2": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Total Carbohydrate",
+            "value": "15g",
+            "style": "bold"
+          }
+        },
+        "nr3": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Sucrose",
+            "value": "4.4g",
+            "style": "indent"
+          }
+        },
+        "nr4": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Lactose",
+            "value": "17.4g",
+            "style": "indent"
+          }
+        },
+        "nr5": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Protein",
+            "value": "27.2g",
+            "style": "bold"
+          }
+        },
+        "nr6": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Calcium",
+            "value": "458.6mg",
+            "style": "normal"
+          }
+        },
+        "nr7": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Sodium",
+            "value": "113.6mg",
+            "style": "normal"
+          }
+        },
+        "nr8": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Potassium",
+            "value": "99.6mg",
+            "style": "normal"
+          }
+        },
+        "nr9": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Magnesium",
+            "value": "278.0mg",
+            "style": "normal"
+          }
+        },
+        "nr10": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Phosphorus",
+            "value": "60.4mg",
+            "style": "normal"
+          }
+        },
+        "pc1": {
+          "type": "percup-row",
+          "settings": {
+            "label": "Calories",
+            "value": "540"
+          }
+        },
+        "pc2": {
+          "type": "percup-row",
+          "settings": {
+            "label": "Protein",
+            "value": "54g"
+          }
+        },
+        "pc3": {
+          "type": "percup-row",
+          "settings": {
+            "label": "Fat",
+            "value": "22.8g"
+          }
+        },
+        "pc4": {
+          "type": "percup-row",
+          "settings": {
+            "label": "Carbohydrate",
+            "value": "36g"
+          }
+        },
+        "pc5": {
+          "type": "percup-row",
+          "settings": {
+            "label": "Calcium",
+            "value": "917mg"
+          }
+        },
+        "pc6": {
+          "type": "percup-row",
+          "settings": {
+            "label": "Magnesium",
+            "value": "556mg"
+          }
+        },
+        "pc7": {
+          "type": "percup-row",
+          "settings": {
+            "label": "Potassium",
+            "value": "199mg"
+          }
+        }
+      },
+      "block_order": [
+        "nr1",
+        "nr2",
+        "nr3",
+        "nr4",
+        "nr5",
+        "nr6",
+        "nr7",
+        "nr8",
+        "nr9",
+        "nr10",
+        "pc1",
+        "pc2",
+        "pc3",
+        "pc4",
+        "pc5",
+        "pc6",
+        "pc7"
+      ],
+      "settings": {
+        "eyebrow": "Built inside & out",
+        "title": "<p>The numbers<br>don't <em>lie</em>.</p>",
+        "lede": "<p>A full panel for the people who read labels. Per cup, per serving, every number that matters.</p>",
+        "panel_heading": "Nutrition Facts",
+        "panel_sub": "2 servings per cup",
+        "panel_serving_label": "Serving size",
+        "panel_serving_value": "½ cup (200g)",
+        "panel_calories_label": "Calories",
+        "panel_calories_value": "270",
+        "percup_eyebrow": "Per full cup (400g)",
+        "percup_footer": "<p>Everything your body needs. <strong>One cup. No supplements.</strong></p>",
+        "padding-block-start": 64,
+        "padding-block-end": 64,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "retaur_written_reviews": {
+      "type": "retaur-written-reviews",
+      "blocks": {
+        "judgeme_reviews": {
+          "type": "shopify://apps/judge-me-reviews/blocks/judgeme_core/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "judgeme_reviews"
+      ],
+      "settings": {
+        "eyebrow": "Customer reviews",
+        "title": "<p>Don't take our word<br>for <em>it</em>.</p>",
+        "lede": "<p>Real customers, real reviews. Watch them on Instagram, read them on Judge.me, or just buy a cup and find out for yourself.</p>",
+        "padding-block-start": 32,
+        "padding-block-end": 64,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0,
+        "cta_label": "Read all reviews →",
+        "cta_link": ""
+      }
+    },
+    "retaur_faq": {
+      "type": "retaur-faq",
+      "blocks": {
+        "fq1": {
+          "type": "faq-item",
+          "settings": {
+            "question": "Is Retaur protein yogurt suitable for everyday consumption?",
+            "answer": "<p>Yes. Retaur protein yogurt is made for daily consumption — high-quality ingredients and a balanced macro profile that fits into most dietary plans while helping you meet your protein needs without a shaker bottle.</p>",
+            "open_by_default": true
+          }
+        },
+        "fq2": {
+          "type": "faq-item",
+          "settings": {
+            "question": "How much protein is in each cup?",
+            "answer": "<p>54g per 400g cup. That's about the protein content of ten eggs, packed into one yogurt — enough for muscle recovery, satiety, and most people's daily target in a single serving.</p>",
+            "open_by_default": false
+          }
+        },
+        "fq3": {
+          "type": "faq-item",
+          "settings": {
+            "question": "How does Retaur compare to regular Greek yogurt?",
+            "answer": "<p>Significantly higher protein (54g per cup vs 25–30g for Greek). Formulated with added whey protein for muscle support while keeping the creamy texture. Less sugar than most commercial Greek yogurts, more targeted for active lifestyles.</p>",
+            "open_by_default": false
+          }
+        },
+        "fq4": {
+          "type": "faq-item",
+          "settings": {
+            "question": "What are the ingredients?",
+            "answer": "<p>Low-fat milk, whey protein concentrate, and a touch of sugar for sweetness. No artificial preservatives, no artificial colors, no excessive added sugars. Clean and simple.</p>",
+            "open_by_default": false
+          }
+        },
+        "fq5": {
+          "type": "faq-item",
+          "settings": {
+            "question": "Can I enjoy Retaur if I'm trying to lose weight?",
+            "answer": "<p>Absolutely. High protein content promotes satiety so you stay full longer, while the balanced nutritional profile gives you essential nutrients without excessive calories.</p>",
+            "open_by_default": false
+          }
+        },
+        "fq6": {
+          "type": "faq-item",
+          "settings": {
+            "question": "When is the best time to have Retaur?",
+            "answer": "<p>Anytime. Post-workout within the 2-hour recovery window, breakfast on a busy morning, a mid-day snack to prevent hunger, or a nutritious dessert in the evening.</p>",
+            "open_by_default": false
+          }
+        },
+        "fq7": {
+          "type": "faq-item",
+          "settings": {
+            "question": "How can I incorporate Retaur into meal prep?",
+            "answer": "<p>Use it as a base for overnight oats. Build parfait jars with granola and berries. Blend into smoothie packs. Swap it in for sour cream in dips. Mix into protein pancake batter. Very versatile.</p>",
+            "open_by_default": false
+          }
+        }
+      },
+      "block_order": [
+        "fq1",
+        "fq2",
+        "fq3",
+        "fq4",
+        "fq5",
+        "fq6",
+        "fq7"
+      ],
+      "settings": {
+        "eyebrow": "FAQ",
+        "title": "<p>We are serious about<br>nutrition. <em>Ask away.</em></p>",
+        "padding-block-start": 32,
+        "padding-block-end": 64,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "retaur_final_cta": {
+      "type": "retaur-final-cta",
+      "settings": {
+        "eyebrow": "Order direct from Lagos",
+        "title": "<p>Stop<br>skipping<br><em>meals</em>.</p>",
+        "body": "<p>The next time you'd skip lunch — don't. Grab a cup. 54 grams of protein, three ingredients, one minute.</p>",
+        "price_eyebrow": "Single cups from",
+        "price": "₦5,500",
+        "cta_label": "Order now",
+        "cta_link": "",
+        "bg_number": "54g",
+        "padding-block-start": 80,
+        "padding-block-end": 80,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
     }
   },
   "order": [
     "main",
-    "marquee_Etc8gV",
-    "divider_VDGepn",
+    "retaur_trust_band",
+    "retaur_stat_band",
+    "retaur_hero_claim",
+    "retaur_versus_card",
+    "retaur_meal_cards",
+    "retaur_ingredients",
+    "retaur_nutrition",
     "video_testimonials_QkK37L",
-    "divider_aGiUVL",
-    "section_6mt3Ra",
-    "divider_mPJWMw",
-    "section_CCQJQf",
-    "divider_ED9VRc",
+    "retaur_written_reviews",
     "product_comparison_Xqe4tY",
-    "17602644249e14987b",
-    "section_rqycLF",
+    "retaur_faq",
+    "retaur_final_cta",
     "product-recommendations"
   ]
 }

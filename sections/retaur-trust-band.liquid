@@ -1,0 +1,140 @@
+{%- liquid
+  assign section_settings = section.settings
+-%}
+
+<section
+  class="retaur-trust-band spacing-style"
+  style="{% render 'spacing-style', settings: section_settings %}"
+>
+  <div class="retaur-container retaur-trust-band__row">
+    {%- for block in section.blocks -%}
+      {%- assign block_settings = block.settings -%}
+      <div class="retaur-trust-band__item" {{ block.shopify_attributes }}>
+        {%- case block_settings.icon -%}
+          {%- when 'nafdac' -%}
+            <span class="retaur-trust-band__nafdac" aria-hidden="true">
+              <span class="retaur-trust-band__nafdac-mark">N</span>
+            </span>
+          {%- when 'pin' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2C8 6 6 10 6 14a6 6 0 0012 0c0-4-2-8-6-12z"/>
+            </svg>
+          {%- when 'truck' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <rect x="3" y="6" width="13" height="11" rx="1"/>
+              <path d="M16 9h3l2 3v5h-5"/>
+              <circle cx="7.5" cy="18" r="1.5"/>
+              <circle cx="17" cy="18" r="1.5"/>
+            </svg>
+          {%- when 'check' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M20 6L9 17l-5-5"/>
+            </svg>
+          {%- when 'shield' -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M12 2l9 4v6c0 5-3.5 9.5-9 10-5.5-.5-9-5-9-10V6l9-4z"/>
+            </svg>
+          {%- when 'star' -%}
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M12 2l3 7 7 .8-5.2 4.7L18 22l-6-3.5L6 22l1.2-7.5L2 9.8l7-.8 3-7z"/>
+            </svg>
+        {%- endcase -%}
+        <span class="retaur-trust-band__label">{{ block_settings.label | escape }}</span>
+      </div>
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Retaur trust band",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "blocks": [
+    {
+      "type": "trust-item",
+      "name": "Trust item",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "nafdac", "label": "NAFDAC badge" },
+            { "value": "pin", "label": "Location pin" },
+            { "value": "truck", "label": "Truck" },
+            { "value": "check", "label": "Checkmark" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "star", "label": "Star" }
+          ],
+          "default": "check"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Trust message"
+        }
+      ]
+    }
+  ],
+  "settings": [
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    {
+      "type": "range",
+      "id": "padding-block-start",
+      "label": "t:settings.top",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "padding-block-end",
+      "label": "t:settings.bottom",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 18
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-start",
+      "label": "t:settings.left",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    },
+    {
+      "type": "range",
+      "id": "padding-inline-end",
+      "label": "t:settings.right",
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px",
+      "default": 0
+    }
+  ],
+  "presets": [
+    {
+      "name": "Retaur trust band",
+      "blocks": [
+        { "type": "trust-item", "settings": { "icon": "nafdac", "label": "NAFDAC approved" } },
+        { "type": "trust-item", "settings": { "icon": "pin", "label": "Made in Lagos" } },
+        { "type": "trust-item", "settings": { "icon": "truck", "label": "Free delivery ₦150K+" } },
+        { "type": "trust-item", "settings": { "icon": "check", "label": "Pay on delivery" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

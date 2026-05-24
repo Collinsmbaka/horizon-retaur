@@ -1,0 +1,89 @@
+{%- liquid
+  assign section_settings = section.settings
+-%}
+
+<section
+  class="retaur-faq retaur-section--cream spacing-style"
+  style="{% render 'spacing-style', settings: section_settings %}"
+>
+  <div class="retaur-container">
+    {%- if section_settings.eyebrow != blank -%}
+      <div class="retaur-section-eyebrow">{{ section_settings.eyebrow | escape }}</div>
+    {%- endif -%}
+    {%- if section_settings.title != blank -%}
+      <h2 class="retaur-section-title">{{ section_settings.title }}</h2>
+    {%- endif -%}
+
+    <div class="retaur-faq__list">
+      {%- for block in section.blocks -%}
+        {%- assign bs = block.settings -%}
+        <details
+          class="retaur-faq__item"
+          {% if bs.open_by_default %}open{% endif %}
+          {{ block.shopify_attributes }}
+        >
+          <summary class="retaur-faq__trigger">
+            <span class="retaur-faq__question">{{ bs.question | escape }}</span>
+            <span class="retaur-faq__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                <path d="M12 5v14M5 12h14"/>
+              </svg>
+            </span>
+          </summary>
+          <div class="retaur-faq__answer">{{ bs.answer }}</div>
+        </details>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Retaur FAQ",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 20,
+  "blocks": [
+    {
+      "type": "faq-item",
+      "name": "FAQ item",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Your question?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Your answer.</p>" },
+        { "type": "checkbox", "id": "open_by_default", "label": "Open by default", "default": false }
+      ]
+    }
+  ],
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "FAQ" },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "Title (use italic for accent)",
+      "default": "<p>We are serious about<br>nutrition. <em>Ask away.</em></p>"
+    },
+    {
+      "type": "header",
+      "content": "t:content.padding"
+    },
+    { "type": "range", "id": "padding-block-start", "label": "t:settings.top", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 32 },
+    { "type": "range", "id": "padding-block-end", "label": "t:settings.bottom", "min": 0, "max": 200, "step": 4, "unit": "px", "default": 64 },
+    { "type": "range", "id": "padding-inline-start", "label": "t:settings.left", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 },
+    { "type": "range", "id": "padding-inline-end", "label": "t:settings.right", "min": 0, "max": 100, "step": 1, "unit": "px", "default": 0 }
+  ],
+  "presets": [
+    {
+      "name": "Retaur FAQ",
+      "blocks": [
+        { "type": "faq-item", "settings": { "question": "Is Retaur protein yogurt suitable for everyday consumption?", "answer": "<p>Yes. Retaur protein yogurt is made for daily consumption — high-quality ingredients and a balanced macro profile that fits into most dietary plans while helping you meet your protein needs without a shaker bottle.</p>", "open_by_default": true } },
+        { "type": "faq-item", "settings": { "question": "How much protein is in each cup?", "answer": "<p>54g per 400g cup. That's about the protein content of ten eggs, packed into one yogurt — enough for muscle recovery, satiety, and most people's daily target in a single serving.</p>" } },
+        { "type": "faq-item", "settings": { "question": "How does Retaur compare to regular Greek yogurt?", "answer": "<p>Significantly higher protein (54g per cup vs 25–30g for Greek). Formulated with added whey protein for muscle support while keeping the creamy texture. Less sugar than most commercial Greek yogurts, more targeted for active lifestyles.</p>" } },
+        { "type": "faq-item", "settings": { "question": "What are the ingredients?", "answer": "<p>Low-fat milk, whey protein concentrate, and a touch of sugar for sweetness. No artificial preservatives, no artificial colors, no excessive added sugars. Clean and simple.</p>" } },
+        { "type": "faq-item", "settings": { "question": "Can I enjoy Retaur if I'm trying to lose weight?", "answer": "<p>Absolutely. High protein content promotes satiety so you stay full longer, while the balanced nutritional profile gives you essential nutrients without excessive calories.</p>" } },
+        { "type": "faq-item", "settings": { "question": "When is the best time to have Retaur?", "answer": "<p>Anytime. Post-workout within the 2-hour recovery window, breakfast on a busy morning, a mid-day snack to prevent hunger, or a nutritious dessert in the evening.</p>" } },
+        { "type": "faq-item", "settings": { "question": "How can I incorporate Retaur into meal prep?", "answer": "<p>Use it as a base for overnight oats. Build parfait jars with granola and berries. Blend into smoothie packs. Swap it in for sour cream in dips. Mix into protein pancake batter. Very versatile.</p>" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
