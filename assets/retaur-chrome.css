@@ -109,11 +109,10 @@
   gap: 10px;
 }
 
-#header-component header-actions > .header-actions__action,
-#header-component header-actions > button,
-#header-component header-actions > a,
-#header-component header-actions > account-popover > button,
-#header-component header-actions > account-popover > a {
+/* Target ONLY the action buttons (search/account/cart) by class — not
+   descendants like cart-drawer's close/checkout buttons. */
+#header-component header-actions button.header-actions__action,
+#header-component header-actions a.header-actions__action {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -123,15 +122,13 @@
   border: 1px solid var(--retaur-line);
   background: transparent;
   color: var(--retaur-ink);
+  padding: 0;
   transition: background 0.12s, border-color 0.12s, color 0.12s;
   position: relative;
   overflow: visible;
 }
-#header-component header-actions > .header-actions__action:hover,
-#header-component header-actions > button:hover,
-#header-component header-actions > a:hover,
-#header-component header-actions > account-popover > button:hover,
-#header-component header-actions > account-popover > a:hover {
+#header-component header-actions button.header-actions__action:hover,
+#header-component header-actions a.header-actions__action:hover {
   background: rgba(0, 0, 0, 0.04);
   border-color: var(--retaur-black);
 }
@@ -157,26 +154,29 @@
    - Override the default .cart-bubble__background grey w/ magenta.
    - Set text color/size/weight on text-count explicitly. */
 
+/* Position the bubble fully INSIDE the 40px button so it can't be clipped
+   by any upstream overflow:hidden. Bubble sits at top-right of the button. */
 #header-group #header-component .header-actions__cart-icon {
-  --cart-bubble-size: 20px;
-  --cart-bubble-top: -6px;
-  --cart-bubble-right: -6px;
+  --cart-bubble-size: 18px;
+  --cart-bubble-top: 2px;
+  --cart-bubble-right: 2px;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 100%;
   height: 100%;
+  overflow: visible;
 }
 
-/* When the count text is empty (briefly during load) keep a 16px dot */
+/* When the count text is empty (briefly during load) keep a smaller dot */
 #header-group #header-component cart-icon:has(.cart-bubble__text-count:empty) {
-  --cart-bubble-size: 16px;
-  --cart-bubble-top: -4px;
-  --cart-bubble-right: -4px;
+  --cart-bubble-size: 10px;
+  --cart-bubble-top: 4px;
+  --cart-bubble-right: 4px;
 }
 
-/* Force the bubble to be a square so the magenta circle renders as a circle */
+/* Force the bubble to be a square so the magenta circle is a circle */
 #header-group #header-component .header-actions__cart-icon .cart-bubble {
   width: var(--cart-bubble-size);
   height: var(--cart-bubble-size);
@@ -185,6 +185,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: visible;
 }
 
 #header-group #header-component .cart-bubble__background,
@@ -193,9 +194,18 @@
   border-radius: 9999px;
 }
 
+/* Force the number on top of the magenta bg — Horizon's --layer-flat z-index
+   may render the text behind the background span. */
 #header-group #header-component .cart-bubble__text,
-#header-group #header-component .cart-bubble__text-count,
 .cart-drawer__heading .cart-bubble__text {
+  position: relative;
+  z-index: 2;
+  color: #fff;
+  font-weight: 900;
+  font-size: 11px;
+  line-height: 1;
+}
+#header-group #header-component .cart-bubble__text-count {
   color: #fff;
   font-weight: 900;
   font-size: 11px;
