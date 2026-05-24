@@ -366,7 +366,7 @@
                     "text_f6htT4": {
                       "type": "text",
                       "settings": {
-                        "text": "<p>Enjoy the Yogurt with your granola. <br/>Use as a salad dressing.<br/>Enjoy it as a healthy high-protein snack alone or with fruits<br/>Use it for your parfaits, pancakes, bakeries, or protein shakes.</p>",
+                        "text": "<ul><li>Have it as a complete breakfast before a busy morning.</li><li>Use it as a quick high-protein lunch on the go.</li><li>Have it as a post-workout meal for muscle recovery.</li><li>Add granola or fruits for a fuller, more satisfying meal.</li><li>Use it as a base for your protein shakes, parfaits, or pancakes.</li></ul>",
                         "width": "100%",
                         "max_width": "normal",
                         "alignment": "left",
@@ -484,7 +484,7 @@
                       "type": "image",
                       "name": "t:names.image",
                       "settings": {
-                        "image": "shopify://shop_images/4_f1c715e0-291e-441b-bbb8-c98e97c43f5d.png",
+                        "image": "shopify://shop_images/7_57ea28ed-dc8c-462c-b594-c58206c81649.png",
                         "link": "",
                         "image_ratio": "square",
                         "width": "fill",
