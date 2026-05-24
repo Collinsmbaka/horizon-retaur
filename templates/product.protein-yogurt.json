@@ -50,7 +50,7 @@
             "custom_width_mobile": 100,
             "height": "fit",
             "details_position": "flex-start",
-            "gap": 30,
+            "gap": 15,
             "sticky_details_desktop": true,
             "inherit_color_scheme": true,
             "color_scheme": "",
@@ -669,6 +669,7 @@
         "title_highlight": "cup",
         "title_trail": ".",
         "lede": "<p>54 grams of complete protein in one 400g cup — about the same protein as 10 eggs, with the texture of ice cream. Made for people who don't have time to cook but won't skip a meal.</p>",
+        "image": "shopify://shop_images/1_79b821c4-00c1-46d8-860b-49207a25f83d.png",
         "padding-block-start": 64,
         "padding-block-end": 64,
         "padding-inline-start": 0,
@@ -765,6 +766,7 @@
         "ing1": {
           "type": "ingredient",
           "settings": {
+            "photo": "shopify://shop_images/d2e8b521-09db-4685-99ca-ac218f312c2d.png",
             "photo_placeholder": "High-quality low-fat milk",
             "number": "01",
             "name": "<p>Low-fat milk</p>",
@@ -774,15 +776,17 @@
         "ing2": {
           "type": "ingredient",
           "settings": {
+            "photo": "shopify://shop_images/16362a4c-5332-4365-8246-c754450ae448.png",
             "photo_placeholder": "Whey protein concentrate",
             "number": "02",
-            "name": "<p>Whey protein<br>concentrate</p>",
+            "name": "<p>Whey protein<br/>concentrate</p>",
             "desc": "<p>Rapidly absorbed complete protein that supports muscle recovery and growth.</p>"
           }
         },
         "ing3": {
           "type": "ingredient",
           "settings": {
+            "photo": "shopify://shop_images/d9557fe0-eded-4c4a-9ae7-23108f6fbf1a.png",
             "photo_placeholder": "A touch of sugar",
             "number": "03",
             "name": "<p>A touch of sugar</p>",
