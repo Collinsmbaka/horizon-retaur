@@ -354,11 +354,20 @@
     }
   }
 
-  /* Buy buttons — the primary ATC button */
+  /* Buy buttons — the primary ATC button.
+     Horizon's .button uses --button-color and --button-background-color
+     (defined in base.css), so we override those instead of color/background. */
   .product-form-buttons .button:not(.shopify-payment-button__button) {
+    --button-color: #fff;
+    --button-background-color: var(--retaur-black);
+    --button-hover-color: #fff;
+    --button-hover-background-color: var(--retaur-magenta);
+    --color-primary-button-text: #fff;
+    --color-primary-button-background: var(--retaur-black);
+    --color-primary-button-hover-text: #fff;
+    --color-primary-button-hover-background: var(--retaur-magenta);
+
     width: 100%;
-    background: var(--retaur-black);
-    color: #fff;
     font-size: 16px;
     font-weight: 900;
     letter-spacing: 0.02em;
@@ -366,15 +375,19 @@
     padding: 18px 24px;
     border-radius: var(--retaur-r-sm);
     border: 0;
-    transition: background 0.15s, transform 0.08s;
-
-    &:hover:not(:disabled) {
-      background: var(--retaur-magenta);
-    }
+    transition: background-color 0.15s, transform 0.08s;
 
     &:active:not(:disabled) {
       transform: translateY(1px);
     }
+  }
+
+  /* Ensure button label + icon inherit the white color */
+  .product-form-buttons .button:not(.shopify-payment-button__button) .add-to-cart-text,
+  .product-form-buttons .button:not(.shopify-payment-button__button) .add-to-cart-text__content,
+  .product-form-buttons .button:not(.shopify-payment-button__button) .add-to-cart-text--added,
+  .product-form-buttons .button:not(.shopify-payment-button__button) svg {
+    color: #fff;
   }
 
   /* Accordion — uppercase headings, + icon (currently the existing block uses caret) */

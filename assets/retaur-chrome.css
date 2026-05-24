@@ -122,18 +122,18 @@
   border-color: var(--retaur-black);
 }
 
-/* Cart count badge — magenta. Match common Horizon class candidates. */
-#header-component .cart-count,
-#header-component .cart-bubble,
-#header-component [data-cart-count],
-#header-component .header-actions__cart-count {
+/* Cart count badge — magenta.
+   Horizon's bubble is .cart-bubble (positioned container) with .cart-bubble__background
+   (the visible circular bg span) + .cart-bubble__text (the number).
+   Don't resize the bubble — Horizon uses --cart-bubble-size for that. Just colorize. */
+#header-component .cart-bubble__background,
+.cart-drawer__heading .cart-bubble__background {
   background: var(--retaur-magenta);
+}
+#header-component .cart-bubble__text,
+.cart-drawer__heading .cart-bubble__text {
   color: #fff;
-  font-size: 10px;
   font-weight: 900;
-  min-width: 18px;
-  height: 18px;
-  border-radius: 9999px;
 }
 
 /* ─── Footer ────────────────────────────────────────────────── */

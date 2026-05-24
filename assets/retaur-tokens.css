@@ -20,7 +20,7 @@
   --retaur-muted-on-dark: rgba(255, 255, 255, 0.65);
   --retaur-subtle-on-dark: rgba(255, 255, 255, 0.45);
 
-  --retaur-container: 1200px;
+  --retaur-container: 1440px;
   --retaur-gutter: 20px;
 
   --retaur-r-sm: 6px;
@@ -43,6 +43,12 @@
   width: 100%;
   max-width: var(--retaur-container);
   margin-inline: auto;
+  padding-inline: var(--retaur-gutter);
+}
+
+/* When a section element has the retaur-container directly, allow full-bleed override */
+.retaur-container--full {
+  max-width: none;
   padding-inline: var(--retaur-gutter);
 }
 
