@@ -1294,23 +1294,6 @@
         "padding-inline-end": 0
       }
     },
-    "retaur_final_cta": {
-      "type": "retaur-final-cta",
-      "settings": {
-        "eyebrow": "",
-        "title": "<p>Stop<br/>skipping<br/><em>meals</em>.</p>",
-        "body": "<p>The next time you'd skip lunch — don't. Grab a cup. 54 grams of protein, three ingredients, one minute.</p>",
-        "price_eyebrow": "Single cups from",
-        "price": "₦5,500",
-        "cta_label": "Order now",
-        "cta_link": "shopify://products/retaur-protein-yogurt",
-        "bg_number": "54g",
-        "padding-block-start": 80,
-        "padding-block-end": 80,
-        "padding-inline-start": 0,
-        "padding-inline-end": 0
-      }
-    },
     "product-recommendations": {
       "type": "product-recommendations",
       "blocks": {
@@ -1451,6 +1434,23 @@
         "padding-block-start": 48,
         "padding-block-end": 48
       }
+    },
+    "retaur_final_cta": {
+      "type": "retaur-final-cta",
+      "settings": {
+        "eyebrow": "",
+        "title": "<p>Stop<br/>skipping<br/><em>meals</em>.</p>",
+        "body": "<p>The next time you'd skip lunch — don't. Grab a cup. 54 grams of protein, three ingredients, one minute.</p>",
+        "price_eyebrow": "Single cups from",
+        "price": "₦5,500",
+        "cta_label": "Order now",
+        "cta_link": "shopify://products/retaur-protein-yogurt",
+        "bg_number": "54g",
+        "padding-block-start": 80,
+        "padding-block-end": 80,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
     }
   },
   "order": [
@@ -1466,7 +1466,7 @@
     "retaur_written_reviews",
     "product_comparison_Xqe4tY",
     "retaur_faq",
-    "retaur_final_cta",
-    "product-recommendations"
+    "product-recommendations",
+    "retaur_final_cta"
   ]
 }
