@@ -136,23 +136,45 @@
   border-color: var(--retaur-black);
 }
 
-/* Cart count badge — magenta, popping out of the icon button's top-right corner.
-   Horizon: .cart-bubble container, .cart-bubble__background span = the visible bg,
-   .cart-bubble__text = the number. Push it outside the 40px circular icon button
-   by overriding Horizon's --cart-bubble-top/right vars. */
+/* Cart count badge — magenta circle popping out of the icon button top-right.
+   Horizon's bubble: .cart-bubble (positioning container with only width set —
+   no height!), .cart-bubble__background (absolute fill = the visible circle),
+   .cart-bubble__text + .cart-bubble__text-count (the number). */
+
 #header-component .header-actions__cart-icon {
   --cart-bubble-size: 20px;
-  --cart-bubble-top: -8px;
-  --cart-bubble-right: -8px;
+  --cart-bubble-top: -6px;
+  --cart-bubble-right: -6px;
 }
+
+/* Even when item-count text element is empty (still loading), keep a 16px dot
+   instead of Horizon's default 10px so it's visibly a "cart has items" indicator. */
+#header-component cart-icon:has(.cart-bubble__text-count:empty) {
+  --cart-bubble-size: 16px;
+  --cart-bubble-top: -4px;
+  --cart-bubble-right: -4px;
+}
+
+/* Force the bubble to be square (Horizon only sets width, not height) so the
+   circle renders as a circle and the number actually fits. */
+#header-component .header-actions__cart-icon .cart-bubble {
+  height: var(--cart-bubble-size);
+  min-width: var(--cart-bubble-size);
+}
+
 #header-component .cart-bubble__background,
 .cart-drawer__heading .cart-bubble__background {
   background: var(--retaur-magenta);
+  border-radius: 9999px;
 }
+
 #header-component .cart-bubble__text,
+#header-component .cart-bubble__text-count,
 .cart-drawer__heading .cart-bubble__text {
   color: #fff;
   font-weight: 900;
+  font-size: 11px;
+  line-height: 1;
 }
 
 /* ─── Footer ────────────────────────────────────────────────── */

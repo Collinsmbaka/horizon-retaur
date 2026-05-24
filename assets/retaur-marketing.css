@@ -157,6 +157,14 @@
 }
 
 /* ─── PDP info column — protein yogurt only ──────────────── */
+
+/* Narrow this PDP's Horizon --page-width so the product-information section
+   content stays centered ~1440px instead of stretching to the merchant's
+   site-wide page-width (set wider). Section-background element keeps the
+   cream bg full-bleed. Inherits down to retaur-* sections too. */
+main[data-template="product.protein-yogurt"] {
+  --page-width: 90rem;
+}
 /* Scope restyles of generic Horizon blocks to this template. */
 
 [data-template="product.protein-yogurt"] {
