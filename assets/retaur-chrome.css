@@ -137,39 +137,64 @@
 }
 
 /* Cart count badge — magenta circle popping out of the icon button top-right.
-   Horizon's bubble: .cart-bubble (positioning container with only width set —
-   no height!), .cart-bubble__background (absolute fill = the visible circle),
-   .cart-bubble__text + .cart-bubble__text-count (the number). */
+   Horizon's bubble structure:
+     <button.header-actions__action>           ← my circular 40x40 wrapper
+       <cart-icon.header-actions__cart-icon>   ← inline by default, sized to SVG
+         <span.svg-wrapper><svg/></span>
+         <div.cart-bubble>                     ← position:absolute, only width set!
+           <span.cart-bubble__background/>     ← absolute inset:0 = the visible circle
+           <span.cart-bubble__text>            ← flex centered
+             <span.visually-hidden/>
+             <span.cart-bubble__text-count>1</span>
+           </span>
+         </div>
+       </cart-icon>
+     </button>
+   Fixes:
+   - Stretch cart-icon to fill the button so the bubble's top/right offsets
+     anchor to the button corners, not the SVG corners.
+   - Force a square shape on .cart-bubble (Horizon only sets width).
+   - Override the default .cart-bubble__background grey w/ magenta.
+   - Set text color/size/weight on text-count explicitly. */
 
-#header-component .header-actions__cart-icon {
+#header-group #header-component .header-actions__cart-icon {
   --cart-bubble-size: 20px;
   --cart-bubble-top: -6px;
   --cart-bubble-right: -6px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
 }
 
-/* Even when item-count text element is empty (still loading), keep a 16px dot
-   instead of Horizon's default 10px so it's visibly a "cart has items" indicator. */
-#header-component cart-icon:has(.cart-bubble__text-count:empty) {
+/* When the count text is empty (briefly during load) keep a 16px dot */
+#header-group #header-component cart-icon:has(.cart-bubble__text-count:empty) {
   --cart-bubble-size: 16px;
   --cart-bubble-top: -4px;
   --cart-bubble-right: -4px;
 }
 
-/* Force the bubble to be square (Horizon only sets width, not height) so the
-   circle renders as a circle and the number actually fits. */
-#header-component .header-actions__cart-icon .cart-bubble {
+/* Force the bubble to be a square so the magenta circle renders as a circle */
+#header-group #header-component .header-actions__cart-icon .cart-bubble {
+  width: var(--cart-bubble-size);
   height: var(--cart-bubble-size);
   min-width: var(--cart-bubble-size);
+  min-height: var(--cart-bubble-size);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-#header-component .cart-bubble__background,
+#header-group #header-component .cart-bubble__background,
 .cart-drawer__heading .cart-bubble__background {
   background: var(--retaur-magenta);
   border-radius: 9999px;
 }
 
-#header-component .cart-bubble__text,
-#header-component .cart-bubble__text-count,
+#header-group #header-component .cart-bubble__text,
+#header-group #header-component .cart-bubble__text-count,
 .cart-drawer__heading .cart-bubble__text {
   color: #fff;
   font-weight: 900;
