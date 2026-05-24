@@ -20,7 +20,7 @@
   --retaur-muted-on-dark: rgba(255, 255, 255, 0.65);
   --retaur-subtle-on-dark: rgba(255, 255, 255, 0.45);
 
-  --retaur-container: 1440px;
+  --retaur-container: none;
   --retaur-gutter: 20px;
 
   --retaur-r-sm: 6px;
@@ -39,6 +39,8 @@
   }
 }
 
+/* Full-width by default — matches the original Horizon sections' edge-to-edge
+   feel. Inner text content has its own max-widths (e.g. .retaur-section-lede). */
 .retaur-container {
   width: 100%;
   max-width: var(--retaur-container);
@@ -46,9 +48,10 @@
   padding-inline: var(--retaur-gutter);
 }
 
-/* When a section element has the retaur-container directly, allow full-bleed override */
-.retaur-container--full {
-  max-width: none;
+/* Opt-in constrained container for sections that need it. Override --retaur-container
+   on the parent or use this class directly. */
+.retaur-container--narrow {
+  max-width: 1200px;
   padding-inline: var(--retaur-gutter);
 }
 

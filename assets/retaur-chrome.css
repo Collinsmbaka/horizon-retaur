@@ -100,10 +100,20 @@
 }
 
 /* Header action icon buttons (search, account, cart) — circular w/ thin border.
-   Horizon's header-actions is a custom element, not a class. Action buttons are .header-actions__action. */
-#header-component header-actions .header-actions__action,
-#header-component header-actions button,
-#header-component header-actions > a {
+   IMPORTANT scope: only DIRECT children of <header-actions>, not buttons
+   nested inside the cart drawer (which is also rendered inside <header-actions>
+   when cart_type = drawer). */
+#header-component header-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#header-component header-actions > .header-actions__action,
+#header-component header-actions > button,
+#header-component header-actions > a,
+#header-component header-actions > account-popover > button,
+#header-component header-actions > account-popover > a {
   width: 40px;
   height: 40px;
   border-radius: 50%;
@@ -114,18 +124,27 @@
   background: transparent;
   color: var(--retaur-ink);
   transition: background 0.12s, border-color 0.12s, color 0.12s;
+  position: relative;
+  overflow: visible;
 }
-#header-component header-actions .header-actions__action:hover,
-#header-component header-actions button:hover,
-#header-component header-actions > a:hover {
+#header-component header-actions > .header-actions__action:hover,
+#header-component header-actions > button:hover,
+#header-component header-actions > a:hover,
+#header-component header-actions > account-popover > button:hover,
+#header-component header-actions > account-popover > a:hover {
   background: rgba(0, 0, 0, 0.04);
   border-color: var(--retaur-black);
 }
 
-/* Cart count badge — magenta.
-   Horizon's bubble is .cart-bubble (positioned container) with .cart-bubble__background
-   (the visible circular bg span) + .cart-bubble__text (the number).
-   Don't resize the bubble — Horizon uses --cart-bubble-size for that. Just colorize. */
+/* Cart count badge — magenta, popping out of the icon button's top-right corner.
+   Horizon: .cart-bubble container, .cart-bubble__background span = the visible bg,
+   .cart-bubble__text = the number. Push it outside the 40px circular icon button
+   by overriding Horizon's --cart-bubble-top/right vars. */
+#header-component .header-actions__cart-icon {
+  --cart-bubble-size: 20px;
+  --cart-bubble-top: -8px;
+  --cart-bubble-right: -8px;
+}
 #header-component .cart-bubble__background,
 .cart-drawer__heading .cart-bubble__background {
   background: var(--retaur-magenta);
