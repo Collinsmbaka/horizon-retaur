@@ -34,10 +34,14 @@ export class MediaGallery extends Component {
 
   /**
    * Handles a variant update event by replacing the current media gallery with a new one.
+   * Set data-skip-variant-update="true" on the <media-gallery> element to opt out
+   * (e.g. for products where bundle variants should not swap the hero image).
    *
    * @param {VariantUpdateEvent} event - The variant update event.
    */
   #handleVariantUpdate = (event) => {
+    if (this.dataset.skipVariantUpdate === 'true') return;
+
     const source = event.detail.data.html;
 
     if (!source) return;

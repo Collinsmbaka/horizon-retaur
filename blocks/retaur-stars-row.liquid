@@ -41,6 +41,12 @@
   </span>
 </div>
 
+{% javascript %}
+  document.querySelectorAll('media-gallery').forEach((gallery) => {
+    gallery.dataset.skipVariantUpdate = 'true';
+  });
+{% endjavascript %}
+
 {% schema %}
 {
   "name": "Retaur stars row",
