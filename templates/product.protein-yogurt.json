@@ -1290,7 +1290,7 @@
     "retaur_final_cta": {
       "type": "retaur-final-cta",
       "settings": {
-        "eyebrow": "Order direct from Lagos",
+        "eyebrow": "",
         "title": "<p>Stop<br/>skipping<br/><em>meals</em>.</p>",
         "body": "<p>The next time you'd skip lunch — don't. Grab a cup. 54 grams of protein, three ingredients, one minute.</p>",
         "price_eyebrow": "Single cups from",
