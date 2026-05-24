@@ -985,7 +985,7 @@
       ],
       "settings": {
         "eyebrow": "Built inside & out",
-        "title": "<p>The numbers<br>don't <em>lie</em>.</p>",
+        "title": "<p>The numbers<br/>don't <em>lie</em>.</p>",
         "lede": "<p>A full panel for the people who read labels. Per cup, per serving, every number that matters.</p>",
         "panel_heading": "Nutrition Facts",
         "panel_sub": "2 servings per cup",
@@ -1056,9 +1056,23 @@
     },
     "retaur_written_reviews": {
       "type": "retaur-written-reviews",
+      "blocks": {
+        "judge_me_reviews_review_widget_KiPgew": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "sample_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "other_products_reviews"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_KiPgew"
+      ],
       "settings": {
         "eyebrow": "Customer reviews",
-        "title": "<p>Don't take our word<br>for <em>it</em>.</p>",
+        "title": "<p>Don't take our word<br/>for <em>it</em>.</p>",
         "lede": "<p>Real customers, real reviews. Watch them on Instagram, read them on Judge.me, or just buy a cup and find out for yourself.</p>",
         "cta_label": "Read all reviews →",
         "cta_link": "",
