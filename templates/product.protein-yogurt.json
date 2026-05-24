@@ -562,20 +562,12 @@
             "icon": "truck",
             "label": "Free delivery ₦150K+"
           }
-        },
-        "tb4": {
-          "type": "trust-item",
-          "settings": {
-            "icon": "check",
-            "label": "Pay on delivery"
-          }
         }
       },
       "block_order": [
         "tb1",
         "tb2",
-        "tb3",
-        "tb4"
+        "tb3"
       ],
       "settings": {
         "padding-block-start": 18,
