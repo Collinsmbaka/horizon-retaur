@@ -169,28 +169,34 @@ main[data-template="product.protein-yogurt"] {
 
 [data-template="product.protein-yogurt"] {
 
-  /* Size picker — segmented buttons */
-  .variant-option--buttons {
+  /* Vertical rhythm between size + bundle pickers inside the same variant-picker block */
+  .variant-picker__form {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 24px;
+  }
+
+  /* Size picker — 2-column segmented buttons.
+     The variant-main-picker snippet renders labels as direct children of
+     the fieldset (no wrapper), so layout has to go on the fieldset itself. */
+  .variant-option--buttons {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 0;
+    border: 0;
+    margin: 0;
 
     legend {
+      grid-column: 1 / -1;
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--retaur-ink);
       padding: 0;
-      margin: 0;
-    }
-
-    /* The actual radio container */
-    > div,
-    > .variant-option__buttons-wrapper {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-      gap: 8px;
+      margin: 0 0 16px;
+      float: none;
     }
   }
 
@@ -231,20 +237,24 @@ main[data-template="product.protein-yogurt"] {
     font-weight: inherit;
   }
 
-  /* Bundle picker — quantity-swatches grid */
+  /* Bundle picker — 3-column image grid below an uppercase legend. */
   .variant-option--quantity-swatches {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+    display: block;
+    padding: 0;
+    border: 0;
+    margin: 0;
 
     legend {
+      display: block;
+      width: 100%;
       font-size: 13px;
       font-weight: 800;
       letter-spacing: 0.06em;
       text-transform: uppercase;
       color: var(--retaur-ink);
       padding: 0;
-      margin: 0;
+      margin: 0 0 16px;
+      float: none;
     }
   }
 
