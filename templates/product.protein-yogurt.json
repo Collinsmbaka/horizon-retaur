@@ -677,7 +677,7 @@
           "settings": {
             "card_eyebrow": "Greek yogurt",
             "card_sub": "per cup",
-            "card_number": "25–30g",
+            "card_number": "25–35g",
             "is_highlighted": false
           }
         },
@@ -743,6 +743,7 @@
         "mc2",
         "mc3"
       ],
+      "disabled": true,
       "settings": {
         "eyebrow": "Every meal",
         "title": "<p>One cup. Every <em>meal</em>.</p>",
