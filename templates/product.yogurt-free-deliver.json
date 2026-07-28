@@ -162,7 +162,7 @@
                   "type": "retaur-text",
                   "settings": {
                     "style": "subtitle",
-                    "text": "<p>54g of protein in a single cup. A full meal, in a cup. Made for people who move.</p>",
+                    "text": "<p>54g of protein in a single cup. Made for people who move.</p>",
                     "padding-block-start": 4,
                     "padding-block-end": 0,
                     "padding-inline-start": 0,
@@ -213,9 +213,9 @@
                     "price_97GqNF": {
                       "type": "price",
                       "settings": {
-                        "show_sale_price_first": true,
-                        "show_installments": true,
-                        "show_tax_info": true,
+                        "show_sale_price_first": false,
+                        "show_installments": false,
+                        "show_tax_info": false,
                         "type_preset": "paragraph",
                         "width": "100%",
                         "alignment": "left",
