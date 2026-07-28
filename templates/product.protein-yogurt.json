@@ -784,7 +784,7 @@
             "photo_placeholder": "A touch of sugar",
             "number": "03",
             "name": "<p>A touch of sugar</p>",
-            "desc": "<p>Just enough to balance the tartness — no fillers, no high-fructose corn syrup.</p>"
+            "desc": "<p>Just enough to balance the tartness, no fillers, no high-fructose corn syrup.</p>"
           }
         },
         "neg1": {
@@ -824,7 +824,7 @@
       "settings": {
         "eyebrow": "Ingredients you trust",
         "title": "<p>Three ingredients.<br/><em>That's it.</em></p>",
-        "lede": "<p>We could write a longer label. We don't need to. Every cup is built from three things you can pronounce — and nothing you can't.</p>",
+        "lede": "<p>We could write a longer label. We don't need to. Every cup is built from three things you can pronounce and nothing you can't.</p>",
         "trust_line": "NAFDAC approved · Made in Lagos",
         "padding-block-start": 64,
         "padding-block-end": 64,
