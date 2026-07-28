@@ -1,0 +1,1473 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "product-information",
+      "blocks": {
+        "media-gallery": {
+          "type": "_product-media-gallery",
+          "static": true,
+          "settings": {
+            "media_presentation": "grid",
+            "media_columns": "two",
+            "image_gap": 1,
+            "large_first_image": false,
+            "icons_style": "chevron",
+            "slideshow_controls_style": "thumbnails",
+            "slideshow_mobile_controls_style": "hint",
+            "thumbnail_position": "bottom",
+            "thumbnail_width": 72,
+            "aspect_ratio": "1",
+            "constrain_to_viewport": false,
+            "media_fit": "cover",
+            "media_radius": 2,
+            "extend_media": true,
+            "zoom": true,
+            "video_loop": true,
+            "hide_variants": true,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "product-details": {
+          "type": "_product-details",
+          "static": true,
+          "settings": {
+            "width": "fill",
+            "custom_width": 100,
+            "width_mobile": "fill",
+            "custom_width_mobile": 100,
+            "height": "fit",
+            "details_position": "flex-start",
+            "gap": 15,
+            "sticky_details_desktop": true,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "background_media": "none",
+            "video_position": "cover",
+            "background_image_position": "cover",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 48,
+            "padding-block-end": 48,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "group": {
+              "type": "group",
+              "name": "Header",
+              "settings": {
+                "link": "",
+                "open_in_new_tab": false,
+                "content_direction": "column",
+                "vertical_on_mobile": true,
+                "horizontal_alignment": "flex-start",
+                "vertical_alignment": "center",
+                "align_baseline": false,
+                "horizontal_alignment_flex_direction_column": "flex-start",
+                "vertical_alignment_flex_direction_column": "center",
+                "gap": 12,
+                "width": "fill",
+                "custom_width": 100,
+                "width_mobile": "fill",
+                "custom_width_mobile": 100,
+                "height": "fit",
+                "custom_height": 100,
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "background_media": "none",
+                "video_position": "cover",
+                "background_image_position": "cover",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "placeholder": "",
+                "toggle_overlay": false,
+                "overlay_color": "#00000026",
+                "overlay_style": "solid",
+                "gradient_direction": "to top",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "retaur_stars_row_top": {
+                  "type": "retaur-stars-row",
+                  "settings": {
+                    "rating": "4.9",
+                    "stars_filled": 5,
+                    "review_count_label": "Based on 13 reviews",
+                    "review_link": "#reviews",
+                    "padding-block-start": 0,
+                    "padding-block-end": 4,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "retaur_eyebrow_top": {
+                  "type": "retaur-text",
+                  "settings": {
+                    "style": "eyebrow",
+                    "text": "<p>Retaur · Protein Yogurt</p>",
+                    "padding-block-start": 6,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "text_xrnftG": {
+                  "type": "text",
+                  "settings": {
+                    "text": "<h1>Protein Yogurts</h1>",
+                    "width": "100%",
+                    "max_width": "normal",
+                    "alignment": "left",
+                    "type_preset": "custom",
+                    "font": "var(--font-heading--family)",
+                    "font_size": "2.5rem",
+                    "line_height": "tight",
+                    "letter_spacing": "tight",
+                    "case": "none",
+                    "wrap": "pretty",
+                    "color": "var(--color-foreground)",
+                    "background": false,
+                    "background_color": "#00000026",
+                    "corner_radius": 0,
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "retaur_subtitle_top": {
+                  "type": "retaur-text",
+                  "settings": {
+                    "style": "subtitle",
+                    "text": "<p>54g of protein in a single cup. A full meal, in a cup. Made for people who move.</p>",
+                    "padding-block-start": 4,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {}
+                },
+                "group_8B3NLh": {
+                  "type": "group",
+                  "name": "Price & Rating",
+                  "settings": {
+                    "link": "",
+                    "open_in_new_tab": false,
+                    "content_direction": "column",
+                    "vertical_on_mobile": true,
+                    "horizontal_alignment": "flex-start",
+                    "vertical_alignment": "center",
+                    "align_baseline": false,
+                    "horizontal_alignment_flex_direction_column": "flex-start",
+                    "vertical_alignment_flex_direction_column": "center",
+                    "gap": 10,
+                    "width": "fill",
+                    "custom_width": 100,
+                    "width_mobile": "fill",
+                    "custom_width_mobile": 100,
+                    "height": "fit",
+                    "custom_height": 100,
+                    "inherit_color_scheme": true,
+                    "color_scheme": "",
+                    "background_media": "none",
+                    "video_position": "cover",
+                    "background_image_position": "cover",
+                    "border": "none",
+                    "border_width": 1,
+                    "border_opacity": 100,
+                    "border_radius": 0,
+                    "placeholder": "",
+                    "toggle_overlay": false,
+                    "overlay_color": "#00000026",
+                    "overlay_style": "solid",
+                    "gradient_direction": "to top",
+                    "padding-block-start": 0,
+                    "padding-block-end": 0,
+                    "padding-inline-start": 0,
+                    "padding-inline-end": 0
+                  },
+                  "blocks": {
+                    "price_97GqNF": {
+                      "type": "price",
+                      "settings": {
+                        "show_sale_price_first": true,
+                        "show_installments": true,
+                        "show_tax_info": true,
+                        "type_preset": "paragraph",
+                        "width": "100%",
+                        "alignment": "left",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "color": "var(--color-foreground)",
+                        "padding-block-start": 4,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    },
+                    "product_inventory_UbaWkT": {
+                      "type": "product-inventory",
+                      "name": "t:names.product_inventory",
+                      "settings": {
+                        "inventory_threshold": 10,
+                        "show_inventory_quantity": true,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "price_97GqNF",
+                    "product_inventory_UbaWkT"
+                  ]
+                }
+              },
+              "block_order": [
+                "retaur_stars_row_top",
+                "retaur_eyebrow_top",
+                "text_xrnftG",
+                "retaur_subtitle_top",
+                "group_8B3NLh"
+              ]
+            },
+            "variant_picker": {
+              "type": "variant-picker",
+              "settings": {
+                "variant_style": "buttons",
+                "show_swatches": true,
+                "alignment": "left",
+                "padding-block-start": 0,
+                "padding-block-end": 8,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "granola_addon": {
+              "type": "granola-addon",
+              "settings": {
+                "granola_product_handle": "retaur-granola",
+                "granola_label": "Add Granola",
+                "granola_each_label": "each",
+                "quantity_label": "Quantity",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "buy_buttons": {
+              "type": "buy-buttons",
+              "settings": {
+                "stacking": true,
+                "show_pickup_availability": false,
+                "gift_card_form": false,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "quantity": {
+                  "type": "quantity",
+                  "disabled": true,
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                },
+                "add-to-cart": {
+                  "type": "add-to-cart",
+                  "static": true,
+                  "settings": {
+                    "style_class": "button"
+                  },
+                  "blocks": {}
+                },
+                "accelerated-checkout": {
+                  "type": "accelerated-checkout",
+                  "disabled": true,
+                  "static": true,
+                  "settings": {},
+                  "blocks": {}
+                }
+              },
+              "block_order": []
+            },
+            "retaur_shipping_note": {
+              "type": "retaur-text",
+              "settings": {
+                "style": "shipping-note",
+                "text": "<p>Free delivery on orders over ₦150,000 · Pay on delivery available</p>",
+                "padding-block-start": 8,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "accordion_bEMMQQ": {
+              "type": "accordion",
+              "name": "t:names.accordion",
+              "settings": {
+                "icon": "caret",
+                "dividers": true,
+                "type_preset": "h6",
+                "inherit_color_scheme": true,
+                "color_scheme": "",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {
+                "accordion_row_4E6p7j": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "How to use",
+                    "open_by_default": true,
+                    "icon": "apple",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_f6htT4": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<ul><li>Have it as a complete breakfast before a busy morning.</li><li>Use it as a quick high-protein lunch on the go.</li><li>Have it as a post-workout meal for muscle recovery.</li><li>Add granola or fruits for a fuller, more satisfying meal.</li><li>Use it as a base for your protein shakes, parfaits, or pancakes.</li></ul>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_f6htT4"
+                  ]
+                },
+                "accordion_row_793xYz": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Product Benefits",
+                    "open_by_default": false,
+                    "icon": "box",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_ccaeVx": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Muscle Recovery Powerhouse</p><p>Nutrient-Dense Convenience</p><p>Gut Health Booster</p><p>Sustained Fullness</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_ccaeVx"
+                  ]
+                },
+                "accordion_row_tpdR67": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Ingredients",
+                    "open_by_default": false,
+                    "icon": "banana",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "text_wTAKrq": {
+                      "type": "text",
+                      "settings": {
+                        "text": "<p>Low-Fat Milk, Whey Protein Concentrate, Sugar</p>",
+                        "width": "100%",
+                        "max_width": "normal",
+                        "alignment": "left",
+                        "type_preset": "rte",
+                        "font": "var(--font-body--family)",
+                        "font_size": "1rem",
+                        "line_height": "normal",
+                        "letter_spacing": "normal",
+                        "case": "none",
+                        "wrap": "pretty",
+                        "color": "var(--color-foreground)",
+                        "background": false,
+                        "background_color": "#00000026",
+                        "corner_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "text_wTAKrq"
+                  ]
+                },
+                "accordion_row_fmw7AG": {
+                  "type": "_accordion-row",
+                  "settings": {
+                    "heading": "Nutritional Information",
+                    "open_by_default": false,
+                    "icon": "dairy",
+                    "width": 20
+                  },
+                  "blocks": {
+                    "image_GE3QEr": {
+                      "type": "image",
+                      "name": "t:names.image",
+                      "settings": {
+                        "image": "shopify://shop_images/7_57ea28ed-dc8c-462c-b594-c58206c81649.png",
+                        "link": "",
+                        "image_ratio": "square",
+                        "width": "fill",
+                        "custom_width": 100,
+                        "width_mobile": "fill",
+                        "custom_width_mobile": 100,
+                        "height": "fit",
+                        "border": "none",
+                        "border_width": 1,
+                        "border_opacity": 100,
+                        "border_radius": 0,
+                        "padding-block-start": 0,
+                        "padding-block-end": 0,
+                        "padding-inline-start": 0,
+                        "padding-inline-end": 0
+                      },
+                      "blocks": {}
+                    }
+                  },
+                  "block_order": [
+                    "image_GE3QEr"
+                  ]
+                }
+              },
+              "block_order": [
+                "accordion_row_4E6p7j",
+                "accordion_row_793xYz",
+                "accordion_row_tpdR67",
+                "accordion_row_fmw7AG"
+              ]
+            }
+          },
+          "block_order": [
+            "group",
+            "variant_picker",
+            "granola_addon",
+            "buy_buttons",
+            "retaur_shipping_note",
+            "accordion_bEMMQQ"
+          ]
+        }
+      },
+      "settings": {
+        "content_width": "content-center-aligned",
+        "desktop_media_position": "left",
+        "equal_columns": false,
+        "limit_details_width": false,
+        "gap": 48,
+        "color_scheme": "",
+        "padding-block-start": 0,
+        "padding-block-end": 0
+      }
+    },
+    "retaur_trust_band": {
+      "type": "retaur-trust-band",
+      "blocks": {
+        "tb1": {
+          "type": "trust-item",
+          "settings": {
+            "icon": "nafdac",
+            "label": "NAFDAC approved"
+          }
+        },
+        "tb2": {
+          "type": "trust-item",
+          "settings": {
+            "icon": "pin",
+            "label": "Made in Lagos"
+          }
+        },
+        "tb3": {
+          "type": "trust-item",
+          "settings": {
+            "icon": "truck",
+            "label": "Free delivery ₦150K+"
+          }
+        }
+      },
+      "block_order": [
+        "tb1",
+        "tb2",
+        "tb3"
+      ],
+      "settings": {
+        "padding-block-start": 30,
+        "padding-block-end": 30,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "retaur_stat_band": {
+      "type": "retaur-stat-band",
+      "blocks": {
+        "sb1": {
+          "type": "stat-item",
+          "settings": {
+            "number": "54g",
+            "label": "Protein"
+          }
+        },
+        "sb2": {
+          "type": "stat-item",
+          "settings": {
+            "number": "540",
+            "label": "Calories"
+          }
+        },
+        "sb3": {
+          "type": "stat-item",
+          "settings": {
+            "number": "3",
+            "label": "Ingredients"
+          }
+        },
+        "sb4": {
+          "type": "stat-item",
+          "settings": {
+            "number": "0",
+            "label": "Fillers"
+          }
+        }
+      },
+      "block_order": [
+        "sb1",
+        "sb2",
+        "sb3",
+        "sb4"
+      ],
+      "settings": {
+        "eyebrow": "A meal in a cup",
+        "title": "<p>Not a snack. Not a shake. <em>A meal.</em></p>",
+        "padding-block-start": 48,
+        "padding-block-end": 48,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "retaur_hero_claim": {
+      "type": "retaur-hero-claim",
+      "blocks": {
+        "hs1": {
+          "type": "hero-stat",
+          "settings": {
+            "number": "54g",
+            "label": "Protein",
+            "sub_label": "per cup"
+          }
+        },
+        "hs2": {
+          "type": "hero-stat",
+          "settings": {
+            "number": "540",
+            "label": "Calories",
+            "sub_label": "per cup"
+          }
+        },
+        "hs3": {
+          "type": "hero-stat",
+          "settings": {
+            "number": "917",
+            "label": "mg Calcium",
+            "sub_label": "nearly your full daily requirement"
+          }
+        }
+      },
+      "block_order": [
+        "hs1",
+        "hs2",
+        "hs3"
+      ],
+      "settings": {
+        "eyebrow": "Retaur · Protein Yogurt",
+        "title_lead": "Your meal.\nIn a",
+        "title_highlight": "cup",
+        "title_trail": ".",
+        "lede": "<p>54 grams of complete protein in one 400g cup — about the same protein as 10 eggs, with the texture of ice cream. Made for people who don't have time to cook but won't skip a meal.</p>",
+        "image": "shopify://shop_images/1_79b821c4-00c1-46d8-860b-49207a25f83d.png",
+        "padding-block-start": 64,
+        "padding-block-end": 64,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "retaur_versus_card": {
+      "type": "retaur-versus-card",
+      "blocks": {
+        "vc1": {
+          "type": "versus-card",
+          "settings": {
+            "card_eyebrow": "Greek yogurt",
+            "card_sub": "per cup",
+            "card_number": "25–35g",
+            "is_highlighted": false
+          }
+        },
+        "vc2": {
+          "type": "versus-card",
+          "settings": {
+            "card_eyebrow": "Retaur",
+            "card_sub": "per cup",
+            "card_number": "54g",
+            "is_highlighted": true
+          }
+        }
+      },
+      "block_order": [
+        "vc1",
+        "vc2"
+      ],
+      "settings": {
+        "eyebrow": "Versus Greek yogurt",
+        "title": "<p>Still eating Greek<br>yogurt for <em>protein</em>?</p>",
+        "lede": "<p>Greek yogurt has been the go-to protein snack for years. The math doesn't quite work out anymore.</p>",
+        "tag_lead": "Same size.",
+        "tag_muted": "Twice the fuel.",
+        "padding-block-start": 32,
+        "padding-block-end": 64,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "retaur_meal_cards": {
+      "type": "retaur-meal-cards",
+      "blocks": {
+        "mc1": {
+          "type": "meal-card",
+          "settings": {
+            "icon_preset": "sun",
+            "eyebrow": "Breakfast",
+            "title": "Out the door\nby 7:30.",
+            "body": "<p>Grab and go on busy mornings — no prep, no dishes, no excuse to skip.</p>"
+          }
+        },
+        "mc2": {
+          "type": "meal-card",
+          "settings": {
+            "icon_preset": "box",
+            "eyebrow": "Lunch",
+            "title": "Meeting at noon,\nno time to cook.",
+            "body": "<p>One cup keeps you sharp through back-to-back meetings without the 3pm crash.</p>"
+          }
+        },
+        "mc3": {
+          "type": "meal-card",
+          "settings": {
+            "icon_preset": "moon",
+            "eyebrow": "Dinner",
+            "title": "Too tired to\nmake something.",
+            "body": "<p>A full meal's worth of protein, fast and filling. Sleep on a full stomach.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "mc1",
+        "mc2",
+        "mc3"
+      ],
+      "disabled": true,
+      "settings": {
+        "eyebrow": "Every meal",
+        "title": "<p>One cup. Every <em>meal</em>.</p>",
+        "lede": "<p>Built for busy weekdays. Real protein, real calories, no prep — whenever you need a meal but don't have time to make one.</p>",
+        "padding-block-start": 64,
+        "padding-block-end": 64,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "retaur_ingredients": {
+      "type": "retaur-ingredients",
+      "blocks": {
+        "ing1": {
+          "type": "ingredient",
+          "settings": {
+            "photo": "shopify://shop_images/d2e8b521-09db-4685-99ca-ac218f312c2d.png",
+            "photo_placeholder": "High-quality low-fat milk",
+            "number": "01",
+            "name": "<p>Low-fat milk</p>",
+            "desc": "<p>Delivers essential calcium and complete protein with fewer calories than whole milk.</p>"
+          }
+        },
+        "ing2": {
+          "type": "ingredient",
+          "settings": {
+            "photo": "shopify://shop_images/16362a4c-5332-4365-8246-c754450ae448.png",
+            "photo_placeholder": "Whey protein concentrate",
+            "number": "02",
+            "name": "<p>Whey protein<br/>concentrate</p>",
+            "desc": "<p>Rapidly absorbed complete protein that supports muscle recovery and growth.</p>"
+          }
+        },
+        "ing3": {
+          "type": "ingredient",
+          "settings": {
+            "photo": "shopify://shop_images/d9557fe0-eded-4c4a-9ae7-23108f6fbf1a.png",
+            "photo_placeholder": "A touch of sugar",
+            "number": "03",
+            "name": "<p>A touch of sugar</p>",
+            "desc": "<p>Just enough to balance the tartness — no fillers, no high-fructose corn syrup.</p>"
+          }
+        },
+        "neg1": {
+          "type": "neg-claim",
+          "settings": {
+            "label": "No preservatives"
+          }
+        },
+        "neg2": {
+          "type": "neg-claim",
+          "settings": {
+            "label": "No artificial flavors"
+          }
+        },
+        "neg3": {
+          "type": "neg-claim",
+          "settings": {
+            "label": "No fillers"
+          }
+        },
+        "neg4": {
+          "type": "neg-claim",
+          "settings": {
+            "label": "No artificial colors"
+          }
+        }
+      },
+      "block_order": [
+        "ing1",
+        "ing2",
+        "ing3",
+        "neg1",
+        "neg2",
+        "neg3",
+        "neg4"
+      ],
+      "settings": {
+        "eyebrow": "Ingredients you trust",
+        "title": "<p>Three ingredients.<br/><em>That's it.</em></p>",
+        "lede": "<p>We could write a longer label. We don't need to. Every cup is built from three things you can pronounce — and nothing you can't.</p>",
+        "trust_line": "NAFDAC approved · Made in Lagos",
+        "padding-block-start": 64,
+        "padding-block-end": 64,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "retaur_nutrition": {
+      "type": "retaur-nutrition",
+      "blocks": {
+        "nr1": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Fat",
+            "value": "11.4g",
+            "style": "bold"
+          }
+        },
+        "nr2": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Total Carbohydrate",
+            "value": "15g",
+            "style": "bold"
+          }
+        },
+        "nr3": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Sucrose",
+            "value": "4.4g",
+            "style": "indent"
+          }
+        },
+        "nr4": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Lactose",
+            "value": "17.4g",
+            "style": "indent"
+          }
+        },
+        "nr5": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Protein",
+            "value": "27.2g",
+            "style": "bold"
+          }
+        },
+        "nr6": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Calcium",
+            "value": "458.6mg",
+            "style": "normal"
+          }
+        },
+        "nr7": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Sodium",
+            "value": "113.6mg",
+            "style": "normal"
+          }
+        },
+        "nr8": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Potassium",
+            "value": "99.6mg",
+            "style": "normal"
+          }
+        },
+        "nr9": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Magnesium",
+            "value": "278.0mg",
+            "style": "normal"
+          }
+        },
+        "nr10": {
+          "type": "nutrition-row",
+          "settings": {
+            "label": "Phosphorus",
+            "value": "60.4mg",
+            "style": "normal"
+          }
+        },
+        "pc1": {
+          "type": "percup-row",
+          "settings": {
+            "label": "Calories",
+            "value": "540"
+          }
+        },
+        "pc2": {
+          "type": "percup-row",
+          "settings": {
+            "label": "Protein",
+            "value": "54g"
+          }
+        },
+        "pc3": {
+          "type": "percup-row",
+          "settings": {
+            "label": "Fat",
+            "value": "22.8g"
+          }
+        },
+        "pc4": {
+          "type": "percup-row",
+          "settings": {
+            "label": "Carbohydrate",
+            "value": "36g"
+          }
+        },
+        "pc5": {
+          "type": "percup-row",
+          "settings": {
+            "label": "Calcium",
+            "value": "917mg"
+          }
+        },
+        "pc6": {
+          "type": "percup-row",
+          "settings": {
+            "label": "Magnesium",
+            "value": "556mg"
+          }
+        },
+        "pc7": {
+          "type": "percup-row",
+          "settings": {
+            "label": "Potassium",
+            "value": "199mg"
+          }
+        }
+      },
+      "block_order": [
+        "nr1",
+        "nr2",
+        "nr3",
+        "nr4",
+        "nr5",
+        "nr6",
+        "nr7",
+        "nr8",
+        "nr9",
+        "nr10",
+        "pc1",
+        "pc2",
+        "pc3",
+        "pc4",
+        "pc5",
+        "pc6",
+        "pc7"
+      ],
+      "settings": {
+        "eyebrow": "Built inside & out",
+        "title": "<p>The numbers<br/>don't <em>lie</em>.</p>",
+        "lede": "<p>A full panel for the people who read labels. Per cup, per serving, every number that matters.</p>",
+        "panel_heading": "Nutrition Facts",
+        "panel_sub": "2 servings per cup",
+        "panel_serving_label": "Serving size",
+        "panel_serving_value": "½ cup (200g)",
+        "panel_calories_label": "Calories",
+        "panel_calories_value": "270",
+        "percup_eyebrow": "Per full cup (400g)",
+        "percup_footer": "<p>Everything your body needs. <strong>One cup. No supplements.</strong></p>",
+        "padding-block-start": 64,
+        "padding-block-end": 64,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "video_testimonials_QkK37L": {
+      "type": "video-testimonials",
+      "name": "Video Testimonials",
+      "settings": {
+        "heading": "Happy Customers.",
+        "heading_alignment": "left",
+        "heading_preset": "custom",
+        "heading_font": "var(--font-heading--family)",
+        "heading_font_size": "2.5rem",
+        "heading_line_height": "tight",
+        "heading_letter_spacing": "tight",
+        "heading_case": "none",
+        "heading_wrap": "pretty",
+        "heading_color": "var(--color-foreground-heading)",
+        "video_1": "shopify://files/videos/jorazy review.mp4",
+        "video_url_1": "",
+        "customer_name_1": "Jorazy",
+        "rating_1": 5,
+        "video_2": "shopify://files/videos/Instagram highlights stories 18032979046917268.mp4",
+        "video_url_2": "",
+        "customer_name_2": "Easy HNF",
+        "rating_2": 5,
+        "video_3": "shopify://files/videos/a426c46c-a6ed-4a20-bfeb-3d265605d321.MP4",
+        "video_url_3": "",
+        "customer_name_3": "Njideka Lilian",
+        "rating_3": 5,
+        "video_url_4": "",
+        "customer_name_4": "",
+        "rating_4": 5,
+        "video_url_5": "",
+        "customer_name_5": "",
+        "rating_5": 5,
+        "video_url_6": "",
+        "customer_name_6": "",
+        "rating_6": 5,
+        "rating_color": "foreground",
+        "star_size": 16,
+        "layout_type": "grid",
+        "carousel_on_mobile": true,
+        "columns": 3,
+        "mobile_columns": "1",
+        "mobile_card_size": "60cqw",
+        "columns_gap": 16,
+        "rows_gap": 16,
+        "icons_style": "arrow",
+        "icons_shape": "circle",
+        "section_width": "page-width",
+        "gap": 24,
+        "color_scheme": "",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "retaur_written_reviews": {
+      "type": "retaur-written-reviews",
+      "blocks": {
+        "judge_me_reviews_review_widget_KiPgew": {
+          "type": "shopify://apps/judge-me-reviews/blocks/review_widget/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "settings": {
+            "review_data": "real_data",
+            "max_width": 1200,
+            "show_shop_reviews": false,
+            "empty_state": "other_products_reviews"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_review_widget_KiPgew"
+      ],
+      "settings": {
+        "eyebrow": "Customer reviews",
+        "title": "<p>Don't take our word<br/>for <em>it</em>.</p>",
+        "lede": "<p>Real customers, real reviews. Watch them on Instagram, read them on Judge.me, or just buy a cup and find out for yourself.</p>",
+        "cta_label": "Read all reviews →",
+        "cta_link": "",
+        "padding-block-start": 32,
+        "padding-block-end": 64,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "product_comparison_Xqe4tY": {
+      "type": "product-comparison",
+      "blocks": {
+        "heading_BLnerq": {
+          "type": "heading",
+          "settings": {
+            "text": "<h2>How We Compare</h2>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "custom",
+            "font": "var(--font-heading--family)",
+            "font_size": "2.5rem",
+            "line_height": "tight",
+            "letter_spacing": "tight",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          }
+        },
+        "product_column_kEDmjR": {
+          "type": "product_column",
+          "settings": {
+            "product_name": "Retaur Protein Yogurts",
+            "product_value": "50grams / cup"
+          }
+        },
+        "product_column_hMyQHX": {
+          "type": "product_column",
+          "settings": {
+            "product_name": "Greek Yogurts",
+            "product_value": "25 - 30grams / cup"
+          }
+        },
+        "comparison_row_bh7frc": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Higher Quality Protein Content",
+            "column_1_icon": "check_box",
+            "column_1_text": "",
+            "column_2_icon": "none",
+            "column_2_text": "✕",
+            "enable_column_3": false,
+            "column_3_icon": "none",
+            "column_3_text": "",
+            "icon_size": 18
+          }
+        },
+        "comparison_row_wAGqxd": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Use of Whey Protein for Faster Post-Workout Recovery",
+            "column_1_icon": "check_box",
+            "column_1_text": "",
+            "column_2_icon": "none",
+            "column_2_text": "✕",
+            "enable_column_3": false,
+            "column_3_icon": "none",
+            "column_3_text": "",
+            "icon_size": 18
+          }
+        },
+        "comparison_row_7kkzmp": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Better Macronutrient Balance for Active Lifestyle recovery and support",
+            "column_1_icon": "check_box",
+            "column_1_text": "",
+            "column_2_icon": "none",
+            "column_2_text": "✕",
+            "enable_column_3": false,
+            "column_3_icon": "none",
+            "column_3_text": "",
+            "icon_size": 18
+          }
+        },
+        "comparison_row_RUVVd8": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "More Effective for Muscle Building & Maintenance",
+            "column_1_icon": "check_box",
+            "column_1_text": "",
+            "column_2_icon": "none",
+            "column_2_text": "✕",
+            "enable_column_3": false,
+            "column_3_icon": "none",
+            "column_3_text": "",
+            "icon_size": 18
+          }
+        },
+        "comparison_row_Y8yMNr": {
+          "type": "comparison_row",
+          "settings": {
+            "feature_name": "Higher Biological Value Protein for Better Absorption",
+            "column_1_icon": "check_box",
+            "column_1_text": "",
+            "column_2_icon": "none",
+            "column_2_text": "✕",
+            "enable_column_3": false,
+            "column_3_icon": "none",
+            "column_3_text": "",
+            "icon_size": 18
+          }
+        }
+      },
+      "block_order": [
+        "heading_BLnerq",
+        "product_column_kEDmjR",
+        "product_column_hMyQHX",
+        "comparison_row_bh7frc",
+        "comparison_row_wAGqxd",
+        "comparison_row_7kkzmp",
+        "comparison_row_RUVVd8",
+        "comparison_row_Y8yMNr"
+      ],
+      "name": "Product Comparison",
+      "settings": {
+        "feature_column_label": "",
+        "highlight_column": 1,
+        "highlight_color": "#d81159",
+        "section_width": "page-width",
+        "gap": 28,
+        "color_scheme": "",
+        "padding-block-start": 40,
+        "padding-block-end": 40
+      }
+    },
+    "retaur_faq": {
+      "type": "retaur-faq",
+      "blocks": {
+        "fq1": {
+          "type": "faq-item",
+          "settings": {
+            "question": "Is Retaur protein yogurt suitable for everyday consumption?",
+            "answer": "<p>Yes. Retaur protein yogurt is made for daily consumption — high-quality ingredients and a balanced macro profile that fits into most dietary plans while helping you meet your protein needs without a shaker bottle.</p>",
+            "open_by_default": true
+          }
+        },
+        "fq2": {
+          "type": "faq-item",
+          "settings": {
+            "question": "How much protein is in each cup?",
+            "answer": "<p>54g per 400g cup. That's about the protein content of ten eggs, packed into one yogurt — enough for muscle recovery, satiety, and most people's daily target in a single serving.</p>",
+            "open_by_default": false
+          }
+        },
+        "fq3": {
+          "type": "faq-item",
+          "settings": {
+            "question": "How does Retaur compare to regular Greek yogurt?",
+            "answer": "<p>Significantly higher protein (54g per cup vs 25–30g for Greek). Formulated with added whey protein for muscle support while keeping the creamy texture. Less sugar than most commercial Greek yogurts, more targeted for active lifestyles.</p>",
+            "open_by_default": false
+          }
+        },
+        "fq4": {
+          "type": "faq-item",
+          "settings": {
+            "question": "What are the ingredients?",
+            "answer": "<p>Low-fat milk, whey protein concentrate, and a touch of sugar for sweetness. No artificial preservatives, no artificial colors, no excessive added sugars. Clean and simple.</p>",
+            "open_by_default": false
+          }
+        },
+        "fq5": {
+          "type": "faq-item",
+          "settings": {
+            "question": "Can I enjoy Retaur if I'm trying to lose weight?",
+            "answer": "<p>Absolutely. High protein content promotes satiety so you stay full longer, while the balanced nutritional profile gives you essential nutrients without excessive calories.</p>",
+            "open_by_default": false
+          }
+        },
+        "fq6": {
+          "type": "faq-item",
+          "settings": {
+            "question": "When is the best time to have Retaur?",
+            "answer": "<p>Anytime. Post-workout within the 2-hour recovery window, breakfast on a busy morning, a mid-day snack to prevent hunger, or a nutritious dessert in the evening.</p>",
+            "open_by_default": false
+          }
+        },
+        "fq7": {
+          "type": "faq-item",
+          "settings": {
+            "question": "How can I incorporate Retaur into meal prep?",
+            "answer": "<p>Use it as a base for overnight oats. Build parfait jars with granola and berries. Blend into smoothie packs. Swap it in for sour cream in dips. Mix into protein pancake batter. Very versatile.</p>",
+            "open_by_default": false
+          }
+        }
+      },
+      "block_order": [
+        "fq1",
+        "fq2",
+        "fq3",
+        "fq4",
+        "fq5",
+        "fq6",
+        "fq7"
+      ],
+      "settings": {
+        "eyebrow": "FAQ",
+        "title": "<p>We are serious about<br>nutrition. <em>Ask away.</em></p>",
+        "padding-block-start": 32,
+        "padding-block-end": 64,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "blocks": {
+        "header": {
+          "type": "text",
+          "name": "t:names.header",
+          "settings": {
+            "text": "<h3>Related products</h3>",
+            "width": "fit-content",
+            "max_width": "normal",
+            "alignment": "left",
+            "type_preset": "rte",
+            "font": "var(--font-primary--family)",
+            "font_size": "",
+            "line_height": "normal",
+            "letter_spacing": "normal",
+            "case": "none",
+            "wrap": "pretty",
+            "color": "var(--color-foreground)",
+            "background": false,
+            "background_color": "#00000026",
+            "corner_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {}
+        },
+        "static-product-card": {
+          "type": "_product-card",
+          "name": "t:names.product_card",
+          "static": true,
+          "settings": {
+            "product_card_gap": 4,
+            "inherit_color_scheme": true,
+            "color_scheme": "",
+            "border": "none",
+            "border_width": 1,
+            "border_opacity": 100,
+            "border_radius": 0,
+            "padding-block-start": 0,
+            "padding-block-end": 0,
+            "padding-inline-start": 0,
+            "padding-inline-end": 0
+          },
+          "blocks": {
+            "card-gallery": {
+              "type": "_product-card-gallery",
+              "name": "t:names.product_card_media",
+              "settings": {
+                "image_ratio": "portrait",
+                "border": "none",
+                "border_width": 1,
+                "border_opacity": 100,
+                "border_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "product_title": {
+              "type": "product-title",
+              "name": "t:names.product_title",
+              "settings": {
+                "width": "fit-content",
+                "max_width": "normal",
+                "alignment": "left",
+                "type_preset": "rte",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "wrap": "pretty",
+                "color": "var(--color-foreground)",
+                "background": false,
+                "background_color": "#00000026",
+                "corner_radius": 0,
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            },
+            "price": {
+              "type": "price",
+              "name": "t:names.product_price",
+              "settings": {
+                "show_sale_price_first": true,
+                "show_installments": false,
+                "show_tax_info": false,
+                "type_preset": "h6",
+                "width": "100%",
+                "alignment": "left",
+                "font": "var(--font-body--family)",
+                "font_size": "1rem",
+                "line_height": "normal",
+                "letter_spacing": "normal",
+                "case": "none",
+                "color": "var(--color-foreground)",
+                "padding-block-start": 0,
+                "padding-block-end": 0,
+                "padding-inline-start": 0,
+                "padding-inline-end": 0
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "card-gallery",
+            "product_title",
+            "price"
+          ]
+        }
+      },
+      "block_order": [
+        "header"
+      ],
+      "settings": {
+        "product": "{{ closest.product }}",
+        "recommendation_type": "related",
+        "layout_type": "grid",
+        "carousel_on_mobile": false,
+        "max_products": 4,
+        "columns": 4,
+        "mobile_columns": "2",
+        "columns_gap": 12,
+        "rows_gap": 24,
+        "icons_style": "arrow",
+        "icons_shape": "none",
+        "section_width": "page-width",
+        "gap": 28,
+        "color_scheme": "scheme-1",
+        "padding-block-start": 48,
+        "padding-block-end": 48
+      }
+    },
+    "retaur_final_cta": {
+      "type": "retaur-final-cta",
+      "settings": {
+        "eyebrow": "",
+        "title": "<p>Stop<br/>skipping<br/><em>meals</em>.</p>",
+        "body": "<p>The next time you'd skip lunch — don't. Grab a cup. 54 grams of protein, three ingredients, one minute.</p>",
+        "price_eyebrow": "Single cups from",
+        "price": "₦5,500",
+        "cta_label": "Order now",
+        "cta_link": "shopify://products/retaur-protein-yogurt",
+        "bg_number": "54g",
+        "padding-block-start": 80,
+        "padding-block-end": 80,
+        "padding-inline-start": 0,
+        "padding-inline-end": 0
+      }
+    }
+  },
+  "order": [
+    "main",
+    "retaur_trust_band",
+    "retaur_stat_band",
+    "retaur_hero_claim",
+    "retaur_versus_card",
+    "retaur_meal_cards",
+    "retaur_ingredients",
+    "retaur_nutrition",
+    "video_testimonials_QkK37L",
+    "retaur_written_reviews",
+    "product_comparison_Xqe4tY",
+    "retaur_faq",
+    "product-recommendations",
+    "retaur_final_cta"
+  ]
+}
