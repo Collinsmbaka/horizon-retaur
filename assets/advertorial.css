@@ -1,0 +1,325 @@
+/* Retaur advertorial — shared primitives.
+   Layout for individual modules lives in each advertorial-*.liquid {% stylesheet %}.
+   Loaded on advertorial page templates only (see snippets/stylesheets.liquid). */
+
+.adv {
+  /* Greys from the source design that have no sitewide token yet. */
+  --adv-ink: #1a1a1a;
+  --adv-ink-soft: #3d3d3d;
+  --adv-grey: #737373;
+  --adv-grey-light: #b8b8b8;
+  --adv-rule: #d9d9d9;
+  --adv-rule-dark: #3d3d3d;
+  --adv-magenta-hover: #b8094a;
+  --adv-pad-inline: 20px;
+  --adv-measure: 1240px;
+
+  font-family: 'Proxima Nova', system-ui, -apple-system, sans-serif;
+  background: var(--retaur-cream);
+  color: var(--retaur-black);
+}
+
+@media (min-width: 1024px) {
+  .adv {
+    --adv-pad-inline: 56px;
+  }
+}
+
+/* Horizon's main wrapper adds page padding we don't want on a full-bleed advertorial. */
+.adv-page .content-for-layout,
+body.adv-page main {
+  padding: 0;
+}
+
+.adv-container {
+  width: 100%;
+  max-width: var(--adv-measure);
+  margin-inline: auto;
+}
+
+.adv-section {
+  padding: 32px var(--adv-pad-inline);
+}
+
+@media (min-width: 1024px) {
+  .adv-section {
+    padding: 88px var(--adv-pad-inline);
+  }
+}
+
+/* --- Type ------------------------------------------------------------- */
+
+.adv-eyebrow {
+  display: block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--retaur-magenta);
+}
+
+@media (min-width: 1024px) {
+  .adv-eyebrow {
+    font-size: 12px;
+    letter-spacing: 0.22em;
+  }
+}
+
+/* Eyebrow with the leading magenta rule (masthead kicker) */
+.adv-eyebrow--rule {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.adv-eyebrow--rule::before {
+  content: '';
+  display: block;
+  width: 18px;
+  height: 2px;
+  background: var(--retaur-magenta);
+  flex: 0 0 auto;
+}
+
+@media (min-width: 1024px) {
+  .adv-eyebrow--rule {
+    gap: 10px;
+  }
+
+  .adv-eyebrow--rule::before {
+    width: 28px;
+  }
+}
+
+.adv-h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.05;
+  text-wrap: pretty;
+}
+
+@media (min-width: 1024px) {
+  .adv-h2 {
+    font-size: 52px;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+}
+
+/* Body copy coming out of richtext settings — style the generated <p>. */
+.adv-prose > p,
+.adv-prose > ul,
+.adv-prose > ol {
+  margin: 0 0 18px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--adv-ink);
+}
+
+.adv-prose > :last-child {
+  margin-bottom: 0;
+}
+
+.adv-prose strong {
+  font-weight: 800;
+}
+
+@media (min-width: 1024px) {
+  .adv-prose > p,
+  .adv-prose > ul,
+  .adv-prose > ol {
+    margin-bottom: 22px;
+    font-size: 19px;
+    line-height: 1.7;
+  }
+}
+
+/* Opening line of a block of prose, set larger. */
+.adv-lead {
+  margin: 0;
+  font-size: 20px;
+  line-height: 1.35;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--retaur-black);
+}
+
+@media (min-width: 1024px) {
+  .adv-lead {
+    font-size: 28px;
+    line-height: 1.25;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+  }
+}
+
+.adv-note {
+  margin: 0;
+  font-size: 11px;
+  line-height: 1.5;
+  color: var(--adv-grey);
+  font-style: italic;
+}
+
+@media (min-width: 1024px) {
+  .adv-note {
+    font-size: 13px;
+    line-height: 1.55;
+  }
+}
+
+/* --- Editorial highlight ---------------------------------------------- */
+/* Merchant-editable figures the copy leans on. Matches <mark> in the design. */
+
+.adv mark,
+.adv-mark {
+  background: rgba(216, 17, 89, 0.1);
+  color: inherit;
+  box-shadow: inset 0 -1px 0 rgba(216, 17, 89, 0.45);
+  padding: 0 2px;
+  border-radius: 2px;
+}
+
+/* On dark panels the underline reads as a smudge — use a solid wash instead. */
+.adv-dark mark,
+.adv-dark .adv-mark {
+  background: rgba(216, 17, 89, 0.22);
+  box-shadow: none;
+  color: var(--retaur-cream);
+}
+
+/* --- Dark panels ------------------------------------------------------- */
+
+.adv-dark {
+  background: var(--retaur-black);
+  color: var(--retaur-cream);
+}
+
+.adv-dark .adv-h2 {
+  color: #fff;
+}
+
+.adv-dark .adv-note {
+  color: var(--adv-grey);
+}
+
+/* --- CTA --------------------------------------------------------------- */
+
+.adv-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--retaur-magenta);
+  color: #fff;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  padding: 18px;
+  border: 0;
+  border-radius: var(--retaur-r-full);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  font-family: inherit;
+  transition: background 0.15s ease;
+}
+
+.adv-btn:hover,
+.adv-btn:focus-visible {
+  background: var(--adv-magenta-hover);
+  color: #fff;
+}
+
+.adv-btn[disabled] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+@media (min-width: 1024px) {
+  .adv-btn {
+    display: inline-flex;
+    width: auto;
+    gap: 10px;
+    font-size: 19px;
+    padding: 20px 48px;
+  }
+}
+
+/* --- Stat cards (shared by the lede and the "why" module) -------------- */
+
+.adv-statcards {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--adv-rule);
+  border: 1px solid var(--adv-rule);
+  border-radius: var(--retaur-r-md);
+  overflow: hidden;
+}
+
+.adv-statcard {
+  background: #fff;
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.adv-statcard__value {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  color: var(--retaur-black);
+}
+
+.adv-statcard__label {
+  font-size: 11px;
+  line-height: 1.4;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--adv-grey);
+}
+
+@media (min-width: 1024px) {
+  .adv-statcard {
+    padding: 28px;
+    gap: 6px;
+  }
+
+  .adv-statcard__value {
+    font-size: 52px;
+    letter-spacing: -0.045em;
+  }
+
+  .adv-statcard__label {
+    font-size: 12px;
+    letter-spacing: 0.08em;
+  }
+}
+
+/* --- Media ------------------------------------------------------------- */
+
+.adv-figure {
+  margin: 0;
+}
+
+.adv-figure__img,
+.adv-media img,
+.adv-media svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.adv-figcaption {
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--adv-grey-light);
+}

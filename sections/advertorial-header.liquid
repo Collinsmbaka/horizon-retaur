@@ -1,0 +1,174 @@
+{% comment %}
+  Advertorial header — logo plus a disclosure label. Deliberately has no nav or search:
+  the whole point of the template is that paid traffic has one way forward.
+
+  Also carries the cart drawer, because layout/theme.liquid suppresses header-group on
+  advertorial templates and the drawer normally lives inside it (snippets/header-actions.liquid).
+  Without this, add-to-cart elsewhere on the page would have nothing to open.
+{% endcomment %}
+
+{%- liquid
+  assign logo = section.settings.logo | default: settings.logo
+-%}
+
+<div class="adv adv-header{% if section.settings.sticky %} adv-header--sticky{% endif %}">
+  <div class="adv-header__inner">
+    <a href="{{ section.settings.logo_link | default: routes.root_url }}" class="adv-header__logo-link">
+      {%- if logo != blank -%}
+        <img
+          src="{{ logo | image_url: height: 80 }}"
+          alt="{{ logo.alt | default: shop.name | escape }}"
+          class="adv-header__logo"
+          width="{{ logo.width }}"
+          height="{{ logo.height }}"
+          loading="eager"
+          style="height: {{ section.settings.logo_height }}px"
+        >
+      {%- else -%}
+        <span class="adv-header__wordmark">{{ shop.name }}</span>
+      {%- endif -%}
+    </a>
+
+    <div class="adv-header__right">
+      {%- if section.settings.disclosure_label != blank -%}
+        <span class="adv-header__label">{{ section.settings.disclosure_label }}</span>
+      {%- endif -%}
+
+      <div class="adv-header__cart{% unless section.settings.show_cart %} adv-header__cart--hidden{% endunless %}">
+        {% render 'cart-drawer' %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .adv-header {
+    background: #fff;
+    border-bottom: 1px solid var(--adv-rule);
+  }
+
+  .adv-header--sticky {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+
+  .adv-header__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 14px var(--adv-pad-inline);
+    max-width: var(--adv-measure);
+    margin-inline: auto;
+  }
+
+  .adv-header__logo-link {
+    display: block;
+    line-height: 0;
+  }
+
+  .adv-header__logo {
+    width: auto;
+    display: block;
+  }
+
+  .adv-header__wordmark {
+    font-size: 16px;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    text-transform: uppercase;
+    color: var(--retaur-black);
+    line-height: 1;
+  }
+
+  .adv-header__right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .adv-header__label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--adv-grey);
+  }
+
+  /* The drawer itself must stay in the DOM for add-to-cart to have a target —
+     hiding the section only hides its trigger button. */
+  .adv-header__cart--hidden > cart-drawer-component > .button {
+    display: none;
+  }
+
+  @media (min-width: 1024px) {
+    .adv-header__inner {
+      padding: 18px var(--adv-pad-inline);
+    }
+
+    .adv-header__label {
+      font-size: 10px;
+      letter-spacing: 0.22em;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Advertorial header",
+  "tag": "header",
+  "class": "adv-header-section",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo",
+      "info": "Falls back to the theme logo when empty."
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "label": "Logo height",
+      "min": 10,
+      "max": 40,
+      "step": 1,
+      "unit": "px",
+      "default": 16
+    },
+    {
+      "type": "url",
+      "id": "logo_link",
+      "label": "Logo links to",
+      "info": "Leave empty to link to the homepage."
+    },
+    {
+      "type": "text",
+      "id": "disclosure_label",
+      "label": "Disclosure label",
+      "info": "Ad platforms expect paid editorial to be labelled.",
+      "default": "Paid partner content"
+    },
+    {
+      "type": "checkbox",
+      "id": "sticky",
+      "label": "Stick to top on scroll",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_cart",
+      "label": "Show cart icon",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advertorial header"
+    }
+  ]
+}
+{% endschema %}

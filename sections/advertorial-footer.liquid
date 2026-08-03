@@ -1,0 +1,167 @@
+{% comment %}
+  Advertorial footer — logo, the paid-content disclaimer, and an optional policy menu.
+  Replaces footer-group, which layout/theme.liquid suppresses on advertorial templates.
+{% endcomment %}
+
+{%- liquid
+  assign logo = section.settings.logo | default: settings.logo
+-%}
+
+<div class="adv adv-footer">
+  <div class="adv-footer__inner">
+    {%- if logo != blank -%}
+      <img
+        src="{{ logo | image_url: height: 80 }}"
+        alt="{{ logo.alt | default: shop.name | escape }}"
+        class="adv-footer__logo"
+        width="{{ logo.width }}"
+        height="{{ logo.height }}"
+        loading="lazy"
+        style="height: {{ section.settings.logo_height }}px"
+      >
+    {%- endif -%}
+
+    <div class="adv-footer__body">
+      {%- if section.settings.disclaimer != blank -%}
+        <div class="adv-footer__disclaimer">{{ section.settings.disclaimer }}</div>
+      {%- endif -%}
+
+      {%- if section.settings.policy_menu != blank -%}
+        <ul class="adv-footer__links">
+          {%- for link in section.settings.policy_menu.links -%}
+            <li><a href="{{ link.url }}">{{ link.title }}</a></li>
+          {%- endfor -%}
+        </ul>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .adv-footer {
+    background: #fff;
+    border-top: 1px solid var(--adv-rule);
+    padding: 20px var(--adv-pad-inline);
+  }
+
+  .adv-footer__inner {
+    max-width: var(--adv-measure);
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .adv-footer__logo {
+    width: auto;
+    display: block;
+    opacity: 0.7;
+    align-self: flex-start;
+  }
+
+  .adv-footer__body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .adv-footer__disclaimer,
+  .adv-footer__disclaimer p {
+    margin: 0;
+    font-size: 11px;
+    line-height: 1.5;
+    color: var(--adv-grey);
+  }
+
+  .adv-footer__links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 16px;
+  }
+
+  .adv-footer__links a {
+    font-size: 11px;
+    color: var(--adv-grey);
+    text-decoration: none;
+  }
+
+  .adv-footer__links a:hover {
+    color: var(--retaur-magenta);
+  }
+
+  @media (min-width: 1024px) {
+    .adv-footer {
+      padding: 36px var(--adv-pad-inline);
+    }
+
+    .adv-footer__inner {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 48px;
+    }
+
+    .adv-footer__logo {
+      flex: 0 0 auto;
+    }
+
+    .adv-footer__disclaimer,
+    .adv-footer__disclaimer p {
+      font-size: 12px;
+      max-width: 60em;
+    }
+
+    .adv-footer__links a {
+      font-size: 12px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Advertorial footer",
+  "tag": "footer",
+  "class": "adv-footer-section",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo",
+      "info": "Falls back to the theme logo when empty."
+    },
+    {
+      "type": "range",
+      "id": "logo_height",
+      "label": "Logo height",
+      "min": 10,
+      "max": 32,
+      "step": 1,
+      "unit": "px",
+      "default": 14
+    },
+    {
+      "type": "richtext",
+      "id": "disclaimer",
+      "label": "Disclaimer",
+      "default": "<p>Paid content produced by Retaur. Nutrition figures for other products taken from on-pack panels photographed in Lagos, Month 2026. Retaur's 13.6g per 100g is a laboratory result on finished product.</p>"
+    },
+    {
+      "type": "link_list",
+      "id": "policy_menu",
+      "label": "Policy links",
+      "info": "Optional. Leave empty for a disclaimer-only footer."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advertorial footer"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,259 @@
+{% comment %}
+  Advertorial sticky CTA — hidden until the reader has been given the argument, then
+  pinned to the bottom of the viewport. It reveals once the element marked
+  data-adv-cta-trigger (the comparison panel) has scrolled past, matching the design.
+
+  The button targets the offer section rather than adding to cart itself, so the page
+  keeps a single product form and the reader still chooses a bundle.
+
+  Place this section last in the template.
+{% endcomment %}
+
+<div class="adv adv-sticky">
+  <div class="adv-sticky__spacer" aria-hidden="true"></div>
+
+  <div class="adv-sticky__bar" data-adv-sticky-cta hidden>
+    <div class="adv-sticky__inner">
+      <div class="adv-sticky__copy">
+        {%- if section.settings.headline != blank -%}
+          <span class="adv-sticky__headline">{{ section.settings.headline }}</span>
+        {%- endif -%}
+        {%- if section.settings.subtext != blank -%}
+          <span class="adv-sticky__subtext">{{ section.settings.subtext }}</span>
+        {%- endif -%}
+      </div>
+
+      <a
+        href="{{ section.settings.cta_link | default: '#' }}"
+        class="adv-sticky__cta"
+        {% if section.settings.cta_link == blank %}data-adv-scroll-to-offer{% endif %}
+      >
+        {{ section.settings.cta_text }}
+      </a>
+    </div>
+  </div>
+</div>
+
+{% javascript %}
+  // Reveal the bar once the trigger element has scrolled past, and point its button
+  // at the offer section when no explicit link is set.
+  class AdvertorialStickyCta {
+    constructor(bar) {
+      this.bar = bar;
+      this.trigger = document.querySelector('[data-adv-cta-trigger]');
+      this.shown = false;
+      this.ticking = false;
+
+      this.linkToOffer();
+
+      // With no trigger on the page there is nothing to wait for — show it straight away.
+      if (!this.trigger) {
+        this.show(true);
+        return;
+      }
+
+      this.onScroll = this.onScroll.bind(this);
+      window.addEventListener('scroll', this.onScroll, { passive: true });
+      window.addEventListener('resize', this.onScroll, { passive: true });
+      this.update();
+    }
+
+    linkToOffer() {
+      const link = this.bar.querySelector('[data-adv-scroll-to-offer]');
+      const offer = document.querySelector('[data-adv-offer]');
+      if (!link || !offer || !offer.id) return;
+
+      link.setAttribute('href', `#${offer.id}`);
+      link.addEventListener('click', (event) => {
+        event.preventDefault();
+        offer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    }
+
+    onScroll() {
+      if (this.ticking) return;
+      this.ticking = true;
+      window.requestAnimationFrame(() => {
+        this.update();
+        this.ticking = false;
+      });
+    }
+
+    update() {
+      const passed = this.trigger.getBoundingClientRect().bottom < window.innerHeight * 0.9;
+      if (passed !== this.shown) this.show(passed);
+    }
+
+    show(next) {
+      this.shown = next;
+      this.bar.hidden = false;
+      this.bar.classList.toggle('adv-sticky__bar--visible', next);
+    }
+  }
+
+  document.querySelectorAll('[data-adv-sticky-cta]').forEach((bar) => new AdvertorialStickyCta(bar));
+{% endjavascript %}
+
+{% stylesheet %}
+  /* Keeps the footer clear of the pinned bar. */
+  .adv-sticky__spacer {
+    height: 76px;
+  }
+
+  .adv-sticky__bar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 30;
+    background: var(--retaur-black);
+    padding: 12px 16px;
+    box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.12);
+    opacity: 0;
+    transform: translateY(150px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+
+  .adv-sticky__bar--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .adv-sticky__inner {
+    max-width: var(--adv-measure);
+    margin-inline: auto;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .adv-sticky__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .adv-sticky__headline {
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    letter-spacing: -0.01em;
+  }
+
+  .adv-sticky__subtext {
+    font-size: 10px;
+    color: var(--adv-grey-light);
+    letter-spacing: 0.04em;
+  }
+
+  .adv-sticky__cta {
+    background: var(--retaur-magenta);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 800;
+    padding: 12px 18px;
+    border-radius: var(--retaur-r-full);
+    white-space: nowrap;
+    text-decoration: none;
+    flex: 0 0 auto;
+    transition: background 0.15s ease;
+  }
+
+  .adv-sticky__cta:hover,
+  .adv-sticky__cta:focus-visible {
+    background: var(--adv-magenta-hover);
+    color: #fff;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .adv-sticky__bar {
+      transition: opacity 0.15s ease;
+      transform: none;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .adv-sticky__spacer {
+      height: 88px;
+    }
+
+    .adv-sticky__bar {
+      padding: 16px var(--adv-pad-inline);
+      box-shadow: 0 -12px 32px rgba(0, 0, 0, 0.14);
+    }
+
+    .adv-sticky__inner {
+      gap: 32px;
+    }
+
+    .adv-sticky__copy {
+      flex-direction: row;
+      align-items: baseline;
+      gap: 14px;
+    }
+
+    .adv-sticky__headline {
+      font-size: 24px;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+    }
+
+    .adv-sticky__subtext {
+      font-size: 14px;
+      letter-spacing: 0.02em;
+    }
+
+    .adv-sticky__cta {
+      font-size: 16px;
+      padding: 14px 32px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Advertorial sticky CTA",
+  "tag": "aside",
+  "class": "adv-sticky-section",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "paragraph",
+      "content": "Appears once the reader scrolls past the comparison section. Place this section last."
+    },
+    {
+      "type": "text",
+      "id": "headline",
+      "label": "Headline",
+      "default": "54g protein · ₦5,500"
+    },
+    {
+      "type": "text",
+      "id": "subtext",
+      "label": "Subtext",
+      "default": "Same price, nearly twice the protein"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "See the bundles →"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link",
+      "info": "Leave empty to scroll to the offer section on this page."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advertorial sticky CTA"
+    }
+  ]
+}
+{% endschema %}

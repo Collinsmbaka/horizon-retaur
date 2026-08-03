@@ -49,11 +49,25 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 <!-- TikTok Pixel Code End -->
   </head>
 
-  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}">
+  {%- comment -%}
+    Advertorial page templates (page.advertorial*.json) ship their own minimal chrome as
+    sections so paid traffic has no nav to leak through. JSON templates can't select a
+    layout, so the swap happens here on the template suffix.
+  {%- endcomment -%}
+  {%- liquid
+    assign advertorial_layout = false
+    if template.suffix contains 'advertorial'
+      assign advertorial_layout = true
+    endif
+  -%}
+
+  <body class="page-width-{{ settings.page_width }} card-hover-effect-{{ settings.card_hover_effect }}{% if advertorial_layout %} adv-page{% endif %}">
     {% render 'skip-to-content-link', href: '#MainContent', text: 'accessibility.skip_to_text' %}
-    <div id="header-group">
-      {% sections 'header-group' %}
-    </div>
+    {%- unless advertorial_layout -%}
+      <div id="header-group">
+        {% sections 'header-group' %}
+      </div>
+    {%- endunless -%}
 
     <script
       src="{{ 'critical.js' | asset_url }}"
@@ -73,7 +87,9 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       {{ content_for_layout }}
     </main>
 
-    {% sections 'footer-group' %}
+    {%- unless advertorial_layout -%}
+      {% sections 'footer-group' %}
+    {%- endunless -%}
 
     {% render 'search-modal' %}
 

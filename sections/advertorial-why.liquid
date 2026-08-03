@@ -1,0 +1,206 @@
+{% comment %}
+  Advertorial explainer — why the gap exists, with the first product shot and the
+  headline product numbers. Same placement trick as the lede: the image sits inline
+  on mobile and becomes a sticky right-hand column on desktop.
+{% endcomment %}
+
+<div class="adv adv-why adv-section">
+  <div class="adv-why__inner adv-container">
+    <div class="adv-why__copy adv-why__copy--a">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="adv-eyebrow">{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+
+      {%- if section.settings.lead != blank -%}
+        <p class="adv-lead">{{ section.settings.lead }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.body != blank -%}
+        <div class="adv-prose">{{ section.settings.body }}</div>
+      {%- endif -%}
+    </div>
+
+    <div class="adv-why__media adv-media">
+      {%- if section.settings.image != blank -%}
+        {{
+          section.settings.image
+          | image_url: width: 1200
+          | image_tag:
+            loading: 'lazy',
+            sizes: '(min-width: 1024px) 40vw, 100vw',
+            widths: '430, 640, 860, 1200',
+            alt: section.settings.image.alt
+        }}
+      {%- else -%}
+        {{ 'product-1' | placeholder_svg_tag: 'adv-why__placeholder' }}
+      {%- endif -%}
+    </div>
+
+    <div class="adv-why__copy adv-why__copy--b">
+      {%- if section.settings.stat_1_value != blank or section.settings.stat_2_value != blank -%}
+        <div class="adv-statcards">
+          {%- if section.settings.stat_1_value != blank -%}
+            <div class="adv-statcard">
+              <span class="adv-statcard__value">{{ section.settings.stat_1_value }}</span>
+              <span class="adv-statcard__label">{{ section.settings.stat_1_label }}</span>
+            </div>
+          {%- endif -%}
+          {%- if section.settings.stat_2_value != blank -%}
+            <div class="adv-statcard">
+              <span class="adv-statcard__value">{{ section.settings.stat_2_value }}</span>
+              <span class="adv-statcard__label">{{ section.settings.stat_2_label }}</span>
+            </div>
+          {%- endif -%}
+        </div>
+      {%- endif -%}
+
+      {%- if section.settings.footnote != blank -%}
+        <p class="adv-why__footnote">{{ section.settings.footnote }}</p>
+      {%- endif -%}
+    </div>
+  </div>
+</div>
+
+{% stylesheet %}
+  .adv-why__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .adv-why__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .adv-why__media {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    border-radius: var(--retaur-r-md);
+    overflow: hidden;
+    margin-top: 4px;
+  }
+
+  .adv-why__footnote {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--adv-ink-soft);
+  }
+
+  @media (min-width: 1024px) {
+    .adv-why__inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr);
+      column-gap: 80px;
+      row-gap: 22px;
+      align-items: start;
+    }
+
+    .adv-why__copy {
+      gap: 22px;
+    }
+
+    .adv-why__copy--a {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .adv-why__copy--b {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    .adv-why__media {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      height: 640px;
+      border-radius: 12px;
+      margin-top: 0;
+      position: sticky;
+      top: 120px;
+    }
+
+    .adv-why__footnote {
+      font-size: 15px;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Advertorial explainer",
+  "tag": "section",
+  "class": "adv-why-section",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "Why the gap exists"
+    },
+    {
+      "type": "text",
+      "id": "lead",
+      "label": "Opening line",
+      "default": "It isn't that the other brands are cutting corners. It's that they're not built for this."
+    },
+    {
+      "type": "richtext",
+      "id": "body",
+      "label": "Body copy",
+      "default": "<p>Greek-style yogurt is a dairy product that happens to have decent protein. It is formulated for texture and taste first, and the protein figure is whatever the recipe leaves behind. Nobody on that shelf was optimising for it, so nobody prints it on the front.</p><p>Retaur was built the other way round: the protein figure first, then the recipe that hits it. It is the first sports nutrition brand manufactured in Nigeria. Formulated for the number, produced and tested in Lagos, priced to sit on the same shelf.</p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Product image",
+      "info": "Product shot with the nutrition panel visible."
+    },
+    {
+      "type": "header",
+      "content": "Product numbers"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_value",
+      "label": "Figure 1",
+      "default": "54g"
+    },
+    {
+      "type": "text",
+      "id": "stat_1_label",
+      "label": "Figure 1 label",
+      "default": "Protein per 400g cup"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_value",
+      "label": "Figure 2",
+      "default": "13.6g"
+    },
+    {
+      "type": "text",
+      "id": "stat_2_label",
+      "label": "Figure 2 label",
+      "default": "Per 100g, lab-confirmed"
+    },
+    {
+      "type": "text",
+      "id": "footnote",
+      "label": "Footnote",
+      "default": "Measured from the finished product, not calculated from a recipe. No fillers."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advertorial explainer"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,504 @@
+{% comment %}
+  Advertorial offer — the close. Bundle cards are radio options over the variants of
+  the picked product, so prices come from Shopify rather than being retyped here
+  (the design's own note warns that bundle terms must match the PDP exactly).
+
+  Page templates have no `product` object, hence the product picker setting.
+{% endcomment %}
+
+{%- liquid
+  assign product = section.settings.product
+  assign bundle_blocks = section.blocks | where: 'type', 'bundle'
+  assign form_id = 'AdvOffer-' | append: section.id
+
+  assign default_variant_id = ''
+  for block in bundle_blocks
+    assign variant = product.selected_or_first_available_variant
+    if block.settings.variant_title != blank
+      assign matched = product.variants | where: 'title', block.settings.variant_title | first
+      if matched != blank
+        assign variant = matched
+      endif
+    endif
+    if default_variant_id == blank or block.settings.featured
+      assign default_variant_id = variant.id
+    endif
+  endfor
+-%}
+
+<div class="adv adv-offer adv-section" id="adv-offer-{{ section.id }}" data-adv-offer>
+  <div class="adv-offer__inner">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="adv-h2 adv-offer__heading">{{ section.settings.heading }}</h2>
+    {%- endif -%}
+
+    {%- if section.settings.intro != blank -%}
+      <div class="adv-prose adv-offer__intro">{{ section.settings.intro }}</div>
+    {%- endif -%}
+
+    {%- if product != blank -%}
+      <product-form-component
+        data-section-id="{{ section.id }}"
+        data-product-id="{{ product.id }}"
+        data-product-url="{{ product.url }}"
+        on:submit="/handleSubmit"
+        class="adv-offer__form"
+      >
+        <div
+          class="visually-hidden"
+          aria-live="assertive"
+          role="status"
+          aria-atomic="true"
+          ref="liveRegion"
+        ></div>
+
+        {%- form 'product', product, id: form_id, novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+          <input type="hidden" name="id" ref="variantId" value="{{ default_variant_id }}">
+          <input type="hidden" name="quantity" value="1">
+
+          <fieldset class="adv-offer__bundles">
+            <legend class="visually-hidden">{{ section.settings.legend }}</legend>
+
+            {%- for block in bundle_blocks -%}
+              {%- liquid
+                assign variant = product.selected_or_first_available_variant
+                if block.settings.variant_title != blank
+                  assign matched = product.variants | where: 'title', block.settings.variant_title | first
+                  if matched != blank
+                    assign variant = matched
+                  endif
+                endif
+              -%}
+              <label
+                class="adv-offer__bundle{% if block.settings.featured %} adv-offer__bundle--featured{% endif %}"
+                {{ block.shopify_attributes }}
+              >
+                <input
+                  type="radio"
+                  class="adv-offer__radio visually-hidden"
+                  name="adv-bundle-{{ section.id }}"
+                  value="{{ variant.id }}"
+                  data-adv-variant
+                  data-available="{{ variant.available }}"
+                  {% if variant.id == default_variant_id %}checked{% endif %}
+                >
+
+                {%- if block.settings.featured and block.settings.badge != blank -%}
+                  <span class="adv-offer__badge">{{ block.settings.badge }}</span>
+                {%- endif -%}
+
+                <span class="adv-offer__bundle-main">
+                  {%- if block.settings.title != blank -%}
+                    <span class="adv-offer__bundle-title">{{ block.settings.title }}</span>
+                  {%- endif -%}
+                  <span class="adv-offer__bundle-price">
+                    {{- variant.price | money -}}
+                    {%- if block.settings.unit_note != blank %} · {{ block.settings.unit_note }}{% endif -%}
+                  </span>
+                </span>
+
+                {%- if block.settings.protein != blank -%}
+                  <span class="adv-offer__bundle-meta">{{ block.settings.protein }}</span>
+                {%- endif -%}
+              </label>
+            {%- endfor -%}
+          </fieldset>
+
+          {%- if section.settings.note != blank -%}
+            <p class="adv-note adv-offer__note">{{ section.settings.note }}</p>
+          {%- endif -%}
+
+          <button type="submit" name="add" class="adv-btn adv-offer__cta">
+            {{ section.settings.cta_text }}
+          </button>
+        {%- endform -%}
+      </product-form-component>
+    {%- else -%}
+      {%- comment -%} No product picked yet — keep the layout intact in the editor. {%- endcomment -%}
+      <div class="adv-offer__bundles">
+        {%- for block in bundle_blocks -%}
+          <div
+            class="adv-offer__bundle{% if block.settings.featured %} adv-offer__bundle--featured{% endif %}"
+            {{ block.shopify_attributes }}
+          >
+            {%- if block.settings.featured and block.settings.badge != blank -%}
+              <span class="adv-offer__badge">{{ block.settings.badge }}</span>
+            {%- endif -%}
+            <span class="adv-offer__bundle-main">
+              <span class="adv-offer__bundle-title">{{ block.settings.title }}</span>
+              <span class="adv-offer__bundle-price">{{ block.settings.unit_note }}</span>
+            </span>
+            <span class="adv-offer__bundle-meta">{{ block.settings.protein }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      {%- if section.settings.note != blank -%}
+        <p class="adv-note adv-offer__note">{{ section.settings.note }}</p>
+      {%- endif -%}
+
+      <a href="{{ section.settings.fallback_link | default: routes.all_products_collection_url }}" class="adv-btn adv-offer__cta">
+        {{ section.settings.cta_text }}
+      </a>
+    {%- endif -%}
+  </div>
+</div>
+
+{% javascript %}
+  // Keep the product form's variant input in step with the chosen bundle, and stop
+  // the submit resolving to a variant that is out of stock.
+  class AdvertorialOffer {
+    constructor(root) {
+      this.root = root;
+      this.variantInput = root.querySelector('[ref="variantId"]');
+      this.submit = root.querySelector('button[type="submit"]');
+      this.radios = Array.from(root.querySelectorAll('input[data-adv-variant]'));
+
+      if (!this.variantInput || this.radios.length === 0) return;
+
+      this.radios.forEach((radio) => {
+        radio.addEventListener('change', () => this.sync());
+      });
+      this.sync();
+    }
+
+    sync() {
+      const selected = this.radios.find((radio) => radio.checked);
+      if (!selected) return;
+
+      this.variantInput.value = selected.value;
+
+      if (this.submit) {
+        const available = selected.dataset.available !== 'false';
+        this.submit.disabled = !available;
+      }
+    }
+  }
+
+  document.querySelectorAll('[data-adv-offer]').forEach((root) => new AdvertorialOffer(root));
+{% endjavascript %}
+
+{% stylesheet %}
+  .adv-offer__inner {
+    max-width: 1000px;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .adv-offer__heading {
+    font-size: 32px;
+    letter-spacing: -0.035em;
+    line-height: 1.02;
+  }
+
+  .adv-offer__form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .adv-offer__form .shopify-product-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .adv-offer__bundles {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    min-width: 0;
+  }
+
+  .adv-offer__bundle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid var(--adv-rule);
+    border-radius: var(--retaur-r-md);
+    padding: 16px;
+    position: relative;
+    cursor: pointer;
+  }
+
+  .adv-offer__bundle--featured {
+    border: 2px solid var(--retaur-magenta);
+  }
+
+  /* Selection is what the radio drives; featured only controls the badge. */
+  .adv-offer__bundle:has(.adv-offer__radio:checked) {
+    border: 2px solid var(--retaur-magenta);
+    box-shadow: 0 0 0 3px rgba(216, 17, 89, 0.12);
+  }
+
+  .adv-offer__bundle:has(.adv-offer__radio:focus-visible) {
+    outline: 2px solid var(--retaur-magenta);
+    outline-offset: 2px;
+  }
+
+  .adv-offer__badge {
+    position: absolute;
+    top: -9px;
+    left: 14px;
+    background: var(--retaur-magenta);
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: var(--retaur-r-full);
+  }
+
+  .adv-offer__bundle-main {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    text-align: left;
+  }
+
+  .adv-offer__bundle-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: var(--retaur-black);
+  }
+
+  .adv-offer__bundle-price {
+    font-size: 12px;
+    color: var(--adv-grey);
+  }
+
+  .adv-offer__bundle-meta {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--adv-grey);
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .adv-offer__bundle--featured .adv-offer__bundle-meta {
+    color: var(--retaur-magenta);
+  }
+
+  @media (min-width: 1024px) {
+    .adv-offer {
+      padding-bottom: 120px;
+    }
+
+    .adv-offer__inner {
+      gap: 32px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .adv-offer__heading {
+      font-size: 60px;
+      letter-spacing: -0.045em;
+      line-height: 1;
+      max-width: 22em;
+    }
+
+    .adv-offer__intro {
+      max-width: 34em;
+    }
+
+    .adv-offer__intro > p {
+      font-size: 20px;
+      line-height: 1.65;
+    }
+
+    .adv-offer__form {
+      width: 100%;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .adv-offer__form .shopify-product-form {
+      width: 100%;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .adv-offer__bundles {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      width: 100%;
+      text-align: left;
+    }
+
+    /* Desktop stacks the card contents instead of running them as a row. */
+    .adv-offer__bundle {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 6px;
+      padding: 28px;
+    }
+
+    .adv-offer__badge {
+      top: -11px;
+      left: 24px;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      padding: 4px 10px;
+    }
+
+    .adv-offer__bundle-title {
+      font-size: 20px;
+      letter-spacing: -0.02em;
+    }
+
+    .adv-offer__bundle-price {
+      font-size: 14px;
+    }
+
+    .adv-offer__bundle-meta {
+      font-size: 13px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-top: 12px;
+    }
+
+    .adv-offer__note {
+      max-width: 40em;
+      text-align: center;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Advertorial offer",
+  "tag": "section",
+  "class": "adv-offer-section",
+  "max_blocks": 4,
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product",
+      "info": "Bundle cards select variants of this product. Prices come straight from Shopify."
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Same shelf. Same money. Read both panels."
+    },
+    {
+      "type": "richtext",
+      "id": "intro",
+      "label": "Intro",
+      "default": "<p>Most people start with two cups to check the taste, then reorder six. That's where the per-cup price bottoms out and a week is covered.</p>"
+    },
+    {
+      "type": "text",
+      "id": "legend",
+      "label": "Bundle group label",
+      "info": "Screen-reader label for the bundle choices.",
+      "default": "Choose a bundle"
+    },
+    {
+      "type": "textarea",
+      "id": "note",
+      "label": "Note",
+      "default": "Bundle terms must match the PDP exactly. Reconcile the web price against the WhatsApp promo before this runs."
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "Button text",
+      "default": "Add to cart"
+    },
+    {
+      "type": "url",
+      "id": "fallback_link",
+      "label": "Fallback button link",
+      "info": "Used only while no product is selected."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "bundle",
+      "name": "Bundle",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Taste test · 2 cups"
+        },
+        {
+          "type": "text",
+          "id": "variant_title",
+          "label": "Variant name",
+          "info": "Must match the variant name on the product exactly. Falls back to the first available variant."
+        },
+        {
+          "type": "text",
+          "id": "unit_note",
+          "label": "Price note",
+          "info": "Shown after the price, e.g. the per-cup figure.",
+          "default": "₦5,500/cup"
+        },
+        {
+          "type": "text",
+          "id": "protein",
+          "label": "Meta",
+          "default": "108g protein"
+        },
+        {
+          "type": "checkbox",
+          "id": "featured",
+          "label": "Highlight this bundle",
+          "info": "Also selects it by default.",
+          "default": false
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge",
+          "default": "Most reorders"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advertorial offer",
+      "blocks": [
+        {
+          "type": "bundle",
+          "settings": {
+            "title": "Taste test · 2 cups",
+            "unit_note": "₦5,500/cup",
+            "protein": "108g protein",
+            "featured": false
+          }
+        },
+        {
+          "type": "bundle",
+          "settings": {
+            "title": "A week · 6 cups",
+            "unit_note": "₦5,083/cup",
+            "protein": "324g protein",
+            "featured": true,
+            "badge": "Most reorders"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

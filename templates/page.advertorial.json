@@ -1,0 +1,222 @@
+{
+  "sections": {
+    "advertorial_header": {
+      "type": "advertorial-header",
+      "settings": {
+        "logo_height": 16,
+        "disclosure_label": "Paid partner content",
+        "sticky": true,
+        "show_cart": true
+      }
+    },
+    "advertorial_masthead": {
+      "type": "advertorial-masthead",
+      "settings": {
+        "kicker": "Nutrition · Lagos",
+        "heading": "Turn Your Greek Yogurt Around and Read the Back",
+        "standfirst": "Same shelf. Same price. Nearly twice the protein. Why the cup in your fridge is quietly underdelivering, and what to look for on the back.",
+        "byline": "By the Retaur Team · Month 2026",
+        "caption": "The back of the cup, not the front. Both panels photographed on the same shelf, Lagos, Month 2026."
+      }
+    },
+    "advertorial_lede": {
+      "type": "advertorial-lede",
+      "settings": {
+        "lead": "You made the right decision already.",
+        "body_before": "<p>You skipped the sugary drinking yogurts. You went to the shelf with the thick Greek-style cups, the ones with the clean packaging and the word <em>Greek</em> on the front, and you paid ₦5,500 for one because you're trying to eat more protein and this seemed like the sensible way to do it.<\/p><p>That was a good call. It's just that you're getting less for it than you think.<\/p><p>Turn the cup around. Find the nutrition panel. Look at protein per 100g.<\/p>",
+        "stat_value": "8 to 10",
+        "stat_unit": "g",
+        "stat_label": "Protein per 100g on most cups on that shelf",
+        "body_after": "<p>On a 400g cup, that's <strong>30 to 40 grams of protein<\/strong> for your ₦5,500.<\/p><p>Which is fine. It's just not what you're paying for.<\/p>"
+      }
+    },
+    "advertorial_comparison": {
+      "type": "advertorial-comparison",
+      "blocks": {
+        "row_other": {
+          "type": "row",
+          "settings": {
+            "name": "Greek-style brand",
+            "protein": "35g",
+            "price": "₦5,500",
+            "per_unit": "₦157",
+            "highlight": false
+          }
+        },
+        "row_retaur": {
+          "type": "row",
+          "settings": {
+            "name": "Retaur Protein Yogurt",
+            "protein": "54g",
+            "price": "₦5,500",
+            "per_unit": "₦102",
+            "highlight": true
+          }
+        }
+      },
+      "block_order": ["row_other", "row_retaur"],
+      "settings": {
+        "heading": "Here's the same shelf, priced honestly.",
+        "note": "Real shelf prices and real panels, photographed the week of launch. If a brand's numbers beat the assumption, it goes in anyway.",
+        "col_item": "Cup",
+        "col_protein": "Protein per cup",
+        "col_price": "Price",
+        "col_unit": "Per gram",
+        "delta_value": "19g",
+        "delta_heading": "Same price. Same size cup. More protein.",
+        "delta_body": "Over a week of one cup a day, that gap is 133g of protein you either got or didn't, for identical money."
+      }
+    },
+    "advertorial_why": {
+      "type": "advertorial-why",
+      "settings": {
+        "eyebrow": "Why the gap exists",
+        "lead": "It isn't that the other brands are cutting corners. It's that they're not built for this.",
+        "body": "<p>Greek-style yogurt is a dairy product that happens to have decent protein. It is formulated for texture and taste first, and the protein figure is whatever the recipe leaves behind. Nobody on that shelf was optimising for it, so nobody prints it on the front.<\/p><p>Retaur was built the other way round: the protein figure first, then the recipe that hits it. It is the first sports nutrition brand manufactured in Nigeria. Formulated for the number, produced and tested in Lagos, priced to sit on the same shelf.<\/p>",
+        "stat_1_value": "54g",
+        "stat_1_label": "Protein per 400g cup",
+        "stat_2_value": "13.6g",
+        "stat_2_label": "Per 100g, lab-confirmed",
+        "footnote": "Measured from the finished product, not calculated from a recipe. No fillers."
+      }
+    },
+    "advertorial_proof": {
+      "type": "advertorial-proof",
+      "blocks": {
+        "qa_taste": {
+          "type": "qa",
+          "settings": {
+            "question": "“Does 54g taste like chalk?”",
+            "answer": "<p>No. Reviewers reach for the Greek comparison on their own: as thick as Greek yoghurt, creamy, filling without feeling heavy, better frozen. It is not perfect. There is no unsweetened option yet, and one reviewer thought the pack was smaller than expected. Both of those are fair.<\/p>"
+          }
+        },
+        "qa_real": {
+          "type": "qa",
+          "settings": {
+            "question": "“Is 54g even real?”",
+            "answer": "<p>It is measured, not estimated. Protein base sourced from supplier line as you want to disclose it, produced and tested here, which is why 13.6g per 100g is a lab result on the actual cup rather than a figure copied off a supplier spec sheet. NAFDAC registration no.<\/p>"
+          }
+        },
+        "review_kay": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "06/14/2026",
+            "title": "Thick, creamy and tasty",
+            "body": "This is my second order. Retaur protein yoghurt is as thick as Greek yoghurt, tastes creamy and better when frozen, and quite filling without making you feel heavy.",
+            "author": "Kay",
+            "verified": true
+          }
+        },
+        "review_zainab": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "06/11/2026",
+            "title": "Protein yoghurt",
+            "body": "It was really nice and I really enjoyed every bit of it and I would be ordering again soon. Thank u. It was also really filling.",
+            "author": "Zainab Ibrahim",
+            "verified": true
+          }
+        },
+        "review_august": {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "01/16/2026",
+            "title": "The besttttt",
+            "body": "The taste is perfect, not sour, sweet but not too sweet. The texture is really good, feels like ice cream. And hitting my protein goals at the same time. They gained a customer for life.",
+            "author": "August",
+            "verified": true
+          }
+        },
+        "review_fatima": {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "date": "06/13/2026",
+            "title": "Great but no options",
+            "body": "The yogurt is great but no unsweetened option. Also the time from dispatch to delivery is too long. Otherwise it would have been 5/5.",
+            "author": "Fatima Umar",
+            "verified": true
+          }
+        }
+      },
+      "block_order": [
+        "qa_taste",
+        "qa_real",
+        "review_kay",
+        "review_zainab",
+        "review_august",
+        "review_fatima"
+      ],
+      "settings": {
+        "eyebrow": "The obvious question",
+        "verified_label": "Verified",
+        "stockist_value": "X",
+        "stockist_text": "Stocked in X iFitness branches. A business that had to make a buying decision."
+      }
+    },
+    "advertorial_offer": {
+      "type": "advertorial-offer",
+      "blocks": {
+        "bundle_taste": {
+          "type": "bundle",
+          "settings": {
+            "title": "Taste test · 2 cups",
+            "variant_title": "400ml / 2",
+            "unit_note": "₦5,250/cup",
+            "protein": "108g protein",
+            "featured": false
+          }
+        },
+        "bundle_week": {
+          "type": "bundle",
+          "settings": {
+            "title": "A week · 6 cups",
+            "variant_title": "400ml / 6",
+            "unit_note": "₦5,083/cup",
+            "protein": "324g protein",
+            "featured": true,
+            "badge": "Most reorders"
+          }
+        }
+      },
+      "block_order": ["bundle_taste", "bundle_week"],
+      "settings": {
+        "product": "yogurt-bundles",
+        "heading": "Same shelf. Same money. Read both panels.",
+        "intro": "<p>Most people start with two cups to check the taste, then reorder six. That's where the per-cup price bottoms out and a week is covered.<\/p>",
+        "legend": "Choose a bundle",
+        "note": "Bundle terms must match the PDP exactly. Reconcile the web price against the WhatsApp promo before this runs.",
+        "cta_text": "Add to cart"
+      }
+    },
+    "advertorial_footer": {
+      "type": "advertorial-footer",
+      "settings": {
+        "logo_height": 14,
+        "disclaimer": "<p>Paid content produced by Retaur. Nutrition figures for other products taken from on-pack panels photographed in Lagos, Month 2026. Retaur's 13.6g per 100g is a laboratory result on finished product.<\/p>"
+      }
+    },
+    "advertorial_sticky_cta": {
+      "type": "advertorial-sticky-cta",
+      "settings": {
+        "headline": "54g protein · ₦5,500",
+        "subtext": "Same price, nearly twice the protein",
+        "cta_text": "See the bundles →"
+      }
+    }
+  },
+  "order": [
+    "advertorial_header",
+    "advertorial_masthead",
+    "advertorial_lede",
+    "advertorial_comparison",
+    "advertorial_why",
+    "advertorial_proof",
+    "advertorial_offer",
+    "advertorial_footer",
+    "advertorial_sticky_cta"
+  ]
+}

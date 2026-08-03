@@ -4,3 +4,6 @@
 {{ 'retaur-tokens.css' | asset_url | stylesheet_tag }}
 {{ 'retaur-chrome.css' | asset_url | stylesheet_tag }}
 {{ 'retaur-marketing.css' | asset_url | stylesheet_tag }}
+{%- if template.suffix contains 'advertorial' -%}
+  {{ 'advertorial.css' | asset_url | stylesheet_tag }}
+{%- endif -%}

@@ -1,0 +1,208 @@
+{% comment %}
+  Advertorial lede — the opening argument, split around a single large statistic.
+
+  The stat sits between the two prose blocks on mobile (a rule-bounded band in the
+  reading flow) and moves to a sticky right-hand rail on desktop. Both come from the
+  same markup via explicit grid placement, so the copy stays in one reading order.
+{% endcomment %}
+
+<div class="adv adv-lede adv-section">
+  <div class="adv-lede__inner adv-container">
+    <div class="adv-lede__copy adv-lede__copy--a">
+      {%- if section.settings.lead != blank -%}
+        <p class="adv-lead">{{ section.settings.lead }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.body_before != blank -%}
+        <div class="adv-prose">{{ section.settings.body_before }}</div>
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.stat_value != blank -%}
+      <div class="adv-lede__stat">
+        <span class="adv-lede__stat-value">
+          {{- section.settings.stat_value -}}
+          {%- if section.settings.stat_unit != blank -%}
+            <span class="adv-lede__stat-unit">{{ section.settings.stat_unit }}</span>
+          {%- endif -%}
+        </span>
+        {%- if section.settings.stat_label != blank -%}
+          <span class="adv-lede__stat-label">{{ section.settings.stat_label }}</span>
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.body_after != blank -%}
+      <div class="adv-lede__copy adv-lede__copy--b">
+        <div class="adv-prose">{{ section.settings.body_after }}</div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .adv-lede__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  .adv-lede__copy {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* Mobile: rule-bounded band sitting in the reading flow. */
+  .adv-lede__stat {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 0 16px;
+    align-items: center;
+    border-top: 2px solid var(--retaur-black);
+    border-bottom: 2px solid var(--retaur-black);
+    padding: 18px 0;
+    margin: 4px 0;
+  }
+
+  .adv-lede__stat-value {
+    font-size: 48px;
+    font-weight: 900;
+    letter-spacing: -0.05em;
+    line-height: 0.9;
+    color: var(--retaur-black);
+  }
+
+  .adv-lede__stat-unit {
+    font-size: 22px;
+    font-weight: 800;
+  }
+
+  .adv-lede__stat-label {
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--adv-ink-soft);
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+
+  @media (min-width: 1024px) {
+    .adv-lede__inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(300px, 1fr);
+      column-gap: 80px;
+      row-gap: 22px;
+      align-items: start;
+    }
+
+    .adv-lede__copy {
+      gap: 22px;
+    }
+
+    .adv-lede__copy--a {
+      grid-column: 1;
+      grid-row: 1;
+    }
+
+    .adv-lede__copy--b {
+      grid-column: 1;
+      grid-row: 2;
+    }
+
+    /* Rail: spans both copy rows so it can stick alongside the whole argument. */
+    .adv-lede__stat {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      border-top: 3px solid var(--retaur-black);
+      border-bottom: 0;
+      padding: 24px 0 0;
+      margin: 0;
+      position: sticky;
+      top: 120px;
+    }
+
+    .adv-lede__stat-value {
+      font-size: 96px;
+      letter-spacing: -0.055em;
+      line-height: 0.85;
+    }
+
+    .adv-lede__stat-unit {
+      font-size: 36px;
+    }
+
+    .adv-lede__stat-label {
+      font-size: 14px;
+      line-height: 1.4;
+      letter-spacing: 0.08em;
+      max-width: 16em;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Advertorial lede",
+  "tag": "section",
+  "class": "adv-lede-section",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "lead",
+      "label": "Opening line",
+      "default": "You made the right decision already."
+    },
+    {
+      "type": "richtext",
+      "id": "body_before",
+      "label": "Copy above the statistic",
+      "default": "<p>You skipped the sugary drinking yogurts. You went to the shelf with the thick Greek-style cups, the ones with the clean packaging and the word Greek on the front, and you paid ₦5,500 for one because you're trying to eat more protein and this seemed like the sensible way to do it.</p><p>That was a good call. It's just that you're getting less for it than you think.</p><p>Turn the cup around. Find the nutrition panel. Look at protein per 100g.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Statistic"
+    },
+    {
+      "type": "text",
+      "id": "stat_value",
+      "label": "Value",
+      "default": "8 to 10"
+    },
+    {
+      "type": "text",
+      "id": "stat_unit",
+      "label": "Unit",
+      "info": "Set smaller than the value, e.g. the g in 10g.",
+      "default": "g"
+    },
+    {
+      "type": "text",
+      "id": "stat_label",
+      "label": "Label",
+      "default": "Protein per 100g on most cups on that shelf"
+    },
+    {
+      "type": "header",
+      "content": "Copy below the statistic"
+    },
+    {
+      "type": "richtext",
+      "id": "body_after",
+      "label": "Copy",
+      "default": "<p>On a 400g cup, that's <strong>30 to 40 grams of protein</strong> for your ₦5,500.</p><p>Which is fine. It's just not what you're paying for.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advertorial lede"
+    }
+  ]
+}
+{% endschema %}

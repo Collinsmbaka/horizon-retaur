@@ -1,0 +1,223 @@
+{% comment %}
+  Advertorial masthead — kicker, headline, standfirst, byline and the opening figure.
+  Headline and figure are one section because on desktop they share a single grid
+  (copy left, image right, baselines aligned); on mobile they stack.
+{% endcomment %}
+
+<div class="adv adv-masthead">
+  <div class="adv-masthead__inner">
+    <div class="adv-masthead__copy">
+      {%- if section.settings.kicker != blank -%}
+        <span class="adv-eyebrow adv-eyebrow--rule">{{ section.settings.kicker }}</span>
+      {%- endif -%}
+
+      {%- if section.settings.heading != blank -%}
+        <h1 class="adv-masthead__heading">{{ section.settings.heading }}</h1>
+      {%- endif -%}
+
+      {%- if section.settings.standfirst != blank -%}
+        <p class="adv-masthead__standfirst">{{ section.settings.standfirst }}</p>
+      {%- endif -%}
+
+      {%- if section.settings.byline != blank -%}
+        <p class="adv-masthead__byline">{{ section.settings.byline }}</p>
+      {%- endif -%}
+    </div>
+
+    <figure class="adv-figure adv-masthead__figure">
+      <div class="adv-masthead__media adv-media">
+        {%- if section.settings.image != blank -%}
+          {{
+            section.settings.image
+            | image_url: width: 1600
+            | image_tag:
+              loading: 'eager',
+              fetchpriority: 'high',
+              sizes: '(min-width: 1024px) 50vw, 100vw',
+              widths: '430, 640, 860, 1280, 1600',
+              alt: section.settings.image.alt
+          }}
+        {%- else -%}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'adv-masthead__placeholder' }}
+        {%- endif -%}
+      </div>
+
+      {%- if section.settings.caption != blank -%}
+        <figcaption class="adv-masthead__caption">{{ section.settings.caption }}</figcaption>
+      {%- endif -%}
+    </figure>
+  </div>
+</div>
+
+{% stylesheet %}
+  .adv-masthead {
+    background: #fff;
+    border-bottom: 1px solid var(--adv-rule);
+  }
+
+  .adv-masthead__inner {
+    max-width: var(--adv-measure);
+    margin-inline: auto;
+  }
+
+  .adv-masthead__copy {
+    padding: 32px var(--adv-pad-inline) 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .adv-masthead__heading {
+    margin: 0;
+    font-weight: 900;
+    font-size: 38px;
+    line-height: 1;
+    letter-spacing: -0.035em;
+    color: var(--retaur-black);
+    text-wrap: pretty;
+  }
+
+  .adv-masthead__standfirst {
+    margin: 0;
+    font-size: 17px;
+    line-height: 1.5;
+    color: var(--adv-ink-soft);
+    font-weight: 400;
+    text-wrap: pretty;
+  }
+
+  .adv-masthead__byline {
+    margin: 0;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--adv-grey);
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+
+  /* Mobile: the figure is a full-bleed black band with the caption sitting on it. */
+  .adv-masthead__figure {
+    background: var(--retaur-black);
+  }
+
+  .adv-masthead__media {
+    position: relative;
+    width: 100%;
+    height: 260px;
+  }
+
+  .adv-masthead__caption {
+    padding: 10px var(--adv-pad-inline) 14px;
+    font-size: 12px;
+    line-height: 1.45;
+    color: var(--adv-grey-light);
+  }
+
+  @media (min-width: 1024px) {
+    .adv-masthead__inner {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(320px, 0.95fr);
+      gap: 64px;
+      align-items: end;
+      padding: 72px var(--adv-pad-inline) 0;
+    }
+
+    .adv-masthead__copy {
+      padding: 0 0 72px;
+      gap: 24px;
+    }
+
+    .adv-masthead__heading {
+      font-size: 76px;
+      line-height: 0.94;
+      letter-spacing: -0.045em;
+    }
+
+    .adv-masthead__standfirst {
+      font-size: 21px;
+      max-width: 34em;
+    }
+
+    .adv-masthead__byline {
+      letter-spacing: 0.08em;
+    }
+
+    /* Desktop: caption drops onto the white page, so the black band goes behind
+       the image only. */
+    .adv-masthead__figure {
+      background: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .adv-masthead__media {
+      height: 520px;
+      background: var(--retaur-black);
+    }
+
+    .adv-masthead__caption {
+      padding: 0 0 20px;
+      color: var(--adv-grey);
+      line-height: 1.5;
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Advertorial masthead",
+  "tag": "section",
+  "class": "adv-masthead-section",
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Nutrition · Lagos"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Headline",
+      "default": "Turn Your Greek Yogurt Around and Read the Back"
+    },
+    {
+      "type": "textarea",
+      "id": "standfirst",
+      "label": "Standfirst",
+      "default": "Same shelf. Same price. Nearly twice the protein. Why the cup in your fridge is quietly underdelivering, and what to look for on the back."
+    },
+    {
+      "type": "text",
+      "id": "byline",
+      "label": "Byline",
+      "default": "By the Retaur Team · Month 2026"
+    },
+    {
+      "type": "header",
+      "content": "Opening image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "Two nutrition panels side by side, real shelf photo."
+    },
+    {
+      "type": "inline_richtext",
+      "id": "caption",
+      "label": "Caption",
+      "default": "The back of the cup, not the front. Both panels photographed on the same shelf, Lagos, Month 2026."
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advertorial masthead"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,499 @@
+{% comment %}
+  Advertorial proof — the objections answered in the open, customer reviews, and a
+  third-party stockist line. Q&A and review blocks share one section so the white
+  band behind them stays unbroken; add either type from the editor.
+{% endcomment %}
+
+{%- liquid
+  assign qa_blocks = section.blocks | where: 'type', 'qa'
+  assign review_blocks = section.blocks | where: 'type', 'review'
+-%}
+
+<div class="adv adv-proof adv-section">
+  <div class="adv-proof__inner adv-container">
+    {%- if section.settings.eyebrow != blank -%}
+      <span class="adv-eyebrow">{{ section.settings.eyebrow }}</span>
+    {%- endif -%}
+
+    {%- if qa_blocks.size > 0 -%}
+      <div class="adv-proof__qa">
+        {%- for block in qa_blocks -%}
+          <div class="adv-proof__qa-item" {{ block.shopify_attributes }}>
+            {%- if block.settings.question != blank -%}
+              <p class="adv-proof__question">{{ block.settings.question }}</p>
+            {%- endif -%}
+            {%- if block.settings.answer != blank -%}
+              <div class="adv-proof__answer">{{ block.settings.answer }}</div>
+            {%- endif -%}
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if review_blocks.size > 0 -%}
+      <div class="adv-proof__reviews">
+        {%- for block in review_blocks -%}
+          <article class="adv-proof__review" {{ block.shopify_attributes }}>
+            <div class="adv-proof__review-top">
+              <span
+                class="adv-proof__stars"
+                role="img"
+                aria-label="{{ block.settings.rating | escape }} out of 5 stars"
+              >
+                {%- for star in (1..5) -%}
+                  <span
+                    class="adv-proof__star{% if star > block.settings.rating %} adv-proof__star--empty{% endif %}"
+                    aria-hidden="true"
+                  >★</span>
+                {%- endfor -%}
+              </span>
+              {%- if block.settings.date != blank -%}
+                <span class="adv-proof__review-date">{{ block.settings.date }}</span>
+              {%- endif -%}
+            </div>
+
+            {%- if block.settings.title != blank -%}
+              <h3 class="adv-proof__review-title">{{ block.settings.title }}</h3>
+            {%- endif -%}
+
+            {%- if block.settings.body != blank -%}
+              <p class="adv-proof__review-body">{{ block.settings.body }}</p>
+            {%- endif -%}
+
+            <div class="adv-proof__review-foot">
+              {%- if block.settings.author != blank -%}
+                <span class="adv-proof__review-author">{{ block.settings.author }}</span>
+              {%- endif -%}
+              {%- if block.settings.verified and section.settings.verified_label != blank -%}
+                <span class="adv-proof__verified">{{ section.settings.verified_label }}</span>
+              {%- endif -%}
+            </div>
+          </article>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    {%- if section.settings.stockist_text != blank -%}
+      <div class="adv-proof__stockist">
+        {%- if section.settings.stockist_value != blank -%}
+          <span class="adv-proof__stockist-value">{{ section.settings.stockist_value }}</span>
+        {%- endif -%}
+        <span class="adv-proof__stockist-text">{{ section.settings.stockist_text }}</span>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+{% stylesheet %}
+  .adv-proof {
+    background: #fff;
+    border-top: 1px solid var(--adv-rule);
+    border-bottom: 1px solid var(--adv-rule);
+  }
+
+  .adv-proof__inner {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .adv-proof__qa {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .adv-proof__qa-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .adv-proof__question {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.25;
+    color: var(--retaur-black);
+  }
+
+  .adv-proof__answer,
+  .adv-proof__answer p {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--adv-ink);
+  }
+
+  /* Mobile: reviews scroll sideways and bleed to the section edges. */
+  .adv-proof__reviews {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 4px var(--adv-pad-inline) 8px;
+    margin-inline: calc(var(--adv-pad-inline) * -1);
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .adv-proof__review {
+    flex: 0 0 240px;
+    scroll-snap-align: start;
+    background: var(--retaur-cream);
+    border: 1px solid var(--adv-rule);
+    border-radius: var(--retaur-r-md);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .adv-proof__review-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .adv-proof__stars {
+    font-size: 13px;
+    letter-spacing: 0.06em;
+    line-height: 1;
+    color: var(--retaur-black);
+  }
+
+  .adv-proof__star--empty {
+    color: var(--adv-grey-light);
+  }
+
+  .adv-proof__review-date {
+    font-size: 10px;
+    color: var(--adv-grey);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .adv-proof__review-title {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 800;
+    color: var(--retaur-black);
+    letter-spacing: -0.01em;
+    line-height: 1.25;
+  }
+
+  .adv-proof__review-body {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--adv-ink-soft);
+  }
+
+  .adv-proof__review-foot {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: auto;
+    padding-top: 4px;
+  }
+
+  .adv-proof__review-author {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--retaur-black);
+  }
+
+  .adv-proof__verified {
+    font-size: 8px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    background: var(--retaur-black);
+    color: #fff;
+    padding: 3px 5px;
+    border-radius: 3px;
+  }
+
+  .adv-proof__stockist {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--retaur-black);
+    border-radius: var(--retaur-r-md);
+    padding: 16px;
+  }
+
+  .adv-proof__stockist-value {
+    font-size: 26px;
+    font-weight: 900;
+    color: #fff;
+    letter-spacing: -0.04em;
+    line-height: 1;
+  }
+
+  .adv-proof__stockist-text {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--adv-grey-light);
+    font-weight: 700;
+  }
+
+  @media (min-width: 1024px) {
+    .adv-proof__inner {
+      gap: 48px;
+    }
+
+    .adv-proof__qa {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 56px;
+    }
+
+    .adv-proof__qa-item {
+      gap: 12px;
+    }
+
+    .adv-proof__question {
+      font-size: 26px;
+      letter-spacing: -0.025em;
+    }
+
+    .adv-proof__answer,
+    .adv-proof__answer p {
+      font-size: 18px;
+      line-height: 1.65;
+    }
+
+    .adv-proof__reviews {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+      overflow: visible;
+      padding: 0;
+      margin-inline: 0;
+    }
+
+    .adv-proof__review {
+      padding: 24px;
+      gap: 12px;
+    }
+
+    .adv-proof__stars {
+      font-size: 15px;
+      letter-spacing: 0.08em;
+    }
+
+    .adv-proof__review-date {
+      font-size: 11px;
+    }
+
+    .adv-proof__review-title {
+      font-size: 16px;
+      letter-spacing: -0.015em;
+    }
+
+    .adv-proof__review-body {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .adv-proof__review-author {
+      font-size: 13px;
+    }
+
+    .adv-proof__review-foot {
+      padding-top: 8px;
+    }
+
+    .adv-proof__stockist {
+      gap: 20px;
+      padding: 28px 32px;
+      border-radius: 12px;
+    }
+
+    .adv-proof__stockist-value {
+      font-size: 44px;
+      letter-spacing: -0.045em;
+    }
+
+    .adv-proof__stockist-text {
+      font-size: 17px;
+    }
+  }
+
+  /* Four cards in a row get tight between 1024 and 1280 — drop to two. */
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    .adv-proof__reviews {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Advertorial proof",
+  "tag": "section",
+  "class": "adv-proof-section",
+  "max_blocks": 12,
+  "enabled_on": {
+    "templates": ["page"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "The obvious question"
+    },
+    {
+      "type": "text",
+      "id": "verified_label",
+      "label": "Verified badge text",
+      "default": "Verified"
+    },
+    {
+      "type": "header",
+      "content": "Stockist bar"
+    },
+    {
+      "type": "text",
+      "id": "stockist_value",
+      "label": "Figure",
+      "default": "X"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "stockist_text",
+      "label": "Text",
+      "default": "Stocked in X iFitness branches. A business that had to make a buying decision."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "“Does 54g taste like chalk?”"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>No. Reviewers reach for the Greek comparison on their own: as thick as Greek yoghurt, creamy, filling without feeling heavy, better frozen.</p>"
+        }
+      ]
+    },
+    {
+      "type": "review",
+      "name": "Review",
+      "settings": [
+        {
+          "type": "range",
+          "id": "rating",
+          "label": "Rating",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 5
+        },
+        {
+          "type": "text",
+          "id": "date",
+          "label": "Date"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "body",
+          "label": "Review"
+        },
+        {
+          "type": "text",
+          "id": "author",
+          "label": "Author"
+        },
+        {
+          "type": "checkbox",
+          "id": "verified",
+          "label": "Show verified badge",
+          "default": true
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Advertorial proof",
+      "blocks": [
+        {
+          "type": "qa",
+          "settings": {
+            "question": "“Does 54g taste like chalk?”",
+            "answer": "<p>No. Reviewers reach for the Greek comparison on their own: as thick as Greek yoghurt, creamy, filling without feeling heavy, better frozen. It is not perfect. There is no unsweetened option yet, and one reviewer thought the pack was smaller than expected. Both of those are fair.</p>"
+          }
+        },
+        {
+          "type": "qa",
+          "settings": {
+            "question": "“Is 54g even real?”",
+            "answer": "<p>It is measured, not estimated. Protein base sourced from supplier line as you want to disclose it, produced and tested here, which is why 13.6g per 100g is a lab result on the actual cup rather than a figure copied off a supplier spec sheet. NAFDAC registration no.</p>"
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "06/14/2026",
+            "title": "Thick, creamy and tasty",
+            "body": "This is my second order. Retaur protein yoghurt is as thick as Greek yoghurt, tastes creamy and better when frozen, and quite filling without making you feel heavy.",
+            "author": "Kay",
+            "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "06/11/2026",
+            "title": "Protein yoghurt",
+            "body": "It was really nice and I really enjoyed every bit of it and I would be ordering again soon. Thank u. It was also really filling.",
+            "author": "Zainab Ibrahim",
+            "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 5,
+            "date": "01/16/2026",
+            "title": "The besttttt",
+            "body": "The taste is perfect, not sour, sweet but not too sweet. The texture is really good, feels like ice cream. And hitting my protein goals at the same time. They gained a customer for life.",
+            "author": "August",
+            "verified": true
+          }
+        },
+        {
+          "type": "review",
+          "settings": {
+            "rating": 4,
+            "date": "06/13/2026",
+            "title": "Great but no options",
+            "body": "The yogurt is great but no unsweetened option. Also the time from dispatch to delivery is too long. Otherwise it would have been 5/5.",
+            "author": "Fatima Umar",
+            "verified": true
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
