@@ -26,7 +26,8 @@
         "heading": "Turn Your Greek Yogurt Around and Read the Back",
         "standfirst": "Same shelf. Same price. Nearly twice the protein. Why the cup in your fridge is quietly underdelivering, and what to look for on the back.",
         "byline": "By the Retaur Team · Month 2026",
-        "caption": "The back of the cup, not the front. Both panels photographed on the same shelf, Lagos, Month 2026."
+        "image": "shopify://shop_images/comparison.png",
+        "caption": ""
       }
     },
     "advertorial_lede": {
@@ -86,6 +87,7 @@
         "eyebrow": "Why the gap exists",
         "lead": "It isn't that the other brands are cutting corners. It's that they're not built for this.",
         "body": "<p>Greek-style yogurt is a dairy product that happens to have decent protein. It is formulated for texture and taste first, and the protein figure is whatever the recipe leaves behind. Nobody on that shelf was optimising for it, so nobody prints it on the front.</p><p>Retaur was built the other way round: the protein figure first, then the recipe that hits it. It is the first sports nutrition brand manufactured in Nigeria. Formulated for the number, produced and tested in Lagos, priced to sit on the same shelf.</p>",
+        "image": "shopify://shop_images/1_79b821c4-00c1-46d8-860b-49207a25f83d.png",
         "stat_1_value": "54g",
         "stat_1_label": "Protein per 400g cup",
         "stat_2_value": "13.6g",
