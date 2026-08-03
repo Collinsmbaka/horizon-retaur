@@ -25,7 +25,7 @@
         "kicker": "Nutrition · Lagos",
         "heading": "Turn Your Greek Yogurt Around and Read the Back",
         "standfirst": "Same shelf. Same price. Nearly twice the protein. Why the cup in your fridge is quietly underdelivering, and what to look for on the back.",
-        "byline": "By the Retaur Team · Month 2026",
+        "byline": "",
         "image": "shopify://shop_images/comparison.png",
         "caption": ""
       }
@@ -47,7 +47,7 @@
         "row_other": {
           "type": "row",
           "settings": {
-            "name": "Greek-style brand",
+            "name": "Mich&Kay Greek Yogurt",
             "protein": "35g",
             "price": "₦5,500",
             "per_unit": "₦157",
@@ -71,7 +71,7 @@
       ],
       "settings": {
         "heading": "Here's the same shelf, priced honestly.",
-        "note": "Real shelf prices and real panels, photographed the week of launch. If a brand's numbers beat the assumption, it goes in anyway.",
+        "note": "",
         "col_item": "Cup",
         "col_protein": "Protein per cup",
         "col_price": "Price",
@@ -207,7 +207,7 @@
         "heading": "Same shelf. Same money. Read both panels.",
         "intro": "<p>Most people start with two cups to check the taste, then reorder six. That's where the per-cup price bottoms out and a week is covered.</p>",
         "legend": "Choose a bundle",
-        "note": "Bundle terms must match the PDP exactly. Reconcile the web price against the WhatsApp promo before this runs.",
+        "note": "",
         "cta_text": "Add to cart",
         "fallback_link": ""
       }
