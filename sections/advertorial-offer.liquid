@@ -75,7 +75,7 @@
               >
                 <input
                   type="radio"
-                  class="adv-offer__radio visually-hidden"
+                  class="adv-offer__radio"
                   name="adv-bundle-{{ section.id }}"
                   value="{{ variant.id }}"
                   data-adv-variant
@@ -226,6 +226,24 @@
     padding: 16px;
     position: relative;
     cursor: pointer;
+  }
+
+  /* Clipped rather than display:none so it stays focusable and in the a11y tree.
+     Deliberately not the theme's .visually-hidden — that one is defined as
+     :not(:focus, :active), so the control reappears the moment a card is clicked. */
+  .adv-offer__radio {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    appearance: none;
+    -webkit-appearance: none;
   }
 
   .adv-offer__bundle--featured {
